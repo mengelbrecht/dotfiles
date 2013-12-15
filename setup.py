@@ -5,7 +5,7 @@ import os
 import re
 
 
-blacklist = set(["LICENSE", "README.md", "setup.py"])
+excludes = set(["LICENSE", "README.md", "setup.py"])
 root = os.path.dirname(os.path.realpath(__file__))
 home = os.path.expanduser("~")
 
@@ -23,19 +23,17 @@ def setupZPrezto():
     zpreztoPhysicalFiles = glob.glob(os.path.join(zpreztoPhysical, "runcoms", "z*"))
     zpreztoLogicalFiles = [os.path.join(zpreztoLogical, "runcoms", os.path.basename(f)) for f in zpreztoPhysicalFiles]
 
-    symlink(zpreztoPhysical, zpreztoLogical)
-
     for f in zpreztoLogicalFiles:
         symlink(f, os.path.join(home, "." + os.path.basename(f)))
 
 def getDotfiles():
-    dotfilesPhysical = [f for f in os.listdir(root) if os.path.isfile(f) and not f.startswith(".")]
-    return [os.path.join(root, f) for f in (set(dotfilesPhysical) - blacklist)]
+    dotfilesPhysical = [f for f in os.listdir(root) if not f.startswith(".")]
+    return [os.path.join(root, f) for f in (set(dotfilesPhysical) - excludes)]
 
 def setupDotfiles():
     dotfilesPhysical = getDotfiles()
     for f in dotfilesPhysical:
         symlink(f, os.path.join(home, "." + os.path.basename(f)))
 
-setupZPrezto()
 setupDotfiles()
+setupZPrezto()
