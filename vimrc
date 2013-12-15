@@ -33,6 +33,7 @@ call vundle#rc()
 " required!
 Bundle 'gmarik/vundle'
 
+Bundle 'tpope/vim-fugitive'
 Bundle 'bling/vim-airline'
 Bundle 'chriskempson/vim-tomorrow-theme'
 
