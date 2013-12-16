@@ -44,5 +44,5 @@
 	gi = grep --ignore-case
 	ggl = grep --files-with-matches
 [include]
-	path = .gitconfig.local
+	path = ~/.gitconfig.local
 
