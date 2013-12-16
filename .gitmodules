@@ -1,18 +1,24 @@
 [submodule "zprezto"]
 	path = zprezto
 	url = https://github.com/mgee/prezto.git
+	branch = master
 [submodule "vim/bundle/vundle"]
 	path = vim/bundle/vundle
 	url = https://github.com/gmarik/vundle.git
+	branch = master
 [submodule "vim/bundle/Vim-IndentFinder"]
 	path = vim/bundle/Vim-IndentFinder
 	url = https://github.com/unphased/Vim-IndentFinder.git
+	branch = master
 [submodule "vim/bundle/vim-fugitive"]
 	path = vim/bundle/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
+	branch = master
 [submodule "vim/bundle/vim-airline"]
 	path = vim/bundle/vim-airline
 	url = https://github.com/bling/vim-airline.git
+	branch = master
 [submodule "vim/bundle/vim-tomorrow-theme"]
 	path = vim/bundle/vim-tomorrow-theme
 	url = https://github.com/chriskempson/vim-tomorrow-theme.git
+	branch = master
