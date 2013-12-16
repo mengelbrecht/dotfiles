@@ -43,6 +43,7 @@
 	g = grep
 	gi = grep --ignore-case
 	ggl = grep --files-with-matches
+	ignore-all-files = !git ls-files -m | xargs git update-index --assume-unchanged
 [include]
 	path = ~/.gitconfig.local
 
