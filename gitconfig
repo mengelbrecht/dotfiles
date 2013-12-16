@@ -3,6 +3,7 @@
 	autocrlf = input
 	safecrlf = true
 	trustctime = false
+	excludesfile = ~/.gitignore.global
 [grep]
 	lineNumber = true
 [pack]
@@ -28,6 +29,8 @@
 	ss = stash save
 	svnr = svn rebase
 	svnd = svn dcommit
+	svno = !git l git-svn..HEAD
+	svnol = !git ll git-svn..HEAD
 	wipe = reset --hard HEAD
 	l = log --pretty=format:"%C(auto,yellow)%h\\ %C(auto,green)%ad%C(auto,red)%d\\ %C(auto,reset)%s%C(auto,blue)\\ [%cn]%C(auto,reset)" --decorate
 	ls = !git l --date=short
