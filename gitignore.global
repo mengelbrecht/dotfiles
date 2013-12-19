@@ -1,3 +1,11 @@
 .DS_Store
+
+# Xcode
 xcuserdata
 DerivedData
+
+# Visual Studio
+*.opensdf
+*.suo
+*.sdf
+*.vcxproj.user
