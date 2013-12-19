@@ -80,6 +80,16 @@ var moveTopLeft = slate.operation("corner", {
     "direction": "top-left"
 });
 
+var growDown = slate.operation("resize", {
+    "width" : "+0",
+    "height" : "+10%"
+});
+
+var shrinkDown = slate.operation("resize", {
+    "width" : "+0",
+    "height" : "-10%"
+});
+
 var moveTopRight = slate.operation("corner", {
     "direction": "top-right"
 });
@@ -214,6 +224,8 @@ slate.bind("down:alt,cmd", function(win) {
 
 slate.bind("left:ctrl,alt,cmd", shrinkRight);
 slate.bind("right:ctrl,alt,cmd", growRight);
+slate.bind("up:ctrl,alt,cmd", shrinkDown);
+slate.bind("down:ctrl,alt,cmd", growDown);
 
 slate.bind("up:ctrl,alt", throwNext);
 slate.bind("down:ctrl,alt", moveBottomRight);
