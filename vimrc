@@ -6,6 +6,11 @@
 " General Settings
 " ------------------------------------------------------------------------------
 
+" Load Pathogen
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+
+command! W :w " Seriously, it's not like :W is bound to anything anyway.
+command! Wq :wq
 set nocompatible " Turn off vi compatibility.
 set undolevels=1000 " Large undo levels.
 set history=200 " Size of command history.
@@ -21,22 +26,10 @@ set ttimeout
 set timeoutlen=50
 set nomodeline
 
-"filetype off                  " required!
-
 " ------------------------------------------------------------------------------
-" Vundle
+" Pathogen
 " ------------------------------------------------------------------------------
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" let Vundle manage Vundle
-" required!
-Bundle 'gmarik/vundle'
-
-Bundle 'unphased/Vim-IndentFinder'
-Bundle 'tpope/vim-fugitive'
-Bundle 'bling/vim-airline'
-Bundle 'chriskempson/vim-tomorrow-theme'
+execute pathogen#infect()
 
 " ------------------------------------------------------------------------------
 " Binds
@@ -68,6 +61,7 @@ set list
 " ------------------------------------------------------------------------------
 " Presentation
 " ------------------------------------------------------------------------------
+set gcr=a:blinkon0 " Non blinking cursor
 set shortmess=aIoO " Show short messages, no intro.
 set ttyfast " Fast scrolling when on a decent connection.
 set nowrap " Wrap text.
@@ -94,7 +88,7 @@ if has('gui_running')
     set guioptions-=T " Disable the tool bar bar.
     set guioptions-=a " Do not auto copy selection to clipboard.
 
-    set guifont=Source\ Code\ Pro:h13
+    set guifont=Source\ Code\ Pro\ for\ Powerline:h13
     set lines=36 " Window size.
     set columns=136
     set vb " Disable the audible bell.
