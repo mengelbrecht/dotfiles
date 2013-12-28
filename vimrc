@@ -3,15 +3,19 @@
 "
 " Based on https://github.com/Soliah/dotfiles/blob/master/vimrc
 " ------------------------------------------------------------------------------
+
+" ------------------------------------------------------------------------------
+" Basic Settings
+" ------------------------------------------------------------------------------
+runtime bundle/vim-pathogen/autoload/pathogen.vim " Load Pathogen
+
+command! W :w " Map W to w.
+command! Wq :wq " Map Wq to wq.
+set nocompatible " Turn off vi compatibility.
+
+" ------------------------------------------------------------------------------
 " General Settings
 " ------------------------------------------------------------------------------
-
-" Load Pathogen
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-
-command! W :w " Seriously, it's not like :W is bound to anything anyway.
-command! Wq :wq
-set nocompatible " Turn off vi compatibility.
 set undolevels=1000 " Large undo levels.
 set history=200 " Size of command history.
 set encoding=utf8 " Always use unicode.
@@ -25,6 +29,7 @@ set notimeout " Fix lag in iTerm.
 set ttimeout
 set timeoutlen=50
 set nomodeline
+set autochdir " Automatically change to directory of current file.
 
 " ------------------------------------------------------------------------------
 " Pathogen
@@ -35,6 +40,24 @@ execute pathogen#infect()
 " Binds
 " ------------------------------------------------------------------------------
 let mapleader = "," " Use comma as leader.
+
+" Bind Tab and Shift-Tab to buffer switching.
+nnoremap <s-tab> :bprev<CR>
+nnoremap <tab> :bnext<CR>
+
+" Switch windows using Shift-Left and Shift-Right.
+nmap <silent> <S-Left> :wincmd h<CR>
+nmap <silent> <S-Right> :wincmd l<CR>
+
+" Resize window using + and -.
+nnoremap <silent> + :exe "vertical resize " . (winwidth(0) * 23/20)<CR>
+nnoremap <silent> - :exe "vertical resize " . (winwidth(0) * 20/23)<CR>
+
+" Bind F5 to remove trailing whitespace.
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR> " Use F5 to remove all trailing spaces
+
+" Clear results.
+nnoremap <Leader><Leader> :noh<CR>
 
 " ------------------------------------------------------------------------------
 " Search and Replace
@@ -79,9 +102,8 @@ filetype plugin indent on " Load syntax files for better indenting.
 " ------------------------------------------------------------------------------
 " User Interface
 " ------------------------------------------------------------------------------
-let base16colorspace=256 " Access colors present in 256 colorspace
-set background=light
-colorscheme Tomorrow
+set background=dark
+colorscheme Tomorrow-Night
 
 if has('gui_running')
     set guioptions-=m " Disable menu bar.
@@ -89,8 +111,6 @@ if has('gui_running')
     set guioptions-=a " Do not auto copy selection to clipboard.
 
     set guifont=Source\ Code\ Pro\ for\ Powerline:h13
-    set lines=36 " Window size.
-    set columns=136
     set vb " Disable the audible bell.
 endif
 
@@ -101,9 +121,37 @@ if has('mouse')
 endif
 
 " ------------------------------------------------------------------------------
+" Colors
+" ------------------------------------------------------------------------------
+let guiBg = synIDattr(synIDtrans(hlID("Normal")), "bg", "gui")
+let ctermBg = synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")
+let identifierGuiFg = synIDattr(synIDtrans(hlID("Identifier")), "fg", "gui")
+let identifierCtermFg = synIDattr(synIDtrans(hlID("Identifier")), "fg", "cterm")
+let stringGuiFg = synIDattr(synIDtrans(hlID("String")), "fg", "gui")
+let stringCtermFg = synIDattr(synIDtrans(hlID("String")), "fg", "cterm")
+let constantGuiFg = synIDattr(synIDtrans(hlID("Constant")), "fg", "gui")
+let constantCtermFg = synIDattr(synIDtrans(hlID("Constant")), "fg", "cterm")
+let preprocGuiFg = synIDattr(synIDtrans(hlID("PreProc")), "fg", "gui")
+let preprocCtermFg = synIDattr(synIDtrans(hlID("PreProc")), "fg", "cterm")
+
+" ------------------------------------------------------------------------------
+" Line highlighting
+" ------------------------------------------------------------------------------
+set cursorline nocursorcolumn
+
+" Bind F6 to toggle long line highlighting.
+exe "hi LongLine guibg=" . identifierGuiFg . " guifg=" . guiBg . " ctermbg=" . identifierCtermFg . " ctermfg=" . ctermBg
+nnoremap <silent> <F6>
+      \ :if exists('w:long_line_match') <Bar>
+      \   silent! call matchdelete(w:long_line_match) <Bar>
+      \   unlet w:long_line_match <Bar>
+      \ else <Bar>
+      \   let w:long_line_match = matchadd('LongLine', '\%>100v.\+', -1) <Bar>
+      \ endif<CR>
+
+" ------------------------------------------------------------------------------
 " Status Line
 " ------------------------------------------------------------------------------
-
 " Always show status.
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
@@ -111,3 +159,33 @@ set laststatus=2
 
 " Disable status line fill chars.
 set fillchars+=stl:\ ,stlnc:\ " Space.
+
+" ------------------------------------------------------------------------------
+" Netrw
+" ------------------------------------------------------------------------------
+let g:netrw_altv = 1
+let g:netrw_browse_split = 4
+let g:netrw_preview = 1
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 80
+
+" ------------------------------------------------------------------------------
+" Git Gutter
+" ------------------------------------------------------------------------------
+" Adjust colors.
+exe "hi GitGutterAdd guifg=" . stringGuiFg . " ctermfg=" . stringCtermFg
+exe "hi GitGutterChange guifg=" . constantGuiFg . " ctermfg=" . constantCtermFg
+exe "hi GitGutterDelete guifg=" . identifierGuiFg . " ctermfg=" . identifierCtermFg
+exe "hi GitGutterChangeDelete guifg=" . preprocGuiFg . " ctermfg=" . preprocCtermFg
+
+" Jump to hunks.
+nmap gh <Plug>GitGutterNextHunk
+nmap gH <Plug>GitGutterPrevHunk
+
+" ------------------------------------------------------------------------------
+" Local Config
+" ------------------------------------------------------------------------------
+if filereadable(expand("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif
+
