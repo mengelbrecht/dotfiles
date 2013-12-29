@@ -30,37 +30,13 @@ set ttimeout
 set timeoutlen=50
 set nomodeline
 set autochdir " Automatically change to directory of current file.
+set wildchar=<Tab> wildmenu wildmode=full
+let mapleader = "," " Use comma as leader.
 
 " ------------------------------------------------------------------------------
 " Pathogen
 " ------------------------------------------------------------------------------
 execute pathogen#infect()
-
-" ------------------------------------------------------------------------------
-" Binds
-" ------------------------------------------------------------------------------
-let mapleader = "," " Use comma as leader.
-
-" Bind Tab and Shift-Tab to buffer switching.
-nnoremap <s-tab> :bprev<CR>
-nnoremap <tab> :bnext<CR>
-
-" Switch windows using Shift-Left and Shift-Right.
-nmap <silent> <S-Left> :wincmd h<CR>
-nmap <silent> <S-Right> :wincmd l<CR>
-
-" Resize window using + and -.
-nnoremap <silent> + :exe "vertical resize " . (winwidth(0) * 23/20)<CR>
-nnoremap <silent> - :exe "vertical resize " . (winwidth(0) * 20/23)<CR>
-
-" Bind F5 to remove trailing whitespace.
-nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR> " Use F5 to remove all trailing spaces
-
-" Clear results.
-nnoremap <Leader><Leader> :noh<CR>
-
-" Close buffer without closing the window.
-nmap <leader>d :Bdelete<CR>
 
 " ------------------------------------------------------------------------------
 " Search and Replace
@@ -71,6 +47,9 @@ set ignorecase " Enable case insensitive search.
 set smartcase " Disable case insensitivity if mixed case.
 set wrapscan " Wrap to top of buffer when searching.
 set gdefault " Make search and replace global by default.
+
+" Clear results.
+nnoremap <silent> <Leader><Leader> :noh<CR>
 
 " ------------------------------------------------------------------------------
 " White Space
@@ -83,6 +62,30 @@ set expandtab " Expand tabs into spaces.
 set smarttab " Insert spaces in front of lines.
 set listchars=tab:▸·,trail:· " Show leading whitespace
 set list
+
+" Bind F5 to remove trailing whitespace.
+nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR> " Use F5 to remove all trailing spaces
+
+" ------------------------------------------------------------------------------
+" Buffer Handling
+" ------------------------------------------------------------------------------
+" Bind Tab and Shift-Tab to buffer switching.
+nnoremap <silent> <TAB> :bnext<CR>
+nnoremap <silent> <S-TAB> :bprev<CR>
+
+" Close buffer without closing the window.
+nmap <leader>d :Bdelete<CR>
+
+" ------------------------------------------------------------------------------
+" Window Handling
+" ------------------------------------------------------------------------------
+" Switch windows using Control-Tab and Control-Shift-Tab.
+noremap <silent> <C-TAB> <C-W>w
+noremap <silent> <C-S-TAB> <C-W>W
+
+" Resize window using + and -.
+nnoremap <silent> + :exe "vertical resize " . (winwidth(0) * 23/20)<CR>
+nnoremap <silent> - :exe "vertical resize " . (winwidth(0) * 20/23)<CR>
 
 " ------------------------------------------------------------------------------
 " Presentation
@@ -171,6 +174,29 @@ let g:netrw_browse_split = 4
 let g:netrw_preview = 1
 let g:netrw_liststyle = 3
 let g:netrw_winsize = 80
+
+" Toggle Vexplore with Ctrl-E
+function! ToggleVExplorer()
+  if exists("t:expl_buf_num")
+      let expl_win_num = bufwinnr(t:expl_buf_num)
+      if expl_win_num != -1
+          let cur_win_nr = winnr()
+          exec expl_win_num . 'wincmd w'
+          close
+          exec cur_win_nr . 'wincmd w'
+          unlet t:expl_buf_num
+      else
+          unlet t:expl_buf_num
+      endif
+  else
+      exec '1wincmd w'
+      Vexplore
+      let t:expl_buf_num = bufnr("%")
+      vertical resize 20
+  endif
+endfunction
+
+map <silent> <C-E> :call ToggleVExplorer()<CR>
 
 " ------------------------------------------------------------------------------
 " Git Gutter
