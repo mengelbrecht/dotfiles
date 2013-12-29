@@ -69,9 +69,33 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR> 
 " ------------------------------------------------------------------------------
 " Buffer Handling
 " ------------------------------------------------------------------------------
+
+function! SwitchToNextBuffer(incr)
+  let current = bufnr("%")
+  let last = bufnr("$")
+  let new = current + a:incr
+  while 1
+    let buftype = getbufvar(new, "&filetype")
+    if new != 0 && bufexists(new) && buftype != '' && buftype != 'netrw'
+      execute ":buffer ".new
+      break
+    else
+      let new = new + a:incr
+      if new < 1
+        let new = last
+      elseif new > last
+        let new = 1
+      endif
+      if new == current
+        break
+      endif
+    endif
+  endwhile
+endfunction
+
 " Bind Tab and Shift-Tab to buffer switching.
-nnoremap <silent> <TAB> :bnext<CR>
-nnoremap <silent> <S-TAB> :bprev<CR>
+nnoremap <silent> <TAB> :call SwitchToNextBuffer(1)<CR>
+nnoremap <silent> <S-TAB> :call SwitchToNextBuffer(-1)<CR>
 
 " Close buffer without closing the window.
 nmap <leader>d :Bdelete<CR>
