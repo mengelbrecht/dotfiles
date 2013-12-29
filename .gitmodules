@@ -42,3 +42,7 @@
 	path = vim/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
 	branch = master
+[submodule "vim/bundle/vim-bbye"]
+	path = vim/bundle/vim-bbye
+	url = https://github.com/moll/vim-bbye.git
+	branch = master

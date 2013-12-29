@@ -59,6 +59,9 @@ nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR> 
 " Clear results.
 nnoremap <Leader><Leader> :noh<CR>
 
+" Close buffer without closing the window.
+nmap <leader>d :Bdelete<CR>
+
 " ------------------------------------------------------------------------------
 " Search and Replace
 " ------------------------------------------------------------------------------
