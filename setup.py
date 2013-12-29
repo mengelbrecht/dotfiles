@@ -3,7 +3,7 @@
 import glob
 import os
 import re
-
+import subprocess
 
 excludes = set(["LICENSE", "README.md", "setup.py"])
 root = os.path.dirname(os.path.realpath(__file__))
@@ -35,5 +35,24 @@ def setupDotfiles():
     for f in dotfilesPhysical:
         symlink(f, os.path.join(home, "." + os.path.basename(f)))
 
+def createLocalFiles():
+    localFiles = ["Brewfile.apps.local", "gitconfig.local", "slate.js.local", "vimrc.local", "zshrc.local"]
+    for f in localFiles:
+        path = os.path.join(root, f)
+        if not os.path.exists(path):
+            open(path, 'w').close()
+
+def checkInstallHomebrew():
+    try:
+        with open(os.devnull, 'w') as null:
+            available = subprocess.Popen('brew', stdout=null, stderr=null).wait() == 1
+    except OSError:
+        available = False
+    if not available:
+        subprocess.call(r'ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"', shell=True)
+        subprocess.call(r'brew tap phinze/homebrew-cask', shell=True)
+
+createLocalFiles()
+checkInstallHomebrew()
 setupDotfiles()
 setupZPrezto()
