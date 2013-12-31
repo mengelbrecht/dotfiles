@@ -3,7 +3,7 @@
 	autocrlf = input
 	safecrlf = true
 	trustctime = false
-	excludesfile = ~/.gitignore.global
+	excludesfile = ~/.gitexcludes
 [grep]
 	lineNumber = true
 [pack]

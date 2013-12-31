@@ -4,9 +4,21 @@ update
 # Upgrade all packages
 upgrade
 
-# Install all apps
-bundle ~/.Brewfile.apps
-bundle ~/.Brewfile.apps.local
+# Command line apps
+install brew-cask
+install cmake
+install git
+
+# Mac apps
+cask install android-file-transfer
+cask install appcleaner
+cask install firefox
+cask install macvim
+cask install slate
+cask install textmate
+cask install the-unarchiver
+
+bundle ~/.Brewfile.local
 
 # Remove all old packages
 cleanup

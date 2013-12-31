@@ -36,7 +36,7 @@ def setupDotfiles():
         symlink(f, os.path.join(home, "." + os.path.basename(f)))
 
 def createLocalFiles():
-    localFiles = ["Brewfile.apps.local", "gitconfig.local", "slate.js.local", "vimrc.local", "zshrc.local"]
+    localFiles = ["Brewfile.local", "gitconfig.local", "slate.js.local", "vimrc.local", "zshrc.local"]
     for f in localFiles:
         path = os.path.join(root, f)
         if not os.path.exists(path):
