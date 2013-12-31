@@ -76,7 +76,7 @@ function! SwitchToNextBuffer(incr)
   let new = current + a:incr
   while 1
     let buftype = getbufvar(new, "&filetype")
-    if new != 0 && bufexists(new) && buftype != '' && buftype != 'netrw'
+    if new != 0 && bufexists(new) && buflisted(new) && buftype != 'netrw'
       execute ":buffer ".new
       break
     else
