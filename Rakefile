@@ -2,19 +2,16 @@ task :default => :update
 
 task :setup => ["setup:setup"]
 
-namespace :setup do
-  task :setup => [:homebrew, :local, :dotfiles]
+verbose(false)
 
-  task :local do
-    root = File.expand_path(File.dirname(__FILE__))
-    localFiles = ["Brewfile.local", "gitconfig.local", "slate.js.local", "vimrc.local", "zshrc.local"]
-    localFiles.each {|f|
-      path = File.join(root, f)
-      unless File.exists?(path)
-        info("created empty local file #{path}")
-        FileUtils.touch(path)
-      end
-    }
+namespace :setup do
+  task :setup => [:osx, :homebrew, :local, :dotfiles]
+
+  task :osx do
+    if RUBY_PLATFORM.include? "darwin"
+      script = File.join(root_path(), "osx.bash")
+      sh script
+    end
   end
 
   task :homebrew do
@@ -29,9 +26,21 @@ namespace :setup do
     end
   end
 
+  task :local do
+    root = root_path()
+    localFiles = ["Brewfile.local", "gitconfig.local", "slate.js.local", "vimrc.local", "zshrc.local"]
+    localFiles.each {|f|
+      path = File.join(root, f)
+      unless File.exists?(path)
+        info("created empty local file #{path}")
+        FileUtils.touch(path)
+      end
+    }
+  end
+
   task :dotfiles do
-    excludes = ["LICENSE", "README.md", "setup.py", "setup.rb", "Rakefile"]
-    root = File.expand_path(File.dirname(__FILE__))
+    excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash"]
+    root = root_path()
 
     Dir.foreach(root) {|f|
       unless f.start_with?(".") or excludes.include?(f)
@@ -102,6 +111,10 @@ def symlink_path(source, dest)
   end
   File.symlink(source, dest)
   info("symlinked #{source} to #{dest}")
+end
+
+def root_path()
+  File.expand_path(File.dirname(__FILE__))
 end
 
 def info(msg, *args)
