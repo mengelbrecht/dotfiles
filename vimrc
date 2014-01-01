@@ -124,6 +124,7 @@ set hidden " Allow hidden buffers.
 set showmatch " Show matching parenthesis.
 set matchpairs+=<:> " Pairs to match.
 set cf " Enable error jumping.
+set number " Enable line numbers
 syntax on " Enable syntax highlighting.
 filetype on " Detect file type.
 filetype indent on " Enable file indenting.
@@ -154,7 +155,9 @@ endif
 " Colors
 " ------------------------------------------------------------------------------
 let guiBg = synIDattr(synIDtrans(hlID("Normal")), "bg", "gui")
+let guiFg = synIDattr(synIDtrans(hlID("Normal")), "fg", "gui")
 let ctermBg = synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")
+let commentGuiFg = synIDattr(synIDtrans(hlID("Comment")), "fg", "gui")
 let identifierGuiFg = synIDattr(synIDtrans(hlID("Identifier")), "fg", "gui")
 let identifierCtermFg = synIDattr(synIDtrans(hlID("Identifier")), "fg", "cterm")
 let stringGuiFg = synIDattr(synIDtrans(hlID("String")), "fg", "gui")
@@ -168,6 +171,9 @@ let preprocCtermFg = synIDattr(synIDtrans(hlID("PreProc")), "fg", "cterm")
 " Line highlighting
 " ------------------------------------------------------------------------------
 set cursorline nocursorcolumn
+
+" Current Line Number Highlighting.
+exe "hi CursorLineNr gui=none cterm=none guibg=" . guiBg . " guifg=" . commentGuiFg
 
 " Bind F6 to toggle long line highlighting.
 exe "hi LongLine guibg=" . identifierGuiFg . " guifg=" . guiBg . " ctermbg=" . identifierCtermFg . " ctermfg=" . ctermBg

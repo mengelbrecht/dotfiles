@@ -4,12 +4,15 @@ task :setup => ["setup:setup"]
 
 verbose(false)
 
+$excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash"]
+$root = File.expand_path(File.dirname(__FILE__))
+
 namespace :setup do
   task :setup => [:osx, :homebrew, :local, :dotfiles]
 
   task :osx do
     if RUBY_PLATFORM.include? "darwin"
-      script = File.join(root_path(), "osx.bash")
+      script = File.join($root, "osx.bash")
       sh script
     end
   end
@@ -27,10 +30,9 @@ namespace :setup do
   end
 
   task :local do
-    root = root_path()
     localFiles = ["Brewfile.local", "gitconfig.local", "slate.js.local", "vimrc.local", "zshrc.local"]
     localFiles.each {|f|
-      path = File.join(root, f)
+      path = File.join($root, f)
       unless File.exists?(path)
         info("created empty local file #{path}")
         FileUtils.touch(path)
@@ -39,16 +41,13 @@ namespace :setup do
   end
 
   task :dotfiles do
-    excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash"]
-    root = root_path()
-
-    Dir.foreach(root) {|f|
-      unless f.start_with?(".") or excludes.include?(f)
-        symlink_path(File.join(root, f), File.join(Dir.home, ".#{File.basename(f)}"))
+    Dir.foreach($root) {|f|
+      unless f.start_with?(".") or $excludes.include?(f)
+        symlink_path(File.join($root, f), File.join(Dir.home, ".#{File.basename(f)}"))
       end
     }
 
-    Dir.foreach(File.join(root, "zprezto", "runcoms")) {|f|
+    Dir.foreach(File.join($root, "zprezto", "runcoms")) {|f|
       if f.start_with?("z")
         symlink_path(File.join(Dir.home, ".zprezto", "runcoms", f), File.join(Dir.home, ".#{f}"))
       end
@@ -111,10 +110,6 @@ def symlink_path(source, dest)
   end
   File.symlink(source, dest)
   info("symlinked #{source} to #{dest}")
-end
-
-def root_path()
-  File.expand_path(File.dirname(__FILE__))
 end
 
 def info(msg, *args)
