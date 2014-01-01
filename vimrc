@@ -25,6 +25,12 @@ set nobackup " Disable backups.
 set nowritebackup
 set noswapfile
 
+" Use the OS clipboard by default (on versions compiled with `+clipboard`)
+set clipboard=unnamed
+
+" Optimize for fast terminal connections
+set ttyfast
+
 set notimeout " Fix lag in iTerm.
 set ttimeout
 set timeoutlen=50
