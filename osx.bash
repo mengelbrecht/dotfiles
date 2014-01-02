@@ -37,7 +37,10 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 ###############################################################################
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 0
+defaults write NSGlobalDomain KeyRepeat -int 2
+
+# Use all F1, F2, etc. keys as standard function keys
+defaults write -g com.apple.keyboard.fnState -bool true
 
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
@@ -59,6 +62,25 @@ defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 defaults write com.apple.screencapture type -string "png"
 
 ###############################################################################
+# Security                                                                    #
+###############################################################################
+
+# Disable display of recent applications.
+defaults write com.apple.recentitems RecentApplications -dict MaxAmount 0
+defaults write com.apple.recentitems RecentDocuments -dict MaxAmount 0
+
+# Turn Bluetooth off.
+defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0
+
+# Disable VoiceOver service.
+launchctl unload -w /System/Library/LaunchAgents/com.apple.VoiceOver.plist 2> /dev/null
+launchctl unload -w /System/Library/LaunchAgents/com.apple.ScreenReaderUIServer.plist 2> /dev/null
+launchctl unload -w /System/Library/LaunchAgents/com.apple.scrod.plist 2> /dev/null
+
+# Disable DVD or CD Sharing.
+launchctl unload -w /System/Library/LaunchDaemons/com.apple.ODSAgent.plist 2> /dev/null
+
+###############################################################################
 # Finder #
 ###############################################################################
 
@@ -70,6 +92,9 @@ defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
 # Finder: show status bar
 defaults write com.apple.finder ShowStatusBar -bool true
+
+# New window points to home
+defaults write com.apple.finder NewWindowTarget -string "PfHm"
 
 # Finder: allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
@@ -118,6 +143,9 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Set the icon size of Dock items to 42 pixels
 defaults write com.apple.dock tilesize -int 42
 
+# Position (left, bottom, right)
+defaults write com.apple.dock orientation -string "left"
+
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
 
@@ -164,6 +192,34 @@ defaults write com.apple.dock wvous-br-modifier -int 0
 
 # Set Safari’s home page to `about:blank` for faster loading
 defaults write com.apple.Safari HomePage -string "about:blank"
+
+# New windows open with: Empty Page
+defaults write com.apple.Safari NewWindowBehavior -int 1
+
+# New tabs open with: Empty Page
+defaults write com.apple.Safari NewTabBehavior -int 1
+
+# Open pages in tabs instead of windows: automatically
+defaults write com.apple.Safari TabCreationPolicy -int 1
+
+# Don't make new tabs active
+defaults write com.apple.Safari OpenNewTabsInFront -bool false
+
+# Command-clicking a link creates tabs
+defaults write com.apple.Safari CommandClickMakesTabs -bool true
+
+# Show status bar
+defaults write com.apple.Safari ShowStatusBar -bool true
+
+# Don't remember passwords
+defaults write com.apple.Safari AutoFillPasswords -bool false
+
+# Disable Java
+defaults write com.apple.Safari WebKitJavaEnabled -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+
+# Do not track
+defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
 # Prevent Safari from opening ‘safe’ files automatically after downloading
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
@@ -241,6 +297,53 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
+
+###############################################################################
+# Xcode #
+###############################################################################
+
+# Color scheme
+defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tomorrow.dvtcolortheme"
+
+# Show page guide at 100 columns
+defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100
+defaults write com.apple.dt.Xcode DVTTextShowPageGuide -bool true
+
+# Show line numbers
+defaults write com.apple.dt.Xcode DVTTextShowLineNumbers -bool true
+
+# Disable Xcode indentation
+defaults write com.apple.dt.Xcode DVTTextEditorWrapsLines -bool false
+defaults write com.apple.dt.Xcode DVTTextUsesSyntaxAwareIndenting -bool false
+
+# Always use tabs for indentation
+defaults write com.apple.dt.Xcode DVTTextIndentUsingTabs -bool true
+defaults write com.apple.dt.Xcode DVTTextTabKeyIndentBehavior -string "Never"
+
+# Disable code folding sidebar
+defaults write com.apple.dt.Xcode DVTTextShowFoldingSidebar -bool false
+
+# Also trim whitespace-only lines
+defaults write com.apple.dt.Xcode DVTTextEditorTrimWhitespaceOnlyLines -bool true
+
+# Use legacy mode for build data
+defaults write com.apple.dt.Xcode IDEBuildLocationStyle -string "DeterminedByTargets"
+
+# Store derived data relative to the project
+defaults write com.apple.dt.Xcode IDECustomDerivedDataLocation -string "DerivedData"
+
+# Open files in new tab on double-click
+defaults write com.apple.dt.Xcode IDEEditorCoordinatorTarget_DoubleClick -string "SeparateTab"
+
+###############################################################################
+# Textmate #
+###############################################################################
+
+# Ignore case in find window
+defaults write com.macromates.TextMate.preview findIgnoreCase -bool true
+
+# Wrap around if find hits end-of-file
+defaults write com.macromates.TextMate.preview findWrapAround -bool true
 
 ###############################################################################
 # Kill affected applications #
