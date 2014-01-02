@@ -4,16 +4,27 @@ task :setup => ["setup:setup"]
 
 verbose(false)
 
-$excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash"]
+$excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash", "init"]
 $root = File.expand_path(File.dirname(__FILE__))
+$osx = RUBY_PLATFORM.include? "darwin"
 
 namespace :setup do
-  task :setup => [:osx, :homebrew, :local, :dotfiles]
+  task :setup => [:fonts, :osx, :homebrew, :local, :dotfiles]
+
+  task :fonts do
+    if $osx
+      fontFolder = File.expand_path(File.join("~", "Library", "Fonts"))
+    else
+      fontFolder = File.expand_path(File.join("~", ".fonts"))
+    end
+    Dir[File.join($root, "init", "powerline-fonts", "SourceCodePro", "*.otf")].each {|f|
+      link_path(f, File.join(fontFolder, File.basename(f)))
+    }
+  end
 
   task :osx do
-    if RUBY_PLATFORM.include? "darwin"
-      script = File.join($root, "osx.bash")
-      sh script
+    if $osx
+      sh File.join($root, "osx.bash")
     end
   end
 
@@ -110,6 +121,12 @@ def symlink_path(source, dest)
   end
   File.symlink(source, dest)
   info("symlinked #{source} to #{dest}")
+end
+
+def link_path(source, dest)
+  unless File.exists?(dest)
+    File.link(source, dest)
+  end
 end
 
 def info(msg, *args)

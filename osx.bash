@@ -43,7 +43,7 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write -g com.apple.keyboard.fnState -bool true
 
 # Set language and text formats
-# Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
+# Note: if you’re in the US, replace `Centimeters` with
 # `Inches`, `en_GB` with `en_US`, and `true` with `false`.
 defaults write NSGlobalDomain AppleLanguages -array "en" "de"
 defaults write NSGlobalDomain AppleLocale -string "en_DE"
@@ -86,7 +86,7 @@ launchctl unload -w /System/Library/LaunchDaemons/com.apple.ODSAgent.plist 2> /d
 
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
-defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool false
 defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
 defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
@@ -95,6 +95,7 @@ defaults write com.apple.finder ShowStatusBar -bool true
 
 # New window points to home
 defaults write com.apple.finder NewWindowTarget -string "PfHm"
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/"
 
 # Finder: allow text selection in Quick Look
 defaults write com.apple.finder QLEnableTextSelection -bool true
@@ -132,9 +133,9 @@ chflags nohidden ~/Library
 # Expand the following File Info panes:
 # “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-        General -bool true \
-        OpenWith -bool true \
-        Privileges -bool true
+	General -bool true \
+	OpenWith -bool true \
+	Privileges -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners #
@@ -261,6 +262,15 @@ launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
+# Install Tomorrow-Night theme
+/usr/libexec/PlistBuddy -c "Delete :Window\ Settings:Tomorrow\ Night" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
+/usr/libexec/PlistBuddy -c "Add :Window\ Settings:Tomorrow\ Night dict" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Tomorrow\ Night.terminal :Window\ Settings:Tomorrow\ Night" ~/Library/Preferences/com.apple.Terminal.plist
+
+# Use the Tomorrow Night theme by default in Terminal.app
+defaults write com.apple.Terminal "Default Window Settings" -string "Tomorrow Night"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Tomorrow Night"
+
 ###############################################################################
 # Activity Monitor #
 ###############################################################################
@@ -301,6 +311,12 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 ###############################################################################
 # Xcode #
 ###############################################################################
+
+# Create color scheme directory
+mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes
+
+# Copy color schemes
+yes | cp init/tomorrow-theme/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Color scheme
 defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tomorrow.dvtcolortheme"
@@ -350,3 +366,5 @@ defaults write com.macromates.TextMate.preview findWrapAround -bool true
 ###############################################################################
 
 killall Dock
+killall Finder
+killall SystemUIServer

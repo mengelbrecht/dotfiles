@@ -46,3 +46,7 @@
 	path = vim/bundle/vim-bbye
 	url = https://github.com/moll/vim-bbye.git
 	branch = master
+[submodule "init/powerline-fonts"]
+	path = init/powerline-fonts
+	url = https://github.com/Lokaltog/powerline-fonts.git
+	branch = master
