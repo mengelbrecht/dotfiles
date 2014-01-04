@@ -22,6 +22,9 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Disable Notification Center and remove the menu bar icon
 launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+## Re-enable
+## sudo defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepAlive -bool true
+## launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -31,6 +34,12 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+
+# Don't offer new disks for backup
+defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
+
+# Disable local Time Machine snapshots
+sudo tmutil disablelocal
 
 ###############################################################################
 # Trackpad, mouse, keyboard, Bluetooth accessories, and input #
@@ -79,6 +88,21 @@ launchctl unload -w /System/Library/LaunchAgents/com.apple.scrod.plist 2> /dev/n
 
 # Disable DVD or CD Sharing.
 launchctl unload -w /System/Library/LaunchDaemons/com.apple.ODSAgent.plist 2> /dev/null
+
+# Enable Require password to wake this computer from sleep or screen saver.
+defaults write com.apple.screensaver askForPassword -int 1
+
+# Enable ALF
+sudo defaults write /Library/Preferences/com.apple.alf globalstate -int 1
+
+# Allow ALF for signed apps
+sudo defaults write /Library/Preferences/com.apple.alf allowsignedenabled -bool true
+
+# Reload ALF
+launchctl unload /System/Library/LaunchAgents/com.apple.alf.useragent.plist 2> /dev/null
+sudo launchctl unload /System/Library/LaunchDaemons/com.apple.alf.agent.plist 2> /dev/null
+sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist
+launchctl load /System/Library/LaunchAgents/com.apple.alf.useragent.plist
 
 ###############################################################################
 # Finder #
@@ -131,11 +155,13 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 chflags nohidden ~/Library
 
 # Expand the following File Info panes:
-# “General”, “Open with”, and “Sharing & Permissions”
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-	General -bool true \
-	OpenWith -bool true \
-	Privileges -bool true
+   Comments -bool false \
+   General -bool true \
+   OpenWith -bool true \
+   MetaData -bool false \
+   Name -bool false \
+   Privileges -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners #
@@ -312,6 +338,9 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 # Xcode #
 ###############################################################################
 
+# Enable Mac developer mode (keep password entry to a minimum for Xcode an Instruments)
+/usr/sbin/DevToolsSecurity -enable > /dev/null 2> /dev/null
+
 # Create color scheme directory
 mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
@@ -368,3 +397,4 @@ defaults write com.macromates.TextMate.preview findWrapAround -bool true
 killall Dock
 killall Finder
 killall SystemUIServer
+
