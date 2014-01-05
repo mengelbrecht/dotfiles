@@ -68,7 +68,7 @@ end
 
 task :update do
   sh 'git pull'
-  sh 'git submodule update --recursive'
+  sh 'git submodule update --init --recursive'
 end
 
 #### Helper Classes and Functions
