@@ -184,10 +184,10 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGGBlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
 	AAGGoKQHCBESVSRudWxs1AkKCwwNDg8QVk5TU2l6ZVhOU2ZGbGFnc1ZOU05hbWVWJGNs
-	YXNzI0AqAAAAAAAAEBCAAoADXxAaU2F1Y2VDb2RlUG93ZXJsaW5lLVJlZ3VsYXLSExQV
-	FlokY2xhc3NuYW1lWCRjbGFzc2VzVk5TRm9udKIVF1hOU09iamVjdF8QD05TS2V5ZWRB
-	cmNoaXZlctEaG1Ryb290gAEIERojLTI3PEJLUltiaXJ0dniVmqWutbjB09bbAAAAAAAA
-	AQEAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAN0=
+	YXNzI0AsAAAAAAAAEBCAAoADXxASQW5vbnltaWNlUG93ZXJsaW5l0hMUFRZaJGNsYXNz
+	bmFtZVgkY2xhc3Nlc1ZOU0ZvbnSiFRdYTlNPYmplY3RfEA9OU0tleWVkQXJjaGl2ZXLR
+	GhtUcm9vdIABCBEaIy0yNzxCS1JbYmlydHZ4jZKdpq2wucvO0wAAAAAAAAEBAAAAAAAA
+	ABwAAAAAAAAAAAAAAAAAAADV
 	</data>
 	<key>FontAntialias</key>
 	<true/>
@@ -237,7 +237,7 @@
 	<key>columnCount</key>
 	<integer>140</integer>
 	<key>name</key>
-	<string>Tomorrow Night</string>
+	<string>Tomorrow Night ANP</string>
 	<key>noWarnProcesses</key>
 	<array/>
 	<key>rowCount</key>

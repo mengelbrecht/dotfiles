@@ -17,6 +17,11 @@ namespace :setup do
     else
       fontFolder = File.expand_path(File.join("~", ".fonts"))
     end
+
+    Dir[File.join($root, "init", "powerline-fonts", "AnonymousPro", "*.ttf")].each {|f|
+      link_path(f, File.join(fontFolder, File.basename(f)))
+    }
+
     Dir[File.join($root, "init", "powerline-fonts", "SourceCodePro", "*.otf")].each {|f|
       link_path(f, File.join(fontFolder, File.basename(f)))
     }
