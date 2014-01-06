@@ -1,3 +1,5 @@
+require 'pathname'
+
 task :default => :update
 
 task :setup => ["setup:setup"]
@@ -123,10 +125,10 @@ def symlink_path(source, dest)
   end
   if File.exists?(dest)
     if File.symlink?(dest)
-      if File.realpath(source) == File.realpath(dest)
+      if Pathname.new(source).realpath() == Pathname.new(dest).realpath()
         return
       else
-        warning("deleting unknown symlink #{dest} to #{File.realpath(dest)}")
+        warning("deleting unknown symlink #{dest} to #{Pathname.new(dest).realpath()}")
         File.delete(dest)
       end
     else
