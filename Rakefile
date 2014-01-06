@@ -6,6 +6,7 @@ verbose(false)
 
 $excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash", "init"]
 $root = File.expand_path(File.dirname(__FILE__))
+$home = File.expand_path("~")
 $osx = RUBY_PLATFORM.include? "darwin"
 
 namespace :setup do
@@ -69,13 +70,13 @@ namespace :setup do
   task :dotfiles do
     Dir.foreach($root) {|f|
       unless f.start_with?(".") or $excludes.include?(f)
-        symlink_path(File.join($root, f), File.join(Dir.home, ".#{File.basename(f)}"))
+        symlink_path(File.join($root, f), File.join($home, ".#{File.basename(f)}"))
       end
     }
 
     Dir.foreach(File.join($root, "zprezto", "runcoms")) {|f|
       if f.start_with?("z")
-        symlink_path(File.join(Dir.home, ".zprezto", "runcoms", f), File.join(Dir.home, ".#{f}"))
+        symlink_path(File.join($home, ".zprezto", "runcoms", f), File.join($home, ".#{f}"))
       end
     }
   end
