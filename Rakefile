@@ -1,5 +1,3 @@
-require 'FileUtils'
-
 task :default => :update
 
 task :setup => ["setup:setup"]
