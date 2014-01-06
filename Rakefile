@@ -34,7 +34,7 @@ namespace :setup do
   end
 
   task :homebrew do
-    if which("brew").empty?
+    if not which("brew")
       info("installing homebrew")
       sh 'ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"'
     end

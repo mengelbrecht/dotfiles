@@ -72,6 +72,9 @@ set list
 " Bind F5 to remove trailing whitespace.
 nnoremap <silent> <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR> " Use F5 to remove all trailing spaces
 
+" Bind formatting.
+nnoremap <silent> <leader>f :ClangFormat<CR>
+
 " ------------------------------------------------------------------------------
 " Buffer Handling
 " ------------------------------------------------------------------------------
