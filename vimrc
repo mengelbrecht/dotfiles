@@ -37,6 +37,7 @@ set timeoutlen=50
 set nomodeline
 set autochdir " Automatically change to directory of current file.
 set wildchar=<Tab> wildmenu wildmode=full
+set whichwrap+=<,>,h,l,[,] " Move lines using arrows.
 let mapleader = "," " Use comma as leader.
 
 " ------------------------------------------------------------------------------
