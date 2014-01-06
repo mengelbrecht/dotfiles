@@ -1,3 +1,5 @@
+require 'FileUtils'
+
 task :default => :update
 
 task :setup => ["setup:setup"]
@@ -18,6 +20,10 @@ namespace :setup do
       fontFolder = File.expand_path(File.join("~", ".fonts"))
     end
 
+    if not File.exists?(fontFolder)
+      FileUtils.mkdir_p(fontFolder)
+    end
+
     Dir[File.join($root, "init", "powerline-fonts", "AnonymousPro", "*.ttf")].each {|f|
       link_path(f, File.join(fontFolder, File.basename(f)))
     }
@@ -28,12 +34,18 @@ namespace :setup do
   end
 
   task :osx do
-    if $osx
-      sh File.join($root, "osx.bash")
+    if not $osx
+      return
     end
+
+    sh File.join($root, "osx.bash")
   end
 
   task :homebrew do
+    if not $osx
+      return
+    end
+
     if not which("brew")
       info("installing homebrew")
       sh 'ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"'
