@@ -139,6 +139,11 @@ filetype on " Detect file type.
 filetype indent on " Enable file indenting.
 filetype plugin indent on " Load syntax files for better indenting.
 
+" Display highlight group under cursor
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 " ------------------------------------------------------------------------------
 " User Interface
 " ------------------------------------------------------------------------------
@@ -167,6 +172,7 @@ endif
 let guiBg = synIDattr(synIDtrans(hlID("Normal")), "bg", "gui")
 let guiFg = synIDattr(synIDtrans(hlID("Normal")), "fg", "gui")
 let ctermBg = synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")
+let ctermFg = synIDattr(synIDtrans(hlID("Normal")), "fg", "cterm")
 let commentGuiFg = synIDattr(synIDtrans(hlID("Comment")), "fg", "gui")
 let identifierGuiFg = synIDattr(synIDtrans(hlID("Identifier")), "fg", "gui")
 let identifierCtermFg = synIDattr(synIDtrans(hlID("Identifier")), "fg", "cterm")
@@ -176,6 +182,8 @@ let constantGuiFg = synIDattr(synIDtrans(hlID("Constant")), "fg", "gui")
 let constantCtermFg = synIDattr(synIDtrans(hlID("Constant")), "fg", "cterm")
 let preprocGuiFg = synIDattr(synIDtrans(hlID("PreProc")), "fg", "gui")
 let preprocCtermFg = synIDattr(synIDtrans(hlID("PreProc")), "fg", "cterm")
+let lineNrGuiFg = synIDattr(synIDtrans(hlID("LineNr")), "fg", "gui")
+let lineNrCtermFg = synIDattr(synIDtrans(hlID("LineNr")), "fg", "cterm")
 
 " ------------------------------------------------------------------------------
 " Line highlighting
@@ -205,6 +213,14 @@ set laststatus=2
 
 " Disable status line fill chars.
 set fillchars+=stl:\ ,stlnc:\ " Space.
+
+" ------------------------------------------------------------------------------
+" CSV
+" ------------------------------------------------------------------------------
+exe "hi Conceal guibg=" . guiBg . " guifg=" . lineNrGuiFg
+
+exe "hi CSVColumnEven guifg=" . constantGuiFg . " ctermfg=" . constantCtermFg
+exe "hi CSVColumnOdd  guifg=" . stringGuiFg . " ctermfg=" . stringCtermFg
 
 " ------------------------------------------------------------------------------
 " Netrw
