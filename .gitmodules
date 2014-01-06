@@ -54,3 +54,7 @@
 	path = vim/bundle/vim-clang-format
 	url = https://github.com/rhysd/vim-clang-format.git
 	branch = master
+[submodule "vim/bundle/csv.vim"]
+	path = vim/bundle/csv.vim
+	url = https://github.com/chrisbra/csv.vim.git
+	branch = master
