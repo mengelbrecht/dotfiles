@@ -33,7 +33,7 @@ namespace :setup do
 
   task :osx do
     if not $osx
-      return
+      next
     end
 
     sh File.join($root, "osx.bash")
@@ -41,7 +41,7 @@ namespace :setup do
 
   task :homebrew do
     if not $osx
-      return
+      next
     end
 
     if not which("brew")
