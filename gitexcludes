@@ -9,3 +9,7 @@ DerivedData
 *.suo
 *.sdf
 *.vcxproj.user
+
+# Idea files
+**/.idea/workspace.xml
+**/.idea/tasks.xml
