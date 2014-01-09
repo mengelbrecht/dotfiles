@@ -1,4 +1,8 @@
+# OSX
 .DS_Store
+
+# Windows
+Thumbs.db
 
 # Xcode
 xcuserdata
@@ -9,6 +13,7 @@ DerivedData
 *.suo
 *.sdf
 *.vcxproj.user
+*.csproj.user
 
 # Idea files
 **/.idea/workspace.xml
