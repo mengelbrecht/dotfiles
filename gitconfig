@@ -10,6 +10,8 @@
 	threads = 0
 [push]
 	default = simple
+[branch]
+	autosetuprebase = always
 [color]
 	ui = auto
 [alias]
