@@ -15,37 +15,7 @@
 [color]
 	ui = auto
 [alias]
-	a = add
-	ap = add -p
-	br = branch
-	ci = commit
-	co = checkout
-	cl = clone
-	ri = rebase -i
-	st = status -sb
-	wdiff = diff --word-diff=color
-	sdiff = diff --word-diff=color --cached
-	sl = stash list
-	sa = stash apply
-	sp = stash pop
-	ss = stash save
-	svnr = svn rebase
-	svnd = svn dcommit
-	svno = !git l git-svn..HEAD
-	svnol = !git ll git-svn..HEAD
 	wipe = reset --hard HEAD
-	l = log --pretty=format:"%C(auto,yellow)%h\\ %C(auto,green)%ad%C(auto,red)%d\\ %C(auto,reset)%s%C(auto,blue)\\ [%cn]%C(auto,reset)" --decorate
-	ls = !git l --date=short
-	lr = !git l --date=relative
-	ll = !git l --date=short --stat-width=60
-	logtree = !git l --date=short --graph --all
-	fl = log -u
-	filelog = !git fl
-	find = !git ls-files | grep -i
-	g = grep
-	gi = grep --ignore-case
-	ggl = grep --files-with-matches
-	ignore-all-files = !git ls-files -m | xargs git update-index --assume-unchanged
 [include]
 	path = ~/.gitconfig.local
 
