@@ -301,6 +301,9 @@ defaults write com.apple.terminal StringEncodings -array 4
 defaults write com.apple.Terminal "Default Window Settings" -string "Tomorrow Night ANP"
 defaults write com.apple.Terminal "Startup Window Settings" -string "Tomorrow Night ANP"
 
+# Always show tabbar
+defaults write com.apple.Terminal ShowTabBar -bool true
+
 ###############################################################################
 # Activity Monitor #
 ###############################################################################
