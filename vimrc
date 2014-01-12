@@ -156,7 +156,7 @@ if has('gui_running')
     set guioptions-=T " Disable the tool bar bar.
     set guioptions-=a " Do not auto copy selection to clipboard.
 
-    set guifont=Anonymous\ Pro\ for\ Powerline:h14
+    set guifont=monoOne:h13
     set lsp=2
     set vb " Disable the audible bell.
 endif

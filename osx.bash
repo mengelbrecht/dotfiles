@@ -297,9 +297,13 @@ defaults write com.apple.terminal StringEncodings -array 4
 /usr/libexec/PlistBuddy -c "Add :Window\ Settings:Tomorrow\ Night\ SCP dict" ~/Library/Preferences/com.apple.Terminal.plist
 /usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Tomorrow\ Night\ SCP.terminal :Window\ Settings:Tomorrow\ Night\ SCP" ~/Library/Preferences/com.apple.Terminal.plist
 
+/usr/libexec/PlistBuddy -c "Delete :Window\ Settings:Tomorrow\ Night\ MO" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
+/usr/libexec/PlistBuddy -c "Add :Window\ Settings:Tomorrow\ Night\ MO dict" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Tomorrow\ Night\ MO.terminal :Window\ Settings:Tomorrow\ Night\ MO" ~/Library/Preferences/com.apple.Terminal.plist
+
 # Use the Tomorrow Night theme by default in Terminal.app
-defaults write com.apple.Terminal "Default Window Settings" -string "Tomorrow Night ANP"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Tomorrow Night ANP"
+defaults write com.apple.Terminal "Default Window Settings" -string "Tomorrow Night MO"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Tomorrow Night MO"
 
 # Always show tabbar
 defaults write com.apple.Terminal ShowTabBar -bool true
@@ -355,7 +359,7 @@ mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 yes | cp init/tomorrow-theme/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Color scheme
-defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tomorrow ANP.dvtcolortheme"
+defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tomorrow MO.dvtcolortheme"
 
 # Show page guide at 100 columns
 defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100

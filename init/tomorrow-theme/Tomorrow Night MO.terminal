@@ -184,15 +184,15 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGGBlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
 	AAGGoKQHCBESVSRudWxs1AkKCwwNDg8QVk5TU2l6ZVhOU2ZGbGFnc1ZOU05hbWVWJGNs
-	YXNzI0AqAAAAAAAAEBCAAoADXxAaU2F1Y2VDb2RlUG93ZXJsaW5lLVJlZ3VsYXLSExQV
-	FlokY2xhc3NuYW1lWCRjbGFzc2VzVk5TRm9udKIVF1hOU09iamVjdF8QD05TS2V5ZWRB
-	cmNoaXZlctEaG1Ryb290gAEIERojLTI3PEJLUltiaXJ0dniVmqWutbjB09bbAAAAAAAA
-	AQEAAAAAAAAAHAAAAAAAAAAAAAAAAAAAAN0=
+	YXNzI0AqAAAAAAAAEBCAAoADXxAPbW9ub09uZS1SZWd1bGFy0hMUFRZaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1ZOU0ZvbnSiFRdYTlNPYmplY3RfEA9OU0tleWVkQXJjaGl2ZXLRGhtU
+	cm9vdIABCBEaIy0yNzxCS1JbYmlydHZ4io+ao6qttsjL0AAAAAAAAAEBAAAAAAAAABwA
+	AAAAAAAAAAAAAAAAAADS
 	</data>
 	<key>FontAntialias</key>
 	<true/>
 	<key>FontWidthSpacing</key>
-	<real>1.0</real>
+	<integer>1</integer>
 	<key>Linewrap</key>
 	<true/>
 	<key>ProfileCurrentVersion</key>
@@ -237,7 +237,7 @@
 	<key>columnCount</key>
 	<integer>140</integer>
 	<key>name</key>
-	<string>Tomorrow Night SCP</string>
+	<string>Tomorrow Night MO</string>
 	<key>noWarnProcesses</key>
 	<array/>
 	<key>rowCount</key>

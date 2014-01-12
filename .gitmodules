@@ -62,3 +62,7 @@
 	path = vim/bundle/vim-fontsize
 	url = https://github.com/drmikehenry/vim-fontsize.git
 	branch = master
+[submodule "init/monoOne"]
+	path = init/monoOne
+	url = https://github.com/madmalik/monoOne.git
+	branch = master

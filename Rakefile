@@ -32,6 +32,10 @@ namespace :setup do
     Dir[File.join($root, "init", "powerline-fonts", "SourceCodePro", "*.otf")].each {|f|
       link_path(f, File.join(fontFolder, File.basename(f)))
     }
+
+    Dir[File.join($root, "init", "monoOne", "*.otf")].each {|f|
+      link_path(f, File.join(fontFolder, File.basename(f)))
+    }
   end
 
   task :osx do
