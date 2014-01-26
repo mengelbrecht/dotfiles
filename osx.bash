@@ -291,15 +291,15 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Install Tomorrow-Night theme
 /usr/libexec/PlistBuddy -c "Delete :Window\ Settings:Tomorrow\ Night\ ANP" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
 /usr/libexec/PlistBuddy -c "Add :Window\ Settings:Tomorrow\ Night\ ANP dict" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Tomorrow\ Night\ ANP.terminal :Window\ Settings:Tomorrow\ Night\ ANP" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Terminal/Tomorrow\ Night\ ANP.terminal :Window\ Settings:Tomorrow\ Night\ ANP" ~/Library/Preferences/com.apple.Terminal.plist
 
 /usr/libexec/PlistBuddy -c "Delete :Window\ Settings:Tomorrow\ Night\ SCP" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
 /usr/libexec/PlistBuddy -c "Add :Window\ Settings:Tomorrow\ Night\ SCP dict" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Tomorrow\ Night\ SCP.terminal :Window\ Settings:Tomorrow\ Night\ SCP" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Terminal/Tomorrow\ Night\ SCP.terminal :Window\ Settings:Tomorrow\ Night\ SCP" ~/Library/Preferences/com.apple.Terminal.plist
 
 /usr/libexec/PlistBuddy -c "Delete :Window\ Settings:Tomorrow\ Night\ MO" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
 /usr/libexec/PlistBuddy -c "Add :Window\ Settings:Tomorrow\ Night\ MO dict" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Tomorrow\ Night\ MO.terminal :Window\ Settings:Tomorrow\ Night\ MO" ~/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Terminal/Tomorrow\ Night\ MO.terminal :Window\ Settings:Tomorrow\ Night\ MO" ~/Library/Preferences/com.apple.Terminal.plist
 
 # Use the Tomorrow Night theme by default in Terminal.app
 defaults write com.apple.Terminal "Default Window Settings" -string "Tomorrow Night MO"
@@ -356,10 +356,10 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Copy color schemes
-yes | cp init/tomorrow-theme/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
+yes | cp init/tomorrow-theme/Xcode/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Color scheme
-defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tomorrow MO.dvtcolortheme"
+defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tomorrow MO 13.dvtcolortheme"
 
 # Show page guide at 100 columns
 defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100
