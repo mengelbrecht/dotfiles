@@ -49,7 +49,7 @@ sudo tmutil disablelocal
 defaults write NSGlobalDomain KeyRepeat -int 2
 
 # Use all F1, F2, etc. keys as standard function keys
-defaults write -g com.apple.keyboard.fnState -bool true
+#defaults write -g com.apple.keyboard.fnState -bool true
 
 # Set language and text formats
 # Note: if you’re in the US, replace `Centimeters` with
