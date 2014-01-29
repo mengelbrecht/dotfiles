@@ -149,7 +149,7 @@ map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans
 " User Interface
 " ------------------------------------------------------------------------------
 set background=dark
-colorscheme Tomorrow-Night
+colorscheme base16-solarized
 
 if has('gui_running')
     set guioptions-=m " Disable menu bar.
