@@ -14,8 +14,9 @@
 	autosetuprebase = always
 [color]
 	ui = auto
+[svn]
+	rmdir = true
 [alias]
 	wipe = reset --hard HEAD
 [include]
 	path = ~/.gitconfig.local
-
