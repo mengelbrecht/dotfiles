@@ -10,7 +10,6 @@ install cmake
 install git
 
 # Mac apps
-cask install android-file-transfer
 cask install appcleaner
 cask install firefox
 cask install macvim
