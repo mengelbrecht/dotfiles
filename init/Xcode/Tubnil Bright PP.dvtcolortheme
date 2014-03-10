@@ -3,140 +3,140 @@
 <plist version="1.0">
 <dict>
 	<key>DVTConsoleDebuggerInputTextColor</key>
-	<string>0.793012 0.152623 0.143433 1</string>
+	<string>0.709804 0.0392157 0.337255 1</string>
 	<key>DVTConsoleDebuggerInputTextFont</key>
-	<string>SauceCodePowerline-Bold - 12.0</string>
+	<string>PragmataPro - 13.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
-	<string>0.793012 0.152623 0.143433 1</string>
+	<string>0.709804 0.0392157 0.337255 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
-	<string>SauceCodePowerline-Regular - 12.0</string>
+	<string>PragmataPro - 13.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
-	<string>0.303557 0.303796 0.299714 1</string>
+	<string>0.180392 0.176471 0.168627 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
-	<string>SauceCodePowerline-Bold - 12.0</string>
+	<string>PragmataPro - 13.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
-	<string>0.303557 0.303796 0.299714 1</string>
+	<string>0.180392 0.176471 0.168627 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
-	<string>SauceCodePowerline-Regular - 12.0</string>
+	<string>PragmataPro - 13.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
-	<string>0.303557 0.303796 0.299714 1</string>
+	<string>0.180392 0.176471 0.168627 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>SauceCodePowerline-Bold - 12.0</string>
+	<string>PragmataPro - 13.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
-	<string>0.999873 1 0.999841 1</string>
+	<string>0.964706 0.956863 0.937255 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
-	<string>0.303557 0.303796 0.299714 1</string>
+	<string>0.694118 0 0.266667 1</string>
 	<key>DVTConsoleTextSelectionColor</key>
-	<string>0.83978 0.839941 0.839753 1</string>
+	<string>0.917647 0.8 1 1</string>
 	<key>DVTDebuggerInstructionPointerColor</key>
-	<string>0.971483 0.530718 0.0375477 1</string>
+	<string>0.894118 0.356863 0.239216 1</string>
 	<key>DVTSourceTextBackground</key>
-	<string>0.999873 1 0.999841 1</string>
+	<string>0.964706 0.956863 0.937255 1</string>
 	<key>DVTSourceTextBlockDimBackgroundColor</key>
 	<string>0.5 0.5 0.5 1</string>
 	<key>DVTSourceTextInsertionPointColor</key>
-	<string>0.303557 0.303796 0.299714 1</string>
+	<string>0.694118 0 0.266667 1</string>
 	<key>DVTSourceTextInvisiblesColor</key>
-	<string>0.935976 0.936156 0.935946 1</string>
+	<string>0.733333 0.733333 0.733333 1</string>
 	<key>DVTSourceTextSelectionColor</key>
-	<string>0.83978 0.839941 0.839753 1</string>
+	<string>0.917647 0.8 1 1</string>
 	<key>DVTSourceTextSyntaxColors</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>0.971483 0.530718 0.0375477 1</string>
+		<string>0.894118 0.356863 0.239216 1</string>
 		<key>xcode.syntax.character</key>
-		<string>0.971483 0.530718 0.0375477 1</string>
+		<string>0.215453 0.531139 0.00910896 1</string>
 		<key>xcode.syntax.comment</key>
-		<string>0.555162 0.564683 0.5504 1</string>
+		<string>0.607843 0.635294 0.615686 1</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>0.555162 0.564683 0.5504 1</string>
+		<string>0.607843 0.635294 0.615686 1</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>0.540796 0.340821 0.667724 0.8</string>
+		<string>0.533333 0.372549 0 1</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>0.22806 0.598894 0.628281 1</string>
+		<string>0 0.129412 0.368627 1</string>
 		<key>xcode.syntax.identifier.class.system</key>
 		<string>0.22806 0.598894 0.628281 1</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>0.923358 0.725624 0 1</string>
+		<string>0 0.466667 0.772549 1</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>0.923358 0.725624 0 1</string>
+		<string>0.290196 0.4 0 1</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>0.25043 0.439404 0.691119 1</string>
+		<string>0.505882 0 0.443137 1</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>0.25043 0.439404 0.691119 1</string>
+		<string>0 0.470588 0.717647 1</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>0.540796 0.340821 0.667724 1</string>
+		<string>0.713725 0.0392157 0.341176 1</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>0.540796 0.340821 0.667724 1</string>
+		<string>0.713725 0.0392157 0.341176 1</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>0.793012 0.152623 0.143433 1</string>
+		<string>0 0.537255 0.564706 1</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>0.971483 0.530718 0.0375477 1</string>
+		<string>0.0352941 0.317647 0.529412 1</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>0.793012 0.152623 0.143433 1</string>
+		<string>0.894118 0.356863 0.243137 1</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>0.793012 0.152623 0.143433 1</string>
+		<string>0.894118 0.356863 0.243137 1</string>
 		<key>xcode.syntax.keyword</key>
-		<string>0.540796 0.340821 0.667724 1</string>
+		<string>0 0.482353 0.635294 1</string>
 		<key>xcode.syntax.number</key>
-		<string>0.971483 0.530718 0.0375477 1</string>
+		<string>0.14902 0.333333 0 1</string>
 		<key>xcode.syntax.plain</key>
-		<string>0.303557 0.303796 0.299714 1</string>
+		<string>0.180392 0.176471 0.168627 1</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>0.793012 0.152623 0.143433 1</string>
+		<string>0.709804 0.0392157 0.337255 1</string>
 		<key>xcode.syntax.string</key>
-		<string>0.440623 0.556631 0 1</string>
+		<string>0.521569 0.0431373 0.619608 1</string>
 		<key>xcode.syntax.url</key>
-		<string>0.25043 0.439404 0.691119 1</string>
+		<string>0.286275 0 1 1</string>
 	</dict>
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.character</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.number</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.string</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.url</key>
-		<string>SauceCodePowerline-Regular - 13.0</string>
+		<string>PragmataPro - 14.0</string>
 	</dict>
 </dict>
 </plist>

@@ -288,27 +288,21 @@ launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
-# Install Tomorrow-Night theme
-/usr/libexec/PlistBuddy -c "Delete :Window\ Settings:Tomorrow\ Night\ ANP" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
-/usr/libexec/PlistBuddy -c "Add :Window\ Settings:Tomorrow\ Night\ ANP dict" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Terminal/Tomorrow\ Night\ ANP.terminal :Window\ Settings:Tomorrow\ Night\ ANP" ~/Library/Preferences/com.apple.Terminal.plist
-
-/usr/libexec/PlistBuddy -c "Delete :Window\ Settings:Tomorrow\ Night\ SCP" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
-/usr/libexec/PlistBuddy -c "Add :Window\ Settings:Tomorrow\ Night\ SCP dict" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Terminal/Tomorrow\ Night\ SCP.terminal :Window\ Settings:Tomorrow\ Night\ SCP" ~/Library/Preferences/com.apple.Terminal.plist
-
-/usr/libexec/PlistBuddy -c "Delete :Window\ Settings:Tomorrow\ Night\ MO" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
-/usr/libexec/PlistBuddy -c "Add :Window\ Settings:Tomorrow\ Night\ MO dict" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Merge init/tomorrow-theme/Terminal/Tomorrow\ Night\ MO.terminal :Window\ Settings:Tomorrow\ Night\ MO" ~/Library/Preferences/com.apple.Terminal.plist
-
-/usr/libexec/PlistBuddy -c "Delete :Window\ Settings:Solarized\ Dark\ MO" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
-/usr/libexec/PlistBuddy -c "Add :Window\ Settings:Solarized\ Dark\ MO dict" ~/Library/Preferences/com.apple.Terminal.plist
-/usr/libexec/PlistBuddy -c "Merge init/solarized-theme/Terminal/Solarized\ Dark\ MO.terminal :Window\ Settings:Solarized\ Dark\ MO" ~/Library/Preferences/com.apple.Terminal.plist
-
+# Install themes
+cd init/Terminal
+for theme in *.terminal
+do
+    theme="${theme%.*}" # Strip extension
+    theme="${theme// /\ }" # Add backslash before spaces
+    /usr/libexec/PlistBuddy -c "Delete :Window\ Settings:$theme" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
+    /usr/libexec/PlistBuddy -c "Add :Window\ Settings:$theme dict" ~/Library/Preferences/com.apple.Terminal.plist
+    /usr/libexec/PlistBuddy -c "Merge $theme.terminal :Window\ Settings:$theme" ~/Library/Preferences/com.apple.Terminal.plist
+done
+cd ../..
 
 # Use the Tomorrow Night theme by default in Terminal.app
-defaults write com.apple.Terminal "Default Window Settings" -string "Solarized Dark MO"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Solarized Dark MO"
+defaults write com.apple.Terminal "Default Window Settings" -string "Kalopsia Dark PP"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Kalopsia Dark PP"
 
 # Always show tabbar
 defaults write com.apple.Terminal ShowTabBar -bool true
@@ -361,11 +355,10 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Copy color schemes
-yes | cp init/tomorrow-theme/Xcode/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
-yes | cp init/solarized-theme/Xcode/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
+yes | cp init/Xcode/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Color scheme
-defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Solarized Dark MO 13.dvtcolortheme"
+defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tubnil Bright PP.dvtcolortheme"
 
 # Show page guide at 100 columns
 defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100

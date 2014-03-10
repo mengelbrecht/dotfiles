@@ -25,14 +25,6 @@ namespace :setup do
       FileUtils.mkdir_p(fontFolder)
     end
 
-    Dir[File.join($root, "init", "powerline-fonts", "AnonymousPro", "*.ttf")].each {|f|
-      link_path(f, File.join(fontFolder, File.basename(f)))
-    }
-
-    Dir[File.join($root, "init", "powerline-fonts", "SourceCodePro", "*.otf")].each {|f|
-      link_path(f, File.join(fontFolder, File.basename(f)))
-    }
-
     Dir[File.join($root, "init", "monoOne", "*.otf")].each {|f|
       link_path(f, File.join(fontFolder, File.basename(f)))
     }
