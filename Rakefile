@@ -6,32 +6,17 @@ task :setup => ["setup:setup"]
 
 verbose(false)
 
-$excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash", "init"]
+$excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash", "Xcode", "Terminal", "st3"]
 $root = File.expand_path(File.dirname(__FILE__))
 $home = File.expand_path("~")
 $osx = RUBY_PLATFORM.include? "darwin"
+$linux = RUBY_PLATFORM.include? "linux"
 
 namespace :setup do
-  task :setup => [:fonts, :osx, :homebrew, :local, :dotfiles]
-
-  task :fonts do
-    if $osx
-      fontFolder = File.expand_path(File.join("~", "Library", "Fonts"))
-    else
-      fontFolder = File.expand_path(File.join("~", ".fonts"))
-    end
-
-    if not File.exists?(fontFolder)
-      FileUtils.mkdir_p(fontFolder)
-    end
-
-    Dir[File.join($root, "init", "monoOne", "*.otf")].each {|f|
-      link_path(f, File.join(fontFolder, File.basename(f)))
-    }
-  end
+  task :setup => [:osx, :homebrew, :local, :dotfiles, :st3]
 
   task :osx do
-    if not $osx
+    unless $osx
       next
     end
 
@@ -39,7 +24,7 @@ namespace :setup do
   end
 
   task :homebrew do
-    if not $osx
+    unless $osx
       next
     end
 
@@ -61,6 +46,34 @@ namespace :setup do
       unless File.exists?(path)
         info("created empty local file #{path}")
         FileUtils.touch(path)
+      end
+    }
+  end
+
+  task :st3 do
+    if $osx
+      st3Path = "#{$home}/Library/Application Support/Sublime Text 3"
+      symlink_path("/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl", "/usr/local/bin/subl")
+    elsif $linux
+      st3Path = "#{$home}/.config/sublime-text-3"
+    else
+      next
+    end
+
+    localPackagesFolder = File.join($root, "st3", "Packages")
+    packagesFolder = File.join(st3Path, "Packages")
+
+    Dir.foreach(localPackagesFolder) {|f|
+      unless f.start_with?(".") or f == "User"
+        symlink_path(File.join(localPackagesFolder, f), File.join(packagesFolder, f))
+      end
+    }
+
+    localUserPackagesFolder = File.join(localPackagesFolder, "User")
+    userPackagesFolder = File.join(packagesFolder, "User")
+    Dir.foreach(localUserPackagesFolder) {|f|
+      unless f.start_with?(".")
+        symlink_path(File.join(localUserPackagesFolder, f), File.join(userPackagesFolder, f))
       end
     }
   end

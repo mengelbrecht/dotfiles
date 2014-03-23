@@ -289,7 +289,7 @@ launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2
 defaults write com.apple.terminal StringEncodings -array 4
 
 # Install themes
-cd init/Terminal
+cd Terminal
 for theme in *.terminal
 do
     theme="${theme%.*}" # Strip extension
@@ -298,11 +298,11 @@ do
     /usr/libexec/PlistBuddy -c "Add :Window\ Settings:$theme dict" ~/Library/Preferences/com.apple.Terminal.plist
     /usr/libexec/PlistBuddy -c "Merge $theme.terminal :Window\ Settings:$theme" ~/Library/Preferences/com.apple.Terminal.plist
 done
-cd ../..
+cd ..
 
 # Use the Tomorrow Night theme by default in Terminal.app
-defaults write com.apple.Terminal "Default Window Settings" -string "Kalopsia Dark PP"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Kalopsia Dark PP"
+defaults write com.apple.Terminal "Default Window Settings" -string "Kalopsia Dark"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Kalopsia Dark"
 
 # Always show tabbar
 defaults write com.apple.Terminal ShowTabBar -bool true
@@ -355,10 +355,10 @@ defaults write com.apple.appstore ShowDebugMenu -bool true
 mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Copy color schemes
-yes | cp init/Xcode/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
+yes | cp Xcode/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Color scheme
-defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tubnil Bright PP.dvtcolortheme"
+defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tubnil Bright.dvtcolortheme"
 
 # Show page guide at 100 columns
 defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100
