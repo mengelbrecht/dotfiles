@@ -14,6 +14,7 @@ cask install appcleaner
 cask install firefox
 cask install macvim
 cask install slate
+cask install sourcetree
 cask install textmate
 cask install the-unarchiver
 

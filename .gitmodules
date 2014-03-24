@@ -106,3 +106,7 @@
 	path = st3/Packages/sublime-cpp11
 	url = https://github.com/noct/sublime-cpp11.git
 	branch = master
+[submodule "st3/Packages/SideBarEnhancements"]
+	path = st3/Packages/SideBarEnhancements
+	url = https://github.com/titoBouzout/SideBarEnhancements.git
+	branch = st3
