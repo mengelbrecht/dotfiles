@@ -30,10 +30,6 @@
 	path = vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
 	branch = master
-[submodule "vim/bundle/vim-vinegar"]
-	path = vim/bundle/vim-vinegar
-	url = https://github.com/tpope/vim-vinegar
-	branch = master
 [submodule "vim/bundle/vim-gitgutter"]
 	path = vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
