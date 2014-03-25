@@ -90,10 +90,6 @@
 	path = st3/Packages/Theme - Sodarized
 	url = https://github.com/jrolfs/sodarized.git
 	branch = master
-[submodule "st3/Packages/Theme - Spacegray"]
-	path = st3/Packages/Theme - Spacegray
-	url = https://github.com/noct/spacegray.git
-	branch = master
 [submodule "st3/Packages/SublimeCodeIntel"]
 	path = st3/Packages/SublimeCodeIntel
 	url = https://github.com/SublimeCodeIntel/SublimeCodeIntel.git
@@ -110,3 +106,19 @@
 	path = st3/Packages/SideBarEnhancements
 	url = https://github.com/titoBouzout/SideBarEnhancements.git
 	branch = st3
+[submodule "st3/Packages/Theme - itg.flat"]
+	path = st3/Packages/Theme - itg.flat
+	url = https://github.com/itsthatguy/theme-itg-flat.git
+	branch = master
+[submodule "st3/Packages/cpp-sublime-snippet"]
+	path = st3/Packages/cpp-sublime-snippet
+	url = https://github.com/Rapptz/cpp-sublime-snippet.git
+	branch = master
+[submodule "st3/Packages/Themr"]
+	path = st3/Packages/Themr
+	url = https://github.com/benweier/Themr.git
+	branch = master
+[submodule "st3/Packages/Theme - Spacegray"]
+	path = st3/Packages/Theme - Spacegray
+	url = https://github.com/kkga/spacegray.git
+	branch = master

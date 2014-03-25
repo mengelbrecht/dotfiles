@@ -1,7 +1,7 @@
 {
 	"caret_extra_width": 1,
 	"caret_style": "solid",
-	"color_scheme": "Packages/Theme - Nil/Tubnil Bright.tmTheme",
+	"color_scheme": "Packages/Theme - itg.flat/itg.dark.tmTheme",
 	"draw_white_space": "all",
 	"ensure_newline_at_eof_on_save": true,
 	"font_face": "PragmataPro",
@@ -13,6 +13,7 @@
 	"font_size": 14,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
+	"itg_small_tabs": true,
 	"margin": 2,
 	"open_files_in_new_window": false,
 	"rulers":
@@ -22,6 +23,6 @@
 	],
 	"show_line_endings": true,
 	"soda_folder_icons": true,
-	"theme": "Higuchi.sublime-theme",
+	"theme": "itg.flat.dark.green.sublime-theme",
 	"trim_trailing_white_space_on_save": true
 }
