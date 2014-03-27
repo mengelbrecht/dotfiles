@@ -13,6 +13,7 @@ install git
 cask install appcleaner
 cask install firefox
 cask install macvim
+cask install phoenix
 cask install slate
 cask install sourcetree
 cask install textmate
