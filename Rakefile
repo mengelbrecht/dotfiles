@@ -40,7 +40,7 @@ namespace :setup do
   end
 
   task :local do
-    localFiles = ["Brewfile.local", "gitconfig.local", "slate.js.local", "vimrc.local", "zshrc.local"]
+    localFiles = ["Brewfile.local", "gitconfig.local", "vimrc.local", "zshrc.local"]
     localFiles.each {|f|
       path = File.join($root, f)
       unless File.exists?(path)
