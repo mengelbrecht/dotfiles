@@ -1,0 +1,30 @@
+fontName         = PragmataPro
+fontSize         = 14
+theme            = 82CCD69C-F1B1-4529-B39E-780F91F07604
+
+tabSize          = 4
+softTabs         = false
+
+showWrapColumn   = true
+wrapColumn       = 100
+
+showInvisibles   = true
+invisiblesMap    = "~ \t┊"
+
+spellChecking    = false
+
+PATH             = "$PATH:/usr/local/bin"
+TM_GIT           = "/usr/local/bin/git"
+
+[ .git/COMMIT_EDITMSG ]
+softWrap         = true
+spellChecking    = true
+spellingLanguage = 'en'
+
+[ source.python ]
+softTabs         = true
+tabSize          = 2
+
+[ source.ruby ]
+softTabs         = true
+tabSize          = 2
