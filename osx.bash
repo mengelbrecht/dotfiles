@@ -251,6 +251,9 @@ defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 # Prevent Safari from opening ‘safe’ files automatically after downloading
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
+# Show Safari’s bookmarks bar by default
+defaults write com.apple.Safari ShowFavoritesBar -bool true
+
 # Hide Safari’s sidebar in Top Sites
 defaults write com.apple.Safari ShowSidebarInTopSites -bool false
 
@@ -300,7 +303,7 @@ do
 done
 cd ..
 
-# Use the Tomorrow Night theme by default in Terminal.app
+# Use the Kalopsia Dark theme by default in Terminal.app
 defaults write com.apple.Terminal "Default Window Settings" -string "Kalopsia Dark"
 defaults write com.apple.Terminal "Startup Window Settings" -string "Kalopsia Dark"
 
