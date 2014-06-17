@@ -18,5 +18,7 @@
 	rmdir = true
 [alias]
 	wipe = reset --hard HEAD
+[credential]
+	helper = osxkeychain
 [include]
 	path = ~/.gitconfig.local
