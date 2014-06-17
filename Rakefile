@@ -6,14 +6,14 @@ task :setup => ["setup:setup"]
 
 verbose(false)
 
-$excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash", "Xcode", "Terminal", "st3"]
+$excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash", "Xcode", "Terminal"]
 $root = File.expand_path(File.dirname(__FILE__))
 $home = File.expand_path("~")
 $osx = RUBY_PLATFORM.include? "darwin"
 $linux = RUBY_PLATFORM.include? "linux"
 
 namespace :setup do
-  task :setup => [:osx, :homebrew, :local, :dotfiles, :st3]
+  task :setup => [:osx, :homebrew, :local, :dotfiles]
 
   task :osx do
     unless $osx
@@ -40,40 +40,12 @@ namespace :setup do
   end
 
   task :local do
-    localFiles = ["Brewfile.local", "gitconfig.local", "vimrc.local", "zshrc.local"]
+    localFiles = ["Brewfile.local", "gitconfig.local", "zshrc.local"]
     localFiles.each {|f|
       path = File.join($root, f)
       unless File.exists?(path)
         info("created empty local file #{path}")
         FileUtils.touch(path)
-      end
-    }
-  end
-
-  task :st3 do
-    if $osx
-      st3Path = "#{$home}/Library/Application Support/Sublime Text 3"
-      symlink_path("/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl", "/usr/local/bin/subl")
-    elsif $linux
-      st3Path = "#{$home}/.config/sublime-text-3"
-    else
-      next
-    end
-
-    localPackagesFolder = File.join($root, "st3", "Packages")
-    packagesFolder = File.join(st3Path, "Packages")
-
-    Dir.foreach(localPackagesFolder) {|f|
-      unless f.start_with?(".") or f == "User"
-        symlink_path(File.join(localPackagesFolder, f), File.join(packagesFolder, f))
-      end
-    }
-
-    localUserPackagesFolder = File.join(localPackagesFolder, "User")
-    userPackagesFolder = File.join(packagesFolder, "User")
-    Dir.foreach(localUserPackagesFolder) {|f|
-      unless f.start_with?(".")
-        symlink_path(File.join(localUserPackagesFolder, f), File.join(userPackagesFolder, f))
       end
     }
   end
