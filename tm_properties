@@ -28,3 +28,10 @@ tabSize          = 2
 [ source.ruby ]
 softTabs         = true
 tabSize          = 2
+
+[ *.local ]
+fileType         = source.shell
+
+[ source.shell ]
+softTabs         = true
+tabSize          = 2
