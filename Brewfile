@@ -11,7 +11,7 @@ install git
 
 # Mac apps
 cask install appcleaner
-cask install phoenix
+cask install hydra
 cask install sourcetree
 cask install textmate
 cask install the-unarchiver
