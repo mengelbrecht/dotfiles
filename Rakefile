@@ -32,11 +32,6 @@ namespace :setup do
       info("installing homebrew")
       sh 'ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"'
     end
-
-    unless `brew tap`.split().include?('phinze/cask')
-      info("installing homebrew cask support")
-      sh 'brew tap phinze/homebrew-cask'
-    end
   end
 
   task :local do

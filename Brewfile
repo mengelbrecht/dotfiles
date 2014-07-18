@@ -5,16 +5,9 @@ update
 upgrade
 
 # Command line apps
-install brew-cask
 install cmake
 install git
-
-# Mac apps
-cask install appcleaner
-cask install hydra
-cask install sourcetree
-cask install textmate
-cask install the-unarchiver
+install subversion
 
 bundle ~/.Brewfile.local
 
