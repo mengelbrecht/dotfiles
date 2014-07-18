@@ -1279,6 +1279,8 @@
 	YwBwAIUAjAC3AOIA5ADmAOgA7QDzAPUA9wD8AQQNUA1SDVcNYg1rDXkNfQ2EDY0Nkg2f
 	DaINrw20DbwNvw3RDdQN2QAAAAAAAAIBAAAAAAAAAC0AAAAAAAAAAAAAAAAAAA3b
 	</data>
+	<key>Bell</key>
+	<false/>
 	<key>BlinkText</key>
 	<false/>
 	<key>CommandString</key>
@@ -1362,13 +1364,15 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGGBlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
 	AAGGoKQHCBESVSRudWxs1AkKCwwNDg8QVk5TU2l6ZVhOU2ZGbGFnc1ZOU05hbWVWJGNs
-	YXNzI0AsAAAAAAAAEBCAAoADW1ByYWdtYXRhUHJv0hMUFRZaJGNsYXNzbmFtZVgkY2xh
-	c3Nlc1ZOU0ZvbnSiFRdYTlNPYmplY3RfEA9OU0tleWVkQXJjaGl2ZXLRGhtUcm9vdIAB
-	CBEaIy0yNzxCS1JbYmlydHZ4hImUnaSnsMLFygAAAAAAAAEBAAAAAAAAABwAAAAAAAAA
-	AAAAAAAAAADM
+	YXNzI0AsAAAAAAAAEBCAAoADXxAPbXBsdXMtMW1uLWxpZ2h00hMUFRZaJGNsYXNzbmFt
+	ZVgkY2xhc3Nlc1ZOU0ZvbnSiFRdYTlNPYmplY3RfEA9OU0tleWVkQXJjaGl2ZXLRGhtU
+	cm9vdIABCBEaIy0yNzxCS1JbYmlydHZ4io+ao6qttsjL0AAAAAAAAAEBAAAAAAAAABwA
+	AAAAAAAAAAAAAAAAAADS
 	</data>
 	<key>FontAntialias</key>
 	<true/>
+	<key>FontHeightSpacing</key>
+	<real>0.84999999999999998</real>
 	<key>FontWidthSpacing</key>
 	<integer>1</integer>
 	<key>ProfileCurrentVersion</key>
@@ -1453,8 +1457,10 @@
 	<key>ShowCommandKeyInTitle</key>
 	<false/>
 	<key>ShowDimensionsInTitle</key>
-	<false/>
+	<true/>
 	<key>ShowShellCommandInTitle</key>
+	<false/>
+	<key>ShowTTYNameInTitle</key>
 	<false/>
 	<key>TerminalType</key>
 	<string>xterm-256color</string>
@@ -1663,7 +1669,7 @@
 	ZmZmg1MTpj6DeHnQPoPQg+A+AYY=
 	</data>
 	<key>columnCount</key>
-	<integer>145</integer>
+	<integer>132</integer>
 	<key>cyanColour</key>
 	<data>
 	BAtzdHJlYW10eXBlZIHoA4QBQISEhAdOU0NvbG9yAISECE5TT2JqZWN0AIWEAWMBhARm
@@ -1687,7 +1693,7 @@
 	ZmZmg6i7UT+DUATePYMl2hA+AYY=
 	</data>
 	<key>rowCount</key>
-	<integer>32</integer>
+	<integer>24</integer>
 	<key>shellExitAction</key>
 	<integer>1</integer>
 	<key>type</key>
