@@ -21,7 +21,12 @@ function ext.grid.get(win)
 end
 
 function ext.grid.set(win, grid, screen)
-  local screenrect = screen:frame_without_dock_or_menu()
+  local screenrect
+  if screen then
+    screenrect = screen:frame_without_dock_or_menu()
+  else
+    screenrect = win:screen():frame_without_dock_or_menu()
+  end
   local thirdscreenwidth = screenrect.w / ext.grid.GRIDWIDTH
   local halfscreenheight = screenrect.h / ext.grid.GRIDHEIGHT
   local newframe = {
@@ -59,12 +64,11 @@ function ext.grid.adjust_window(win, fn)
 end
 
 function ext.grid.setsimple(win, tbl)
-  local len = #tbl
-	ext.grid.adjust_window(win, function(f) 
-    if len > 0 then f.x = tbl[1]; end
-    if len > 1 then f.y = tbl[2]; end
-    if len > 2 then f.w = tbl[3]; end
-    if len > 3 then f.h = tbl[4]; end
+	ext.grid.adjust_window(win, function(f)
+    if tbl["x"] then f.x = tbl["x"] end
+    if tbl["y"] then f.y = tbl["y"] end
+    if tbl["w"] then f.w = tbl["w"] end
+    if tbl["h"] then f.h = tbl["h"] end
   end)
 end
 
@@ -77,7 +81,7 @@ function ext.grid.snap_all()
 end
 
 function ext.grid.maximize_window(win)
-  ext.grid.setsimple(win, {0, 0, ext.grid.GRIDWIDTH, ext.grid.GRIDHEIGHT})
+  ext.grid.setsimple(win, {x = 0, y = 0, w = ext.grid.GRIDWIDTH, h = ext.grid.GRIDHEIGHT})
 end
 
 function ext.grid.pushwindow_nextscreen()
@@ -92,14 +96,15 @@ end
 
 function ext.grid.pushwindow_toscreen(win, scr)
 	local w = win or window.focusedwindow()
-  
-  local fullscreen_change = w:isfullscreen() and screen.allscreens()[scr] ~= w:screen()
+  local s = screen.allscreens()[scr]
+
+  local fullscreen_change = w:isfullscreen() and s ~= w:screen()
   if fullscreen_change then
     w:setfullscreen(false)
     hydra.exec("sleep 3")
     w = utils.find_window(w:application():title())
   end
-  ext.grid.set(w, ext.grid.get(w), screen.allscreens()[scr])
+  ext.grid.set(w, ext.grid.get(w), s)
   if fullscreen_change then w:setfullscreen(true) end
 end
 
@@ -136,15 +141,15 @@ function ext.grid.movewindow_right(win)
 end
 
 function ext.grid.lefthalf(win)
-  ext.grid.setsimple(win, {0, 0, ext.grid.GRIDWIDTH / 2, ext.grid.GRIDHEIGHT})
+  ext.grid.setsimple(win, {x = 0, y = 0, w = ext.grid.GRIDWIDTH / 2, h = ext.grid.GRIDHEIGHT})
 end
 
 function ext.grid.righthalf(win)
-  ext.grid.setsimple(win, {ext.grid.GRIDWIDTH / 2, 0, ext.grid.GRIDWIDTH / 2, ext.grid.GRIDHEIGHT})
+  ext.grid.setsimple(win, {x = ext.grid.GRIDWIDTH / 2, y = 0, w = ext.grid.GRIDWIDTH / 2, h = ext.grid.GRIDHEIGHT})
 end
 
 function ext.grid.topleft(win)
-  ext.grid.setsimple(win, {0, 0})
+  ext.grid.setsimple(win, {x = 0, y = 0})
 end
 
 function ext.grid.bottomleft(win)
