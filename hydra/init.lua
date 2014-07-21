@@ -12,11 +12,13 @@ hydra.menu.show(function()
     {title = "-"},
     {title = "Open REPL", fn = repl.open},
     {title = "-"},
-    {title = "-"},
-    {title = "Quit", fn = os.exit}
   }
 
-  arrangement.add_menu_items(items, 5)
+  fnutils.concat(items, arrangement.menu_items())
+  fnutils.concat(items, {
+    {title = "-"},
+    {title = "Quit", fn = os.exit}
+  })
   return items
 end)
 

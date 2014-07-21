@@ -30,14 +30,12 @@ function arrangement.arrange(title)
   ext.grid.snap_all()
 end
 
-function arrangement.add_menu_items(menu, index)
+function arrangement.menu_items(menu)
   local items = {}
   for title in pairs(arrangement.config) do
     table.insert(items, {title = "  " .. title, fn = function() arrangement.arrange(title) end})
   end
-  table.sort(items, function(a, b) return a.title > b.title end)
-  table.insert(items, {title = "Arrangement", disabled = true})
-  for _,item in ipairs(items) do
-    table.insert(menu, index, item)
-  end
+  table.sort(items, function(a, b) return a.title < b.title end)
+  table.insert(items, 1, {title = "Arrangement", disabled = true})
+  return items
 end
