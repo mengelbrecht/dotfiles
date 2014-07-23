@@ -6,6 +6,7 @@ upgrade
 
 # Command line apps
 install cmake
+install hydra-cli
 install git
 install subversion
 

@@ -42,8 +42,9 @@ arrangement.add("Work", {
   ["Xcode"]             = {screen = 1, grid = {x = 0, y = 0, w = 6, h = 6}},
 })
 
+local modifiers = {'cmd', 'alt'}
 
-split = hotkey.modal.new({'cmd', 'ctrl'}, '1')
+split = hotkey.modal.new(modifiers, '1')
 function split:entered() hydra.alert('Split Mode', 1) end
 function split:exited() hydra.alert("done", 0.5) end
 
@@ -55,7 +56,7 @@ split:bind({}, 'DOWN', ext.grid.pushwindow_nextscreen)
 split:bind({}, 'RETURN', function() split:exit() end)
 
 
-position = hotkey.modal.new({'cmd', 'ctrl'}, '2')
+position = hotkey.modal.new(modifiers, '2')
 function position:entered() hydra.alert('Position Mode', 1) end
 function position:exited() hydra.alert("done", 0.5) end
 
@@ -66,7 +67,7 @@ position:bind({}, 'RIGHT', ext.grid.bottomright)
 position:bind({}, 'RETURN', function() position:exit() end)
 
 
-resize = hotkey.modal.new({'cmd', 'ctrl'}, '3')
+resize = hotkey.modal.new(modifiers, '3')
 function resize:entered() hydra.alert('Resize Mode', 1) end
 function resize:exited() hydra.alert("done", 0.5) end
 
@@ -77,7 +78,7 @@ resize:bind({}, 'DOWN', ext.grid.resizewindow_taller)
 resize:bind({}, 'RETURN', function() resize:exit() end)
 
 
-move = hotkey.modal.new({'cmd', 'ctrl'}, '4')
+move = hotkey.modal.new(modifiers, '4')
 function move:entered() hydra.alert('Move Mode', 1) end
 function move:exited() hydra.alert("done", 0.5) end
 
