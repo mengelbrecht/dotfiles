@@ -29,6 +29,7 @@ arrangement.add("Home", {
  ["iTunes"]     = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
  ["Safari"]     = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
  ["SourceTree"] = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
+ ["Spotify"]    = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
  ["Terminal"]   = {screen = 1, grid = {x = W/2, y = H/2, w = W/2,   h = H/2}},
  ["TextMate"]   = {screen = 1, grid = {x = W/2, y = 0,   w = W/2,   h = H}},
  ["Tower"]      = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
