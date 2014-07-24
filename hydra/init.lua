@@ -22,24 +22,28 @@ hydra.menu.show(function()
   return items
 end)
 
+local W = ext.grid.GRIDWIDTH
+local H = ext.grid.GRIDHEIGHT
+
 arrangement.add("Home", {
- ["iTunes"]     = {screen = 1, grid = {x = 0, y = 0, w = 4, h = 6}},
- ["Safari"]     = {screen = 1, grid = {x = 0, y = 0, w = 4, h = 6}},
- ["SourceTree"] = {screen = 1, grid = {x = 0, y = 0, w = 4, h = 6}},
- ["Terminal"]   = {screen = 1, grid = {x = 3, y = 3, w = 3, h = 3}},
- ["TextMate"]   = {screen = 1, grid = {x = 3, y = 0, w = 3, h = 6}},
- ["Xcode"]      = {screen = 1, grid = {x = 0, y = 0, w = 4, h = 6}},
+ ["iTunes"]     = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
+ ["Safari"]     = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
+ ["SourceTree"] = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
+ ["Terminal"]   = {screen = 1, grid = {x = W/2, y = H/2, w = W/2,   h = H/2}},
+ ["TextMate"]   = {screen = 1, grid = {x = W/2, y = 0,   w = W/2,   h = H}},
+ ["Xcode"]      = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
 })
 
 arrangement.add("Work", {
-  ["Dash"]              = {screen = 2, grid = {x = 0, y = 0, w = 3, h = 6}},
+  ["Dash"]              = {screen = 2, grid = {x = 0,   y = 0,   w = W/2, h = H}},
   ["iTunes"]            = {action = "close"},
   ["Parallels Desktop"] = {screen = 2, action = "fullscreen"},
-  ["Safari"]            = {screen = 2, grid = {x = 0, y = 0, w = 6, h = 6}},
-  ["SourceTree"]        = {screen = 1, grid = {x = 0, y = 0, w = 6, h = 6}},
-  ["Terminal"]          = {screen = 1, grid = {x = 3, y = 3, w = 3, h = 3}},
-  ["TextMate"]          = {screen = 2, grid = {x = 3, y = 0, w = 3, h = 6}},
-  ["Xcode"]             = {screen = 1, grid = {x = 0, y = 0, w = 6, h = 6}},
+  ["Safari"]            = {screen = 2, grid = {x = 0,   y = 0,   w = W,   h = H}},
+  ["SourceTree"]        = {screen = 1, grid = {x = 0,   y = 0,   w = W,   h = H}},
+  ["Terminal"]          = {screen = 1, grid = {x = W/2, y = H/2, w = W/2, h = H/2}},
+  ["TextMate"]          = {screen = 2, grid = {x = W/2, y = 0,   w = W/2, h = H}},
+  ["Tower"]             = {screen = 1, grid = {x = 0,   y = 0,   w = W,   h = H}},
+  ["Xcode"]             = {screen = 1, grid = {x = 0,   y = 0,   w = W,   h = H}},
 })
 
 local modifiers = {'cmd', 'alt'}
