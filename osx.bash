@@ -21,10 +21,10 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
 # Disable Notification Center and remove the menu bar icon
-launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 ## Re-enable
-## sudo defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepAlive -bool true
-## launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
+# sudo defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepAlive -bool true
+# launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
 
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
@@ -47,6 +47,9 @@ sudo tmutil disablelocal
 
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain KeyRepeat -int 2
+
+# Only a very short delay before key repeat starts
+defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Use all F1, F2, etc. keys as standard function keys
 #defaults write -g com.apple.keyboard.fnState -bool true
@@ -79,7 +82,7 @@ defaults write com.apple.recentitems RecentApplications -dict MaxAmount 0
 defaults write com.apple.recentitems RecentDocuments -dict MaxAmount 0
 
 # Turn Bluetooth off.
-defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0
+sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0
 
 # Disable VoiceOver service.
 launchctl unload -w /System/Library/LaunchAgents/com.apple.VoiceOver.plist 2> /dev/null
@@ -175,6 +178,9 @@ defaults write com.apple.dock orientation -string "left"
 
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
+
+# Minimize using scale effect
+defaults write com.apple.dock mineffect -string "scale"
 
 # Enable spring loading for all Dock items
 defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
@@ -282,7 +288,7 @@ defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 ###############################################################################
 
 # Disable Spotlight
-launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2> /dev/null
+#launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2> /dev/null
 
 ###############################################################################
 # Terminal #
