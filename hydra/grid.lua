@@ -36,7 +36,9 @@ function ext.grid.set(win, grid, screen)
 
   if grid.x <= 0 then
     newframe.x = newframe.x + 1
-    newframe.w = newframe.w - 1
+    if grid.w ~= ext.grid.GRIDWIDTH then
+      newframe.w = newframe.w - 1
+    end
   end
 
   win:setframe(newframe)
