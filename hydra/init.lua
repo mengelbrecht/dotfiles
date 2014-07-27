@@ -27,6 +27,7 @@ local H = ext.grid.GRIDHEIGHT
 
 arrangement.add("Home", {
  ["iTunes"]     = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
+ ["Mail"]       = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
  ["Safari"]     = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
  ["SourceTree"] = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},
  ["Spotify"]    = {screen = 1, grid = {x = 0,   y = 0,   w = W/1.5, h = H}},

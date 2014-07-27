@@ -51,14 +51,15 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 # Only a very short delay before key repeat starts
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
+# Only show scrollbars when scrolling
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
+
 # Use all F1, F2, etc. keys as standard function keys
 #defaults write -g com.apple.keyboard.fnState -bool true
 
 # Set language and text formats
-# Note: if you’re in the US, replace `Centimeters` with
-# `Inches`, `en_GB` with `en_US`, and `true` with `false`.
 defaults write NSGlobalDomain AppleLanguages -array "en" "de"
-defaults write NSGlobalDomain AppleLocale -string "en_DE"
+defaults write NSGlobalDomain AppleLocale -string "de_DE"
 defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
 defaults write NSGlobalDomain AppleMetricSystem -bool true
 defaults write NSGlobalDomain AppleMetricUnits -bool true
