@@ -2,8 +2,6 @@ require('utils')
 
 ext.grid = {}
 
-ext.grid.MARGINX = 0
-ext.grid.MARGINY = 0
 ext.grid.GRIDHEIGHT = 6
 ext.grid.GRIDWIDTH = 6
 
@@ -36,14 +34,14 @@ function ext.grid.set(win, grid, screen)
     h = grid.h * halfscreenheight,
   }
 
-  newframe.x = newframe.x + ext.grid.MARGINX
-  newframe.y = newframe.y + ext.grid.MARGINY
-  newframe.w = newframe.w - (ext.grid.MARGINX * 2)
-  newframe.h = newframe.h - (ext.grid.MARGINY * 2)
+  if grid.x <= 0 then
+    newframe.x = newframe.x + 1
+    newframe.w = newframe.w - 1
+  end
 
   win:setframe(newframe)
 
-  -- handle fixed-size windows which may no exceed the grid
+  -- handle fixed-size windows which may exceed the grid
   newframe = win:frame()
   if newframe.x + newframe.w > screenrect.x + screenrect.w then
     newframe.x = (screenrect.x + screenrect.w) - newframe.w
