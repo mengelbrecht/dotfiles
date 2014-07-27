@@ -21,6 +21,10 @@ softWrap         = true
 spellChecking    = true
 spellingLanguage = 'en'
 
+[ source.lua ]
+softTabs         = true
+tabSize          = 2
+
 [ source.python ]
 softTabs         = true
 tabSize          = 2
