@@ -19,6 +19,12 @@ hydra.menu.show(function()
     {title = "-"},
     {title = "Quit", fn = os.exit}
   })
+
+  if not hydra.license.haslicense() then
+    table.insert(items, 1, {title = "Buy or Enter License...", fn = hydra.license.enter})
+    table.insert(items, 2, {title = "-"})
+  end
+
   return items
 end)
 
