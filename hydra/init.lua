@@ -100,5 +100,3 @@ move:bind({}, 'DOWN', ext.grid.movewindow_down)
 move:bind({}, 'LEFT', ext.grid.movewindow_left)
 move:bind({}, 'RIGHT', ext.grid.movewindow_right)
 move:bind({}, 'RETURN', function() move:exit() end)
-
-hydra.updates.check()

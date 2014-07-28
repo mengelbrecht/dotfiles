@@ -17,11 +17,11 @@
 	<key>DVTConsoleExectuableInputTextColor</key>
 	<string>0.303557 0.303796 0.299714 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
-	<string>mplus-1mn-regular - 13.0</string>
+	<string>mplus-1mn-medium - 13.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
 	<string>0.303557 0.303796 0.299714 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>mplus-1mn-medium - 13.0</string>
+	<string>mplus-1mn-regular - 13.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>0.968627 0.960784 0.941176 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
