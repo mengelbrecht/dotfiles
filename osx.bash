@@ -245,12 +245,16 @@ defaults write com.apple.Safari CommandClickMakesTabs -bool true
 # Show status bar
 defaults write com.apple.Safari ShowStatusBar -bool true
 
-# Don't remember passwords
+# Don't remember data
+defaults write com.apple.Safari AutoFillCreditCardData -bool false
+defaults write com.apple.Safari AutoFillFromAddressBook -bool false
 defaults write com.apple.Safari AutoFillPasswords -bool false
 
-# Disable Java
+# Disable plugins and Java
+defaults write com.apple.Safari WebKitPluginsEnabled -bool false
 defaults write com.apple.Safari WebKitJavaEnabled -bool false
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled -bool false
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2PluginsEnabled -bool false
 
 # Do not track
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
@@ -266,6 +270,9 @@ defaults write com.apple.Safari ShowSidebarInTopSites -bool false
 
 # Disable Safari’s thumbnail cache for History and Top Sites
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
+
+# Only keep history for 2 weeks
+defaults write com.apple.Safari HistoryAgeInDaysLimit -int 14
 
 # Enable Safari’s debug menu
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true

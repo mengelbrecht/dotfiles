@@ -35,7 +35,7 @@ namespace :setup do
   end
 
   task :local do
-    localFiles = ["Brewfile.local", "gitconfig.local", "zshrc.local"]
+    localFiles = ["gitconfig.local", "zshrc.local"]
     localFiles.each {|f|
       path = File.join($root, f)
       unless File.exists?(path)
