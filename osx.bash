@@ -8,8 +8,11 @@ sudo -v
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 
 ###############################################################################
-# General UI/UX #
+# General UI/UX                                                               #
 ###############################################################################
+
+# Only show scrollbars when scrolling
+defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -20,12 +23,6 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 # Save to disk (not to iCloud) by default
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false
 
-# Disable Notification Center and remove the menu bar icon
-# launchctl unload -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
-## Re-enable
-# sudo defaults write /System/Library/LaunchAgents/com.apple.notificationcenterui KeepAlive -bool true
-# launchctl load -w /System/Library/LaunchAgents/com.apple.notificationcenterui.plist 2> /dev/null
-
 # Disable smart quotes as they’re annoying when typing code
 defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
@@ -35,6 +32,19 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Automatically quit printer app once the print jobs complete
+defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
+
+# Disable Resume system-wide
+defaults write NSGlobalDomain NSQuitAlwaysKeepsWindows -bool false
+
+# Set Help Viewer windows to non-floating mode
+defaults write com.apple.helpviewer DevMode -bool true
+
+###############################################################################
+# Time Machine                                                                #
+###############################################################################
+
 # Don't offer new disks for backup
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
@@ -42,7 +52,7 @@ defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 sudo tmutil disablelocal
 
 ###############################################################################
-# Trackpad, mouse, keyboard, Bluetooth accessories, and input #
+# Keyboard                                                                    #
 ###############################################################################
 
 # Set a blazingly fast keyboard repeat rate
@@ -51,11 +61,12 @@ defaults write NSGlobalDomain KeyRepeat -int 2
 # Only a very short delay before key repeat starts
 defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
-# Only show scrollbars when scrolling
-defaults write NSGlobalDomain AppleShowScrollBars -string "WhenScrolling"
-
 # Use all F1, F2, etc. keys as standard function keys
 #defaults write -g com.apple.keyboard.fnState -bool true
+
+###############################################################################
+# Language Input                                                              #
+###############################################################################
 
 # Set language and text formats
 defaults write NSGlobalDomain AppleLanguages -array "en" "de"
@@ -65,7 +76,7 @@ defaults write NSGlobalDomain AppleMetricSystem -bool true
 defaults write NSGlobalDomain AppleMetricUnits -bool true
 
 ###############################################################################
-# Screen #
+# Screen                                                                      #
 ###############################################################################
 
 # Save screenshots to the desktop
@@ -109,7 +120,7 @@ sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist
 launchctl load /System/Library/LaunchAgents/com.apple.alf.useragent.plist
 
 ###############################################################################
-# Finder #
+# Finder                                                                      #
 ###############################################################################
 
 # Show icons for hard drives, servers, and removable media on the desktop
@@ -168,7 +179,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
    Privileges -bool true
 
 ###############################################################################
-# Dock, Dashboard, and hot corners #
+# Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
 # Set the icon size of Dock items to 42 pixels
@@ -221,7 +232,7 @@ defaults write com.apple.dock wvous-br-corner -int 4
 defaults write com.apple.dock wvous-br-modifier -int 0
 
 ###############################################################################
-# Safari & WebKit #
+# Safari & WebKit                                                             #
 ###############################################################################
 
 # Set Safari’s home page to `about:blank` for faster loading
@@ -242,6 +253,9 @@ defaults write com.apple.Safari OpenNewTabsInFront -bool false
 # Command-clicking a link creates tabs
 defaults write com.apple.Safari CommandClickMakesTabs -bool true
 
+# Always show tab bar
+defaults write com.apple.Safari AlwaysShowTabBar -bool true
+
 # Show status bar
 defaults write com.apple.Safari ShowStatusBar -bool true
 
@@ -259,6 +273,12 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Do not track
 defaults write com.apple.Safari SendDoNotTrackHTTPHeader -bool true
 
+# Disable search suggestions
+defaults write com.apple.Safari SuppressSearchSuggestions -bool true
+
+# Disable top hit preloading
+defaults write com.apple.Safari PreloadTopHit -bool false
+
 # Prevent Safari from opening ‘safe’ files automatically after downloading
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
@@ -272,7 +292,10 @@ defaults write com.apple.Safari ShowSidebarInTopSites -bool false
 defaults write com.apple.Safari DebugSnapshotsUpdatePolicy -int 2
 
 # Only keep history for 2 weeks
-defaults write com.apple.Safari HistoryAgeInDaysLimit -int 14
+defaults write com.apple.Safari HistoryAgeInDaysLimit -int 7
+
+# Clear download list on quit
+defaults write com.apple.Safari DownloadsClearingPolicy -int 1
 
 # Enable Safari’s debug menu
 defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
@@ -292,14 +315,29 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
 ###############################################################################
-# Spotlight #
+# Mail                                                                        #
+###############################################################################
+
+# Disable loading of images
+defaults write com.apple.mail DisableURLLoading -bool true
+
+# Display emails in threaded mode, sorted by date (oldest at the top)
+defaults write com.apple.mail DefaultViewerState -dict-add "DisplayInThreadedMode" -string "yes"
+defaults write com.apple.mail DefaultViewerState -dict-add "SortedDescending" -string "yes"
+defaults write com.apple.mail DefaultViewerState -dict-add "SortOrder" -string "received-date"
+
+# Compose messages in plain text
+defaults write com.apple.mail SendFormat -string "Plain"
+
+###############################################################################
+# Spotlight                                                                   #
 ###############################################################################
 
 # Disable Spotlight
 #launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2> /dev/null
 
 ###############################################################################
-# Terminal #
+# Terminal                                                                    #
 ###############################################################################
 
 # Only use UTF-8 in Terminal.app
@@ -325,7 +363,7 @@ defaults write com.apple.Terminal "Startup Window Settings" -string "Tubnil Brig
 defaults write com.apple.Terminal ShowTabBar -bool true
 
 ###############################################################################
-# Activity Monitor #
+# Activity Monitor                                                            #
 ###############################################################################
 
 # Show the main window when launching Activity Monitor
@@ -338,21 +376,26 @@ defaults write com.apple.ActivityMonitor IconType -int 5
 defaults write com.apple.ActivityMonitor ShowCategory -int 0
 
 ###############################################################################
-# TextEdit, and Disk Utility #
+# TextEdit                                                                    #
 ###############################################################################
 
 # Use plain text mode for new TextEdit documents
 defaults write com.apple.TextEdit RichText -int 0
+
 # Open and save files as UTF-8 in TextEdit
 defaults write com.apple.TextEdit PlainTextEncoding -int 4
 defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+###############################################################################
+# Disk Utility                                                                #
+###############################################################################
 
 # Enable the debug menu in Disk Utility
 defaults write com.apple.DiskUtility DUDebugMenuEnabled -bool true
 defaults write com.apple.DiskUtility advanced-image-options -bool true
 
 ###############################################################################
-# Mac App Store #
+# Mac App Store                                                               #
 ###############################################################################
 
 # Enable the WebKit Developer Tools in the Mac App Store
@@ -362,7 +405,7 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
 ###############################################################################
-# Xcode #
+# Xcode                                                                       #
 ###############################################################################
 
 # Enable Mac developer mode (keep password entry to a minimum for Xcode an Instruments)
@@ -408,7 +451,7 @@ defaults write com.apple.dt.Xcode IDECustomDerivedDataLocation -string "DerivedD
 defaults write com.apple.dt.Xcode IDEEditorCoordinatorTarget_DoubleClick -string "SeparateTab"
 
 ###############################################################################
-# Textmate #
+# Textmate                                                                    #
 ###############################################################################
 
 # Ignore case in find window
@@ -417,8 +460,45 @@ defaults write com.macromates.TextMate.preview findIgnoreCase -bool true
 # Wrap around if find hits end-of-file
 defaults write com.macromates.TextMate.preview findWrapAround -bool true
 
+# Disable rmate
+defaults write com.macromates.TextMate.preview rmateServerDisabled -bool true
+
+# Use beta update channel
+defaults write com.macromates.TextMate.preview SoftwareUpdateChannel -string "beta"
+
 ###############################################################################
-# Kill affected applications #
+# SourceTree                                                                  #
+###############################################################################
+
+# Agree to eula
+defaults write com.torusknot.SourceTreeNotMAS agreedToEULA -bool true
+
+# No analytics
+defaults write com.torusknot.SourceTreeNotMAS analyticsHasAgreed -bool false
+
+# Prefer rebase instead of merge
+defaults write com.torusknot.SourceTreeNotMAS gitRebaseTrackingBranches -bool true
+
+# Supress warning on amend
+defaults write com.torusknot.SourceTreeNotMAS gitSuppressWarnOnAmend -bool true
+
+# Set diff font and size
+defaults write com.torusknot.SourceTreeNotMAS diffFontName -string "PragmataPro"
+defaults write com.torusknot.SourceTreeNotMAS diffFontSize -int 13
+
+# Don't show tips
+defaults write com.torusknot.SourceTreeNotMAS showFileStatusViewOptionsTip -bool false
+defaults write com.torusknot.SourceTreeNotMAS showStagingTip -bool false
+
+# Check for updates automatically and don't send profile
+defaults write com.torusknot.SourceTreeNotMAS SUEnableAutomaticChecks -bool true
+defaults write com.torusknot.SourceTreeNotMAS SUSendProfileInfo -bool false
+
+# Don't modify git config
+defaults write com.torusknot.SourceTreeNotMAS agreedToUpdateConfig -bool false
+
+###############################################################################
+# Kill affected applications                                                  #
 ###############################################################################
 
 killall Dock
