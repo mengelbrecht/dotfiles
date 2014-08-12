@@ -5,23 +5,23 @@
 	<key>DVTConsoleDebuggerInputTextColor</key>
 	<string>0.793012 0.152623 0.143433 1</string>
 	<key>DVTConsoleDebuggerInputTextFont</key>
-	<string>PragmataPro - 13.0</string>
+	<string>PragmataPro - 12.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
 	<string>0.793012 0.152623 0.143433 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
-	<string>PragmataPro - 13.0</string>
+	<string>PragmataPro - 12.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
 	<string>0.303557 0.303796 0.299714 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
-	<string>PragmataPro - 13.0</string>
+	<string>PragmataPro - 12.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
 	<string>0.303557 0.303796 0.299714 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
-	<string>PragmataPro - 13.0</string>
+	<string>PragmataPro - 12.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
 	<string>0.303557 0.303796 0.299714 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>PragmataPro - 13.0</string>
+	<string>PragmataPro - 12.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>0.999873 1 0.999841 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
@@ -92,51 +92,51 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.character</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.number</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.string</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.url</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro - 13.0</string>
 	</dict>
 </dict>
 </plist>
