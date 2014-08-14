@@ -356,8 +356,8 @@ done
 cd ..
 
 # Use the Kalopsia Dark theme by default in Terminal.app
-defaults write com.apple.Terminal "Default Window Settings" -string "Tubnil Bright"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Tubnil Bright"
+defaults write com.apple.Terminal "Default Window Settings" -string "Solarized Light"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Solarized Light"
 
 # Always show tabbar
 defaults write com.apple.Terminal ShowTabBar -bool true
@@ -418,7 +418,7 @@ mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 yes | cp Xcode/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Color scheme
-defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tubnil Bright.dvtcolortheme"
+defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Solarized Light.dvtcolortheme"
 
 # Show page guide at 100 columns
 defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100
@@ -453,6 +453,8 @@ defaults write com.apple.dt.Xcode IDEEditorCoordinatorTarget_DoubleClick -string
 ###############################################################################
 # Textmate                                                                    #
 ###############################################################################
+
+yes | cp -r TextMate/*.tmbundle ~/Library/Application\ Support/Avian/Bundles
 
 # Ignore case in find window
 defaults write com.macromates.TextMate.preview findIgnoreCase -bool true
