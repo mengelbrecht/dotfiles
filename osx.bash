@@ -334,7 +334,7 @@ defaults write com.apple.mail SendFormat -string "Plain"
 ###############################################################################
 
 # Disable Spotlight
-#launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2> /dev/null
+launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2> /dev/null
 
 ###############################################################################
 # Terminal                                                                    #
