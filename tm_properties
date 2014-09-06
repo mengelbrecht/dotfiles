@@ -27,14 +27,20 @@ tabSize          = 2
 
 [ source.python ]
 softTabs         = true
-tabSize          = 2
+tabSize          = 4
 
 [ source.ruby ]
 softTabs         = true
-tabSize          = 2
+tabSize          = 4
 
 [ *.local ]
 fileType         = source.shell
+
+[ *.gyp ]
+fileType         = source.python
+
+[ *.gypi ]
+fileType         = source.python
 
 [ source.shell ]
 softTabs         = true
