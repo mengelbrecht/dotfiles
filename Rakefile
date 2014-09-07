@@ -13,7 +13,7 @@ $osx = RUBY_PLATFORM.include? "darwin"
 $linux = RUBY_PLATFORM.include? "linux"
 
 namespace :setup do
-  task :setup => [:osx, :homebrew, :local, :dotfiles]
+  task :setup => [:osx, :homebrew, :local, :dotfiles, :luarocks]
 
   task :osx do
     unless $osx
@@ -32,8 +32,12 @@ namespace :setup do
       info("installing homebrew")
       sh 'ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"'
     end
-  end
 
+    sh 'brew install git'
+    sh 'brew install homebrew/versions/lua52'
+    sh 'brew install luarocks --with-lua52'
+  end
+  
   task :local do
     localFiles = ["gitconfig.local", "zshrc.local"]
     localFiles.each {|f|
@@ -57,6 +61,16 @@ namespace :setup do
         symlink_path(File.join($home, ".zprezto", "runcoms", f), File.join($home, ".#{f}"))
       end
     }
+  end
+  
+  task :luarocks do
+    unless $osx
+      next
+    end
+    ['moonscript', 'mjolnir.application', 'mjolnir.screen', 'mjolnir.fnutils',
+     'mjolnir.hotkey', 'mjolnir.alert'].each do |name|
+        sh "luarocks --tree=mjolnir install #{name}"
+    end
   end
 end
 
