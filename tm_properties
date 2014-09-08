@@ -31,7 +31,15 @@ tabSize          = 4
 
 [ source.ruby ]
 softTabs         = true
-tabSize          = 4
+tabSize          = 2
+
+[ source.shell ]
+softTabs         = true
+tabSize          = 2
+
+[ source.moonscript ]
+softTabs         = true
+tabSize          = 2
 
 [ *.local ]
 fileType         = source.shell
@@ -41,7 +49,3 @@ fileType         = source.python
 
 [ *.gypi ]
 fileType         = source.python
-
-[ source.shell ]
-softTabs         = true
-tabSize          = 2
