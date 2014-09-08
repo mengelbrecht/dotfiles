@@ -1,88 +1,81 @@
 require 'moonscript'
+
+import insert from table
 alert = require 'mjolnir.alert'
 hotkey = require 'mjolnir.hotkey'
 arrangement = require 'arrangement'
 grid = require 'grid'
 hotkey_modal = require 'hotkey_modal'
+utils = require 'utils'
 
 ----------------------------------------------------------------------------------------------------
--- Window Arrangements
+-- Grid and Arrangements
 ----------------------------------------------------------------------------------------------------
-home_arrangement =
-  ["iTunes"]:     {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}},
-  ["Mail"]:       {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}},
-  ["Safari"]:     {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}},
-  ["SourceTree"]: {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}},
-  ["Spotify"]:    {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.8, h: 1.0}},
-  ["Terminal"]:   {screen: 1, unit: {x: 0.5, y: 0.5, w: 0.5, h: 0.5}},
-  ["TextMate"]:   {screen: 1, unit: {x: 0.5, y: 0.0, w: 0.5, h: 1.0}},
-  ["Tower"]:      {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}},
-  ["Xcode"]:      {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}}
+grid1 = grid(6, 6)
 
-arrangement.add("Home", home_arrangement)
+home = arrangement('Home')
+home\add("iTunes",     {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}})
+home\add("Mail",       {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}})
+home\add("Safari",     {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}})
+home\add("SourceTree", {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}})
+home\add("Spotify",    {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.8, h: 1.0}})
+home\add("Terminal",   {screen: 1, unit: {x: 0.5, y: 0.5, w: 0.5, h: 0.5}})
+home\add("TextMate",   {screen: 1, unit: {x: 0.5, y: 0.0, w: 0.5, h: 1.0}})
+home\add("Tower",      {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}})
+home\add("Xcode",      {screen: 1, unit: {x: 0.0, y: 0.0, w: 0.7, h: 1.0}})
 
-work_arrangement =
-  ["Dash"]:              {screen: 2, unit: {x: 0.0, y: 0.0, w: 0.5, h: 1.0}},
-  ["iTunes"]:            {action: "close"},
-  ["Parallels Desktop"]: {screen: 2, action: "fullscreen"},
-  ["Safari"]:            {screen: 2, unit: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}},
-  ["SourceTree"]:        {screen: 1, unit: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}},
-  ["Terminal"]:          {screen: 1, unit: {x: 0.5, y: 0.5, w: 0.5, h: 0.5}},
-  ["TextMate"]:          {screen: 2, unit: {x: 0.5, y: 0.0, w: 0.5, h: 1.0}},
-  ["Tower"]:             {screen: 1, unit: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}},
-  ["Xcode"]:             {screen: 1, unit: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}}
-  
-arrangement.add("Work", work_arrangement)
+work = arrangement('Work')
+work\add("Dash",              {screen: 2, unit: {x: 0.0, y: 0.0, w: 0.5, h: 1.0}})
+work\add("iTunes",            {action: "close"})
+work\add("Parallels Desktop", {screen: 2, action: "fullscreen"})
+work\add("Safari",            {screen: 2, unit: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}})
+work\add("SourceTree",        {screen: 1, unit: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}})
+work\add("Terminal",          {screen: 1, unit: {x: 0.5, y: 0.5, w: 0.5, h: 0.5}})
+work\add("TextMate",          {screen: 2, unit: {x: 0.5, y: 0.0, w: 0.5, h: 1.0}})
+work\add("Tower",             {screen: 1, unit: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}})
+work\add("Xcode",             {screen: 1, unit: {x: 0.0, y: 0.0, w: 1.0, h: 1.0}})
 
 ----------------------------------------------------------------------------------------------------
--- Hotkeys
+-- Hotkey Bindings
 ----------------------------------------------------------------------------------------------------
-arrangement_modifiers = {'cmd', 'shift'}
 modal_modifiers = {'cmd', 'alt'}
+arrangement_modifiers = {'cmd', 'shift'}
 
-hotkey.bind(arrangement_modifiers, '1', ->
-  alert.show("Arranging Home", 1)
-  arrangement.arrange('Home'))
+split = hotkey_modal('Split', modal_modifiers, '1')
+split\bind({}, 'UP', utils.maximize)
+split\bind({}, 'LEFT', utils.push_left_half)
+split\bind({}, 'SPACE', grid1\snap_all)
+split\bind({}, 'RIGHT', utils.push_right_half)
+split\bind({}, 'DOWN', utils.push_nextscreen)
+split\bind({}, 'RETURN', split\exit)
 
-hotkey.bind(arrangement_modifiers, '2', ->
-  alert.show("Arranging Work", 1)
-  arrangement.arrange('Work'))
+position = hotkey_modal('Position', modal_modifiers, '2')
+position\bind({}, 'LEFT', grid1\position_topleft)
+position\bind({}, 'UP', grid1\position_topright)
+position\bind({}, 'DOWN', grid1\position_bottomleft)
+position\bind({}, 'RIGHT', grid1\position_bottomright)
+position\bind({}, 'RETURN', position\exit)
 
-split = hotkey_modal(modal_modifiers, '1')
-split.entered = -> alert.show('Split Mode', 1)
-split.exited = -> alert.show("done", 0.5)
-split\bind({}, 'UP', grid.maximize)
-split\bind({}, 'LEFT', grid.push_left_half)
-split\bind({}, 'SPACE', grid.snap_all)
-split\bind({}, 'RIGHT', grid.push_right_half)
-split\bind({}, 'DOWN', grid.push_nextscreen)
-split\bind({}, 'RETURN', -> split\exit!)
+resize = hotkey_modal('Resize', modal_modifiers, '3')
+resize\bind({}, 'UP', grid1\resize_shorter)
+resize\bind({}, 'LEFT', grid1\resize_thinner)
+resize\bind({}, 'RIGHT', grid1\resize_wider)
+resize\bind({}, 'DOWN', grid1\resize_taller)
+resize\bind({}, 'RETURN', resize\exit)
 
-position = hotkey_modal(modal_modifiers, '2')
-position.entered = -> alert.show('Position Mode', 1)
-position.exited = -> alert.show("done", 0.5)
-position\bind({}, 'LEFT', grid.position_topleft)
-position\bind({}, 'UP', grid.position_topright)
-position\bind({}, 'DOWN', grid.position_bottomleft)
-position\bind({}, 'RIGHT', grid.position_bottomright)
-position\bind({}, 'RETURN', -> position\exit!)
+move = hotkey_modal('Move', modal_modifiers, '4')
+move\bind({}, 'UP', grid1\move_up)
+move\bind({}, 'DOWN', grid1\move_down)
+move\bind({}, 'LEFT', grid1\move_left)
+move\bind({}, 'RIGHT', grid1\move_right)
+move\bind({}, 'RETURN', move\exit)
 
-resize = hotkey_modal(modal_modifiers, '3')
-resize.entered = -> alert.show('Resize Mode', 1)
-resize.exited = -> alert.show("done", 0.5)
-resize\bind({}, 'UP', grid.resize_shorter)
-resize\bind({}, 'LEFT', grid.resize_thinner)
-resize\bind({}, 'RIGHT', grid.resize_wider)
-resize\bind({}, 'DOWN', grid.resize_taller)
-resize\bind({}, 'RETURN', -> resize\exit!)
+arrange = (a) ->
+  a\perform_all!
+  grid1\snap_all!
 
-move = hotkey_modal(modal_modifiers, '4')
-move.entered = -> alert.show('Move Mode', 1)
-move.exited = -> alert.show("done", 0.5)
-move\bind({}, 'UP', grid.move_up)
-move\bind({}, 'DOWN', grid.move_down)
-move\bind({}, 'LEFT', grid.move_left)
-move\bind({}, 'RIGHT', grid.move_right)
-move\bind({}, 'RETURN', -> move\exit!)
+hotkey.bind(arrangement_modifiers, '1', -> arrange(home))
+hotkey.bind(arrangement_modifiers, '2', -> arrange(work))
 
+----------------------------------------------------------------------------------------------------
 alert.show("Mjolnir loaded", 0.5)

@@ -1,26 +1,27 @@
 require 'moonscript'
-import match from string
-import push_toscreen, snap_all from require 'grid'
-window = require 'mjolnir.window'
 
-config = {}
+import find_windows, push_toscreen from require 'utils'
+alert = require 'mjolnir.alert'
 
-find_windows = (app) ->
-  [win for win in *window.allwindows() when match(win\application!\title!, app) != nil]
+class arrangement
+  new: (title) =>
+    @apps = {}
+    @title = title
 
-add = (title, tbl) -> config[title] = tbl
+  add: (appname, config) => @apps[appname] = config
 
-arrange_app = (app, config) ->
-  for win in *find_windows(app)
-    if config.unit then win\movetounit(config.unit)
-    if config.screen then push_toscreen(win, config.screen)
-    if config.action
-      switch config.action
-        when "close" then win\close!
-        when "fullscreen" then win\setfullscreen(true)
+  perform: (appname) =>
+    config = @apps[appname]
+    for win in *find_windows(appname)
+      if config.unit then win\movetounit(config.unit)
+      if config.screen then push_toscreen(win, config.screen)
+      if config.action
+        switch config.action
+          when "close" then win\close!
+          when "fullscreen" then win\setfullscreen(true)
 
-arrange = (title) ->
-  for app, config in pairs(config[title]) do arrange_app(app, config)
-  snap_all!
+  perform_all: =>
+    alert.show('Arranging ' .. @title, 1)
+    for appname,_ in pairs(@apps) do @perform(appname)
 
-{:add, :arrange}
+arrangement
