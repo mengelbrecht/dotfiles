@@ -46,6 +46,8 @@ fileType         = source.shell
 
 [ *.gyp ]
 fileType         = source.python
+softTabs         = false
 
 [ *.gypi ]
 fileType         = source.python
+softTabs         = false
