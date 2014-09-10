@@ -17,6 +17,7 @@ push_right_half = (win=window.focusedwindow!) -> win\movetounit({x: 0.5, y: 0.0,
 push_toscreen = (win, scr) ->
   win = win or window.focusedwindow!
   s = if type(scr) == 'number' then screen.allscreens![scr] else scr
+  s = s or win\screen!
   id = win\id!
 
   fullscreen_change = win\isfullscreen! and s != win\screen!
