@@ -7,8 +7,8 @@ screen = require 'mjolnir.screen'
 
 class grid
   new: (width=6, height=6) =>
-    @width = 6
-    @height = 6
+    @width = width
+    @height = height
     
   get: (win) =>
     winframe = win\frame!
