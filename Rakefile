@@ -34,8 +34,8 @@ namespace :setup do
     end
 
     sh 'brew install git'
-    sh 'brew install homebrew/versions/lua52'
-    sh 'brew install luarocks --with-lua52'
+    sh 'brew install lua'
+    sh 'brew install luarocks'
   end
   
   task :local do
