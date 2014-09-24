@@ -485,7 +485,7 @@ defaults write com.torusknot.SourceTreeNotMAS gitRebaseTrackingBranches -bool tr
 defaults write com.torusknot.SourceTreeNotMAS gitSuppressWarnOnAmend -bool true
 
 # Set diff font and size
-defaults write com.torusknot.SourceTreeNotMAS diffFontName -string "InputMonoCompressed-Regular"
+defaults write com.torusknot.SourceTreeNotMAS diffFontName -string "PragmataPro"
 defaults write com.torusknot.SourceTreeNotMAS diffFontSize -int 12
 
 # Don't show tips

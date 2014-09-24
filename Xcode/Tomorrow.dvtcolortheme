@@ -5,23 +5,23 @@
 	<key>DVTConsoleDebuggerInputTextColor</key>
 	<string>0.793012 0.152623 0.143433 1</string>
 	<key>DVTConsoleDebuggerInputTextFont</key>
-	<string>InputMonoCompressed-Medium - 12.0</string>
+	<string>PragmataPro-Bold - 12.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
 	<string>0.793012 0.152623 0.143433 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
-	<string>InputMonoCompressed-Regular - 12.0</string>
+	<string>PragmataPro - 12.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
 	<string>0.303557 0.303796 0.299714 1</string>
 	<key>DVTConsoleDebuggerPromptTextFont</key>
-	<string>InputMonoCompressed-Regular - 12.0</string>
+	<string>PragmataPro - 12.0</string>
 	<key>DVTConsoleExectuableInputTextColor</key>
 	<string>0.303557 0.303796 0.299714 1</string>
 	<key>DVTConsoleExectuableInputTextFont</key>
-	<string>InputMonoCompressed-Medium - 12.0</string>
+	<string>PragmataPro-Bold - 12.0</string>
 	<key>DVTConsoleExectuableOutputTextColor</key>
 	<string>0.303557 0.303796 0.299714 1</string>
 	<key>DVTConsoleExectuableOutputTextFont</key>
-	<string>InputMonoCompressed-Regular - 12.0</string>
+	<string>PragmataPro - 12.0</string>
 	<key>DVTConsoleTextBackgroundColor</key>
 	<string>0.999873 1 0.999841 1</string>
 	<key>DVTConsoleTextInsertionPointColor</key>
@@ -92,51 +92,51 @@
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.character</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>InputMonoCompressed-Italic - 13.0</string>
+		<string>PragmataPro-Italic - 13.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>InputMonoCompressed-Italic - 13.0</string>
+		<string>PragmataPro-Italic - 13.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>InputMonoCompressed-MediumItalic - 13.0</string>
+		<string>PragmataPro-BoldItalic - 13.0</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.constant</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.constant.system</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.function</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.macro</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.macro.system</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.keyword</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.number</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.plain</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.preprocessor</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.string</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 		<key>xcode.syntax.url</key>
-		<string>InputMonoCompressed-Regular - 13.0</string>
+		<string>PragmataPro - 13.0</string>
 	</dict>
 </dict>
 </plist>
