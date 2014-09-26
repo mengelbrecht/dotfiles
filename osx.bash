@@ -356,8 +356,8 @@ done
 cd ..
 
 # Use the Kalopsia Dark theme by default in Terminal.app
-defaults write com.apple.Terminal "Default Window Settings" -string "Solarized Light"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Solarized Light"
+defaults write com.apple.Terminal "Default Window Settings" -string "Solarized Dark"
+defaults write com.apple.Terminal "Startup Window Settings" -string "Solarized Dark"
 
 # Always show tabbar
 defaults write com.apple.Terminal ShowTabBar -bool true
