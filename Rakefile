@@ -28,12 +28,20 @@ namespace :setup do
       next
     end
 
-    if not which("brew")
+    if `which brew`.empty?
       info("installing homebrew")
       sh 'ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"'
     end
 
-    ['git', 'lua', 'luarocks'].each {|package| install_via_homebrew(package)}
+    installed_packages = `brew list`
+    packages = ['git', 'lua', 'luarocks']
+    packages.each {|name|
+      if installed_packages.include?(name)
+        info("skipping installation of package #{name}, already installed")
+      else
+        sh "brew install #{package}"
+      end
+    }
   end
   
   task :local do
@@ -65,10 +73,20 @@ namespace :setup do
     unless $osx
       next
     end
+
     installed_rocks = `luarocks list`
-    ['moonscript', 'mjolnir.application', 'mjolnir.screen', 'mjolnir.fnutils', 'mjolnir.hotkey',
-     'mjolnir.alert'].each {|name|
-      unless installed_rocks.include?(name)
+    rocks = [
+      'moonscript',
+      'mjolnir.application',
+      'mjolnir.screen',
+      'mjolnir.fnutils',
+      'mjolnir.hotkey',
+      'mjolnir.alert'
+    ]
+    rocks.each {|name|
+      if installed_rocks.include?(name)
+        info("skipping installation of rock #{name}, already installed")
+      else
         sh "luarocks --tree=mjolnir install #{name}"
       end
     }
@@ -104,21 +122,6 @@ class String
   end
 end
 
-def which(binary)
-  paths = ENV['PATH'].split(File::PATH_SEPARATOR)
-  paths.map {|path| File.join(path, binary)}.find {|p| File.exists?(p) and File.executable?(p)}
-end
-
-def install_via_homebrew(package)
-  unless is_installed_via_homebrew(package)
-     sh "brew install #{package}"
-  end
-end
-
-def is_installed_via_homebrew(package)
-  return !`brew ls --versions #{package}`.empty?
-end
-
 def symlink_path(source, dest)
   if not File.exists?(dest) and File.symlink?(dest)
     info("deleting broken symlink #{dest} to #{File.readlink(dest)}")
@@ -142,12 +145,6 @@ def symlink_path(source, dest)
   info("symlinked #{source} to #{dest}")
 end
 
-def link_path(source, dest)
-  unless File.exists?(dest)
-    File.link(source, dest)
-  end
-end
-
 def info(msg, *args)
   puts "#{"info".green}: #{msg % args}"
 end
@@ -159,4 +156,3 @@ end
 def error(msg, *args)
   puts "#{"error".red}: #{msg % args}"
 end
-
