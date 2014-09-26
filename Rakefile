@@ -33,9 +33,7 @@ namespace :setup do
       sh 'ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"'
     end
 
-    sh 'brew install git'
-    sh 'brew install lua'
-    sh 'brew install luarocks'
+    ['git', 'lua', 'luarocks'].each {|package| install_via_homebrew(package)}
   end
   
   task :local do
@@ -67,10 +65,13 @@ namespace :setup do
     unless $osx
       next
     end
-    ['moonscript', 'mjolnir.application', 'mjolnir.screen', 'mjolnir.fnutils',
-     'mjolnir.hotkey', 'mjolnir.alert'].each do |name|
+    installed_rocks = `luarocks list`
+    ['moonscript', 'mjolnir.application', 'mjolnir.screen', 'mjolnir.fnutils', 'mjolnir.hotkey',
+     'mjolnir.alert'].each {|name|
+      unless installed_rocks.include?(name)
         sh "luarocks --tree=mjolnir install #{name}"
-    end
+      end
+    }
   end
 end
 
@@ -106,6 +107,16 @@ end
 def which(binary)
   paths = ENV['PATH'].split(File::PATH_SEPARATOR)
   paths.map {|path| File.join(path, binary)}.find {|p| File.exists?(p) and File.executable?(p)}
+end
+
+def install_via_homebrew(package)
+  unless is_installed_via_homebrew(package)
+     sh "brew install #{package}"
+  end
+end
+
+def is_installed_via_homebrew(package)
+  return !`brew ls --versions #{package}`.empty?
 end
 
 def symlink_path(source, dest)
