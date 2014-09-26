@@ -348,7 +348,7 @@ cd Terminal
 for theme in *.terminal
 do
     theme="${theme%.*}" # Strip extension
-    theme="${theme// /\ }" # Add backslash before spaces
+    theme="${theme// /\\ }" # Add backslash before spaces
     /usr/libexec/PlistBuddy -c "Delete :Window\ Settings:$theme" ~/Library/Preferences/com.apple.Terminal.plist 2> /dev/null
     /usr/libexec/PlistBuddy -c "Add :Window\ Settings:$theme dict" ~/Library/Preferences/com.apple.Terminal.plist
     /usr/libexec/PlistBuddy -c "Merge $theme.terminal :Window\ Settings:$theme" ~/Library/Preferences/com.apple.Terminal.plist
