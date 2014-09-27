@@ -236,6 +236,8 @@
 	<false/>
 	<key>UseBrightBold</key>
 	<true/>
+	<key>VisualBell</key>
+	<true/>
 	<key>columnCount</key>
 	<integer>132</integer>
 	<key>name</key>

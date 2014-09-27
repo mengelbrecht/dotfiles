@@ -343,6 +343,9 @@ launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2
 # Only use UTF-8 in Terminal.app
 defaults write com.apple.terminal StringEncodings -array 4
 
+# Use Secure Keyboard Entry
+defaults write com.apple.terminal SecureKeyboardEntry -bool true
+
 # Install themes
 cd Terminal
 for theme in *.terminal
