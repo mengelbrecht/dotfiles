@@ -43,7 +43,7 @@ namespace :setup do
       end
     }
   end
-  
+
   task :local do
     localFiles = ["gitconfig.local", "zshrc.local"]
     localFiles.each {|f|
@@ -68,7 +68,7 @@ namespace :setup do
       end
     }
   end
-  
+
   task :luarocks do
     unless $osx
       next
