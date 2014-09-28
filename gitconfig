@@ -18,8 +18,8 @@
 	rmdir = true
 [alias]
 	wipe = reset --hard HEAD
-  cleanup = clean -dxf
-  original = !git wipe && git cleanup
+	cleanup = clean -dxf
+	original = !git wipe && git cleanup
 [credential]
 	helper = osxkeychain
 [include]
