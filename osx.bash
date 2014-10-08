@@ -264,6 +264,9 @@ defaults write com.apple.Safari AutoFillCreditCardData -bool false
 defaults write com.apple.Safari AutoFillFromAddressBook -bool false
 defaults write com.apple.Safari AutoFillPasswords -bool false
 
+# Don't prompt for push notifications
+defaults write com.apple.Safari CanPromptForPushNotifications -bool false
+
 # Disable plugins and Java
 defaults write com.apple.Safari WebKitPluginsEnabled -bool false
 defaults write com.apple.Safari WebKitJavaEnabled -bool false
