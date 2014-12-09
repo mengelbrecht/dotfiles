@@ -1,6 +1,6 @@
 rocks_trees = {
   {name = [[user]], root = home..[[/.luarocks]]},
-  {name = [[mjolnir]], root = home..[[/.mjolnir/rocks]]},
+  {name = [[hammerspoon]], root = home..[[/.hammerspoon/rocks]]},
   {name = [[system]], root = [[/usr/local]]},
 }
 

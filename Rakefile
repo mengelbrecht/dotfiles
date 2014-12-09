@@ -77,17 +77,12 @@ namespace :setup do
     installed_rocks = `luarocks list`
     rocks = [
       'moonscript',
-      'mjolnir.application',
-      'mjolnir.screen',
-      'mjolnir.fnutils',
-      'mjolnir.hotkey',
-      'mjolnir.alert'
     ]
     rocks.each {|name|
       if installed_rocks.include?(name)
         info("skipping installation of rock #{name}, already installed")
       else
-        sh "luarocks --tree=mjolnir install #{name}"
+        sh "luarocks --tree=hammerspoon install #{name}"
       end
     }
   end
