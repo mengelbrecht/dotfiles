@@ -41,8 +41,8 @@ defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 # Set Help Viewer windows to non-floating mode
 defaults write com.apple.helpviewer DevMode -bool true
 
-# Reduce transparency
-defaults write com.apple.universalaccess reduceTransparency -bool true
+# Don't Reduce transparency
+defaults write com.apple.universalaccess reduceTransparency -bool false
 
 ###############################################################################
 # Time Machine                                                                #
