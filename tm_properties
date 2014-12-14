@@ -24,6 +24,7 @@ spellingLanguage = 'en'
 [ source.lua ]
 softTabs         = true
 tabSize          = 2
+wrapColumn       = 120
 
 [ source.python ]
 softTabs         = true
