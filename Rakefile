@@ -13,7 +13,7 @@ $osx = RUBY_PLATFORM.include? "darwin"
 $linux = RUBY_PLATFORM.include? "linux"
 
 namespace :setup do
-  task :setup => [:osx, :homebrew, :local, :dotfiles, :luarocks]
+  task :setup => [:osx, :homebrew, :local, :dotfiles]
 
   task :osx do
     unless $osx
@@ -34,7 +34,7 @@ namespace :setup do
     end
 
     installed_packages = `brew list`
-    packages = ['git', 'lua', 'luarocks']
+    packages = ['git']
     packages.each {|name|
       if installed_packages.include?(name)
         info("skipping installation of package #{name}, already installed")
@@ -65,24 +65,6 @@ namespace :setup do
     Dir.foreach(File.join($root, "zprezto", "runcoms")) {|f|
       if f.start_with?("z")
         symlink_path(File.join($home, ".zprezto", "runcoms", f), File.join($home, ".#{f}"))
-      end
-    }
-  end
-
-  task :luarocks do
-    unless $osx
-      next
-    end
-
-    installed_rocks = `luarocks list`
-    rocks = [
-      'moonscript',
-    ]
-    rocks.each {|name|
-      if installed_rocks.include?(name)
-        info("skipping installation of rock #{name}, already installed")
-      else
-        sh "luarocks --tree=hammerspoon install #{name}"
       end
     }
   end
