@@ -471,6 +471,12 @@ defaults write com.macromates.TextMate.preview findIgnoreCase -bool true
 # Wrap around if find hits end-of-file
 defaults write com.macromates.TextMate.preview findWrapAround -bool true
 
+# Display file browser on the left side
+defaults write com.macromates.TextMate.preview fileBrowserPlacement -string "left"
+
+# Always display tab bar
+defaults write com.macromates.TextMate.preview disableTabBarCollapsing -bool true
+
 # Disable rmate
 defaults write com.macromates.TextMate.preview rmateServerDisabled -bool true
 
