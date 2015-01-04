@@ -21,7 +21,8 @@ namespace :setup do
   end
 
   task :homebrew do
-    if `which brew`.empty?
+    `which brew &> /dev/null`
+    unless $?.success?
       info("installing homebrew")
       sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' if $osx
       sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"' if $linux
