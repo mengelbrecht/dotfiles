@@ -34,7 +34,7 @@ namespace :setup do
     packages = ['git']
     packages.each {|name|
       if installed_packages.include?(name)
-        info("skipping installation of package #{name}, already installed")
+        info("skipping installation of package '#{name}', already installed")
       else
         sh "brew install #{name}"
       end
@@ -46,7 +46,7 @@ namespace :setup do
     localFiles.each {|f|
       path = File.join($root, f)
       unless File.exists?(path)
-        info("created empty local file #{path}")
+        info("created empty local file '#{path}'")
         FileUtils.touch(path)
       end
     }
@@ -85,23 +85,23 @@ end
 
 def symlink_path(source, dest)
   if not File.exists?(dest) and File.symlink?(dest)
-    info("deleting broken symlink #{dest} to #{File.readlink(dest)}")
+    info("deleting broken symlink '#{dest}' to '#{File.readlink(dest)}'")
     File.delete(dest)
   end
   if File.exists?(dest)
     if File.symlink?(dest)
       return if Pathname.new(source).realpath() == Pathname.new(dest).realpath()
 
-      warning("deleting unknown symlink #{dest} to #{Pathname.new(dest).realpath()}")
+      warning("deleting unknown symlink '#{dest}' to '#{Pathname.new(dest).realpath()}'")
       File.delete(dest)
     else
       backup = "#{dest}.#{Time.now.strftime("%Y%m%d%H%M%S")}"
-      warning("target #{dest} already exists, backing up to #{backup}")
+      warning("target '#{dest}' already exists, backing up to '#{backup}'")
       File.rename(dest, backup)
     end
   end
   File.symlink(source, dest)
-  info("symlinked #{source} to #{dest}")
+  info("symlinked '#{source}' to '#{dest}'")
 end
 
 def info(msg, *args)
