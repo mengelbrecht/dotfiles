@@ -39,7 +39,7 @@ namespace :setup do
       if installed_packages.include?(name)
         info("skipping installation of package #{name}, already installed")
       else
-        sh "brew install #{package}"
+        sh "brew install #{name}"
       end
     }
   end
