@@ -16,10 +16,7 @@ namespace :setup do
   task :setup => [:osx, :homebrew, :local, :dotfiles]
 
   task :osx do
-    unless $osx
-      next
-    end
-
+    next unless $osx
     sh File.join($root, "osx.bash")
   end
 
@@ -78,25 +75,12 @@ end
 #### Helper Classes and Functions
 
 class String
-  def colorize(colorCode)
-    "\e[#{colorCode}m#{self}\e[0m"
-  end
+  def colorize(colorCode) "\e[#{colorCode}m#{self}\e[0m" end
 
-  def red
-    colorize(31)
-  end
-
-  def green
-    colorize(32)
-  end
-
-  def yellow
-    colorize(33)
-  end
-
-  def blue
-    colorize(34)
-  end
+  def red() colorize(31) end
+  def green() colorize(32) end
+  def yellow() colorize(33) end
+  def blue() colorize(34) end
 end
 
 def symlink_path(source, dest)
@@ -106,12 +90,10 @@ def symlink_path(source, dest)
   end
   if File.exists?(dest)
     if File.symlink?(dest)
-      if Pathname.new(source).realpath() == Pathname.new(dest).realpath()
-        return
-      else
-        warning("deleting unknown symlink #{dest} to #{Pathname.new(dest).realpath()}")
-        File.delete(dest)
-      end
+      return if Pathname.new(source).realpath() == Pathname.new(dest).realpath()
+
+      warning("deleting unknown symlink #{dest} to #{Pathname.new(dest).realpath()}")
+      File.delete(dest)
     else
       backup = "#{dest}.#{Time.now.strftime("%Y%m%d%H%M%S")}"
       warning("target #{dest} already exists, backing up to #{backup}")
