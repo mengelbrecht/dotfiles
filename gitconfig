@@ -17,9 +17,9 @@
 [svn]
 	rmdir = true
 [alias]
-	wipe = reset --hard HEAD
 	cleanup = clean -dxf
-	original = !git wipe && git cleanup
+	restore = reset --hard HEAD
+	wipe = !git restore && git cleanup
 	svnc = svn clone
 	svnf = svn fetch
 	svnr = svn rebase
