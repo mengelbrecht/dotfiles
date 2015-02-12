@@ -26,6 +26,10 @@ softTabs         = true
 tabSize          = 2
 wrapColumn       = 120
 
+[ source.php ]
+softTabs         = true
+tabSize          = 4
+
 [ source.python ]
 softTabs         = true
 tabSize          = 4
