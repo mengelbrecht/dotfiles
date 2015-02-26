@@ -49,10 +49,6 @@ tabSize          = 2
 [ *.local ]
 fileType         = source.shell
 
-[ *.gyp ]
-fileType         = source.python
-softTabs         = false
-
-[ *.gypi ]
+[ *.{gyp,gypi} ]
 fileType         = source.python
 softTabs         = false
