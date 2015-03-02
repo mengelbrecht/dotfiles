@@ -184,7 +184,7 @@
 	<data>
 	YnBsaXN0MDDUAQIDBAUGGBlYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3AS
 	AAGGoKQHCBESVSRudWxs1AkKCwwNDg8QVk5TU2l6ZVhOU2ZGbGFnc1ZOU05hbWVWJGNs
-	YXNzI0AqAAAAAAAAEBCAAoADW1ByYWdtYXRhUHJv0hMUFRZaJGNsYXNzbmFtZVgkY2xh
+	YXNzI0AsAAAAAAAAEBCAAoADW1ByYWdtYXRhUHJv0hMUFRZaJGNsYXNzbmFtZVgkY2xh
 	c3Nlc1ZOU0ZvbnSiFRdYTlNPYmplY3RfEA9OU0tleWVkQXJjaGl2ZXLRGhtUcm9vdIAB
 	CBEaIy0yNzxCS1JbYmlydHZ4hImUnaSnsMLFygAAAAAAAAEBAAAAAAAAABwAAAAAAAAA
 	AAAAAAAAAADM
@@ -198,7 +198,7 @@
 	<key>Linewrap</key>
 	<true/>
 	<key>ProfileCurrentVersion</key>
-	<real>2.02</real>
+	<real>2.04</real>
 	<key>ScrollbackLines</key>
 	<real>0.0</real>
 	<key>SelectionColor</key>
@@ -238,6 +238,8 @@
 	<true/>
 	<key>VisualBell</key>
 	<true/>
+	<key>VisualBellOnlyWhenMuted</key>
+	<false/>
 	<key>columnCount</key>
 	<integer>132</integer>
 	<key>name</key>
