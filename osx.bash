@@ -368,8 +368,8 @@ cd ..
 defaults write com.apple.Terminal "Default Window Settings" -string "Tomorrow Night"
 defaults write com.apple.Terminal "Startup Window Settings" -string "Tomorrow Night"
 
-# Always show tabbar
-defaults write com.apple.Terminal ShowTabBar -bool true
+# Don't show tabbar
+defaults write com.apple.Terminal ShowTabBar -bool false
 
 ###############################################################################
 # Activity Monitor                                                            #
