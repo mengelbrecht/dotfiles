@@ -33,11 +33,7 @@ namespace :setup do
     installed_packages = `brew list`
     packages = ['git']
     packages.each {|name|
-      if installed_packages.include?(name)
-        info("skipping installation of package '#{name}', already installed")
-      else
-        sh "brew install #{name}"
-      end
+      sh "brew install #{name}" unless installed_packages.include?(name)
     }
   end
 
