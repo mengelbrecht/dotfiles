@@ -1,4 +1,5 @@
 require 'pathname'
+require 'tempfile'
 
 task :default => :update
 
@@ -11,9 +12,10 @@ $root = File.expand_path(File.dirname(__FILE__))
 $home = File.expand_path("~")
 $osx = RUBY_PLATFORM.include? "darwin"
 $linux = RUBY_PLATFORM.include? "linux"
+$exaVersion = "0.2.0"
 
 namespace :setup do
-  task :setup => [:osx, :homebrew, :local, :dotfiles]
+  task :setup => [:osx, :homebrew, :local, :dotfiles, :exa]
 
   task :osx do
     next unless $osx
@@ -62,6 +64,26 @@ namespace :setup do
         symlink_path(File.join($home, ".zprezto", "runcoms", f), File.join($home, ".#{f}"))
       end
     }
+  end
+
+  task :exa do
+    tempFile = Tempfile.new(['exa', '.zip'])
+    tempFile.close
+    exaDir = '/usr/local/bin'
+    exaVersion = "0.0.0"
+
+    `which exa &> /dev/null`
+    if $?.success?
+      exaVersion = `exa --version`.split(' ')[1]
+    end
+    if $exaVersion > exaVersion
+      info("upgrading exa from #{exaVersion} to #{$exaVersion}")
+      sh "curl -s -L -o #{tempFile.path} https://github.com/ogham/exa/releases/download/v#{$exaVersion}/exa-osx-x86_64.zip"
+      sh "unzip -q #{tempFile.path} -d #{exaDir}"
+      symlink_path(File.join(exaDir, 'exa-osx-x86_64'), File.join(exaDir, 'exa'))
+      tempFile.unlink
+      next
+    end
   end
 end
 
