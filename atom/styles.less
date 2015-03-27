@@ -1,0 +1,42 @@
+@import "ui-variables";
+
+// Variables to define style
+@font-family: "PragmataPro";
+@font-size: 12px;
+@line-number-font-size: 10px;
+@overlay-opacity: 0.5;
+
+// Customize font and font-size
+atom-workspace .tree-view,
+atom-panel,
+.status-bar,
+.tab-bar,
+.settings-view {
+    font-family: @font-family;
+    font-size: @font-size;
+}
+
+// Disable blinking cursor
+atom-text-editor::shadow .cursors.blink-off .cursor {
+    opacity: 1.0;
+}
+
+// Make wrap guide and invisible characters slightly transparent
+atom-text-editor::shadow .invisible-character,
+atom-text-editor::shadow .indent-guide,
+.wrap-guide {
+    opacity: @overlay-opacity;
+}
+
+// Smaller line numbers and preserve height for gutter
+atom-text-editor::shadow .line-numbers .line-number {
+    font-size: @line-number-font-size;
+    line-height: @font-size + 6px;
+    vertical-align: middle;
+    min-width: 30px;
+}
+
+// Enable for ligatures
+//atom-text-editor {
+//    text-rendering: optimizeLegibility;
+//}

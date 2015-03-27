@@ -1,0 +1,57 @@
+"*":
+  welcome:
+    showOnStartup: false
+  core:
+    disabledPackages: [
+      "archive-view"
+      "autoflow"
+      "background-tips"
+      "exception-reporting"
+      "feedback"
+      "image-view"
+      "language-clojure"
+      "language-csharp"
+      "language-go"
+      "language-mustache"
+      "language-perl"
+      "language-ruby-on-rails"
+      "language-sass"
+      "language-toml"
+      "metrics"
+      "open-on-github"
+      "package-generator"
+      "styleguide"
+      "update-package-dependencies"
+      "welcome"
+    ]
+  editor:
+    preferredLineLength: 120
+    showInvisibles: true
+    showIndentGuide: true
+    tabLength: 4
+    invisibles:
+      cr: "↩"
+      eol: false
+      space: false
+      tab: "⇥"
+    fontFamily: "PragmataPro"
+    softTabs: false
+    fontSize: 14
+  whitespace: {}
+  minimap:
+    plugins:
+      "git-diff": true
+      selection: true
+".lua.source":
+  editor:
+    tabLength: 2
+".ruby.source":
+  editor:
+    tabLength: 2
+".python.source":
+  editor:
+    softTabs: false
+".cpp.source":
+  editor:
+    preferredLineLength: 100
+    softTabs: false
