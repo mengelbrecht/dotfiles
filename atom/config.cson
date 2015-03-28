@@ -37,6 +37,7 @@
     fontFamily: "PragmataPro"
     softTabs: false
     fontSize: 14
+    lineHeight: 1.2
   whitespace: {}
   minimap:
     plugins:
