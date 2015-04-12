@@ -4,11 +4,21 @@
 @font-family: "HelveticaNeue-Light";
 @font-size: 12px;
 @overlay-opacity: 0.5;
+@editor-padding: 2px;
 
 // Customize UI
 .theme-one-dark-ui {
     font-family: @font-family;
     font-size: @font-size;
+
+    // Reduce editor padding
+    padding-right: @editor-padding;
+    atom-panel-container.left:empty {
+        padding-left: @editor-padding;
+    }
+    atom-pane-container atom-pane {
+        padding-top: @editor-padding;
+    }
 }
 
 // Disable blinking cursor
