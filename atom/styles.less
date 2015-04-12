@@ -4,6 +4,7 @@
 @font-family: "HelveticaNeue-Light";
 @font-size: 12px;
 @overlay-opacity: 0.5;
+@tab-bar-height: 27px;
 @editor-padding: 2px;
 
 // Customize UI
@@ -18,6 +19,16 @@
     }
     atom-pane-container atom-pane {
         padding-top: @editor-padding;
+    }
+
+    .tab-bar {
+        height: @tab-bar-height;
+        .tab, .close-icon {
+            line-height: @tab-bar-height;
+        }
+    }
+    .editor {
+        padding-top: 4px;
     }
 }
 
