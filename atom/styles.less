@@ -3,10 +3,9 @@
 // Variables to define style
 @font-family: "HelveticaNeue-Light";
 @font-size: 12px;
-@line-number-font-size: 10px;
 @overlay-opacity: 0.5;
 
-// Customize font and font-size
+// Customize UI
 .theme-one-dark-ui {
     font-family: @font-family;
     font-size: @font-size;
@@ -26,7 +25,7 @@ atom-text-editor::shadow .indent-guide,
 
 // Smaller line numbers and preserve height for gutter
 atom-text-editor::shadow .line-numbers .line-number {
-    font-size: @line-number-font-size;
+    font-size: @font-size - 2px;
     line-height: @font-size + 4px;
     vertical-align: middle;
     min-width: 30px;
