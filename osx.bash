@@ -521,4 +521,3 @@ defaults write com.torusknot.SourceTreeNotMAS agreedToUpdateConfig -bool false
 killall Dock
 killall Finder
 killall SystemUIServer
-
