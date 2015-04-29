@@ -2,13 +2,13 @@
 
 // Variables to define style
 @font-family: "HelveticaNeue-Light";
-@font-size: 12px;
+@font-size: 13px;
 @overlay-opacity: 0.5;
 @tab-bar-height: 27px;
 @editor-padding: 2px;
 
 // Customize UI
-.theme-one-dark-ui {
+.theme-one-dark-ui, .theme-on-light-ui {
     font-family: @font-family;
     font-size: @font-size;
 
@@ -47,7 +47,7 @@ atom-text-editor::shadow .indent-guide,
 // Smaller line numbers and preserve height for gutter
 atom-text-editor::shadow .line-numbers .line-number {
     font-size: @font-size - 2px;
-    line-height: @font-size + 4px;
+    line-height: @font-size + 3px;
     vertical-align: middle;
     min-width: 30px;
 }
