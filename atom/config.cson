@@ -43,6 +43,14 @@
     plugins:
       "git-diff": true
       selection: true
+".cpp.source":
+  editor:
+    preferredLineLength: 100
+    softTabs: false
+".c.source":
+  editor:
+    preferredLineLength: 100
+    softTabs: false
 ".lua.source":
   editor:
     tabLength: 2
@@ -52,7 +60,6 @@
 ".python.source":
   editor:
     softTabs: false
-".cpp.source":
+".nim.source":
   editor:
-    preferredLineLength: 100
-    softTabs: false
+    tabLength: 2
