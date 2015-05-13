@@ -43,6 +43,10 @@
     plugins:
       "git-diff": true
       selection: true
+  "one-dark-ui":
+    layoutMode: "Compact"
+  "one-light-ui":
+    layoutMode: "Compact"
 ".cpp.source":
   editor:
     preferredLineLength: 100
