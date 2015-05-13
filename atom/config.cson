@@ -35,7 +35,7 @@
       space: false
       tab: "⇥"
     fontFamily: "PragmataPro"
-    softTabs: false
+    softTabs: true
     fontSize: 14
     lineHeight: 1.2
   whitespace: {}
