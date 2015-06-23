@@ -36,7 +36,6 @@
       tab: "⇥"
     fontFamily: "PragmataPro"
     softTabs: true
-    fontSize: 14
     lineHeight: 1.2
   whitespace: {}
   minimap:
@@ -47,6 +46,9 @@
     layoutMode: "Compact"
   "one-light-ui":
     layoutMode: "Compact"
+  tabs:
+    enableVcsColoring: true
+    usePreviewTabs: true
 ".cpp.source":
   editor:
     preferredLineLength: 100
