@@ -7,6 +7,14 @@
 @overlay-opacity: 0.5;
 @tab-bar-height: 27px;
 @editor-padding: 2px;
+@line-height: 1.2;
+
+// Setup editor font and size
+atom-text-editor {
+    font-family: @editor-font;
+    font-size: @font-size;
+    line-height: @line-height;
+}
 
 // Customize UI
 .theme-one-dark-ui, .theme-one-light-ui {
@@ -36,11 +44,6 @@ atom-text-editor::shadow .indent-guide,
     opacity: @overlay-opacity;
 }
 
-// Setup editor font and size
-atom-text-editor {
-    font-family: @editor-font;
-    font-size: @font-size;
-}
 
 // Smaller line numbers and preserve height for gutter
 atom-text-editor::shadow .line-numbers .line-number {

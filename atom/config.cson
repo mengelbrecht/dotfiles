@@ -35,7 +35,6 @@
       space: false
       tab: "⇥"
     softTabs: true
-    lineHeight: 1.2
   whitespace: {}
   minimap:
     plugins:
