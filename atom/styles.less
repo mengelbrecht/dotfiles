@@ -1,16 +1,17 @@
 @import "ui-variables";
 
 // Variables to define style
-@font-family: "HelveticaNeue-Light";
-@font-size: 13px;
+@editor-font: "PragmataPro";
+@ui-font: "HelveticaNeue-Light";
+@font-size: 14px;
 @overlay-opacity: 0.5;
 @tab-bar-height: 27px;
 @editor-padding: 2px;
 
 // Customize UI
 .theme-one-dark-ui, .theme-one-light-ui {
-    font-family: @font-family;
-    font-size: @font-size;
+    font-family: @ui-font;
+    font-size: @font-size - 1px;
 
     .tab-bar {
         height: @tab-bar-height;
@@ -19,7 +20,7 @@
         }
     }
     .editor {
-        padding-top: 4px;
+        padding-top: @editor-padding;
     }
 }
 
@@ -35,9 +36,15 @@ atom-text-editor::shadow .indent-guide,
     opacity: @overlay-opacity;
 }
 
+// Setup editor font and size
+atom-text-editor {
+    font-family: @editor-font;
+    font-size: @font-size;
+}
+
 // Smaller line numbers and preserve height for gutter
 atom-text-editor::shadow .line-numbers .line-number {
-    font-size: @font-size - 2px;
+    font-size: @font-size - 3px;
     line-height: @font-size + 3px;
     vertical-align: middle;
     min-width: 30px;

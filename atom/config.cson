@@ -34,7 +34,6 @@
       eol: false
       space: false
       tab: "⇥"
-    fontFamily: "PragmataPro"
     softTabs: true
     lineHeight: 1.2
   whitespace: {}
