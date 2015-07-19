@@ -365,8 +365,8 @@ done
 cd ..
 
 # Use the Kalopsia Dark theme by default in Terminal.app
-defaults write com.apple.Terminal "Default Window Settings" -string "Tomorrow Night"
-defaults write com.apple.Terminal "Startup Window Settings" -string "Tomorrow Night"
+defaults write com.apple.Terminal "Default Window Settings" -string "One Dark"
+defaults write com.apple.Terminal "Startup Window Settings" -string "One Dark"
 
 # Don't show tabbar
 defaults write com.apple.Terminal ShowTabBar -bool false
@@ -427,7 +427,7 @@ mkdir -p ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 yes | cp Xcode/*.dvtcolortheme ~/Library/Developer/Xcode/UserData/FontAndColorThemes
 
 # Color scheme
-defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "Tomorrow Night.dvtcolortheme"
+defaults write com.apple.dt.Xcode DVTFontAndColorCurrentTheme -string "One Light.dvtcolortheme"
 
 # Show page guide at 100 columns
 defaults write com.apple.dt.Xcode DVTTextPageGuideLocation -int 100
