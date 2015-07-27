@@ -3,17 +3,19 @@
 // Variables to define style
 @editor-font: "PragmataPro";
 @ui-font: "HelveticaNeue-Light";
-@font-size: 14px;
-@ui-font-size: @font-size * 0.5 + 6;
+@editor-font-size: 14px;
+
+@ui-font-size: @editor-font-size * 0.5 + 6;
+@line-number-font-size: @editor-font-size * 0.8;
+@tab-bar-height: @ui-font-size * 2;
 @overlay-opacity: 0.5;
-@tab-bar-height: @font-size * 2;
 @editor-padding: 2px;
 @line-height: 1.2;
 
 // Setup editor font and size
 atom-text-editor {
     font-family: @editor-font;
-    font-size: @font-size;
+    font-size: @editor-font-size;
     line-height: @line-height;
 }
 
@@ -30,7 +32,7 @@ atom-text-editor {
         }
     }
 
-    // Smaller padding on top of editor
+    // Small padding on top of editor
     .editor {
         padding-top: @editor-padding;
     }
@@ -49,8 +51,8 @@ atom-text-editor::shadow {
 
     // Smaller line numbers
     .line-numbers .line-number {
-        font-size: @font-size * 0.8;
-        line-height: @font-size * @line-height;
+        font-size: @line-number-font-size;
+        line-height: @editor-font-size * @line-height;
     }
 }
 
