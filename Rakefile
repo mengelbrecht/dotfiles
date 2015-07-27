@@ -12,7 +12,6 @@ $root = File.expand_path(File.dirname(__FILE__))
 $home = File.expand_path("~")
 $osx = RUBY_PLATFORM.include? "darwin"
 $linux = RUBY_PLATFORM.include? "linux"
-$exaVersion = "0.2.0"
 
 namespace :setup do
   task :setup => [:osx, :homebrew, :local, :dotfiles]
