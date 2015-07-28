@@ -7,7 +7,7 @@ task :setup => ["setup:setup"]
 
 verbose(false)
 
-$excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash", "Xcode", "Terminal", "TextMate"]
+$excludes = ["LICENSE", "README.md", "Rakefile", "osx.bash", "Xcode", "Terminal"]
 $root = File.expand_path(File.dirname(__FILE__))
 $home = File.expand_path("~")
 $osx = RUBY_PLATFORM.include? "darwin"
