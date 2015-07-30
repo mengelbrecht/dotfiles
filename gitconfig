@@ -12,8 +12,6 @@
 	default = simple
 [branch]
 	autosetuprebase = always
-[color]
-	ui = auto
 [svn]
 	rmdir = true
 [alias]
