@@ -3,9 +3,10 @@
 	restore = reset --hard HEAD
 	wipe = !git restore && git cleanup
 	svnc = svn clone
-	svnf = svn fetch
-	svnr = svn rebase
 	svnd = svn dcommit
+	svnf = svn fetch
+	svni = svn init
+	svnr = svn rebase
 [branch]
 	autosetuprebase = always
 [core]
