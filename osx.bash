@@ -410,7 +410,7 @@ for theme in *.terminal; do
 done
 cd ..
 
-# Use the Kalopsia Dark theme by default in Terminal.app
+# Use the One Dark theme by default in Terminal.app
 defaults write com.apple.Terminal "Default Window Settings" -string "One Dark"
 defaults write com.apple.Terminal "Startup Window Settings" -string "One Dark"
 
