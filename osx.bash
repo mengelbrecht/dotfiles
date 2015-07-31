@@ -51,6 +51,10 @@ defaults write com.apple.universalaccess reduceTransparency -bool false
 # User Account Settings                                                       #
 ###############################################################################
 
+# Set ZSH as default shell
+sudo dscl . -create /Users/$USER UserShell "/bin/zsh"
+
+# Account Picture
 user_picture="/Users/$USER/Pictures/Avatar.jpg"
 curl -s -o $user_picture https://avatars2.githubusercontent.com/u/8101
 dscl . delete /Users/$USER JPEGPhoto
