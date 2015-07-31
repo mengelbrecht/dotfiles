@@ -48,6 +48,15 @@ defaults write com.apple.helpviewer DevMode -bool true
 defaults write com.apple.universalaccess reduceTransparency -bool false
 
 ###############################################################################
+# User Account Settings                                                       #
+###############################################################################
+
+user_picture="/Users/$USER/Pictures/Avatar.jpg"
+curl -s -o $user_picture https://avatars2.githubusercontent.com/u/8101
+dscl . delete /Users/$USER JPEGPhoto
+sudo dscl . create /Users/$USER Picture "$user_picture"
+
+###############################################################################
 # SSD-specific tweaks                                                         #
 ###############################################################################
 
