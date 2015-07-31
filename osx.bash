@@ -463,8 +463,6 @@ defaults write com.apple.dt.Xcode IDEEditorCoordinatorTarget_DoubleClick -string
 # Textmate                                                                    #
 ###############################################################################
 
-yes | cp -r TextMate/*.tmbundle ~/Library/Application\ Support/Avian/Bundles
-
 # Ignore case in find window
 defaults write com.macromates.TextMate.preview findIgnoreCase -bool true
 
