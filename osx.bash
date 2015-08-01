@@ -182,6 +182,13 @@ handleLaunchAgent "com.apple.sharingd"
 # Disable AirPlay
 handleLaunchAgent "com.apple.AirPlayUIAgent"
 
+# Disable Bluetooth
+handleLaunchAgent "com.apple.bluetoothUIServer"
+handleLaunchDaemon "com.apple.IOBluetoothUSBDFU"
+handleLaunchDaemon "com.apple.bluetoothReporter"
+handleLaunchDaemon "com.apple.bluetoothaudiod"
+handleLaunchDaemon "com.apple.bnepd"
+
 # Disable Chat Agent
 handleLaunchAgent "com.apple.soagent"
 
