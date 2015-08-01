@@ -138,14 +138,6 @@ defaults write com.apple.recentitems RecentDocuments -dict MaxAmount 0
 # Turn Bluetooth off.
 sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0
 
-# Disable VoiceOver service.
-launchctl unload -w /System/Library/LaunchAgents/com.apple.VoiceOver.plist 2> /dev/null
-launchctl unload -w /System/Library/LaunchAgents/com.apple.ScreenReaderUIServer.plist 2> /dev/null
-launchctl unload -w /System/Library/LaunchAgents/com.apple.scrod.plist 2> /dev/null
-
-# Disable DVD or CD Sharing.
-launchctl unload -w /System/Library/LaunchDaemons/com.apple.ODSAgent.plist 2> /dev/null
-
 # Enable Require password to wake this computer from sleep or screen saver.
 defaults write com.apple.screensaver askForPassword -int 1
 
@@ -162,8 +154,130 @@ sudo launchctl load /System/Library/LaunchDaemons/com.apple.alf.agent.plist
 launchctl load /System/Library/LaunchAgents/com.apple.alf.useragent.plist
 
 ###############################################################################
+# Services                                                                   #
+###############################################################################
+
+action="unload"
+
+function handleLaunchAgent() {
+    launchctl $action -w /System/Library/LaunchAgents/$1.plist 2> /dev/null
+}
+
+function handleLaunchDaemon() {
+    sudo launchctl $action -w /System/Library/LaunchDaemons/$1.plist 2> /dev/null
+}
+
+# Disable AirDrop
+handleLaunchAgent "com.apple.sharingd"
+
+# Disable AirPlay
+handleLaunchAgent "com.apple.AirPlayUIAgent"
+
+# Disable Chat Agent
+handleLaunchAgent "com.apple.soagent"
+
+# Disable CloudKeychainProxy
+handleLaunchAgent "com.apple.security.cloudkeychainproxy"
+handleLaunchAgent "com.apple.security.keychain-circle-notification"
+
+# Disable Diagnostics
+handleLaunchAgent "com.apple.DiagnosticReportCleanup"
+handleLaunchAgent "com.apple.ReportCrash.Self"
+handleLaunchAgent "com.apple.ReportCrash"
+handleLaunchAgent "com.apple.ReportPanic"
+handleLaunchAgent "com.apple.diagnostics_agent"
+handleLaunchAgent "com.apple.spindump_agent"
+handleLaunchDaemon "com.apple.ReportCrash.Root"
+handleLaunchDaemon "com.apple.ReportPanicService"
+handleLaunchDaemon "com.apple.SubmitDiagInfo"
+handleLaunchDaemon "com.apple.spindump"
+
+# Disable FaceTime Services
+handleLaunchAgent "com.apple.CallHistoryPluginHelper"
+handleLaunchAgent "com.apple.CallHistorySyncHelper"
+handleLaunchAgent "com.apple.imagent"
+handleLaunchAgent "com.apple.telephonyutilities.callservicesd"
+
+# Disable Find My Mac Services
+handleLaunchAgent "com.apple.findmymacmessenger"
+handleLaunchDaemon "com.apple.findmymac"
+handleLaunchDaemon "com.apple.findmymacmessenger"
+handleLaunchDaemon "com.apple.icloud.findmydeviced"
+
+# Disable Find My Friends Daemon
+handleLaunchAgent "com.apple.icloud.fmfd"
+
+# Disable Game Center Daemon
+handleLaunchAgent "com.apple.gamed"
+
+# Disable Help Daemon
+handleLaunchAgent "com.apple.helpd"
+
+# Disable LaterAgent responsible for reminding to install updates
+handleLaunchAgent "com.apple.lateragent"
+
+# Disable Location Service
+handleLaunchAgent "com.apple.CoreLocationAgent"
+handleLaunchDaemon "com.apple.locationd"
+
+# Disable Maps Push Daemon
+handleLaunchAgent "com.apple.Maps.pushdaemon"
+
+# Disable NetBIOS daemon
+handleLaunchDaemon "com.apple.netbiosd"
+
+# Disable Optical Drive Sharing
+handleLaunchDaemon "com.apple.ODSAgent"
+
+# Disable Photos Services depending on whether it is used
+if [[ ! -d "/Users/$USER/Pictures/Photos Library.photoslibrary" ]]; then
+    handleLaunchAgent "com.apple.cloudphotosd"
+    handleLaunchAgent "com.apple.photolibraryd"
+fi
+
+# Disable Screen Sharing
+handleLaunchAgent "com.apple.RemoteDesktop"
+handleLaunchAgent "com.apple.screensharing.MessagesAgent"
+handleLaunchAgent "com.apple.screensharing.agent"
+handleLaunchDaemon "com.apple.RemoteDesktop.PrivilegeProxy"
+
+# Disable Social Push Notifications
+handleLaunchAgent "com.apple.SocialPushAgent"
+
+# Disable Spotlight
+handleLaunchAgent "com.apple.mdworker.32bit"
+handleLaunchAgent "com.apple.mdworker.bundles"
+handleLaunchAgent "com.apple.mdworker.isolation"
+handleLaunchAgent "com.apple.mdworker.lsb"
+handleLaunchAgent "com.apple.mdworker.mail"
+handleLaunchAgent "com.apple.mdworker.shared"
+handleLaunchAgent "com.apple.mdworker.single"
+handleLaunchAgent "com.apple.mdworker.sizing"
+handleLaunchAgent "com.apple.metadata.SpotlightNetHelper"
+handleLaunchAgent "com.apple.metadata.mdflagwriter"
+handleLaunchAgent "com.apple.metadata.mdwrite"
+handleLaunchDaemon "com.apple.metadata.mds.index"
+handleLaunchDaemon "com.apple.metadata.mds"
+handleLaunchDaemon "com.apple.metadata.mds.scan"
+handleLaunchDaemon "com.apple.metadata.mds.spindump"
+
+# Disable Text Input Method Switcher
+handleLaunchAgent "com.apple.tiswitcher"
+
+# Disable VoiceOver
+handleLaunchAgent "com.apple.VoiceOver"
+handleLaunchAgent "com.apple.ScreenReaderUIServer"
+handleLaunchAgent "com.apple.scrod"
+
+###############################################################################
 # Finder                                                                      #
 ###############################################################################
+
+# Disable AirDrop
+sudo defaults write /Library/Preferences/com.apple.NetworkBrowser DisableAirDrop -bool Yes
+sudo defaults write /Library/Preferences/com.apple.NetworkBrowser BrowseAllInterfaces -bool No
+defaults write com.apple.NetworkBrowser DisableAirDrop -bool Yes
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool No
 
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
@@ -394,13 +508,6 @@ defaults write com.apple.mail DefaultViewerState -dict-add "SortOrder" -string "
 
 # Compose messages in plain text
 defaults write com.apple.mail SendFormat -string "Plain"
-
-###############################################################################
-# Spotlight                                                                   #
-###############################################################################
-
-# Disable Spotlight
-launchctl unload -w /System/Library/LaunchDaemons/com.apple.metadata.mds.plist 2> /dev/null
 
 ###############################################################################
 # Terminal                                                                    #
