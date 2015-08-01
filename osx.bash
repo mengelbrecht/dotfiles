@@ -160,11 +160,11 @@ launchctl load /System/Library/LaunchAgents/com.apple.alf.useragent.plist
 action="unload"
 
 function handleLaunchAgent() {
-    launchctl $action -w /System/Library/LaunchAgents/$1.plist 2> /dev/null
+    launchctl $action -w "/System/Library/LaunchAgents/$1.plist" 2> /dev/null
 }
 
 function handleLaunchDaemon() {
-    sudo launchctl $action -w /System/Library/LaunchDaemons/$1.plist 2> /dev/null
+    sudo launchctl $action -w "/System/Library/LaunchDaemons/$1.plist" 2> /dev/null
 }
 
 function handleProcess() {
