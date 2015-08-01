@@ -706,3 +706,5 @@ defaults write com.torusknot.SourceTreeNotMAS agreedToUpdateConfig -bool false
 for app in "Dock" "Finder" "SystemUIServer"; do
     killall "${app}" > /dev/null 2>&1
 done
+
+echo "Restart your computer to let the changes take effect"
