@@ -167,6 +167,15 @@ function handleLaunchDaemon() {
     sudo launchctl $action -w /System/Library/LaunchDaemons/$1.plist 2> /dev/null
 }
 
+function handleProcess() {
+    if [[ "$action" == "unload" ]]; then
+        permissions=444
+    else
+        permissions=755
+    fi
+    sudo chmod $permissions "$1"
+}
+
 # Disable AirDrop
 handleLaunchAgent "com.apple.sharingd"
 
@@ -268,6 +277,10 @@ handleLaunchAgent "com.apple.tiswitcher"
 handleLaunchAgent "com.apple.VoiceOver"
 handleLaunchAgent "com.apple.ScreenReaderUIServer"
 handleLaunchAgent "com.apple.scrod"
+
+# Prevent some processes from launching
+handleProcess "/System/Library/CoreServices/Dock.app/Contents/XPCServices/com.apple.dock.extra.xpc/Contents/MacOS/com.apple.dock.extra"
+handleProcess "/Applications/iTunes.app/Contents/MacOS/iTunesHelper.app/Contents/MacOS/iTunesHelper"
 
 ###############################################################################
 # Finder                                                                      #
