@@ -47,6 +47,9 @@ defaults write com.apple.helpviewer DevMode -bool true
 # Don't Reduce transparency
 defaults write com.apple.universalaccess reduceTransparency -bool false
 
+# Show Crash Reports
+defaults write com.apple.CrashReporter DialogType crashreport
+
 ###############################################################################
 # User Account Settings                                                       #
 ###############################################################################
@@ -199,19 +202,18 @@ handleProcess "/System/Library/Frameworks/Security.framework/Versions/A/Resource
 
 # Disable Diagnostics
 handleLaunchAgent "com.apple.DiagnosticReportCleanup"
-handleLaunchAgent "com.apple.ReportCrash.Self"
-handleLaunchAgent "com.apple.ReportCrash"
 handleLaunchAgent "com.apple.ReportPanic"
 handleLaunchAgent "com.apple.diagnostics_agent"
 handleLaunchAgent "com.apple.spindump_agent"
-handleLaunchDaemon "com.apple.ReportCrash.Root"
 handleLaunchDaemon "com.apple.ReportPanicService"
 handleLaunchDaemon "com.apple.SubmitDiagInfo"
+handleLaunchDaemon "com.apple.coresymbolicationd"
 handleLaunchDaemon "com.apple.spindump"
 
 # Disable FaceTime Services
 handleLaunchAgent "com.apple.CallHistoryPluginHelper"
 handleLaunchAgent "com.apple.CallHistorySyncHelper"
+handleLaunchAgent "com.apple.identityservicesd"
 handleLaunchAgent "com.apple.imagent"
 handleLaunchAgent "com.apple.telephonyutilities.callservicesd"
 
@@ -242,6 +244,10 @@ handleLaunchAgent "com.apple.Maps.pushdaemon"
 
 # Disable NetBIOS daemon
 handleLaunchDaemon "com.apple.netbiosd"
+
+# Disable NoticeBoard
+handleLaunchAgent "com.apple.noticeboard.agent"
+handleLaunchDaemon "com.apple.noticeboard.state"
 
 # Disable Optical Drive Sharing
 handleLaunchDaemon "com.apple.ODSAgent"
