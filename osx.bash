@@ -195,7 +195,9 @@ handleLaunchDaemon "com.apple.bnepd"
 # Disable Chat Agent
 handleLaunchAgent "com.apple.soagent"
 
-# Disable CloudKeychainProxy
+# Disable Cloud Services
+handleLaunchAgent "com.apple.cloudd"
+handleLaunchAgent "com.apple.cloudpaird"
 handleLaunchAgent "com.apple.security.cloudkeychainproxy"
 handleLaunchAgent "com.apple.security.keychain-circle-notification"
 handleProcess "/System/Library/Frameworks/Security.framework/Versions/A/Resources/CloudKeychainProxy.bundle/Contents/MacOS/CloudKeychainProxy"
