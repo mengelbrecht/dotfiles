@@ -7,6 +7,7 @@ Thumbs.db
 # Xcode
 xcuserdata
 DerivedData
+*.xcuserstate
 
 # Visual Studio
 *.opensdf
@@ -16,5 +17,9 @@ DerivedData
 *.csproj.user
 
 # Idea files
-**/.idea/workspace.xml
-**/.idea/tasks.xml
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+
+# SVN
+.svn
