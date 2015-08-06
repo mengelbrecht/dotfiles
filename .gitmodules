@@ -2,3 +2,7 @@
 	path = zprezto
 	url = https://github.com/mgee/prezto.git
 	branch = master
+[submodule "hammerspoon"]
+	path = hammerspoon
+	url = https://github.com/mgee/hammerspoon-config.git
+	branch = master
