@@ -388,8 +388,8 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
-# Set the icon size of Dock items to 42 pixels
-defaults write com.apple.dock tilesize -int 42
+# Set the icon size of Dock items
+defaults write com.apple.dock tilesize -int 36
 
 # Position (left, bottom, right)
 defaults write com.apple.dock orientation -string "left"
@@ -405,6 +405,12 @@ defaults write com.apple.dock enable-spring-load-actions-on-all-items -bool true
 
 # Show indicator lights for open applications in the Dock
 defaults write com.apple.dock show-process-indicators -bool true
+
+# Don’t animate opening applications from the Dock
+defaults write com.apple.dock launchanim -bool false
+
+# Speed up Mission Control animations
+defaults write com.apple.dock expose-animation-duration -float 0.15
 
 # Disable Dashboard
 defaults write com.apple.dashboard mcx-disabled -bool true
