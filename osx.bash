@@ -50,6 +50,9 @@ defaults write com.apple.universalaccess reduceTransparency -bool false
 # Show Crash Reports
 defaults write com.apple.CrashReporter DialogType crashreport
 
+# Speed up some dialogs
+defaults write NSGlobalDomain NSWindowResizeTime 0.1
+
 ###############################################################################
 # User Account Settings                                                       #
 ###############################################################################
