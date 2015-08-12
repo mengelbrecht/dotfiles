@@ -139,7 +139,7 @@ defaults write com.apple.screencapture type -string "png"
 
 # Disable display of recent applications.
 defaults write com.apple.recentitems RecentApplications -dict MaxAmount 0
-defaults write com.apple.recentitems RecentDocuments -dict MaxAmount 0
+defaults write com.apple.recentitems RecentDocuments -dict MaxAmount 10
 
 # Turn Bluetooth off.
 sudo defaults write /Library/Preferences/com.apple.Bluetooth ControllerPowerState -int 0
