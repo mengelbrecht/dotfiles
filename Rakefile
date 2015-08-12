@@ -30,7 +30,7 @@ namespace :setup do
     end
 
     installed_packages = `brew list`
-    packages = ['git']
+    packages = ['coreutils', 'git']
     packages.each {|name|
       sh "brew install #{name}" unless installed_packages.include?(name)
     }
