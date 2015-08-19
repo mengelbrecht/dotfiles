@@ -90,6 +90,18 @@ if [[ $? -eq 0 ]]; then
 fi
 
 ###############################################################################
+# Spotlight                                                                   #
+###############################################################################
+
+sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
+# Load new settings before rebuilding the index
+killall mds > /dev/null 2>&1
+# Make sure indexing is enabled for the main volume
+sudo mdutil -i off / > /dev/null
+# Rebuild the index from scratch
+sudo mdutil -E / > /dev/null
+
+###############################################################################
 # Time Machine                                                                #
 ###############################################################################
 
@@ -271,23 +283,6 @@ handleLaunchDaemon "com.apple.RemoteDesktop.PrivilegeProxy"
 
 # Disable Social Push Notifications
 handleLaunchAgent "com.apple.SocialPushAgent"
-
-# Disable Spotlight
-handleLaunchAgent "com.apple.mdworker.32bit"
-handleLaunchAgent "com.apple.mdworker.bundles"
-handleLaunchAgent "com.apple.mdworker.isolation"
-handleLaunchAgent "com.apple.mdworker.lsb"
-handleLaunchAgent "com.apple.mdworker.mail"
-handleLaunchAgent "com.apple.mdworker.shared"
-handleLaunchAgent "com.apple.mdworker.single"
-handleLaunchAgent "com.apple.mdworker.sizing"
-handleLaunchAgent "com.apple.metadata.SpotlightNetHelper"
-handleLaunchAgent "com.apple.metadata.mdflagwriter"
-handleLaunchAgent "com.apple.metadata.mdwrite"
-handleLaunchDaemon "com.apple.metadata.mds.index"
-handleLaunchDaemon "com.apple.metadata.mds"
-handleLaunchDaemon "com.apple.metadata.mds.scan"
-handleLaunchDaemon "com.apple.metadata.mds.spindump"
 
 # Disable Text Input Method Switcher
 handleLaunchAgent "com.apple.tiswitcher"
