@@ -12,6 +12,7 @@ $root = File.expand_path(File.dirname(__FILE__))
 $home = File.expand_path("~")
 $osx = RUBY_PLATFORM.include? "darwin"
 $linux = RUBY_PLATFORM.include? "linux"
+$windows = RUBY_PLATFORM =~ /cygwin|mswin|mingw/
 
 namespace :setup do
   task :setup => [:osx, :homebrew, :local, :dotfiles]
@@ -22,6 +23,8 @@ namespace :setup do
   end
 
   task :homebrew do
+    next if $windows
+
     `which brew &> /dev/null`
     unless $?.success?
       info("installing homebrew")
@@ -78,24 +81,35 @@ class String
   def blue() colorize(34) end
 end
 
+def realpath(path)
+  return Pathname.new(path).realpath() if $osx
+  return `readlink -f "#{path}"`
+end
+
+def readlink(path)
+  return `readlink "#{path}"`
+end
+
+def is_symlink(path)
+  return readlink(path) != ""
+end
+
+def do_symlink(source, dest)
+  `ln -s "#{source}" "#{dest}"`
+end
+
 def symlink_path(source, dest)
-  if not File.exists?(dest) and File.symlink?(dest)
-    info("deleting broken symlink '#{dest}' to '#{File.readlink(dest)}'")
+  if not File.exists?(dest) and is_symlink(dest)
+    info("deleting broken symlink '#{dest}' to '#{readlink(dest)}'")
     File.delete(dest)
   end
   if File.exists?(dest)
-    if File.symlink?(dest)
-      return if Pathname.new(source).realpath() == Pathname.new(dest).realpath()
-
-      warning("deleting unknown symlink '#{dest}' to '#{Pathname.new(dest).realpath()}'")
-      File.delete(dest)
-    else
-      backup = "#{dest}.#{Time.now.strftime("%Y%m%d%H%M%S")}"
-      warning("target '#{dest}' already exists, backing up to '#{backup}'")
-      File.rename(dest, backup)
-    end
+    return if realpath(source) == realpath(dest)
+    backup = "#{dest}.#{Time.now.strftime("%Y%m%d%H%M%S")}"
+    warning("target '#{dest}' already exists, backing up to '#{backup}'")
+    File.rename(dest, backup)
   end
-  File.symlink(source, dest)
+  do_symlink(source, dest)
   info("symlinked '#{source}' to '#{dest}'")
 end
 
