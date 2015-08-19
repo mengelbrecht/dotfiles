@@ -301,10 +301,10 @@ handleProcess "/Applications/iTunes.app/Contents/MacOS/iTunesHelper.app/Contents
 ###############################################################################
 
 # Disable AirDrop
-sudo defaults write /Library/Preferences/com.apple.NetworkBrowser DisableAirDrop -bool Yes
-sudo defaults write /Library/Preferences/com.apple.NetworkBrowser BrowseAllInterfaces -bool No
-defaults write com.apple.NetworkBrowser DisableAirDrop -bool Yes
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool No
+sudo defaults write /Library/Preferences/com.apple.NetworkBrowser DisableAirDrop -bool true
+sudo defaults write /Library/Preferences/com.apple.NetworkBrowser BrowseAllInterfaces -bool false
+defaults write com.apple.NetworkBrowser DisableAirDrop -bool true
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool false
 
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
