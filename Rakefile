@@ -7,7 +7,7 @@ task :setup => ["setup:setup"]
 
 verbose(false)
 
-$excludes = ["LICENSE", "README.md", "Rakefile", "osx-setup", "Xcode", "Terminal"]
+$excludes = ["LICENSE", "osx-setup", "Rakefile", "README.md", "Terminal", "Xcode", "zgen"]
 $root = File.expand_path(File.dirname(__FILE__))
 $home = File.expand_path("~")
 $osx = RUBY_PLATFORM.include? "darwin"
@@ -57,11 +57,11 @@ namespace :setup do
       end
     }
 
-    Dir.foreach(File.join($root, "zprezto", "runcoms")) {|f|
-      if f.start_with?("z")
-        symlink_path(File.join($home, ".zprezto", "runcoms", f), File.join($home, ".#{f}"))
-      end
-    }
+    zgenPath = File.join($home, ".zgen")
+    Dir.mkdir(zgenPath) unless Dir.exist?(zgenPath)
+  
+    symlink_path(File.join($root, "zgen", "_zgen"), File.join(zgenPath, "_zgen"))
+    symlink_path(File.join($root, "zgen", "zgen.zsh"), File.join(zgenPath, "zgen.zsh"))
   end
 end
 
