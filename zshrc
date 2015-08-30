@@ -53,12 +53,6 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 # setup osx specifics
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ "darwin" ]]; then
-  if [[ ! -e "/usr/local/bin/ls" && -e "/usr/local/bin/gls" ]]; then
-    ln -s "/usr/local/bin/gls" "/usr/local/bin/ls"
-  fi
-
-  alias dircolors='/usr/local/bin/gdircolors'
-
   # Shortcut to use xcpretty and xcodebuild together
   xc() {
     xcodebuild "$@" | xcpretty -c
@@ -145,6 +139,7 @@ if ! zgen saved; then
 
   zgen load sorin-ionescu/prezto
   zgen loadall <<EOPLUGINS
+    sorin-ionescu/prezto modules/gnu-utility
     sorin-ionescu/prezto modules/helper
     sorin-ionescu/prezto modules/spectrum
     sorin-ionescu/prezto modules/editor
