@@ -112,7 +112,6 @@ zstyle ':prezto:module:editor:info:completing' format ''
 zstyle ':prezto:module:git:log:oneline' format '%C(auto,yellow)%h %C(auto,green)%ad%C(auto,red)%d %C(auto,reset)%s%C(auto,blue) [%cn]%C(auto,reset)'
 zstyle ':prezto:module:syntax-highlighting' highlighters 'main' 'brackets' 'pattern' 'cursor' 'root'
 zstyle ':prezto:module:syntax-highlighting' styles 'precommand' 'fg=green' 'path' 'fg=cyan' 'path_prefix' 'fg=cyan' 'path_approx' 'fg=yellow'
-
 zstyle ':prezto:module:terminal' auto-title 'yes'
 zstyle ':prezto:module:terminal:window-title' format '%n@%m: %~'
 zstyle ':prezto:module:terminal:tab-title' format '%m: %~'
@@ -133,13 +132,14 @@ fi
 source "$(readlink $HOME/.zgen/zgen.zsh)"
 
 if ! zgen saved; then
-  echo "creating zgen save"
+  echo "Creating zgen save"
 
   ln -sf ~/.zgen/sorin-ionescu/prezto-master ~/.zprezto
 
-  zgen load sorin-ionescu/prezto
+  # Order is important
   zgen loadall <<EOPLUGINS
-    sorin-ionescu/prezto modules/gnu-utility
+    sorin-ionescu/prezto
+    sorin-ionescu/prezto modules/gnu-utility # before utility
     sorin-ionescu/prezto modules/helper
     sorin-ionescu/prezto modules/spectrum
     sorin-ionescu/prezto modules/editor
@@ -153,12 +153,11 @@ if ! zgen saved; then
     sorin-ionescu/prezto modules/homebrew
     sorin-ionescu/prezto modules/python
     sorin-ionescu/prezto modules/osx
-    sorin-ionescu/prezto modules/syntax-highlighting
+    sorin-ionescu/prezto modules/syntax-highlighting # before history-substring-search
     sorin-ionescu/prezto modules/history-substring-search
     mafredri/zsh-async
+    mgee/slimline
 EOPLUGINS
-
-  zgen load mgee/slimline
 
   zgen save
 fi
