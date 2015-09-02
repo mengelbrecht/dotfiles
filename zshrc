@@ -148,7 +148,6 @@ if ! zgen saved; then
     sorin-ionescu/prezto modules/osx
     sorin-ionescu/prezto modules/syntax-highlighting # before history-substring-search
     sorin-ionescu/prezto modules/history-substring-search
-    mafredri/zsh-async
     mgee/slimline
 EOPLUGINS
 
