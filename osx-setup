@@ -103,9 +103,9 @@ sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Vol
 # Load new settings before rebuilding the index
 killall mds > /dev/null 2>&1
 # Make sure indexing is enabled for the main volume
-sudo mdutil -i off / > /dev/null
+sudo mdutil -i off / > /dev/null 2>&1
 # Rebuild the index from scratch
-sudo mdutil -E / > /dev/null
+sudo mdutil -E / > /dev/null 2>&1
 
 ###############################################################################
 # Time Machine                                                                #
