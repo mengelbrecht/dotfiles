@@ -120,7 +120,7 @@ zstyle ':prezto:module:terminal:tab-title' format '%m: %~'
 # zgen setup
 #-------------------------------------------------------------------------------
 
-#ZGEN_RESET_ON_CHANGE=($HOME/.zshrc ${HOME}/.zshrc.local)
+ZGEN_RESET_ON_CHANGE=($HOME/.zshrc ${HOME}/.zshrc.local)
 
 source "$(readlink $HOME/.zgen/zgen.zsh)"
 
