@@ -127,7 +127,8 @@ source "$(readlink $HOME/.zgen/zgen.zsh)"
 if ! zgen saved; then
   echo "Creating zgen save"
 
-  ln -sf ~/.zgen/sorin-ionescu/prezto-master ~/.zprezto
+  [[ ! -h ${ZDOTDIR:-$HOME}/.zprezto ]] && 
+    ln -s "${ZGEN_DIR}/sorin-ionescu/prezto-master" "${ZDOTDIR:-$HOME}/.zprezto"
 
   # Order is important
   zgen loadall <<EOPLUGINS
