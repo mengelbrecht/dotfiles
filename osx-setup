@@ -255,9 +255,6 @@ handleLaunchAgent "com.apple.gamed"
 # Disable Help Daemon
 handleLaunchAgent "com.apple.helpd"
 
-# Disable LaterAgent responsible for reminding to install updates
-handleLaunchAgent "com.apple.lateragent"
-
 # Disable Location Service
 handleLaunchAgent "com.apple.CoreLocationAgent"
 handleLaunchDaemon "com.apple.locationd"
