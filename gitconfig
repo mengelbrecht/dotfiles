@@ -25,5 +25,7 @@
 	threads = 0
 [push]
 	default = simple
+[rebase]
+	autoStash = true
 [svn]
 	rmdir = true
