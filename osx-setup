@@ -398,6 +398,12 @@ defaults write com.apple.dock tilesize -int 36
 # Position (left, bottom, right)
 defaults write com.apple.dock orientation -string "left"
 
+# Automatically hide dock
+defaults write com.apple.dock autohide -bool true
+
+# Lower the delay to show the dock
+defaults write com.apple.dock autohide-delay -float 0.1
+
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
 
