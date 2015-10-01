@@ -56,9 +56,6 @@ defaults write NSGlobalDomain NSWindowResizeTime 0.1
 # Enable natural swipe direction
 defaults write NSGlobalDomain com.apple.swipescrolldirection 1
 
-# Disable force-click "lookup & data detectors"
-defaults write NSGlobalDomain com.apple.trackpad.forceClick 0
-
 ###############################################################################
 # User Account Settings                                                       #
 ###############################################################################
