@@ -50,6 +50,15 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 #-------------------------------------------------------------------------------
+# setup homebrew paths
+#-------------------------------------------------------------------------------
+if [[ -d "$HOME/.homebrew" ]]; then
+  export PATH="$HOME/.homebrew/bin:$PATH"
+  export MANPATH="$HOME/.homebrew/share/man:$MANPATH"
+  export INFOPATH="$HOME/.homebrew/share/info:$INFOPATH"
+fi
+
+#-------------------------------------------------------------------------------
 # setup osx specifics
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ "darwin" ]]; then
@@ -63,9 +72,7 @@ fi
 # setup linux specifics
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ "linux" ]]; then
-  export PATH="$HOME/.linuxbrew/bin:$PATH"
-  export MANPATH="$HOME/.linuxbrew/share/man:$MANPATH"
-  export INFOPATH="$HOME/.linuxbrew/share/info:$INFOPATH"
+  # specifics here
 fi
 
 #-------------------------------------------------------------------------------

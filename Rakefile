@@ -14,6 +14,8 @@ $osx = RUBY_PLATFORM.include? "darwin"
 $linux = RUBY_PLATFORM.include? "linux"
 $windows = RUBY_PLATFORM =~ /cygwin|mswin|mingw/
 
+$homebrewPath = File.join($home, ".homebrew")
+$homebrewPackages = ['coreutils', 'git']
 namespace :setup do
   task :setup => [:osx, :homebrew, :local, :dotfiles]
 
@@ -28,14 +30,13 @@ namespace :setup do
     `which brew &> /dev/null`
     unless $?.success?
       info("installing homebrew")
-      sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"' if $osx
-      sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"' if $linux
+      sh "git clone https://github.com/Homebrew/homebrew.git #{$homebrewPath}" if $osx
+      sh "git clone https://github.com/Homebrew/linuxbrew.git #{$homebrewPath}" if $linux
     end
 
-    installed_packages = `brew list`
-    packages = ['coreutils', 'git', 'michaeldfallen/formula/git-radar']
-    packages.each {|name|
-      sh "brew install #{name}" unless installed_packages.include?(name)
+    installedPackages = `brew list`
+    $homebrewPackages.each {|name|
+      sh "brew install #{name}" unless installedPackages.include?(name)
     }
   end
 
