@@ -16,7 +16,10 @@ $windows = RUBY_PLATFORM =~ /cygwin|mswin|mingw/
 
 $homebrewPath = File.join($home, ".homebrew")
 $binPath = File.join($homebrewPath, "bin")
+$zgenPath = File.join($home, ".zgen")
 $homebrewPackages = ['coreutils', 'git']
+$localFiles = ["gitconfig.local", "zshrc.local"]
+
 namespace :setup do
   task :setup => [:osx, :homebrew, :shell_helper, :local, :dotfiles]
 
@@ -63,8 +66,7 @@ namespace :setup do
   end
 
   task :local do
-    localFiles = ["gitconfig.local", "zshrc.local"]
-    localFiles.each {|f|
+    $localFiles.each {|f|
       path = File.join($root, f)
       unless File.exists?(path)
         info("created empty local file '#{path}'")
@@ -80,11 +82,10 @@ namespace :setup do
       end
     }
 
-    zgenPath = File.join($home, ".zgen")
-    Dir.mkdir(zgenPath) unless Dir.exist?(zgenPath)
+    Dir.mkdir($zgenPath) unless Dir.exist?($zgenPath)
   
-    symlink_path(File.join($root, "zgen", "_zgen"), File.join(zgenPath, "_zgen"))
-    symlink_path(File.join($root, "zgen", "zgen.zsh"), File.join(zgenPath, "zgen.zsh"))
+    symlink_path(File.join($root, "zgen", "_zgen"), File.join($zgenPath, "_zgen"))
+    symlink_path(File.join($root, "zgen", "zgen.zsh"), File.join($zgenPath, "zgen.zsh"))
   end
 end
 
@@ -121,7 +122,7 @@ def is_symlink(path)
 end
 
 def do_symlink(source, dest)
-  `ln -s "#{source}" "#{dest}"`
+  sh "ln -s '#{source}' '#{dest}'"
 end
 
 def symlink_path(source, dest)
