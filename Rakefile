@@ -15,9 +15,10 @@ $linux = RUBY_PLATFORM.include? "linux"
 $windows = RUBY_PLATFORM =~ /cygwin|mswin|mingw/
 
 $homebrewPath = File.join($home, ".homebrew")
+$binPath = File.join($homebrewPath, "bin")
 $homebrewPackages = ['coreutils', 'git']
 namespace :setup do
-  task :setup => [:osx, :homebrew, :local, :dotfiles]
+  task :setup => [:osx, :homebrew, :shell_helper, :local, :dotfiles]
 
   task :osx do
     next unless $osx
@@ -38,6 +39,27 @@ namespace :setup do
     $homebrewPackages.each {|name|
       sh "brew install #{name}" unless installedPackages.include?(name)
     }
+  end
+
+  task :shell_helper do
+    next unless $osx
+
+    if File.exists?("/Applications/Atom.app")
+      symlink_path("/Applications/Atom.app/Contents/Resources/app/apm/node_modules/.bin/apm", File.join($binPath, "apm"))
+      symlink_path("/Applications/Atom.app/Contents/Resources/app/atom.sh", File.join($binPath, "atom"))
+    end
+
+    if File.exists?("/Applications/TextMate.app")
+      symlink_path("/Applications/TextMate.app/Contents/Resources/mate", File.join($binPath, "mate"))
+    end
+
+    if File.exists?("/Applications/SourceTree.app")
+      symlink_path("/Applications/SourceTree.app/Contents/Resources/stree", File.join($binPath, "stree"))
+    end
+    
+    if File.exists?("/Applications/Tower.app")
+      symlink_path("/Applications/Tower.app/Contents/MacOS/gittower", File.join($binPath, "gittower"))
+    end
   end
 
   task :local do
