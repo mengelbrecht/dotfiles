@@ -76,8 +76,11 @@ if [[ "$OSTYPE" =~ "linux" ]]; then
   if [[ -d "$gcc_path" ]]; then
     export PATH="$gcc_path/bin:$PATH"
     export LD_LIBRARY_PATH="$gcc_path/lib64:$LD_LIBRARY_PATH"
-    [[ ! -h "$HOME/.homebrew/bin/gcc-5" ]] && ln -s "$gcc_path/bin/gcc" "$HOME/.homebrew/bin/gcc-5"
-    [[ ! -h "$HOME/.homebrew/bin/g++-5" ]] && ln -s "$gcc_path/bin/g++" "$HOME/.homebrew/bin/g++-5"
+
+    if [[ -d "$HOME/.homebrew" ]]; then
+      [[ ! -h "$HOME/.homebrew/bin/gcc-5" ]] && ln -s "$gcc_path/bin/gcc" "$HOME/.homebrew/bin/gcc-5"
+      [[ ! -h "$HOME/.homebrew/bin/g++-5" ]] && ln -s "$gcc_path/bin/g++" "$HOME/.homebrew/bin/g++-5"
+    fi
   fi
 fi
 
