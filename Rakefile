@@ -31,16 +31,22 @@ namespace :setup do
   task :homebrew do
     next if $windows
 
-    `which brew &> /dev/null`
+    brewBin = `which brew 2> /dev/null`.strip
     unless $?.success?
-      info("installing homebrew")
-      sh "git clone https://github.com/Homebrew/homebrew.git #{$homebrewPath}" if $osx
-      sh "git clone https://github.com/Homebrew/linuxbrew.git #{$homebrewPath}" if $linux
+      unless File.exists?($homebrewPath)
+        info("installing homebrew")
+        sh "git clone https://github.com/Homebrew/homebrew.git #{$homebrewPath}" if $osx
+        sh "git clone https://github.com/Homebrew/linuxbrew.git #{$homebrewPath}" if $linux
+        brewBin = "#{$homebrewPath}/bin/brew"
+      else
+        error("brew is not part of PATH but homebrew folder exists")
+        next
+      end
     end
 
-    installedPackages = `brew list`
+    installedPackages = `#{brewBin} list`
     $homebrewPackages.each {|name|
-      sh "brew install #{name}" unless installedPackages.include?(name)
+      sh "#{brewBin} install #{name}" unless installedPackages.include?(name)
     }
   end
 
