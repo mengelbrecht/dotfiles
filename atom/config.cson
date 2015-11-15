@@ -24,6 +24,10 @@
       "update-package-dependencies"
       "welcome"
     ]
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
   editor:
     preferredLineLength: 120
     showInvisibles: true
