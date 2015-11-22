@@ -29,26 +29,16 @@ atom-text-editor {
     // Shrink tab bar
     .tab-bar {
         height: @tab-bar-height;
-        .tab, .close-icon {
-            line-height: @tab-bar-height;
-        }
-    }
-
-    // Small padding on top of editor
-    .editor {
+        .tab, .close-icon { line-height: @tab-bar-height; }
     }
 }
 
 atom-text-editor::shadow {
     // Disable blinking cursor
-    .cursors.blink-off .cursor {
-        opacity: 1.0;
-    }
+    .cursors.blink-off .cursor { opacity: 1.0; }
 
     // Make wrap guide and invisible characters slightly transparent
-    .invisible-character, .indent-guide, .wrap-guide {
-        opacity: @overlay-opacity;
-    }
+    .invisible-character, .indent-guide, .wrap-guide { opacity: @overlay-opacity; }
 
     // Smaller line numbers
     .line-numbers .line-number {
