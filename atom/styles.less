@@ -17,6 +17,7 @@ atom-text-editor {
     font-family: @editor-font;
     font-size: @editor-font-size;
     line-height: @line-height;
+    text-rendering: optimizeLegibility;
 }
 
 // Customize UI
@@ -54,9 +55,4 @@ atom-text-editor::shadow {
         font-size: @line-number-font-size;
         line-height: @editor-font-size * @line-height;
     }
-}
-
-// Enable for ligatures
-atom-text-editor {
-   text-rendering: optimizeLegibility;
 }
