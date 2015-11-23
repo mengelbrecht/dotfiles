@@ -65,7 +65,7 @@ namespace :setup do
     if File.exists?("/Applications/SourceTree.app")
       symlink_path("/Applications/SourceTree.app/Contents/Resources/stree", File.join($binPath, "stree"))
     end
-    
+
     if File.exists?("/Applications/Tower.app")
       symlink_path("/Applications/Tower.app/Contents/MacOS/gittower", File.join($binPath, "gittower"))
     end
@@ -89,7 +89,7 @@ namespace :setup do
     }
 
     Dir.mkdir($zgenPath) unless Dir.exist?($zgenPath)
-  
+
     symlink_path(File.join($root, "zgen", "_zgen"), File.join($zgenPath, "_zgen"))
     symlink_path(File.join($root, "zgen", "zgen.zsh"), File.join($zgenPath, "zgen.zsh"))
   end
