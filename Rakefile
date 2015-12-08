@@ -14,7 +14,7 @@ $osx = RUBY_PLATFORM.include? "darwin"
 $linux = RUBY_PLATFORM.include? "linux"
 $windows = RUBY_PLATFORM =~ /cygwin|mswin|mingw/
 
-$homebrewPath = File.join($home, ".homebrew")
+$homebrewPath = if $osx then "/usr/local" else File.join($home, ".homebrew") end
 $binPath = File.join($homebrewPath, "bin")
 $zgenPath = File.join($home, ".zgen")
 $homebrewPackages = ['coreutils', 'git']
@@ -33,21 +33,23 @@ namespace :setup do
 
     brewBin = `which brew 2> /dev/null`.strip
     unless $?.success?
-      unless File.exists?($homebrewPath)
+      if $osx then
         info("installing homebrew")
-        sh "git clone https://github.com/Homebrew/homebrew.git #{$homebrewPath}" if $osx
-        sh "git clone https://github.com/Homebrew/linuxbrew.git #{$homebrewPath}" if $linux
-        brewBin = "#{$homebrewPath}/bin/brew"
-      else
-        error("brew is not part of PATH but homebrew folder exists")
-        next
+        sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
+      elsif $linux
+        unless File.exists?($homebrewPath)
+          info("installing homebrew")
+          sh "git clone https://github.com/Homebrew/linuxbrew.git #{$homebrewPath}"
+        else
+          error("brew is not part of PATH but homebrew folder exists")
+          next
+        end
       end
+      brewBin = "#{$homebrewPath}/bin/brew"
     end
 
-    installedPackages = `#{brewBin} list`
-    $homebrewPackages.each {|name|
-      sh "#{brewBin} install #{name}" unless installedPackages.include?(name)
-    }
+    installedPackages = `#{brewBin} list`.split()
+    ($homebrewPackages - installedPackages).each {|name| sh "#{brewBin} install #{name}"}
   end
 
   task :shell_helper do
