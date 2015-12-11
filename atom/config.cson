@@ -68,9 +68,6 @@
 ".python.source":
   editor:
     softTabs: false
-".nim.source":
-  editor:
-    tabLength: 2
 ".shell.source":
   editor:
     tabLength: 2
