@@ -16,7 +16,7 @@ $windows = RUBY_PLATFORM =~ /cygwin|mswin|mingw/
 
 $homebrewPath = if $osx then "/usr/local" else File.join($home, ".homebrew") end
 $binPath = File.join($homebrewPath, "bin")
-$homebrewPackages = ['coreutils', 'git']
+$homebrewPackages = ['coreutils', 'git', 'ncdu']
 $localFiles = ["gitconfig.local", "zshrc.local"]
 
 namespace :setup do
