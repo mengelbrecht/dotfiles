@@ -2,7 +2,19 @@
 	path = hammerspoon
 	url = https://github.com/mgee/hammerspoon-config.git
 	branch = master
-[submodule "zgen"]
-	path = zgen
-	url = https://github.com/tarjoilija/zgen.git
+[submodule "zsh/slimline"]
+	path = zsh/slimline
+	url = https://github.com/mgee/slimline.git
+	branch = master
+[submodule "zsh/zsh-completions"]
+	path = zsh/zsh-completions
+	url = https://github.com/zsh-users/zsh-completions.git
+	branch = master
+[submodule "zsh/zsh-history-substring-search"]
+	path = zsh/zsh-history-substring-search
+	url = https://github.com/zsh-users/zsh-history-substring-search.git
+	branch = master
+[submodule "zsh/zsh-syntax-highlighting"]
+	path = zsh/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 	branch = master

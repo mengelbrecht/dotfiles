@@ -16,7 +16,6 @@ $windows = RUBY_PLATFORM =~ /cygwin|mswin|mingw/
 
 $homebrewPath = if $osx then "/usr/local" else File.join($home, ".homebrew") end
 $binPath = File.join($homebrewPath, "bin")
-$zgenPath = File.join($home, ".zgen")
 $homebrewPackages = ['coreutils', 'git']
 $localFiles = ["gitconfig.local", "zshrc.local"]
 
@@ -89,11 +88,6 @@ namespace :setup do
         symlink_path(File.join($root, f), File.join($home, ".#{File.basename(f)}"))
       end
     }
-
-    Dir.mkdir($zgenPath) unless Dir.exist?($zgenPath)
-
-    symlink_path(File.join($root, "zgen", "_zgen"), File.join($zgenPath, "_zgen"))
-    symlink_path(File.join($root, "zgen", "zgen.zsh"), File.join($zgenPath, "zgen.zsh"))
   end
 end
 
