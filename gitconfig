@@ -1,12 +1,3 @@
-[alias]
-	cleanup = clean -dxf
-	restore = reset --hard HEAD
-	wipe = !git restore && git cleanup
-	svnc = svn clone
-	svnd = svn dcommit
-	svnf = svn fetch
-	svni = svn init
-	svnr = svn rebase
 [branch]
 	autosetuprebase = always
 [core]
