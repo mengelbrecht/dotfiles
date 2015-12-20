@@ -2,7 +2,10 @@
 # ZSH configuration
 # by Markus Engelbrecht
 #
-# based on prezto (https://github.com/sorin-ionescu/prezto)
+# Based on Prezto by Sorin Ionescu (https://github.com/sorin-ionescu/prezto)
+#   Sorin Ionescu <sorin.ionescu@gmail.com>
+#   Robby Russell <robby@planetargon.com>
+#   James Cox <james@imaj.es>
 #
 # MIT License
 #-------------------------------------------------------------------------------
@@ -26,8 +29,9 @@ if [[ -z "$LANG" ]]; then
 fi
 
 #-------------------------------------------------------------------------------
-# setup editors
+# Editors
 #-------------------------------------------------------------------------------
+
 if [[ "$OSTYPE" =~ "darwin" ]]; then
   export EDITOR='mate -w'
   export VISUAL='mate -w'
@@ -40,8 +44,9 @@ export PAGER='less'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 #-------------------------------------------------------------------------------
-# setup temporary directory
+# Temporary Directory
 #-------------------------------------------------------------------------------
+
 if [[ ! -d "$TMPDIR" ]]; then
   export TMPDIR="/tmp/$LOGNAME"
   mkdir -p -m 700 "$TMPDIR"
@@ -50,8 +55,9 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 #-------------------------------------------------------------------------------
-# setup homebrew paths
+# Homebrew Paths
 #-------------------------------------------------------------------------------
+
 if [[ -d "$HOME/.homebrew" ]]; then
   export PATH="$HOME/.homebrew/bin:$PATH"
   export MANPATH="$HOME/.homebrew/share/man:$MANPATH"
@@ -59,8 +65,9 @@ if [[ -d "$HOME/.homebrew" ]]; then
 fi
 
 #-------------------------------------------------------------------------------
-# setup osx specifics
+# OSX Specifics
 #-------------------------------------------------------------------------------
+
 if [[ "$OSTYPE" =~ "darwin" ]]; then
   # Shortcut to use xcpretty and xcodebuild together
   xc() {
@@ -69,8 +76,9 @@ if [[ "$OSTYPE" =~ "darwin" ]]; then
 fi
 
 #-------------------------------------------------------------------------------
-# setup linux specifics
+# Linux Specifics
 #-------------------------------------------------------------------------------
+
 if [[ "$OSTYPE" =~ "linux" ]]; then
   local gcc_path="/package/host/localhost/gcc-5"
   if [[ -d "$gcc_path" ]]; then
@@ -85,8 +93,9 @@ if [[ "$OSTYPE" =~ "linux" ]]; then
 fi
 
 #-------------------------------------------------------------------------------
-# setup cygwin specifics
+# Cygwin Specifics
 #-------------------------------------------------------------------------------
+
 if [[ "$OSTYPE" =~ "cygwin" ]]; then
   insecure_directories=(${(f@):-"$(compaudit 2>/dev/null)"})
   for directory in $insecure_directories; do
@@ -99,8 +108,9 @@ if [[ "$OSTYPE" =~ "cygwin" ]]; then
 fi
 
 #-------------------------------------------------------------------------------
-# helper functions
+# Helper Functions
 #-------------------------------------------------------------------------------
+
 # Update and upgrade all packages, afterwards perform a cleanup
 brewup() {
   brew update && brew upgrade --all && brew cleanup
@@ -172,7 +182,7 @@ EOPLUGINS
 fi
 
 #-------------------------------------------------------------------------------
-# source local zshrc file
+# Local zshrc file
 #-------------------------------------------------------------------------------
 if [[ -s "$HOME/.zshrc.local" ]]; then
   source "$HOME/.zshrc.local"
