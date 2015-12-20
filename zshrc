@@ -24,7 +24,7 @@
 #-------------------------------------------------------------------------------
 # setup language
 #-------------------------------------------------------------------------------
-if [[ -z "$LANG" ]]; then
+if [[ -z "${LANG}" ]]; then
   export LANG='en_US.UTF-8'
 fi
 
@@ -32,7 +32,7 @@ fi
 # Editors
 #-------------------------------------------------------------------------------
 
-if [[ "$OSTYPE" =~ "darwin" ]]; then
+if [[ "${OSTYPE}" =~ "darwin" ]]; then
   export EDITOR='mate -w'
   export VISUAL='mate -w'
 else
@@ -47,9 +47,9 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 # Temporary Directory
 #-------------------------------------------------------------------------------
 
-if [[ ! -d "$TMPDIR" ]]; then
-  export TMPDIR="/tmp/$LOGNAME"
-  mkdir -p -m 700 "$TMPDIR"
+if [[ ! -d "${TMPDIR}" ]]; then
+  export TMPDIR="/tmp/${LOGNAME}"
+  mkdir -p -m 700 "${TMPDIR}"
 fi
 
 TMPPREFIX="${TMPDIR%/}/zsh"
@@ -58,21 +58,21 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 # Homebrew Paths
 #-------------------------------------------------------------------------------
 
-if [[ -d "$HOME/.homebrew" ]]; then
-  export PATH="$HOME/.homebrew/bin:$PATH"
-  export MANPATH="$HOME/.homebrew/share/man:$MANPATH"
-  export INFOPATH="$HOME/.homebrew/share/info:$INFOPATH"
+if [[ -d "${HOME}/.homebrew" ]]; then
+  export PATH="${HOME}/.homebrew/bin:${PATH}"
+  export MANPATH="${HOME}/.homebrew/share/man:${MANPATH}"
+  export INFOPATH="${HOME}/.homebrew/share/info:${INFOPATH}"
 fi
 
 #-------------------------------------------------------------------------------
 # OSX Specifics
 #-------------------------------------------------------------------------------
 
-if [[ "$OSTYPE" =~ "darwin" ]]; then
+if [[ "${OSTYPE}" =~ "darwin" ]]; then
   # Add coreutils without 'g' prefix to path
   if [[ -d "/usr/local/opt/coreutils" ]]; then
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
   fi
 
   # Shortcut to use xcpretty and xcodebuild together
@@ -85,15 +85,15 @@ fi
 # Linux Specifics
 #-------------------------------------------------------------------------------
 
-if [[ "$OSTYPE" =~ "linux" ]]; then
+if [[ "${OSTYPE}" =~ "linux" ]]; then
   local gcc_path="/package/host/localhost/gcc-5"
-  if [[ -d "$gcc_path" ]]; then
-    export PATH="$gcc_path/bin:$PATH"
-    export LD_LIBRARY_PATH="$gcc_path/lib64:$LD_LIBRARY_PATH"
+  if [[ -d "${gcc_path}" ]]; then
+    export PATH="${gcc_path}/bin:${PATH}"
+    export LD_LIBRARY_PATH="${gcc_path}/lib64:$LD_LIBRARY_PATH"
 
-    if [[ -d "$HOME/.homebrew" ]]; then
-      [[ ! -h "$HOME/.homebrew/bin/gcc-5" ]] && ln -s "$gcc_path/bin/gcc" "$HOME/.homebrew/bin/gcc-5"
-      [[ ! -h "$HOME/.homebrew/bin/g++-5" ]] && ln -s "$gcc_path/bin/g++" "$HOME/.homebrew/bin/g++-5"
+    if [[ -d "${HOME}/.homebrew" ]]; then
+      [[ ! -h "${HOME}/.homebrew/bin/gcc-5" ]] && ln -s "${gcc_path}/bin/gcc" "${HOME}/.homebrew/bin/gcc-5"
+      [[ ! -h "${HOME}/.homebrew/bin/g++-5" ]] && ln -s "${gcc_path}/bin/g++" "${HOME}/.homebrew/bin/g++-5"
     fi
   fi
 fi
@@ -102,12 +102,12 @@ fi
 # Cygwin Specifics
 #-------------------------------------------------------------------------------
 
-if [[ "$OSTYPE" =~ "cygwin" ]]; then
+if [[ "${OSTYPE}" =~ "cygwin" ]]; then
   insecure_directories=(${(f@):-"$(compaudit 2>/dev/null)"})
-  for directory in $insecure_directories; do
-    chmod g-w $directory
+  for directory in ${insecure_directories}; do
+    chmod g-w ${directory}
   done
-  if [[ "$insecure_directories" != "" ]]; then
+  if [[ "${insecure_directories}" != "" ]]; then
     rm -f ~/.zcompdump
     compinit
   fi
@@ -190,6 +190,6 @@ fi
 #-------------------------------------------------------------------------------
 # Local zshrc file
 #-------------------------------------------------------------------------------
-if [[ -s "$HOME/.zshrc.local" ]]; then
-  source "$HOME/.zshrc.local"
+if [[ -s "${HOME}/.zshrc.local" ]]; then
+  source "${HOME}/.zshrc.local"
 fi
