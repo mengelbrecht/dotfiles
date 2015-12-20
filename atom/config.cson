@@ -39,7 +39,8 @@
       space: false
       tab: "⇥"
     softTabs: true
-  whitespace: {}
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
   minimap:
     plugins:
       "git-diff": true
