@@ -69,6 +69,12 @@ fi
 #-------------------------------------------------------------------------------
 
 if [[ "$OSTYPE" =~ "darwin" ]]; then
+  # Add coreutils without 'g' prefix to path
+  if [[ -d "/usr/local/opt/coreutils" ]]; then
+    export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+  fi
+
   # Shortcut to use xcpretty and xcodebuild together
   xc() {
     xcodebuild "$@" | xcpretty -c
