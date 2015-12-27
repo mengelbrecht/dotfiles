@@ -597,6 +597,14 @@ defaults write com.torusknot.SourceTreeNotMAS SUSendProfileInfo -bool false
 defaults write com.torusknot.SourceTreeNotMAS agreedToUpdateConfig -bool false
 
 ###############################################################################
+# iTerm                                                                       #
+###############################################################################
+
+# Load prefs from dotfiles
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.dotfiles/iTerm"
+defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
