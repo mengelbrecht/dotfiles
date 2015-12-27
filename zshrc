@@ -156,6 +156,10 @@ zle -N expand-dot-to-parent-directory-path
 bindkey "." expand-dot-to-parent-directory-path
 bindkey "^[[3~" delete-char # bind delete key to delete character
 
+# bindings for iTerm
+bindkey "^[^[[D" backward-word
+bindkey "^[^[[C" forward-word
+
 #-------------------------------------------------------------------------------
 # Aliases
 #-------------------------------------------------------------------------------
