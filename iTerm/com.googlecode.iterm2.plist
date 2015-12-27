@@ -224,7 +224,7 @@
 	<key>Default Bookmark Guid</key>
 	<string>3C1B0DFD-A1BA-4136-89A3-2F5A5E4EB26C</string>
 	<key>DimOnlyText</key>
-	<false/>
+	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<true/>
 	<key>HideScrollbar</key>
@@ -273,12 +273,6 @@
 		<key>TB Is Shown</key>
 		<integer>1</integer>
 	</dict>
-	<key>NSWindow Frame Preferences</key>
-	<string>269 197 606 456 0 0 1440 900 </string>
-	<key>NSWindow Frame UKCrashReporter</key>
-	<string>99 316 592 584 0 0 1440 900 </string>
-	<key>NSWindow Frame iTerm Window 0</key>
-	<string>9 0 1431 443 0 0 1440 900 </string>
 	<key>New Bookmarks</key>
 	<array>
 		<dict>
@@ -910,8 +904,6 @@
 			<integer>0</integer>
 		</dict>
 	</array>
-	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>472910081.439704</real>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -957,11 +949,9 @@
 	<string>https://iterm2.com/appcasts/nightly.xml</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
-	<key>SULastCheckTime</key>
-	<date>2015-12-27T11:54:56Z</date>
-	<key>SUSendProfileInfo</key>
-	<false/>
 	<key>ShowBookmarkName</key>
+	<false/>
+	<key>ShowPaneTitles</key>
 	<false/>
 	<key>SwitchWindowModifier</key>
 	<integer>9</integer>
@@ -969,8 +959,6 @@
 	<integer>1</integer>
 	<key>TabViewType</key>
 	<integer>0</integer>
-	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1451217280</real>
 	<key>UseBorder</key>
 	<false/>
 	<key>WindowNumber</key>
