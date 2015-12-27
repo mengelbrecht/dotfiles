@@ -243,12 +243,6 @@
 	<integer>524288</integer>
 	<key>LoadPrefsFromCustomFolder</key>
 	<true/>
-	<key>NSNavLastRootDirectory</key>
-	<string>~/.dotfiles/iTerm2</string>
-	<key>NSNavPanelExpandedSizeForOpenMode</key>
-	<string>{712, 448}</string>
-	<key>NSNavPanelExpandedSizeForSaveMode</key>
-	<string>{712, 488}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -280,7 +274,7 @@
 		<integer>1</integer>
 	</dict>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 371 606 456 0 0 1440 900 </string>
+	<string>269 197 606 456 0 0 1440 900 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>99 316 592 584 0 0 1440 900 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
@@ -889,7 +883,7 @@
 			<key>Shortcut</key>
 			<string></string>
 			<key>Silence Bell</key>
-			<false/>
+			<true/>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -916,12 +910,8 @@
 			<integer>0</integer>
 		</dict>
 	</array>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
-	<true/>
-	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
-	<integer>1</integer>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>472906069.04473603</real>
+	<real>472910081.439704</real>
 	<key>PointerActions</key>
 	<dict>
 		<key>Button,1,1,,</key>
@@ -968,7 +958,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2015-12-27T11:10:21Z</date>
+	<date>2015-12-27T11:54:56Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -980,7 +970,7 @@
 	<key>TabViewType</key>
 	<integer>0</integer>
 	<key>UKCrashReporterLastCrashReportDate</key>
-	<real>1451216384</real>
+	<real>1451217280</real>
 	<key>UseBorder</key>
 	<false/>
 	<key>WindowNumber</key>
