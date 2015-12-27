@@ -583,7 +583,7 @@ defaults write com.torusknot.SourceTreeNotMAS gitSuppressWarnOnAmend -bool true
 
 # Set diff font and size
 defaults write com.torusknot.SourceTreeNotMAS diffFontName -string "PragmataPro"
-defaults write com.torusknot.SourceTreeNotMAS diffFontSize -int 12
+defaults write com.torusknot.SourceTreeNotMAS diffFontSize -int 13
 
 # Don't show tips
 defaults write com.torusknot.SourceTreeNotMAS showFileStatusViewOptionsTip -bool false
