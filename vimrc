@@ -81,7 +81,7 @@ set shiftwidth=4 " Set auto indent spacing.
 set shiftround " Shift to the next round tab stop.
 set expandtab " Expand tabs into spaces.
 set smarttab " Insert spaces in front of lines.
-set listchars=tab:▸·,trail:· " Show leading whitespace
+set listchars=eol:¬,tab:\|\ ,trail:·" Show leading whitespace
 set list
 
 " Bind F5 to remove trailing whitespace.
