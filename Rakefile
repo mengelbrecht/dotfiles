@@ -111,8 +111,8 @@ def realpath(path)
   if $windows then
      real_path=`readlink -f #{path}`
      return `cygpath #{real_path}`.strip
-   end
-   return Pathname.new(path).realpath()
+  end
+  return Pathname.new(path).realpath()
 end
 
 def readlink(path)
