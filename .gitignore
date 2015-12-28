@@ -1,1 +1,11 @@
 *.local
+
+atom/.apm
+atom/.node-gyp
+atom/blob-store
+atom/compile-cache
+atom/packages
+atom/storage
+
+vim/autoload
+vim/plugged
