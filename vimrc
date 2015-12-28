@@ -26,7 +26,6 @@ Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 call plug#end()
-delc PlugUpgrade
 
 " ------------------------------------------------------------------------------
 " General Settings
@@ -56,8 +55,6 @@ set whichwrap+=<,>,h,l,[,] " Move lines using arrows.
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-
-"let mapleader = "," " Use comma as leader.
 
 " ------------------------------------------------------------------------------
 " Search and Replace
