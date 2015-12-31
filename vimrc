@@ -23,6 +23,7 @@ Plug 'joshdick/airline-onedark.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 call plug#end()
