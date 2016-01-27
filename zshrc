@@ -293,7 +293,7 @@ alias gpf='git push --force'
 alias gpa='git push --all'
 alias gpA='git push --all && git push --tags'
 alias gpt='git push --tags'
-alias gpc='git push --set-upstream origin "$(git-branch-current 2> /dev/null)"'
+alias gpc='git push --set-upstream origin "$(git symbolic-ref HEAD 2> /dev/null)"'
 alias gpp='git pull origin "$(git-branch-current 2> /dev/null)" && git push origin "$(git-branch-current 2> /dev/null)"'
 
 # Rebase (r)
