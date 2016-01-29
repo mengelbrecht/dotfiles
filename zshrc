@@ -23,8 +23,8 @@ fi
 #-------------------------------------------------------------------------------
 
 if [[ "${OSTYPE}" =~ "darwin" ]]; then
-  export EDITOR='mate -w'
-  export VISUAL='mate -w'
+  export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
+  export VISUAL='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
 else
   export EDITOR='vim'
   export VISUAL='vim'
