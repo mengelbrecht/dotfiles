@@ -251,6 +251,11 @@ defaults write com.apple.finder WarnOnEmptyTrash -bool false
 # Show the ~/Library folder
 chflags nohidden ~/Library
 
+# Symlink iCloud Drive
+if [[ ! -d "${HOME}/iCloudDrive" ]]; then
+    ln -s ${HOME}/Library/Mobile\ Documents/com\~apple\~CloudDocs ${HOME}/iCloudDrive
+fi
+
 # Expand the following File Info panes:
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
    Comments -bool false \
