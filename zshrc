@@ -483,6 +483,16 @@ setopt HIST_SAVE_NO_DUPS    # don't save duplicates
 setopt HIST_VERIFY          # verify history entry before executing
 
 #-------------------------------------------------------------------------------
+# Plugins
+#-------------------------------------------------------------------------------
+
+source "${HOME}/.zsh/zsh-completions/zsh-completions.plugin.zsh"
+source "${HOME}/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source "${HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+source "${HOME}/.zsh/slimline/slimline.plugin.zsh"
+
+#-------------------------------------------------------------------------------
 # Syntax Highlighting
 #-------------------------------------------------------------------------------
 
@@ -493,13 +503,10 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[path_approx]='fg=yellow'
 
 #-------------------------------------------------------------------------------
-# Plugins
+# Autosuggestions
 #-------------------------------------------------------------------------------
 
-source "${HOME}/.zsh/zsh-completions/zsh-completions.plugin.zsh"
-source "${HOME}/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh"
-source "${HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
-source "${HOME}/.zsh/slimline/slimline.plugin.zsh"
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 
 #-------------------------------------------------------------------------------
 # History Substring Search
