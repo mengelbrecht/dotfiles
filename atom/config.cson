@@ -1,6 +1,4 @@
 "*":
-  welcome:
-    showOnStartup: false
   core:
     disabledPackages: [
       "archive-view"
@@ -29,18 +27,16 @@
       "one-light-syntax"
     ]
   editor:
-    preferredLineLength: 120
-    showInvisibles: true
-    showIndentGuide: true
-    tabLength: 4
     invisibles:
       cr: "↩"
       eol: false
       space: false
       tab: "⇥"
+    preferredLineLength: 120
+    showIndentGuide: true
+    showInvisibles: true
     softTabs: true
-  whitespace:
-    ignoreWhitespaceOnCurrentLine: false
+    tabLength: 4
   minimap:
     plugins:
       "git-diff": true
@@ -52,23 +48,27 @@
   tabs:
     enableVcsColoring: true
     usePreviewTabs: true
-".cpp.source":
+  welcome:
+    showOnStartup: false
+  whitespace:
+    ignoreWhitespaceOnCurrentLine: false
+".c.source":
   editor:
     preferredLineLength: 100
     softTabs: false
-".c.source":
+".cpp.source":
   editor:
     preferredLineLength: 100
     softTabs: false
 ".lua.source":
   editor:
     tabLength: 2
-".ruby.source":
-  editor:
-    tabLength: 2
 ".python.source":
   editor:
     softTabs: false
+".ruby.source":
+  editor:
+    tabLength: 2
 ".shell.source":
   editor:
     tabLength: 2
