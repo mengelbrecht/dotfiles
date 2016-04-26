@@ -45,8 +45,10 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 
 #-------------------------------------------------------------------------------
-# Homebrew Paths
+# Homebrew
 #-------------------------------------------------------------------------------
+
+export HOMEBREW_NO_ANALYTICS=1
 
 if [[ -d "${HOME}/.homebrew" ]]; then
   export PATH="${HOME}/.homebrew/bin:${PATH}"
