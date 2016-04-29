@@ -48,7 +48,7 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 
 export HOMEBREW_NO_ANALYTICS=1
 
-homebrew="$(brew --prefix)"
+homebrew="$(brew --prefix 2> /dev/null)"
 
 if [[ $? -eq 0 && "${homebrew}" != "/usr/local" && -d "${homebrew}" ]]; then
   export PATH="${homebrew}/bin:${PATH}"
