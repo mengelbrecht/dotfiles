@@ -48,10 +48,13 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 
 export HOMEBREW_NO_ANALYTICS=1
 
-if [[ -d "${HOME}/.homebrew" ]]; then
-  export PATH="${HOME}/.homebrew/bin:${PATH}"
-  export MANPATH="${HOME}/.homebrew/share/man:${MANPATH}"
-  export INFOPATH="${HOME}/.homebrew/share/info:${INFOPATH}"
+homebrew="$(brew --prefix)"
+
+if [[ $? -eq 0 && "${homebrew}" != "/usr/local" && -d "${homebrew}" ]]; then
+  export PATH="${homebrew}/bin:${PATH}"
+  export MANPATH="${homebrew}/share/man:${MANPATH}"
+  export INFOPATH="${homebrew}/share/info:${INFOPATH}"
+  fpath=(${homebrew}/share/zsh/site-functions $fpath)
 fi
 
 #-------------------------------------------------------------------------------
@@ -60,9 +63,9 @@ fi
 
 if [[ "${OSTYPE}" =~ "darwin" ]]; then
   # Add coreutils without 'g' prefix to path
-  if [[ -d "/usr/local/opt/coreutils" ]]; then
-    export PATH="/usr/local/opt/coreutils/libexec/gnubin:${PATH}"
-    export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:${MANPATH}"
+  if [[ -d "${homebrew}/opt/coreutils" ]]; then
+    export PATH="${homebrew}/opt/coreutils/libexec/gnubin:${PATH}"
+    export MANPATH="${homebrew}/opt/coreutils/libexec/gnuman:${MANPATH}"
   fi
 
   # Shortcut to use xcpretty and xcodebuild together
