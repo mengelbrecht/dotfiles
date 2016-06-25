@@ -23,7 +23,7 @@
       "welcome"
     ]
     themes: [
-      "native-ui"
+      "one-light-ui"
       "one-light-syntax"
     ]
   editor:
