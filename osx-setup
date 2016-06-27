@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Based on http://mths.be/osx
+# Based on https://mths.be/dotfiles
 
 # Ask for the administrator password upfront
 sudo -v
@@ -361,9 +361,10 @@ defaults write com.apple.Safari ShowStatusBar -bool true
 defaults write com.apple.Safari AutoFillCreditCardData -bool false
 defaults write com.apple.Safari AutoFillFromAddressBook -bool false
 defaults write com.apple.Safari AutoFillPasswords -bool false
+defaults write com.apple.Safari AllowBypassOfAutocompleteOff -bool false
 
-# Don't prompt for push notifications
-defaults write com.apple.Safari CanPromptForPushNotifications -bool false
+# Warn About Fraudulent Websites
+defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
 
 # Disable plugins and Java
 defaults write com.apple.Safari WebKitPluginsEnabled -bool false
