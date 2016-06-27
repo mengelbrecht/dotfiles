@@ -7,7 +7,7 @@ task :setup => ["setup:setup"]
 
 verbose(false)
 
-$excludes = ["LICENSE", "osx-setup", "Rakefile", "README.md", "Terminal", "Xcode"]
+$excludes = ["LICENSE", "macOS-setup.sh", "Rakefile", "README.md", "Terminal", "Xcode"]
 $root = File.expand_path(File.dirname(__FILE__))
 $home = File.expand_path("~")
 $osx = RUBY_PLATFORM.include? "darwin"
@@ -24,7 +24,7 @@ namespace :setup do
 
   task :osx do
     next unless $osx
-    sh File.join($root, "osx-setup")
+    sh File.join($root, "macOS-setup.sh")
   end
 
   task :homebrew do
