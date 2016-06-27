@@ -498,6 +498,27 @@ defaults write com.apple.appstore WebKitDeveloperExtras -bool true
 # Enable Debug Menu in the Mac App Store
 defaults write com.apple.appstore ShowDebugMenu -bool true
 
+# Enable the automatic update check
+defaults write com.apple.SoftwareUpdate AutomaticCheckEnabled -bool true
+
+# Check for software updates daily, not just once per week
+defaults write com.apple.SoftwareUpdate ScheduleFrequency -int 1
+
+# Download newly available updates in background
+defaults write com.apple.SoftwareUpdate AutomaticDownload -int true
+
+# Install System data files & security updates
+defaults write com.apple.SoftwareUpdate CriticalUpdateInstall -int true
+
+# Automatically download apps purchased on other Macs
+defaults write com.apple.SoftwareUpdate ConfigDataInstall -int true
+
+# Turn on apps auto-update
+defaults write com.apple.commerce AutoUpdate -bool true
+
+# Allow the App Store to reboot machine on OSX updates
+defaults write com.apple.commerce AutoUpdateRestartRequired -bool true
+
 ###############################################################################
 # Xcode                                                                       #
 ###############################################################################
