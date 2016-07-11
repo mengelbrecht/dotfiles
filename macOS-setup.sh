@@ -361,7 +361,6 @@ defaults write com.apple.Safari ShowStatusBar -bool true
 defaults write com.apple.Safari AutoFillCreditCardData -bool false
 defaults write com.apple.Safari AutoFillFromAddressBook -bool false
 defaults write com.apple.Safari AutoFillPasswords -bool false
-defaults write com.apple.Safari AllowBypassOfAutocompleteOff -bool false
 
 # Warn About Fraudulent Websites
 defaults write com.apple.Safari WarnAboutFraudulentWebsites -bool true
