@@ -48,9 +48,8 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 
 export HOMEBREW_NO_ANALYTICS=1
 
-homebrew="${HOME}/.homebrew"
-
-if [[ -d "${homebrew}" ]]; then
+homebrew=$(dirname $(dirname $(which brew 2> /dev/null)))
+if [[ -d "${homebrew}" && "${homebrew}" != "/usr/local" ]]; then
   export PATH="${homebrew}/bin:${PATH}"
   export MANPATH="${homebrew}/share/man:${MANPATH}"
   export INFOPATH="${homebrew}/share/info:${INFOPATH}"
