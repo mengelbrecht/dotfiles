@@ -54,7 +54,7 @@ if [[ -d "${homebrew}" ]]; then
   export PATH="${homebrew}/bin:${PATH}"
   export MANPATH="${homebrew}/share/man:${MANPATH}"
   export INFOPATH="${homebrew}/share/info:${INFOPATH}"
-  fpath=(${homebrew}/share/zsh/site-functions $fpath)
+  fpath=(${homebrew}/share/zsh/site-functions ${fpath})
 fi
 
 #-------------------------------------------------------------------------------
@@ -82,7 +82,7 @@ if [[ "${OSTYPE}" =~ "linux" ]]; then
   local gcc_path="/package/host/localhost/gcc-5"
   if [[ -d "${gcc_path}" ]]; then
     export PATH="${gcc_path}/bin:${PATH}"
-    export LD_LIBRARY_PATH="${gcc_path}/lib64:$LD_LIBRARY_PATH"
+    export LD_LIBRARY_PATH="${gcc_path}/lib64:${LD_LIBRARY_PATH}"
 
     if [[ -d "${HOME}/.homebrew" ]]; then
       [[ ! -h "${HOME}/.homebrew/bin/gcc-5" ]] && ln -s "${gcc_path}/bin/gcc" "${HOME}/.homebrew/bin/gcc-5"
