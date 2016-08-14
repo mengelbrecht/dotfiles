@@ -388,6 +388,7 @@ autoload -Uz compinit && compinit -C -d ${ZDOTDIR:-${HOME}}/.zcompdump
   fi
 } &!
 
+setopt CORRECTALL       # Enable auto correction
 setopt ALWAYS_TO_END    # cursor moves to end of completion
 setopt AUTO_LIST        # list choices
 setopt AUTO_MENU        # automatically use menu
