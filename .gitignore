@@ -1,4 +1,5 @@
 *.local
+*.pyc
 
 atom/.apm
 atom/.node-gyp
@@ -9,3 +10,4 @@ atom/storage
 
 vim/autoload
 vim/plugged
+vim/session
