@@ -35,7 +35,7 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 # Automatically quit printer app once the print jobs complete
 defaults write com.apple.print.PrintingPrefs "Quit When Finished" -bool true
 
-# Disable the “Are you sure you want to open this application?” dialog
+# Disable the "Are you sure you want to open this application?" dialog
 defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable Resume system-wide
@@ -64,13 +64,13 @@ defaults write NSGlobalDomain com.apple.swipescrolldirection 1
 ###############################################################################
 
 # Set ZSH as default shell
-sudo dscl . -create /Users/$USER UserShell "/bin/zsh"
+sudo dscl . -create "/Users/${USER}" UserShell "/bin/zsh"
 
 # Account Picture
-user_picture="/Users/$USER/Pictures/Avatar.jpg"
-curl -s -o $user_picture https://avatars2.githubusercontent.com/u/8101
-dscl . delete /Users/$USER JPEGPhoto
-sudo dscl . create /Users/$USER Picture "$user_picture"
+user_picture="/Users/${USER}/Pictures/Avatar.jpg"
+curl -s -o "${user_picture}" https://avatars2.githubusercontent.com/u/8101
+dscl . delete "/Users/${USER}" JPEGPhoto
+sudo dscl . create "/Users/${USER}" Picture "${user_picture}"
 
 ###############################################################################
 # SSD-specific tweaks                                                         #
@@ -626,7 +626,7 @@ defaults write com.torusknot.SourceTreeNotMAS agreedToUpdateConfig -bool false
 ###############################################################################
 
 # Load prefs from dotfiles
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "~/.dotfiles/iTerm"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${HOME}/.dotfiles/iTerm"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 
 ###############################################################################
