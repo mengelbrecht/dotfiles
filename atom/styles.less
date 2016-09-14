@@ -1,50 +1,40 @@
 @import "ui-variables";
+@import "syntax-variables";
 
 // Variables to define style
 @editor-font: "PragmataPro", "SFMono-Regular", "SF Mono Regular";
-@ui-font: ".SFNSDisplay-Regular", "San Francisco Display", "Cantarell", "Segoe UI";
 @editor-font-size: 14px;
-
-@ui-font-size: @editor-font-size * 0.5 + 5;
-@line-number-font-size: @editor-font-size * 0.8;
-@tab-bar-height: @ui-font-size * 2;
-@overlay-opacity: 0.5;
-@editor-padding: 2px;
 @line-height: 1.2;
+
+@ui-font: ".SFNSText-Regular", "San Francisco Text", "Cantarell", "Segoe UI";
+@ui-font-size: @editor-font-size - 2;
+@tab-bar-height: @ui-font-size + 16;
 
 // Setup editor font and size
 atom-text-editor {
     font-family: @editor-font;
     font-size: @editor-font-size;
     line-height: @line-height;
-    padding-top: @editor-padding;
-    text-rendering: optimizeLegibility;
-    // Enable for stylistic set
-    //-webkit-font-feature-settings: "ss09";
+    padding-top: 2px;
 }
 
 // Customize UI
 .theme-one-dark-ui, .theme-one-light-ui {
     font-family: @ui-font;
     font-size: @ui-font-size;
-
-    // Shrink tab bar
-    .tab-bar {
-        height: @tab-bar-height;
-        .tab, .close-icon { line-height: @tab-bar-height; }
-    }
 }
 
 atom-text-editor::shadow {
-    // Disable blinking cursor
-    .cursors.blink-off .cursor { opacity: 1.0; }
-
     // Make wrap guide and invisible characters slightly transparent
-    .invisible-character, .indent-guide, .wrap-guide { opacity: @overlay-opacity; }
+    .invisible-character, .indent-guide, .wrap-guide { opacity: 0.5; }
 
     // Smaller line numbers
     .line-numbers .line-number {
-        font-size: @line-number-font-size;
+        font-size: @editor-font-size * 0.8;
         line-height: @editor-font-size * @line-height;
+    }
+
+    .highlights .highlight-selected.light-theme .region {
+        border-color: fadeout(@syntax-text-color, 60%);
     }
 }

@@ -25,5 +25,6 @@
 # https://github.com/bevry/cson#what-is-cson
 
 'atom-text-editor':
+	'cmd-alt-t': 'whitespace:remove-trailing-whitespace'
 	'ctrl-cmd-t': 'whitespace:convert-spaces-to-tabs'
 	'cmd-l': 'go-to-line:toggle'

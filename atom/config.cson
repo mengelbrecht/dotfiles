@@ -2,7 +2,6 @@
   core:
     disabledPackages: [
       "archive-view"
-      "autoflow"
       "background-tips"
       "exception-reporting"
       "feedback"
@@ -21,30 +20,35 @@
       "styleguide"
       "update-package-dependencies"
       "welcome"
+      "indent-guide-improved"
+      "auto-detect-indentation"
     ]
-    themes: [
-      "native-ui"
-      "one-light-syntax"
-    ]
+    telemetryConsent: "no"
+    useCustomTitleBar: true
+  "cursor-blink-interval":
+    cursorBlinkInterval: 1200
   editor:
+    fontSize: 15
     invisibles:
       cr: "↩"
-      eol: false
-      space: false
+      eol: ""
+      space: " "
       tab: "⇥"
     preferredLineLength: 120
     showIndentGuide: true
     showInvisibles: true
     softTabs: true
     tabLength: 4
+  "highlight-selected":
+    lightTheme: true
+  linter: {}
   minimap:
     plugins:
       "git-diff": true
       "git-diffDecorationsZIndex": 0
       selection: true
       selectionDecorationsZIndex: 0
-  "one-dark-ui":
-    layoutMode: "Compact"
+  "one-dark-ui": {}
   "one-light-ui":
     layoutMode: "Compact"
   tabs:
@@ -53,7 +57,9 @@
   welcome:
     showOnStartup: false
   whitespace:
+    ensureSingleTrailingNewline: false
     ignoreWhitespaceOnCurrentLine: false
+    removeTrailingWhitespace: false
 ".c.source":
   editor:
     preferredLineLength: 100
