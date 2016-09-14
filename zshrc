@@ -501,6 +501,8 @@ setopt HIST_VERIFY          # verify history entry before executing
 # Plugins
 #-------------------------------------------------------------------------------
 
+export SLIMLINE_GIT_REPO_INDICATOR=''
+
 source "${HOME}/.zsh/zsh-completions/zsh-completions.plugin.zsh"
 source "${HOME}/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh"
 source "${HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
