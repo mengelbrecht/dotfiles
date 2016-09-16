@@ -123,10 +123,6 @@ def is_symlink(path)
   return readlink(path) != ""
 end
 
-def do_symlink(source, dest)
-  sh "ln -s '#{source}' '#{dest}'"
-end
-
 def symlink_path(source, dest)
   if not File.exists?(dest) and is_symlink(dest)
     info("deleting broken symlink '#{dest}' to '#{readlink(dest)}'")
@@ -138,7 +134,7 @@ def symlink_path(source, dest)
     warning("target '#{dest}' already exists, backing up to '#{backup}'")
     File.rename(dest, backup)
   end
-  do_symlink(source, dest)
+  sh "ln -s '#{source}' '#{dest}'"
   info("symlinked '#{source}' to '#{dest}'")
 end
 
