@@ -3,28 +3,28 @@ require 'tempfile'
 
 task :default => :update
 
-task :setup => ["setup:setup"]
+task :setup => ['setup:setup']
 
 verbose(false)
 
-$excludes = ["LICENSE", "macOS-setup.sh", "Rakefile", "README.md", "Terminal", "Xcode"]
+$excludes = ['LICENSE', 'macOS-setup.sh', 'Rakefile', 'README.md', 'Terminal', 'Xcode']
 $root = File.expand_path(File.dirname(__FILE__))
 $home = File.expand_path("~")
-$osx = RUBY_PLATFORM.include? "darwin"
-$linux = RUBY_PLATFORM.include? "linux"
+$osx = RUBY_PLATFORM.include? 'darwin'
+$linux = RUBY_PLATFORM.include? 'linux'
 $windows = RUBY_PLATFORM =~ /cygwin|mswin|mingw/
 
-$homebrewPath = if $osx then "/usr/local" else File.join($home, ".homebrew") end
+$homebrewPath = if $osx then '/usr/local' else "#{$home}/.homebrew" end
 $binPath = File.join($homebrewPath, "bin")
-$homebrewPackages = ['coreutils', 'git', 'ncdu']
-$localFiles = ["gitconfig.local", "zshrc.local"]
+$homebrewPackages = ['pt', 'cmake', 'coreutils', 'git', 'ncdu', 'ninja']
+$localFiles = ['gitconfig.local', 'vim/vimrc.local', "zshrc.local"]
 
 namespace :setup do
   task :setup => [:osx, :homebrew, :shell_helper, :local, :dotfiles]
 
   task :osx do
     next unless $osx
-    sh File.join($root, "macOS-setup.sh")
+    sh File.join($root, 'macOS-setup.sh')
   end
 
   task :homebrew do
