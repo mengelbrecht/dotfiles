@@ -18,6 +18,12 @@ $homebrewPath = if $osx then '/usr/local' else "#{$home}/.homebrew" end
 $binPath = File.join($homebrewPath, "bin")
 $homebrewPackages = ['pt', 'cmake', 'coreutils', 'git', 'ncdu', 'ninja']
 $localFiles = ['gitconfig.local', 'vim/vimrc.local', "zshrc.local"]
+$shellHelpers = [
+  "/Applications/Atom.app/Contents/Resources/app/apm/node_modules/.bin/apm",
+  "/Applications/Atom.app/Contents/Resources/app/atom.sh",
+  "/Applications/SourceTree.app/Contents/Resources/stree",
+  "/Applications/Tower.app/Contents/MacOS/gittower",
+]
 
 namespace :setup do
   task :setup => [:osx, :homebrew, :shell_helper, :local, :dotfiles]
@@ -54,22 +60,9 @@ namespace :setup do
   task :shell_helper do
     next unless $osx
 
-    if File.exists?("/Applications/Atom.app")
-      symlink_path("/Applications/Atom.app/Contents/Resources/app/apm/node_modules/.bin/apm", File.join($binPath, "apm"))
-      symlink_path("/Applications/Atom.app/Contents/Resources/app/atom.sh", File.join($binPath, "atom"))
-    end
-
-    if File.exists?("/Applications/TextMate.app")
-      symlink_path("/Applications/TextMate.app/Contents/Resources/mate", File.join($binPath, "mate"))
-    end
-
-    if File.exists?("/Applications/SourceTree.app")
-      symlink_path("/Applications/SourceTree.app/Contents/Resources/stree", File.join($binPath, "stree"))
-    end
-
-    if File.exists?("/Applications/Tower.app")
-      symlink_path("/Applications/Tower.app/Contents/MacOS/gittower", File.join($binPath, "gittower"))
-    end
+    $shellHelpers.each {|h|
+      symlink_path(h, File.join($binPath, File.basename(h, ".*"))) if File.exists?(h)
+    }
   end
 
   task :local do
