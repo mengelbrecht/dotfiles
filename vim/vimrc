@@ -21,30 +21,28 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin()
+Plug 'airblade/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-airline'
 Plug 'cespare/vim-sbd'
-Plug 'easymotion/vim-easymotion'
-Plug 'haya14busa/incsearch-easymotion.vim'
+Plug 'coderifous/textobj-word-column.vim'
 Plug 'haya14busa/incsearch.vim'
-Plug 'junegunn/vim-easy-align'
-" Plug 'jistr/vim-nerdtree-tabs'
 Plug 'joshdick/onedark.vim'
+Plug 'junegunn/vim-easy-align'
+Plug 'justinmk/vim-sneak'
 Plug 'myint/indent-finder'
 Plug 'ntpeters/vim-better-whitespace'
-" Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer' }
+Plug 'osyo-manga/vim-over'
 Plug 'rakr/vim-one'
 Plug 'rhysd/vim-clang-format'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-dispatch' | Plug 'mileszs/ack.vim'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
 Plug 'tpope/vim-obsession'
-Plug 'mileszs/ack.vim'
-Plug 'junegunn/fzf', Cond(has('nvim'), { 'do': './install --bin' })
-Plug 'junegunn/fzf.vim', Cond(has('nvim'))
+Plug 'tpope/vim-surround'
+Plug 'junegunn/fzf', Cond(has('nvim'), { 'do': './install --bin' }) | Plug 'junegunn/fzf.vim', Cond(has('nvim'))
 Plug 'JazzCore/ctrlp-cmatcher', Cond(!has('nvim'), {'do': 'CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh'})
 Plug 'ctrlpvim/ctrlp.vim', Cond(!has('nvim'))
 
@@ -65,7 +63,7 @@ call plug#end()
 let mapleader          = "\<SPACE>"
 let g:netrw_dirhistmax = 0 " Disable .netrwhist file creation
 
-set shell=/bin/zsh             " Use zsh as shell
+set shell=$SHELL               " Use zsh as shell
 set viminfo=                   " Disable viminfo
 set autoread                   " Automatically load changes
 set undolevels=1000            " Large undo levels
@@ -100,7 +98,6 @@ set expandtab                  " Expand tabs into spaces
 set smarttab                   " Insert spaces in front of lines
 set list                       " Show whitespace
 set listchars=tab:╶─           " Tab symbol
-set listchars=eol:¬            " End of line character
 set listchars+=trail:·         " Trailing whitespace
 set listchars+=extends:#       " Character to show when wrap is off
 set listchars+=nbsp:%          " Non breakable whitespace
@@ -175,7 +172,8 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
-map <F2> :set wrap!<CR> " Toggle wrapping
+" Toggle wrapping
+map <F2> :set wrap!<CR>
 
 " Invert result highlighting
 nnoremap <silent> _ :set invhlsearch<CR>
@@ -190,7 +188,8 @@ nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
 nnoremap <silent> <C-t> :enew<CR>
-nnoremap <silent> <C-x> :Sbd<CR> " Smart buffer delete
+" Smart buffer delete
+nnoremap <silent> <C-x> :Sbd<CR>
 nnoremap <silent> <C-u> :bprev<CR>
 nnoremap <silent> <C-i> :bnext<CR>
 
@@ -208,6 +207,36 @@ noremap <silent> <D-7>      :tabn 7<CR>
 noremap <silent> <D-8>      :tabn 8<CR>
 noremap <silent> <D-9>      :tabn 9<CR>
 
+" Replace and delete to black hole register unless they are prefixed with y
+nnoremap yc c
+vnoremap yc c
+nnoremap yC C
+vnoremap yC C
+nnoremap yd d
+vnoremap yd d
+nnoremap yD D
+vnoremap yD D
+nnoremap ys s
+vnoremap ys s
+nnoremap yS S
+vnoremap yS S
+nnoremap yx x
+vnoremap yx x
+nnoremap yX X
+vnoremap yX X
+vnoremap p "_dP
+nnoremap c "_c
+vnoremap c "_c
+nnoremap C "_C
+vnoremap C "_C
+nnoremap d "_d
+vnoremap d "_d
+nnoremap D "_D
+vnoremap D "_D
+nnoremap x "_x
+vnoremap x "_x
+nnoremap X "_X
+vnoremap X "_X
 " ------------------------------------------------------------------------------
 " Autocommands
 " ------------------------------------------------------------------------------
@@ -244,196 +273,231 @@ end
 " ------------------------------------------------------------------------------
 " Vim Better Whitespace
 " ------------------------------------------------------------------------------
-exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:ws_guifg . " guibg=" . s:ws_guibg .
-  \ " ctermfg=" . s:ws_ctermfg . " ctermbg=" . s:ws_ctermbg
+if has_key(g:plugs, 'vim-better-whitespace')
+  exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:ws_guifg . " guibg=" . s:ws_guibg .
+    \ " ctermfg=" . s:ws_ctermfg . " ctermbg=" . s:ws_ctermbg
 
-nnoremap <silent> <F5> :StripWhitespace<CR> " Use F5 to remove all trailing spaces
+  " Use F5 to remove all trailing spaces
+  nnoremap <silent> <F5> :StripWhitespace<CR>
+end
 
 " ------------------------------------------------------------------------------
 " Airline
 " ------------------------------------------------------------------------------
-let g:airline_powerline_fonts                = 1    " Our font supports powerline
-let g:airline_theme                          = 'onedark'
-let g:airline#extensions#tabline#enabled     = 1    " Show tabs
-let g:airline#extensions#tabline#fnamemod    = ':t' " Shorten tab names to filenames
-let g:airline#extensions#tabline#tab_nr_type = 1    " Show tab nunber instead of split number
-let g:airline#extensions#wordcount#enabled   = 0    " Disable wordcount extension
+if has_key(g:plugs, 'vim-airline')
+  let g:airline_powerline_fonts                = 1    " Our font supports powerline
+  let g:airline_theme                          = 'onedark'
+  let g:airline#extensions#tabline#enabled     = 1    " Show tabs
+  let g:airline#extensions#tabline#fnamemod    = ':t' " Shorten tab names to filenames
+  let g:airline#extensions#tabline#tab_nr_type = 1    " Show tab nunber instead of split number
+  let g:airline#extensions#wordcount#enabled   = 0    " Disable wordcount extension
 
-function! GetShortPath()
-  return fnamemodify(expand("%"), ':~:.')
-endfunction
+  function! GetShortPath()
+    return fnamemodify(expand("%"), ':~:.')
+  endfunction
 
-function! GetWhitespaceSettings()
-  return printf('%s:%s', &expandtab ? 'Spaces' : 'Tabs', &shiftwidth)
-endfunction
+  function! GetWhitespaceSettings()
+    return printf('%s:%s', &expandtab ? 'Spaces' : 'Tabs', &shiftwidth)
+  endfunction
 
-function! AirlineInit()
-  call airline#parts#define_function('shortpath', 'GetShortPath')
-  call airline#parts#define_function('whitespacesettings', 'GetWhitespaceSettings')
-  let g:airline_section_c = airline#section#create(['shortpath', ' ', 'readonly'])
-  let g:airline_section_y = airline#section#create_right(['%<', 'ffenc', 'whitespacesettings'])
-endfunction
+  function! AirlineInit()
+    call airline#parts#define_function('shortpath', 'GetShortPath')
+    call airline#parts#define_function('whitespacesettings', 'GetWhitespaceSettings')
+    let g:airline_section_c = airline#section#create(['shortpath', ' ', 'readonly'])
+    let g:airline_section_y = airline#section#create_right(['%<', 'ffenc', 'whitespacesettings'])
+  endfunction
 
-augroup AirlineSettings
-  " Enable whitespace checks for all files
-  autocmd FileType * unlet! g:airline#extensions#whitespace#checks
-  " Only use trailing whitespace check for the following file types
-  autocmd FileType c,cpp,objc,objcpp let g:airline#extensions#whitespace#checks = ['trailing']
-  " Add modifications to airline after init
-  autocmd User AirlineAfterInit call AirlineInit()
-augroup END
+  augroup AirlineSettings
+    " Enable whitespace checks for all files
+    autocmd FileType * unlet! g:airline#extensions#whitespace#checks
+    " Only use trailing whitespace check for the following file types
+    autocmd FileType c,cpp,objc,objcpp let g:airline#extensions#whitespace#checks = ['trailing']
+    " Add modifications to airline after init
+    autocmd User AirlineAfterInit call AirlineInit()
+  augroup END
+end
 
 " ------------------------------------------------------------------------------
 " NERDTree
 " ------------------------------------------------------------------------------
-let NERDTreeChDirMode     = 2 " Change cwd when root changes
-let NERDTreeMinimalUI     = 1 " Reduce some clutter
-let NERDTreeMouseMode     = 2 " Single click opens any node
-let NERDTreeShowBookmarks = 1 " Show bookmarks
-let NERDTreeShowHidden    = 1 " Show hidden files
+if has_key(g:plugs, 'nerdtree')
+  let NERDTreeChDirMode     = 2 " Change cwd when root changes
+  let NERDTreeMinimalUI     = 1 " Reduce some clutter
+  let NERDTreeMouseMode     = 2 " Single click opens any node
+  let NERDTreeShowBookmarks = 1 " Show bookmarks
+  let NERDTreeShowHidden    = 1 " Show hidden files
 
-map <unique> <Leader>n :NERDTreeToggle<CR> " Show file tree
-map <unique> <Leader>r :NERDTreeFind<CR>   " Reveal file in file tree
+  " Show file tree
+  map <unique> <Leader>n :NERDTreeToggle<CR>
+  " Reveal file in file tree
+  map <unique> <Leader>r :NERDTreeFind<CR>
 
-augroup NERDTreeSettings
-  autocmd FileType nerdtree setlocal nolist " Hide whitespace symbols in nerdtree
-augroup END
+  augroup NERDTreeSettings
+    " Hide whitespace symbols in nerdtree
+    autocmd FileType nerdtree setlocal nolist
+  augroup END
+end
+
+" ------------------------------------------------------------------------------
+" Sneak
+" ------------------------------------------------------------------------------
+if has_key(g:plugs, 'vim-sneak')
+  let g:sneak#streak = 1
+
+  hi link SneakPluginTarget IncSearch
+  hi link SneakStreakTarget IncSearch
+  hi link SneakPluginScope  Comment
+  hi link SneakStreakMask Comment
+end
 
 " ------------------------------------------------------------------------------
 " Syntastic
 " ------------------------------------------------------------------------------
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_jump                = 1
-let g:syntastic_auto_loc_list            = 1
-let g:syntastic_enable_ballons           = has('ballon_eval')
-let g:syntastic_error_symbol             = '☒'
-let g:syntastic_warning_symbol           = '⚠'
-let g:syntastic_loc_list_height          = 3
-let g:syntastic_check_on_wq              = 0
-let g:syntastic_cpp_compiler_options     = '-std=c++14 -stdlib=libc++'
-let g:syntastic_cpp_checkers             = [] " or ['clang_tidy']
-let g:syntastic_cpp_clang_tidy_post_args = '-p build/compile_commands.json'
+if has_key(g:plugs, 'syntastic')
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_jump                = 1
+  let g:syntastic_auto_loc_list            = 1
+  let g:syntastic_enable_ballons           = has('ballon_eval')
+  let g:syntastic_error_symbol             = '☒'
+  let g:syntastic_warning_symbol           = '⚠'
+  let g:syntastic_loc_list_height          = 3
+  let g:syntastic_check_on_wq              = 0
+  let g:syntastic_cpp_compiler_options     = '-std=c++14 -stdlib=libc++'
+  let g:syntastic_cpp_checkers             = [] " or ['clang_tidy']
+  let g:syntastic_cpp_clang_tidy_post_args = '-p build/compile_commands.json'
 
-nnoremap <unique> <F4> :SyntasticCheck<CR>
+  nnoremap <unique> <F4> :SyntasticCheck<CR>
+end
 
 " ------------------------------------------------------------------------------
 " Ycm
 " ------------------------------------------------------------------------------
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_key_list_select_completion                = ['<TAB>', '<Down>', '<Enter>']
-let g:ycm_global_ycm_extra_conf                     = '~/.vim/ycm_config.py'
-let g:ycm_filetype_whitelist                        = { 'python': 1, 'cpp': 1 }
-" let g:ycm_show_diagnostics_ui = 0 " Enable this line to have clang-tidy checks using syntastic
+if has_key(g:plugs, 'YouCompleteMe')
+  let g:ycm_autoclose_preview_window_after_completion = 1
+  let g:ycm_key_list_select_completion                = ['<TAB>', '<Down>', '<Enter>']
+  let g:ycm_global_ycm_extra_conf                     = '~/.vim/ycm_config.py'
+  let g:ycm_filetype_whitelist                        = { 'python': 1, 'cpp': 1 }
+  " let g:ycm_show_diagnostics_ui = 0 " Enable this line to have clang-tidy checks using syntastic
 
-nnoremap <unique> jd :YcmCompleter GoToDefinition<CR>
-nnoremap <unique> jj :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <unique> jc :YcmCompleter GoToDeclaration<CR>
-nnoremap <unique> jk :YcmCompleter GoToInclude<CR>
-nnoremap <unique> jp :YcmDiags<CR>
-nnoremap <F3>        :YcmForceCompileAndDiagnostics<CR>
+  nnoremap <unique> jd :YcmCompleter GoToDefinition<CR>
+  nnoremap <unique> jj :YcmCompleter GoToDefinitionElseDeclaration<CR>
+  nnoremap <unique> jc :YcmCompleter GoToDeclaration<CR>
+  nnoremap <unique> jk :YcmCompleter GoToInclude<CR>
+  nnoremap <unique> jp :YcmDiags<CR>
+  nnoremap <F3>        :YcmForceCompileAndDiagnostics<CR>
+end
 
 " ------------------------------------------------------------------------------
 " Fugitive
 " ------------------------------------------------------------------------------
-nnoremap <unique> <Space>gs  :Gstatus<CR>
-nnoremap <unique> <Space>gc  :Gcommit -v -q<CR>
-nnoremap <unique> <Space>ga  :Gcommit -v -q --amend<CR>
-nnoremap <unique> <Space>gd  :Gdiff<CR>
-nnoremap <unique> <Space>ge  :Gedit<CR>
-nnoremap <unique> <Space>gr  :Gread<CR>
-nnoremap <unique> <Space>gw  :Gwrite<CR><CR>
-nnoremap <unique> <Space>gl  :silent! Glog<CR>:bot copen<CR>
-nnoremap <unique> <Space>gg  :Ggrep<Space>
-nnoremap <unique> <Space>gm  :Gmove<Space>
-nnoremap <unique> <Space>gp  :Dispatch! git push<CR>
-nnoremap <unique> <Space>gfr :Dispatch! git pull --rebase<CR>
+if has_key(g:plugs, 'vim-fugitive')
+  nnoremap <unique> <Space>gs  :Gstatus<CR>
+  nnoremap <unique> <Space>gc  :Gcommit -v -q<CR>
+  nnoremap <unique> <Space>ga  :Gcommit -v -q --amend<CR>
+  nnoremap <unique> <Space>gd  :Gdiff<CR>
+  nnoremap <unique> <Space>ge  :Gedit<CR>
+  nnoremap <unique> <Space>gr  :Gread<CR>
+  nnoremap <unique> <Space>gw  :Gwrite<CR><CR>
+  nnoremap <unique> <Space>gl  :silent! Glog<CR>:bot copen<CR>
+  nnoremap <unique> <Space>gg  :Ggrep<Space>
+  nnoremap <unique> <Space>gm  :Gmove<Space>
+  nnoremap <unique> <Space>gp  :Dispatch! git push<CR>
+  nnoremap <unique> <Space>gfr :Dispatch! git pull --rebase<CR>
+end
+
+" ------------------------------------------------------------------------------
+" fzf
+" ------------------------------------------------------------------------------
+if has('nvim') && has_key(g:plugs, 'fzf.vim')
+  if executable('pt')
+    let $FZF_DEFAULT_COMMAND = 'pt -l --nocolor --nogroup -g ""'
+  end
+  let $FZF_DEFAULT_OPTS .= ' --inline-info'
+  nnoremap <C-p> :FZF<CR>
+  nnoremap <C-o> :Buffers<CR>
+end
 
 " ------------------------------------------------------------------------------
 " CtrP
 " ------------------------------------------------------------------------------
-
-if has('nvim')
-  let $FZF_DEFAULT_COMMAND = 'pt -l --nocolor --nogroup -g ""'
-  let $FZF_DEFAULT_OPTS .= ' --inline-info'
-  nnoremap <C-p> :FZF<CR>
-  nnoremap <C-o> :Buffers<CR>
-else
+if !has('nvim') && has_key(g:plugs, 'ctrlp.vim')
   let g:ctrlp_cmd          = 'CtrlPMixed'
   let g:ctrlp_by_filename  = 1 " Search by filename as default
   let g:ctrlp_use_caching  = 1
   let g:ctrlp_user_command = 'cd %s && pt -l --nocolor -g "" .'
-  let g:ctrlp_match_func   = { 'match' : 'matcher#cmatch' }
+
+  if has_key(g:plugs, 'ctrlp-cmatcher')
+    let g:ctrlp_match_func   = { 'match' : 'matcher#cmatch' }
+  end
 
   nnoremap <C-p> :CtrlPMixed<CR>
   nnoremap <C-o> :CtrlPBuffer<CR>
 end
 
 " ------------------------------------------------------------------------------
-" Surround
-" ------------------------------------------------------------------------------
-" Replace substitute commands with surround
-nmap s  ysi
-nmap S  ysa
-nmap s$ ys$
-nmap sv gvs
-
-" ------------------------------------------------------------------------------
 " Easy-Align
 " ------------------------------------------------------------------------------
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
+if has_key(g:plugs, 'vim-easy-align')
+  " Start interactive EasyAlign in visual mode (e.g. vipga)
+  xmap ga <Plug>(EasyAlign)
 
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+  " Start interactive EasyAlign for a motion/text object (e.g. gaip)
+  nmap ga <Plug>(EasyAlign)
+end
 
 " ------------------------------------------------------------------------------
 " Incsearch
 " ------------------------------------------------------------------------------
-let g:incsearch#auto_nohlsearch = 1
+if has_key(g:plugs, 'incsearch.vim')
+  let g:incsearch#auto_nohlsearch = 1
 
-map n   <Plug>(incsearch-nohl-n)
-map N   <Plug>(incsearch-nohl-N)
-map *   <Plug>(incsearch-nohl-*)
-map #   <Plug>(incsearch-nohl-#)
-map g*  <Plug>(incsearch-nohl-g*)
-map g#  <Plug>(incsearch-nohl-g#)
-map /   <Plug>(incsearch-forward)
-map ?   <Plug>(incsearch-backward)
-map g/  <Plug>(incsearch-stay)
-map z/  <Plug>(incsearch-easymotion-/)
-map z?  <Plug>(incsearch-easymotion-?)
-map zg/ <Plug>(incsearch-easymotion-stay)
+  map n   <Plug>(incsearch-nohl-n)
+  map N   <Plug>(incsearch-nohl-N)
+  map *   <Plug>(incsearch-nohl-*)
+  map #   <Plug>(incsearch-nohl-#)
+  map g*  <Plug>(incsearch-nohl-g*)
+  map g#  <Plug>(incsearch-nohl-g#)
+  map /   <Plug>(incsearch-forward)
+  map ?   <Plug>(incsearch-backward)
+  map g/  <Plug>(incsearch-stay)
+end
 
 " ------------------------------------------------------------------------------
 " Ack.vim
 " ------------------------------------------------------------------------------
-if executable('pt')
-  let g:ackprg         = 'pt --nocolor --nogroup --column --smart-case'
-elseif executable('ag')
-  let g:ackprg         = 'ag --nogroup --nocolor --column --smart-case'
-endif
-let g:ackhighlight     = 1
-let g:ack_use_dispatch = 1
+if has_key(g:plugs, 'ack.vim')
+  if executable('pt')
+    let g:ackprg         = 'pt --nocolor --nogroup --column --smart-case'
+  elseif executable('ag')
+    let g:ackprg         = 'ag --nogroup --nocolor --column --smart-case'
+  endif
+  let g:ackhighlight     = 1
+  let g:ack_use_dispatch = 1
 
-nnoremap <unique> <Leader>vv :Ack <cword><CR>
-nnoremap <unique> <Leader>ff :Ack<Space>
+  nnoremap <unique> <Leader>vv :Ack <cword><CR>
+  nnoremap <unique> <Leader>ff :Ack<Space>
+end
 
 " ------------------------------------------------------------------------------
 " clang-format
 " ------------------------------------------------------------------------------
-let g:clang_format#detect_style_file = 1
+if has_key(g:plugs, 'vim-clang-format')
+  let g:clang_format#detect_style_file = 1
 
-augroup ClangFormatSettings
-  autocmd FileType c,cpp,objc,objcpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-  autocmd FileType c,cpp,objc,objcpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
-augroup END
+  augroup ClangFormatSettings
+    autocmd FileType c,cpp,objc,objcpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+    autocmd FileType c,cpp,objc,objcpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+  augroup END
+end
 
 " ------------------------------------------------------------------------------
 " vim.cpp - enhanced c++ highlighting
 " ------------------------------------------------------------------------------
-let c_no_curly_error                      = 1 " Do not show curly braces error in cpp files
-let g:cpp_class_scope_highlight           = 1 " Highlight class scope
-let g:cpp_experimental_template_highlight = 1 " Highlight template functions
+if has_key(g:plugs, 'vim-cpp-enhanced-highlight')
+  let c_no_curly_error                      = 1 " Do not show curly braces error in cpp files
+  let g:cpp_class_scope_highlight           = 1 " Highlight class scope
+  let g:cpp_experimental_template_highlight = 1 " Highlight template functions
+end
 
 " ------------------------------------------------------------------------------
 " Local config
