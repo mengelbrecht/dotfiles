@@ -3,8 +3,10 @@
 "
 " Inspired by
 "     https://github.com/Soliah/dotfiles/blob/master/vimrc
-"     https://github.com/Soliah/dotfiles/tree/master/vim
 "     https://github.com/wincent/wincent/tree/master/roles/dotfiles/files/.vim
+"     https://github.com/junegunn/dotfiles/blob/master/vimrc
+"     https://github.com/mhinz/dotfiles/blob/master/vim/vimrc
+"     https://github.com/cHoco/dotFiles/blob/master/vimrc
 " ------------------------------------------------------------------------------
 
 " ------------------------------------------------------------------------------
@@ -21,61 +23,71 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin()
-Plug 'airblade/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-Plug 'bling/vim-airline'
-Plug 'cespare/vim-sbd'
+Plug 'itchyny/lightline.vim'
+Plug 'bling/vim-bufferline'
+Plug 'mhinz/vim-sayonara', {'on': ['Sayonara', 'Sayonara']}
 Plug 'coderifous/textobj-word-column.vim'
-Plug 'haya14busa/incsearch.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
+Plug 'junegunn/vim-easy-align', {'on': ['<Plug>(LiveEasyAlign)', 'LiveEasyAlign']}
 Plug 'justinmk/vim-sneak'
 Plug 'myint/indent-finder'
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'osyo-manga/vim-over'
-Plug 'rakr/vim-one'
-Plug 'rhysd/vim-clang-format'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
+Plug 'osyo-manga/vim-over', {'on': 'OverCommandLine'}
+Plug 'rakr/vim-one', {'on': []}
+Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
+Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+Plug 'scrooloose/syntastic', {'on': 'SyntasticCheck'}
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch' | Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-dispatch' | Plug 'wincent/ferret', {'on': ['<Plug>(FerretAck)', '<Plug>(FerretAckWord)', 'Ack']}
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-obsession', {'on': 'Obsession'}
 Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf', Cond(has('nvim'), { 'do': './install --bin' }) | Plug 'junegunn/fzf.vim', Cond(has('nvim'))
+Plug 'junegunn/fzf', Cond(has('nvim'), {'do': './install --bin' }) | Plug 'junegunn/fzf.vim', Cond(has('nvim'))
 Plug 'JazzCore/ctrlp-cmatcher', Cond(!has('nvim'), {'do': 'CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh'})
 Plug 'ctrlpvim/ctrlp.vim', Cond(!has('nvim'))
 
-" Languages
-Plug 'b4winckler/vim-objc'
-Plug 'keith/swift.vim'
-Plug 'mitsuhiko/vim-python-combined'
-Plug 'nickhutchinson/vim-cmake-syntax'
-Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'tbastos/vim-lua'
+" " Languages
+Plug 'b4winckler/vim-objc', {'for': 'objc'}
+Plug 'keith/swift.vim', {'for': 'swift'}
+Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
+Plug 'nickhutchinson/vim-cmake-syntax', {'for': 'cmake'}
+Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
+Plug 'tbastos/vim-lua', {'for': 'lua'}
 Plug 'tpope/vim-git'
-Plug 'vim-ruby/vim-ruby'
+Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
 call plug#end()
 
 " ------------------------------------------------------------------------------
 " General Settings
 " ------------------------------------------------------------------------------
-let mapleader          = "\<SPACE>"
-let g:netrw_dirhistmax = 0 " Disable .netrwhist file creation
+let mapleader                 = "\<SPACE>"
+let g:netrw_dirhistmax        = 0 " Disable .netrwhist file creation
+" Disable loading of plugins bundled with vim
+let g:loaded_2html_plugin     = 1
+let g:loaded_getscriptPlugin  = 1
+let g:loaded_gzip             = 1
+let g:loaded_logipat          = 1
+let g:loaded_netrwPlugin      = 1
+let g:loaded_rrhelper         = 1
+let g:loaded_spellfile_plugin = 1
+let g:loaded_tarPlugin        = 1
+let g:loaded_vimballPlugin    = 1
+let g:loaded_zipPlugin        = 1
 
 set shell=$SHELL               " Use zsh as shell
-set viminfo=                   " Disable viminfo
+set viminfo=/100,:100,'100     " Save command history and search patterns
 set autoread                   " Automatically load changes
 set undolevels=1000            " Large undo levels
-set history=200                " Size of command history
+set history=100                " Size of command history
 set encoding=utf8              " Always use unicode
 set backspace=indent,eol,start " Fix backspace
 set nobackup                   " Disable backups
-set noswapfile                 " Disable swap files
 set clipboard=unnamed          " Use the OS clipboard by default
 set ttyfast                    " Optimize for fast terminal connections
 set ttimeout                   " Timeout on keycodes
-set ttimeoutlen=300            " Set timeout
+set ttimeoutlen=10             " Small timeout to reduce lag when pressing ESC in terminal
 set nomodeline                 " Hide modeline
 set wildchar=<Tab>             " Complete with Tab
 set wildmenu                   " Show list
@@ -110,24 +122,23 @@ set cursorline                 " Highlight current line
 set number                     " Enable line numbers
 set ruler                      " Show the cursor position
 set shortmess=aIoO             " Show short messages, no intro
+set splitbelow                 " Open new splits below
+set splitright                 " Open new splits on the right
+set showtabline=2              " Always show the tabline
 set showcmd                    " Show last command
+set noshowmode                 " No need to show mode
 set showmatch                  " Show matching parenthesis
 set synmaxcol=240              " Limit syntax highlighting to 240 colums
 set laststatus=2               " Always show status line
 set scrolloff=3                " Always show one line above and below cursor
 set sidescrolloff=5            " Always show 5 columns before and after cursor
-set fillchars+=stl:\           " Disable status line fill chars
-set fillchars+=stlnc:\         " Disable status line fill chars
 set completeopt-=preview       " Disable preview window for YCM
 set noerrorbells               " Disable error bells
 set vb t_vb=                   " Disable visual bell
 set linespace=1                " Use 1 pixel space between lines
 set t_Co=256                   " Terminal supports 256 colors
+set t_md=                      " Disable bold fonts in terminal
 set background=dark            " Use dark colorscheme
-
-if exists('+colorcolumn')
-  set colorcolumn=80,100,120          " Show 3 column guides
-endif
 
 if has('termguicolors')
   set termguicolors                   " Enable 24bit colors in terminal
@@ -187,14 +198,16 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
+" Close quickfix and location list
+nnoremap <Leader>c :cclose<Bar>lclose<CR>
+
 nnoremap <silent> <C-t> :enew<CR>
-" Smart buffer delete
-nnoremap <silent> <C-x> :Sbd<CR>
+nnoremap <silent> <C-x> :Sayonara!<CR>
 nnoremap <silent> <C-u> :bprev<CR>
 nnoremap <silent> <C-i> :bnext<CR>
 
 nnoremap <silent> <Leader>t :tabnew<CR>
-nnoremap <silent> <Leader>x :bd<CR>
+nnoremap <silent> <Leader>x :Sayonara<CR>
 nnoremap <silent> <Leader>u :tabprevious<CR>
 nnoremap <silent> <Leader>i :tabnext<CR>
 noremap <silent> <D-1>      :tabn 1<CR>
@@ -237,23 +250,51 @@ nnoremap x "_x
 vnoremap x "_x
 nnoremap X "_X
 vnoremap X "_X
+
+if has('nvim')
+  tnoremap <ESC>     <C-\><C-n>
+  tnoremap <C-h>     <C-\><C-n><C-w>h
+  tnoremap <C-j>     <C-\><C-n><C-w>j
+  tnoremap <C-k>     <C-\><C-n><C-w>k
+  tnoremap <C-l>     <C-\><C-n><C-w>l
+  tnoremap <C-x>     <C-\><C-n>:Sayonara!<CR>
+  tnoremap <Leader>x <C-\><C-n>:Sayonara<CR>
+  nnoremap <Leader>z :below 20sp term://$SHELL<CR>i
+endif
+
 " ------------------------------------------------------------------------------
 " Autocommands
 " ------------------------------------------------------------------------------
-augroup FileTypeSettings
+augroup AutocommandSettings
+  " Restore cursor position
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+
+  autocmd InsertEnter * set listchars-=trail:·
+  autocmd InsertLeave * set listchars+=trail:·
   " Detect gyp files
   autocmd BufRead,BufNewFile *.gyp,*.gypi setlocal filetype=python
+
+  if exists('+colorcolumn')
+    autocmd FileType *           setlocal colorcolumn=
+    autocmd FileType sh,zsh      setlocal colorcolumn=80
+    autocmd FileType cpp         setlocal colorcolumn=100
+    autocmd FileType python,ruby setlocal colorcolumn=120
+    autocmd FileType gitcommit   setlocal colorcolumn=50,72
+  endif
 augroup END
 
 " ------------------------------------------------------------------------------
 " Colorscheme
 " ------------------------------------------------------------------------------
-let g:one_allow_italics = 1
+let g:one_allow_italics        = 1
 let g:onedark_terminal_italics = 1
 
 if !has('gui_running')
-  let g:one_termcolors=16
-  let g:onedark_termcolors=16
+  let g:one_termcolors     = 16
+  let g:onedark_termcolors = 16
 endif
 
 colorscheme onedark
@@ -282,50 +323,155 @@ if has_key(g:plugs, 'vim-better-whitespace')
 end
 
 " ------------------------------------------------------------------------------
-" Airline
+" Bufferline
 " ------------------------------------------------------------------------------
-if has_key(g:plugs, 'vim-airline')
-  let g:airline_powerline_fonts                = 1    " Our font supports powerline
-  let g:airline_theme                          = 'onedark'
-  let g:airline#extensions#tabline#enabled     = 1    " Show tabs
-  let g:airline#extensions#tabline#fnamemod    = ':t' " Shorten tab names to filenames
-  let g:airline#extensions#tabline#tab_nr_type = 1    " Show tab nunber instead of split number
-  let g:airline#extensions#wordcount#enabled   = 0    " Disable wordcount extension
+if has_key(g:plugs, 'vim-bufferline')
+  let g:bufferline_echo                = 0
+  let g:bufferline_active_buffer_left  = ''
+  let g:bufferline_active_buffer_right = ''
+  let g:bufferline_show_bufnr          = 0
+  let g:bufferline_fname_mod           = ':~:.:s?^$?[No Name]?'
+  let g:bufferline_pathshorten         = 1
+end
 
-  function! GetShortPath()
-    return fnamemodify(expand("%"), ':~:.')
+" ------------------------------------------------------------------------------
+" Lightline
+" ------------------------------------------------------------------------------
+if has_key(g:plugs, 'lightline.vim')
+  let g:lightline                    = {}
+  let g:lightline.colorscheme        = 'onedark'
+  let g:lightline.separator          = {'left': "\uE0B0", 'right': "\uE0B2"}
+  let g:lightline.subseparator       = {'left': "\uE0B1", 'right': "\uE0B3"}
+  let g:lightline.active             = {
+        \ 'left': [['mode', 'paste'], ['fugitive'], ['readonly'], ['filename']],
+        \ 'right': [['percent', 'lineinfo'], ['fileformat', 'fileencoding', 'whitespace'], ['filetype']]
+        \ }
+  let g:lightline.tab                = {'active': ['tabnum'], 'inactive': ['tabnum']}
+  let g:lightline.tabline            = {'left': [['tabs'], ['bufferline']], 'right': [['close']]}
+  let g:lightline.component_expand   = {'bufferline': 'LightLineBufferline'}
+  let g:lightline.component_type     = {'bufferline': 'tabsel'}
+  let g:lightline.component_function = {
+        \ 'readonly': 'LightLineReadonly',
+        \ 'fugitive': 'LightLineFugitive',
+        \ 'filename': 'LightLineFilename',
+        \ 'fileformat': 'LightLineFileformat',
+        \ 'filetype': 'LightLineFiletype',
+        \ 'fileencoding': 'LightLineFileencoding',
+        \ 'whitespace': 'LightLineWhitespace',
+        \ 'mode': 'LightLineMode'
+        \ }
+
+  let s:ll_black      = [synIDattr(synIDtrans(hlID("Normal")), "bg", "gui"),     synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")]
+  let s:ll_white      = [synIDattr(synIDtrans(hlID("Normal")), "fg", "gui"),     synIDattr(synIDtrans(hlID("Normal")), "fg", "cterm")]
+  let s:ll_red        = [synIDattr(synIDtrans(hlID("DiffDelete")), "fg", "gui"), synIDattr(synIDtrans(hlID("DiffDelete")), "fg", "cterm")]
+  let s:ll_green      = [synIDattr(synIDtrans(hlID("DiffAdd")), "fg", "gui"),    synIDattr(synIDtrans(hlID("DiffAdd")), "fg", "cterm")]
+  let s:ll_yellow     = [synIDattr(synIDtrans(hlID("Search")), "bg", "gui"),     synIDattr(synIDtrans(hlID("Search")), "bg", "cterm")]
+  let s:ll_blue       = [synIDattr(synIDtrans(hlID("DiffText")), "fg", "gui"),   synIDattr(synIDtrans(hlID("DiffText")), "fg", "cterm")]
+  let s:ll_magenta    = [synIDattr(synIDtrans(hlID("Todo")), "fg", "gui"),       synIDattr(synIDtrans(hlID("Todo")), "fg", "cterm")]
+  let s:ll_dark_grey  = [synIDattr(synIDtrans(hlID("CursorLine")), "bg", "gui"), synIDattr(synIDtrans(hlID("CursorLine")), "bg", "cterm")]
+  let s:ll_light_grey = [synIDattr(synIDtrans(hlID("Pmenu")), "bg", "gui"),      synIDattr(synIDtrans(hlID("Pmenu")), "bg", "cterm")]
+
+  let s:lightline_onedark                 = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
+  let s:lightline_onedark.normal.left     = [[s:ll_black, s:ll_green], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.normal.right    = [[s:ll_black, s:ll_green], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.normal.middle   = [[s:ll_green, s:ll_black]]
+  let s:lightline_onedark.inactive.left   = [[s:ll_white, s:ll_dark_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.inactive.right  = [[s:ll_white, s:ll_dark_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.inactive.middle = [[s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.insert.left     = [[s:ll_black, s:ll_blue], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.insert.right    = [[s:ll_black, s:ll_blue], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.insert.middle   = [[s:ll_blue, s:ll_black]]
+  let s:lightline_onedark.replace.left    = [[s:ll_black, s:ll_red], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.replace.right   = [[s:ll_black, s:ll_red], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.replace.middle  = [[s:ll_red, s:ll_black]]
+  let s:lightline_onedark.visual.left     = [[s:ll_black, s:ll_magenta], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.visual.right    = [[s:ll_black, s:ll_magenta], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.visual.middle   = [[s:ll_magenta, s:ll_black]]
+  let s:lightline_onedark.tabline.left    = [[s:ll_white, s:ll_light_grey],  [s:ll_white, s:ll_dark_grey]]
+  let s:lightline_onedark.tabline.right   = [[s:ll_black, s:ll_magenta]]
+  let s:lightline_onedark.tabline.middle  = [[s:ll_green, s:ll_black]]
+  let s:lightline_onedark.tabline.tabsel  = [[s:ll_black, s:ll_green]]
+  let s:lightline_onedark.normal.error    = [[s:ll_black, s:ll_red]]
+  let s:lightline_onedark.normal.warning  = [[s:ll_black, s:ll_yellow]]
+
+  let g:lightline#colorscheme#onedark#palette = lightline#colorscheme#flatten(s:lightline_onedark)
+
+  function! LightLineReadonly()
+    return &readonly ? "\uE0A2" : ''
   endfunction
 
-  function! GetWhitespaceSettings()
-    return printf('%s:%s', &expandtab ? 'Spaces' : 'Tabs', &shiftwidth)
+  function! s:strip(input)
+    return substitute(a:input, '^\s*\(.\{-}\)\s*$', '\1', '')
   endfunction
 
-  function! AirlineInit()
-    call airline#parts#define_function('shortpath', 'GetShortPath')
-    call airline#parts#define_function('whitespacesettings', 'GetWhitespaceSettings')
-    let g:airline_section_c = airline#section#create(['shortpath', ' ', 'readonly'])
-    let g:airline_section_y = airline#section#create_right(['%<', 'ffenc', 'whitespacesettings'])
+  function! LightLineBufferline()
+    call bufferline#refresh_status()
+    let buffers = [
+          \ g:bufferline_status_info.before,
+          \ g:bufferline_status_info.current,
+          \ g:bufferline_status_info.after
+          \ ]
+    call map(buffers, 's:strip(v:val)')
+    return buffers
   endfunction
 
-  augroup AirlineSettings
-    " Enable whitespace checks for all files
-    autocmd FileType * unlet! g:airline#extensions#whitespace#checks
-    " Only use trailing whitespace check for the following file types
-    autocmd FileType c,cpp,objc,objcpp let g:airline#extensions#whitespace#checks = ['trailing']
-    " Add modifications to airline after init
-    autocmd User AirlineAfterInit call AirlineInit()
-  augroup END
+  function! LightLineFugitive()
+    if exists("*fugitive#head") && winwidth(0) > 70
+      let branch = fugitive#head()
+      return branch !=# '' ? "\uE0A0 " . branch : ''
+    endif
+    return ''
+  endfunction
+
+  function! LightLineFilename()
+    let fname = expand('%:t')
+    return fname == 'ControlP' ? '' :
+          \ fname =~ 'NERD_tree' ? '' :
+          \ (fname == '' ? '[No Name]' : fname) .
+          \ (&modified ? '+' : &modifiable ? '' : '-')
+  endfunction
+
+  function! LightLineFileformat()
+    return winwidth(0) > 70 ? (&fileformat == 'unix' ? "\uE0A1" : 'CR') : ''
+  endfunction
+
+  function! LightLineFiletype()
+    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : '--') : ''
+  endfunction
+
+  function! LightLineFileencoding()
+    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+  endfunction
+
+  function! LightLineWhitespace()
+    return winwidth(0) > 70 ? &shiftwidth . (&expandtab ? "SP" : "TB") : ''
+  endfunction
+
+  function! LightLineMode()
+      let fname = expand('%:t')
+      let fmode = lightline#mode()
+      return fname == 'ControlP' ? 'CtrlP' :
+          \ fname =~ 'NERD' ? 'NERD' :
+          \ fmode == 'NORMAL'  ? 'N' :
+          \ fmode == 'INSERT'  ? 'I' :
+          \ fmode == 'VISUAL'  ? 'V' :
+          \ fmode == 'V-LINE'  ? 'V' :
+          \ fmode == 'V-BLOCK' ? 'V' :
+          \ fmode == 'REPLACE' ? 'R' :
+          \ fmode == 'TERMINAL' ? 'T' : fmode
+  endfunction
 end
 
 " ------------------------------------------------------------------------------
 " NERDTree
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'nerdtree')
-  let NERDTreeChDirMode     = 2 " Change cwd when root changes
-  let NERDTreeMinimalUI     = 1 " Reduce some clutter
-  let NERDTreeMouseMode     = 2 " Single click opens any node
-  let NERDTreeShowBookmarks = 1 " Show bookmarks
-  let NERDTreeShowHidden    = 1 " Show hidden files
+  let g:NERDTreeChDirMode     = 2 " Change cwd when root changes
+  let g:NERDTreeMinimalUI     = 1 " Reduce some clutter
+  let g:NERDTreeMouseMode     = 2 " Single click opens any node
+  let g:NERDTreeShowBookmarks = 1 " Show bookmarks
+  let g:NERDTreeShowHidden    = 1 " Show hidden files
+  let g:NERDTreeIgnore        = ['\.DS_Store$']
 
   " Show file tree
   map <unique> <Leader>n :NERDTreeToggle<CR>
@@ -347,7 +493,7 @@ if has_key(g:plugs, 'vim-sneak')
   hi link SneakPluginTarget IncSearch
   hi link SneakStreakTarget IncSearch
   hi link SneakPluginScope  Comment
-  hi link SneakStreakMask Comment
+  hi link SneakStreakMask   Comment
 end
 
 " ------------------------------------------------------------------------------
@@ -395,9 +541,6 @@ if has_key(g:plugs, 'vim-fugitive')
   nnoremap <unique> <Space>gc  :Gcommit -v -q<CR>
   nnoremap <unique> <Space>ga  :Gcommit -v -q --amend<CR>
   nnoremap <unique> <Space>gd  :Gdiff<CR>
-  nnoremap <unique> <Space>ge  :Gedit<CR>
-  nnoremap <unique> <Space>gr  :Gread<CR>
-  nnoremap <unique> <Space>gw  :Gwrite<CR><CR>
   nnoremap <unique> <Space>gl  :silent! Glog<CR>:bot copen<CR>
   nnoremap <unique> <Space>gg  :Ggrep<Space>
   nnoremap <unique> <Space>gm  :Gmove<Space>
@@ -410,7 +553,7 @@ end
 " ------------------------------------------------------------------------------
 if has('nvim') && has_key(g:plugs, 'fzf.vim')
   if executable('pt')
-    let $FZF_DEFAULT_COMMAND = 'pt -l --nocolor --nogroup -g ""'
+    let $FZF_DEFAULT_COMMAND = 'pt -l --nocolor --nogroup --hidden --ignore .svn --ignore .git -g ""'
   end
   let $FZF_DEFAULT_OPTS .= ' --inline-info'
   nnoremap <C-p> :FZF<CR>
@@ -424,10 +567,10 @@ if !has('nvim') && has_key(g:plugs, 'ctrlp.vim')
   let g:ctrlp_cmd          = 'CtrlPMixed'
   let g:ctrlp_by_filename  = 1 " Search by filename as default
   let g:ctrlp_use_caching  = 1
-  let g:ctrlp_user_command = 'cd %s && pt -l --nocolor -g "" .'
+  let g:ctrlp_user_command = 'pt -l --nocolor --hidden --ignore .svn --ignore .git -g "" %s'
 
   if has_key(g:plugs, 'ctrlp-cmatcher')
-    let g:ctrlp_match_func   = { 'match' : 'matcher#cmatch' }
+    let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
   end
 
   nnoremap <C-p> :CtrlPMixed<CR>
@@ -439,43 +582,37 @@ end
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'vim-easy-align')
   " Start interactive EasyAlign in visual mode (e.g. vipga)
-  xmap ga <Plug>(EasyAlign)
+  xmap ga <Plug>(LiveEasyAlign)
 
   " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-  nmap ga <Plug>(EasyAlign)
+  nmap ga <Plug>(LiveEasyAlign)
 end
 
 " ------------------------------------------------------------------------------
-" Incsearch
+" Oblique
 " ------------------------------------------------------------------------------
-if has_key(g:plugs, 'incsearch.vim')
-  let g:incsearch#auto_nohlsearch = 1
+if has_key(g:plugs, 'vim-oblique')
+  let g:oblique#incsearch_highlight_all = 1
 
-  map n   <Plug>(incsearch-nohl-n)
-  map N   <Plug>(incsearch-nohl-N)
-  map *   <Plug>(incsearch-nohl-*)
-  map #   <Plug>(incsearch-nohl-#)
-  map g*  <Plug>(incsearch-nohl-g*)
-  map g#  <Plug>(incsearch-nohl-g#)
-  map /   <Plug>(incsearch-forward)
-  map ?   <Plug>(incsearch-backward)
-  map g/  <Plug>(incsearch-stay)
+  exe "hi ObliqueCurrentMatch gui=none cterm=none" .
+        \ " guifg=" . synIDattr(synIDtrans(hlID("Normal")), "bg", "gui") .
+        \ " guibg=" . synIDattr(synIDtrans(hlID("DiffAdd")), "fg", "gui") .
+        \ " ctermfg=" . synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm") .
+        \ " ctermbg=" .  synIDattr(synIDtrans(hlID("DiffAdd")), "fg", "cterm")
 end
 
 " ------------------------------------------------------------------------------
-" Ack.vim
+" Ferret
 " ------------------------------------------------------------------------------
-if has_key(g:plugs, 'ack.vim')
+if has_key(g:plugs, 'ferret')
   if executable('pt')
-    let g:ackprg         = 'pt --nocolor --nogroup --column --smart-case'
-  elseif executable('ag')
-    let g:ackprg         = 'ag --nogroup --nocolor --column --smart-case'
+    set grepprg=pt\ --nocolor\ --nogroup\ --column\ --smart-case\ --hidden\ --ignore\ .svn\ --ignore\ .git
   endif
-  let g:ackhighlight     = 1
-  let g:ack_use_dispatch = 1
+  let g:FerretHlsearch = 1
+  let g:FerretMap      = 0
 
-  nnoremap <unique> <Leader>vv :Ack <cword><CR>
-  nnoremap <unique> <Leader>ff :Ack<Space>
+  nmap <unique> <Leader>vv <Plug>(FerretAckWord)
+  nmap <unique> <Leader>ff <Plug>(FerretAck)
 end
 
 " ------------------------------------------------------------------------------
@@ -491,7 +628,7 @@ if has_key(g:plugs, 'vim-clang-format')
 end
 
 " ------------------------------------------------------------------------------
-" vim.cpp - enhanced c++ highlighting
+" vim.cpp
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'vim-cpp-enhanced-highlight')
   let c_no_curly_error                      = 1 " Do not show curly braces error in cpp files
@@ -502,6 +639,7 @@ end
 " ------------------------------------------------------------------------------
 " Local config
 " ------------------------------------------------------------------------------
-if filereadable(expand("~/.vim/vimrc.local"))
-  source ~/.vim/vimrc.local
+let s:local_vimrc = fnamemodify(resolve(expand('<sfile>')), ':p:h').'/vimrc.local'
+if filereadable(s:local_vimrc)
+  execute 'source' s:local_vimrc
 endif
