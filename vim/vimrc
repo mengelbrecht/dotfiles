@@ -29,7 +29,7 @@ Plug 'bling/vim-bufferline'
 Plug 'mhinz/vim-sayonara', {'on': ['Sayonara', 'Sayonara']}
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'junegunn/vim-pseudocl' | Plug 'junegunn/vim-oblique'
+Plug 'pgdouyon/vim-evanesco'
 Plug 'junegunn/vim-easy-align', {'on': ['<Plug>(LiveEasyAlign)', 'LiveEasyAlign']}
 Plug 'justinmk/vim-sneak'
 Plug 'myint/indent-finder'
@@ -586,19 +586,6 @@ if has_key(g:plugs, 'vim-easy-align')
 
   " Start interactive EasyAlign for a motion/text object (e.g. gaip)
   nmap ga <Plug>(LiveEasyAlign)
-end
-
-" ------------------------------------------------------------------------------
-" Oblique
-" ------------------------------------------------------------------------------
-if has_key(g:plugs, 'vim-oblique')
-  let g:oblique#incsearch_highlight_all = 1
-
-  exe "hi ObliqueCurrentMatch gui=none cterm=none" .
-        \ " guifg=" . synIDattr(synIDtrans(hlID("Normal")), "bg", "gui") .
-        \ " guibg=" . synIDattr(synIDtrans(hlID("DiffAdd")), "fg", "gui") .
-        \ " ctermfg=" . synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm") .
-        \ " ctermbg=" .  synIDattr(synIDtrans(hlID("DiffAdd")), "fg", "cterm")
 end
 
 " ------------------------------------------------------------------------------
