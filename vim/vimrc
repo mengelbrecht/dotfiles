@@ -323,6 +323,11 @@ if has_key(g:plugs, 'vim-better-whitespace')
 end
 
 " ------------------------------------------------------------------------------
+" Gitgutter
+" ------------------------------------------------------------------------------
+let g:gitgutter_sign_removed = '-'
+
+" ------------------------------------------------------------------------------
 " Bufferline
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'vim-bufferline')
@@ -343,7 +348,7 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.separator          = {'left': "\uE0B0", 'right': "\uE0B2"}
   let g:lightline.subseparator       = {'left': "\uE0B1", 'right': "\uE0B3"}
   let g:lightline.active             = {
-        \ 'left': [['mode', 'paste'], ['fugitive'], ['readonly'], ['filename']],
+        \ 'left': [['mode', 'paste'], ['git'], ['readonly'], ['filename']],
         \ 'right': [['percent', 'lineinfo'], ['fileformat', 'fileencoding', 'whitespace'], ['filetype']]
         \ }
   let g:lightline.tab                = {'active': ['tabnum'], 'inactive': ['tabnum']}
@@ -352,7 +357,7 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.component_type     = {'bufferline': 'tabsel'}
   let g:lightline.component_function = {
         \ 'readonly': 'LightLineReadonly',
-        \ 'fugitive': 'LightLineFugitive',
+        \ 'git': 'LightLineGit',
         \ 'filename': 'LightLineFilename',
         \ 'fileformat': 'LightLineFileformat',
         \ 'filetype': 'LightLineFiletype',
@@ -415,12 +420,29 @@ if has_key(g:plugs, 'lightline.vim')
     return buffers
   endfunction
 
-  function! LightLineFugitive()
-    if exists("*fugitive#head") && winwidth(0) > 70
-      let branch = fugitive#head()
-      return branch !=# '' ? "\uE0A0 " . branch : ''
+  function! LightLineGitGutter()
+    if !exists('*GitGutterGetHunkSummary') || winwidth(0) < 80 || !get(g:, 'gitgutter_enabled', 0)
+      return ''
     endif
-    return ''
+    let hunks = GitGutterGetHunkSummary()
+    let parts = [
+        \ hunks[0] > 0 ? g:gitgutter_sign_added . hunks[0] : '',
+        \ hunks[1] > 0 ? g:gitgutter_sign_modified . hunks[1] : '',
+        \ hunks[2] > 0 ? g:gitgutter_sign_removed . hunks[2] : ''
+        \ ]
+    return join(filter(parts, 'len(v:val)'), ' ')
+  endfunction
+
+  function! LightLineFugitive()
+    if !exists("*fugitive#head") || winwidth(0) < 70
+      return ''
+    endif
+    let branch = fugitive#head()
+    return branch !=# '' ? "\uE0A0 " . branch : ''
+  endfunction
+
+  function! LightLineGit()
+    return join(filter([LightLineGitGutter(), LightLineFugitive()], 'len(v:val)'), ' ')
   endfunction
 
   function! LightLineFilename()
