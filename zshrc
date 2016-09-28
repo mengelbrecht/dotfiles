@@ -18,21 +18,6 @@ export LANG='en_US.UTF-8'
 export LC_ALL=${LANG}
 
 #-------------------------------------------------------------------------------
-# Editors
-#-------------------------------------------------------------------------------
-
-if [[ "${OSTYPE}" =~ "darwin" ]]; then
-  export EDITOR='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
-  export VISUAL='mvim -f --nomru -c "au VimLeave * !open -a iTerm"'
-else
-  export EDITOR='vim'
-  export VISUAL='vim'
-fi
-
-export PAGER='less'
-export LESS='-F -g -i -M -R -S -w -X -z-4'
-
-#-------------------------------------------------------------------------------
 # Temporary Directory
 #-------------------------------------------------------------------------------
 
@@ -110,6 +95,21 @@ if [[ "${OSTYPE}" =~ "cygwin" ]]; then
     compinit
   fi
 fi
+
+#-------------------------------------------------------------------------------
+# Editors
+#-------------------------------------------------------------------------------
+
+if which nvim &> /dev/null; then
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+else
+  export EDITOR='vim'
+  export VISUAL='vim'
+fi
+
+export PAGER='less'
+export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 #-------------------------------------------------------------------------------
 # Helper Functions
