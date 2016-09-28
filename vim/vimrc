@@ -622,17 +622,33 @@ if has_key(g:plugs, 'vim-easy-align')
 end
 
 " ------------------------------------------------------------------------------
-" Ferret
+" Ack.vim
 " ------------------------------------------------------------------------------
-if has_key(g:plugs, 'ferret')
-  if executable('pt')
-    set grepprg=pt\ --nocolor\ --nogroup\ --column\ --smart-case\ --hidden\ --ignore\ .svn\ --ignore\ .git
-  endif
-  let g:FerretHlsearch = 1
-  let g:FerretMap      = 0
+if has_key(g:plugs, 'ack.vim')
+  let g:ackprg         = 'rg --no-heading --line-number --column'
+  let g:ackhighlight     = 1
+  let g:ack_use_dispatch = 1
 
-  nmap <unique> <Leader>vv <Plug>(FerretAckWord)
-  nmap <unique> <Leader>ff <Plug>(FerretAck)
+  nnoremap <Leader>vv :Ack <cword><CR>
+  nnoremap <Leader>ff :Ack<Space>
+end
+
+" ------------------------------------------------------------------------------
+" Grepper
+" ------------------------------------------------------------------------------
+if has_key(g:plugs, 'vim-grepper')
+  let g:grepper = {
+        \ 'highlight': 1,
+        \ 'tools': ['rg', 'git', 'grep'],
+        \ 'rg': {
+        \   'grepprg': 'rg --no-heading --line-number --column --hidden --glob "!.git" --glob "!.svn" $* .',
+        \   'grepformat': '%f:%l:%c:%m'
+        \ }}
+
+  nnoremap <Leader>vv :Grepper -tool rg -cword -noprompt<CR>
+  nnoremap <Leader>ff :Grepper -tool rg<CR>
+end
+
 end
 
 " ------------------------------------------------------------------------------
