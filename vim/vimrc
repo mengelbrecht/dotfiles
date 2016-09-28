@@ -204,11 +204,12 @@ nnoremap <Leader>c :cclose<Bar>lclose<CR>
 
 nnoremap <silent> <C-t> :enew<CR>
 nnoremap <silent> <C-x> :Sayonara!<CR>
+nnoremap <silent> <C-y> :Sayonara<CR>
 nnoremap <silent> <C-u> :bprev<CR>
 nnoremap <silent> <C-i> :bnext<CR>
 
 nnoremap <silent> <Leader>t :tabnew<CR>
-nnoremap <silent> <Leader>x :Sayonara<CR>
+nnoremap <silent> <Leader>x :tabclose<CR>
 nnoremap <silent> <Leader>u :tabprevious<CR>
 nnoremap <silent> <Leader>i :tabnext<CR>
 noremap <silent> <D-1>      :tabn 1<CR>
@@ -259,7 +260,7 @@ if has('nvim')
   tnoremap <C-k>     <C-\><C-n><C-w>k
   tnoremap <C-l>     <C-\><C-n><C-w>l
   tnoremap <C-x>     <C-\><C-n>:Sayonara!<CR>
-  tnoremap <Leader>x <C-\><C-n>:Sayonara<CR>
+  tnoremap <C-y>     <C-\><C-n>:Sayonara<CR>
   nnoremap <Leader>z :below 20sp term://$SHELL<CR>i
 endif
 
@@ -285,6 +286,8 @@ augroup AutocommandSettings
     autocmd FileType python,ruby setlocal colorcolumn=120
     autocmd FileType gitcommit   setlocal colorcolumn=50,72
   endif
+
+  autocmd FileType fzf tnoremap <ESC> <C-\><C-n>:Sayonara<CR>
 augroup END
 
 " ------------------------------------------------------------------------------
