@@ -355,6 +355,31 @@ if has_key(g:plugs, 'vim-gitgutter')
 endif
 
 " ------------------------------------------------------------------------------
+" Dirvish
+" ------------------------------------------------------------------------------
+if has_key(g:plugs, 'vim-dirvish')
+  function! s:dirvish_init()
+    call fugitive#detect(@%)
+
+    nnoremap <silent> <buffer> t :call dirvish#open('tabedit', 0)<cr>
+    nnoremap <silent> <buffer> s :call dirvish#open('split', 0)<cr>
+    nnoremap <silent> <buffer> v :call dirvish#open('vsplit', 0)<cr>
+    nnoremap <buffer> + :edit %
+    nnoremap <buffer> b :!mkdir %
+    nnoremap <silent> <buffer> p :cd %:p:h<CR>:echo "CWD now: " . getcwd()<CR>
+    nnoremap <silent> <buffer> <C-R> :<C-u>Dirvish %<CR>
+
+    " Sort folders to top and alphabetically
+    sort ir /^.*[^\/]$/
+  endfunction
+
+  nnoremap <silent> <Leader><Leader> :Dirvish<CR>
+  nnoremap <silent> <Leader>r        :Dirvish %<CR>
+
+  autocmd FileType dirvish call <SID>dirvish_init()
+endif
+
+" ------------------------------------------------------------------------------
 " Bufferline
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'vim-bufferline')
