@@ -124,6 +124,7 @@ set ruler                      " Show the cursor position
 set shortmess=aIoO             " Show short messages, no intro
 set splitbelow                 " Open new splits below
 set splitright                 " Open new splits on the right
+set foldlevelstart=99          " Open all folds by default
 set showtabline=2              " Always show the tabline
 set showcmd                    " Show last command
 set noshowmode                 " No need to show mode
