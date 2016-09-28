@@ -586,16 +586,13 @@ end
 " CtrP
 " ------------------------------------------------------------------------------
 if !has('nvim') && has_key(g:plugs, 'ctrlp.vim')
-  let g:ctrlp_cmd          = 'CtrlPMixed'
-  let g:ctrlp_by_filename  = 1 " Search by filename as default
-  let g:ctrlp_use_caching  = 1
-  let g:ctrlp_user_command = 'pt -l --nocolor --hidden --ignore .svn --ignore .git -g "" %s'
+  let g:ctrlp_user_command = 'rg --files --hidden --glob "!.git" --glob "!.svn" "" %s'
 
   if has_key(g:plugs, 'ctrlp-cmatcher')
-    let g:ctrlp_match_func = { 'match' : 'matcher#cmatch' }
+    let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
   end
 
-  nnoremap <C-p> :CtrlPMixed<CR>
+  nnoremap <C-p> :CtrlP<CR>
   nnoremap <C-o> :CtrlPBuffer<CR>
 end
 
