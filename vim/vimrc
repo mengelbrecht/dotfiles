@@ -23,32 +23,36 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin()
+" Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
+" Plug 'tpope/vim-dispatch' | Plug 'mileszs/ack.vim', {'on': 'Ack'}
+Plug 'JazzCore/ctrlp-cmatcher', Cond(!has('nvim'), {'do': './install.sh'}) | Plug 'ctrlpvim/ctrlp.vim', Cond(!has('nvim'))
 Plug 'airblade/vim-gitgutter'
-Plug 'itchyny/lightline.vim'
 Plug 'bling/vim-bufferline'
-Plug 'mhinz/vim-sayonara', {'on': ['Sayonara', 'Sayonara']}
 Plug 'coderifous/textobj-word-column.vim'
+Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'pgdouyon/vim-evanesco'
+Plug 'junegunn/fzf', Cond(has('nvim'), {'do': './install --bin' }) | Plug 'junegunn/fzf.vim', Cond(has('nvim'))
+Plug 'junegunn/gv.vim', {'on': 'GV'}
 Plug 'junegunn/vim-easy-align', {'on': ['<Plug>(LiveEasyAlign)', 'LiveEasyAlign']}
+Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
+Plug 'mhinz/vim-grepper', {'on': 'Grepper'}
+Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
+Plug 'mhinz/vim-startify'
 Plug 'myint/indent-finder'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'osyo-manga/vim-over', {'on': 'OverCommandLine'}
+Plug 'pgdouyon/vim-evanesco'
 Plug 'rakr/vim-one', {'on': []}
 Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
-Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 Plug 'scrooloose/syntastic', {'on': 'SyntasticCheck'}
 Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-dispatch' | Plug 'wincent/ferret', {'on': ['<Plug>(FerretAck)', '<Plug>(FerretAckWord)', 'Ack']}
+Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession', {'on': 'Obsession'}
 Plug 'tpope/vim-surround'
-Plug 'junegunn/fzf', Cond(has('nvim'), {'do': './install --bin' }) | Plug 'junegunn/fzf.vim', Cond(has('nvim'))
-Plug 'JazzCore/ctrlp-cmatcher', Cond(!has('nvim'), {'do': 'CFLAGS=-Qunused-arguments CPPFLAGS=-Qunused-arguments ./install.sh'})
-Plug 'ctrlpvim/ctrlp.vim', Cond(!has('nvim'))
 
-" " Languages
+" Languages
 Plug 'b4winckler/vim-objc', {'for': 'objc'}
 Plug 'keith/swift.vim', {'for': 'swift'}
 Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
