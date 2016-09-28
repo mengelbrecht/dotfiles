@@ -172,6 +172,21 @@ if has('gui_running')
   endif
 endif
 
+let s:powerline_font              = 1 " Enable for powerline glyphs
+if s:powerline_font
+  let s:symbol_separator_left     = "\uE0B0"
+  let s:symbol_separator_right    = "\uE0B2"
+  let s:symbol_subseparator_left  = "\uE0B1"
+  let s:symbol_subseparator_right = "\uE0B3"
+  let s:symbol_vcs_branch         = "\uE0A0"
+else
+  let s:symbol_separator_left     = ""
+  let s:symbol_separator_right    = ""
+  let s:symbol_subseparator_left  = "\u2502"
+  let s:symbol_subseparator_right = "\u2502"
+  let s:symbol_vcs_branch         = "\u16B4"
+endif
+
 " ------------------------------------------------------------------------------
 " Keymappings
 " ------------------------------------------------------------------------------
@@ -357,15 +372,19 @@ end
 if has_key(g:plugs, 'lightline.vim')
   let g:lightline                    = {}
   let g:lightline.colorscheme        = 'onedark'
-  let g:lightline.separator          = {'left': "\uE0B0", 'right': "\uE0B2"}
-  let g:lightline.subseparator       = {'left': "\uE0B1", 'right': "\uE0B3"}
+  let g:lightline.separator          = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
+  let g:lightline.subseparator       = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
   let g:lightline.active             = {
         \ 'left': [['mode', 'paste'], ['git'], ['readonly'], ['filename']],
-        \ 'right': [['percent', 'lineinfo'], ['fileformat', 'fileencoding', 'whitespace'], ['filetype']]
+        \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']]
         \ }
   let g:lightline.tab                = {'active': ['tabnum'], 'inactive': ['tabnum']}
   let g:lightline.tabline            = {'left': [['tabs'], ['bufferline']], 'right': [['close']]}
-  let g:lightline.component_expand   = {'bufferline': 'LightLineBufferline'}
+  let g:lightline.component_expand   = {
+        \ 'bufferline': 'LightLineBufferline',
+        \ 'lineinfo': 'LightLineLineInfo',
+        \ 'percent': 'LightLinePercent'
+        \ }
   let g:lightline.component_type     = {'bufferline': 'tabsel'}
   let g:lightline.component_function = {
         \ 'readonly': 'LightLineReadonly',
@@ -413,12 +432,50 @@ if has_key(g:plugs, 'lightline.vim')
 
   let g:lightline#colorscheme#onedark#palette = lightline#colorscheme#flatten(s:lightline_onedark)
 
-  function! LightLineReadonly()
-    return &readonly ? "\uE0A2" : ''
-  endfunction
-
   function! s:strip(input)
     return substitute(a:input, '^\s*\(.\{-}\)\s*$', '\1', '')
+  endfunction
+
+  function! s:get_buffername()
+    let fname = expand('%:t')
+    let ftype = &ft
+    return fname == 'ControlP' ? ['CtrlP', 1] :
+          \ fname =~ 'NERD_tree' ? ['NERD', 1] :
+          \ ftype == 'qf' ? ['Quickfix', 1] :
+          \ ftype == 'vim-plug' ? ['Plugins', 1] :
+          \ ftype == 'dirvish' ? ['Dirvish', 1] :
+          \ ftype == 'startify' ? ['Startify', 1] :
+          \ fname == '' ? ['[No Name]', 0] :
+          \ [fname, 0]
+  endfunction
+
+  function! s:is_special_buffer()
+    return s:get_buffername()[1]
+  endfunction
+
+  function! s:get_git_hunk_status()
+    if winwidth(0) < 90 || !exists('*GitGutterGetHunkSummary') || !get(g:, 'gitgutter_enabled', 0)
+      return ''
+    endif
+    let hunks = GitGutterGetHunkSummary()
+    let parts = [
+        \ hunks[0] > 0 ? g:gitgutter_sign_added . hunks[0] : '',
+        \ hunks[1] > 0 ? g:gitgutter_sign_modified . hunks[1] : '',
+        \ hunks[2] > 0 ? g:gitgutter_sign_removed . hunks[2] : ''
+        \ ]
+    return join(filter(parts, 'len(v:val)'), ' ')
+  endfunction
+
+  function! s:get_git_branch()
+    if winwidth(0) < 80 || !exists("*fugitive#head")
+      return ''
+    endif
+    let branch = fugitive#head()
+    return branch !=# '' ? s:symbol_vcs_branch . " " . branch : ''
+  endfunction
+
+  function! LightLineReadonly()
+    return &readonly ? 'RO' : ''
   endfunction
 
   function! LightLineBufferline()
@@ -432,66 +489,64 @@ if has_key(g:plugs, 'lightline.vim')
     return buffers
   endfunction
 
-  function! LightLineGitGutter()
-    if !exists('*GitGutterGetHunkSummary') || winwidth(0) < 80 || !get(g:, 'gitgutter_enabled', 0)
-      return ''
-    endif
-    let hunks = GitGutterGetHunkSummary()
-    let parts = [
-        \ hunks[0] > 0 ? g:gitgutter_sign_added . hunks[0] : '',
-        \ hunks[1] > 0 ? g:gitgutter_sign_modified . hunks[1] : '',
-        \ hunks[2] > 0 ? g:gitgutter_sign_removed . hunks[2] : ''
-        \ ]
-    return join(filter(parts, 'len(v:val)'), ' ')
-  endfunction
-
-  function! LightLineFugitive()
-    if !exists("*fugitive#head") || winwidth(0) < 70
-      return ''
-    endif
-    let branch = fugitive#head()
-    return branch !=# '' ? "\uE0A0 " . branch : ''
-  endfunction
-
   function! LightLineGit()
-    return join(filter([LightLineGitGutter(), LightLineFugitive()], 'len(v:val)'), ' ')
+    return s:is_special_buffer() ? '' : join(filter([s:get_git_hunk_status(), s:get_git_branch()], 'len(v:val)'), ' ')
   endfunction
 
   function! LightLineFilename()
-    let fname = expand('%:t')
-    return fname == 'ControlP' ? '' :
-          \ fname =~ 'NERD_tree' ? '' :
-          \ (fname == '' ? '[No Name]' : fname) .
-          \ (&modified ? '+' : &modifiable ? '' : '-')
-  endfunction
-
-  function! LightLineFileformat()
-    return winwidth(0) > 70 ? (&fileformat == 'unix' ? "\uE0A1" : 'CR') : ''
+    let bufname = s:get_buffername()
+    return bufname[1] ? '' : bufname[0] . (&modified ? '+' : &modifiable ? '' : '-')
   endfunction
 
   function! LightLineFiletype()
-    return winwidth(0) > 70 ? (&filetype !=# '' ? &filetype : '--') : ''
-  endfunction
-
-  function! LightLineFileencoding()
-    return winwidth(0) > 70 ? (&fenc !=# '' ? &fenc : &enc) : ''
+    if winwidth(0) < 60 || s:is_special_buffer()
+      return ''
+    endif
+    return &filetype !=# '' ? &filetype : '--'
   endfunction
 
   function! LightLineWhitespace()
-    return winwidth(0) > 70 ? &shiftwidth . (&expandtab ? "SP" : "TB") : ''
+    if winwidth(0) < 65 || s:is_special_buffer()
+      return ''
+    endif
+    return &shiftwidth . (&expandtab ? "S" : "T")
+  endfunction
+
+  function! LightLineFileformat()
+    if winwidth(0) < 70 || s:is_special_buffer()
+      return ''
+    endif
+    return &fileformat == 'unix' ? 'NL' :
+          \ &fileformat == 'dos' ? 'CR-NL' :
+          \ &fileformat == 'mac' ? 'CR' : '??'
+  endfunction
+
+  function! LightLineFileencoding()
+    if winwidth(0) < 75 || s:is_special_buffer()
+      return ''
+    endif
+    return &fenc !=# '' ? &fenc : &enc
+  endfunction
+
+  function! LightLinePercent()
+    return '%3p%%'
+  endfunction
+
+  function! LightLineLineInfo()
+    return "%3l:%-2v \u2630"
   endfunction
 
   function! LightLineMode()
-      let fname = expand('%:t')
+      let bufname = s:get_buffername()
       let fmode = lightline#mode()
-      return fname == 'ControlP' ? 'CtrlP' :
-          \ fname =~ 'NERD' ? 'NERD' :
+      return bufname[1] ? bufname[0] :
           \ fmode == 'NORMAL'  ? 'N' :
           \ fmode == 'INSERT'  ? 'I' :
           \ fmode == 'VISUAL'  ? 'V' :
           \ fmode == 'V-LINE'  ? 'V' :
           \ fmode == 'V-BLOCK' ? 'V' :
           \ fmode == 'REPLACE' ? 'R' :
+          \ fmode == 'COMMAND' ? 'C' :
           \ fmode == 'TERMINAL' ? 'T' : fmode
   endfunction
 end
