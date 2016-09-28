@@ -653,6 +653,25 @@ if has_key(g:plugs, 'vim-grepper')
   nnoremap <Leader>ff :Grepper -tool rg<CR>
 end
 
+" ------------------------------------------------------------------------------
+" Startify
+" ------------------------------------------------------------------------------
+if has_key(g:plugs, 'vim-startify')
+  let g:startify_list_order = [
+        \ ['Bookmarks'],  'bookmarks',
+        \ ['MRU'],        'files',
+        \ ['MRU in CWD [' . getcwd() . ']'], 'dir',
+        \ ['Sessions'],   'sessions',
+        \ ['Commands'],   'commands']
+  let g:startify_bookmarks  = [
+        \ {'bc': '~/.dotfiles/vim/vimrc'},
+        \ {'bz': '~/.dotfiles/zshrc'},
+        \ {'bl': '~/.dotfiles'},
+        \ {'bd': '/Volumes/DATA/repos/development'}]
+  let g:startify_use_env    = 1
+  let g:startify_skiplist   = ['vim/plugged']
+
+  nnoremap <Leader>s :Startify<CR>
 end
 
 " ------------------------------------------------------------------------------
