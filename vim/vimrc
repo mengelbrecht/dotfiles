@@ -276,7 +276,8 @@ augroup AutocommandSettings
 
   autocmd InsertEnter * set listchars-=trail:·
   autocmd InsertLeave * set listchars+=trail:·
-  " Detect gyp files
+
+  autocmd BufRead,BufNewFile *.mm setlocal filetype=objcpp
   autocmd BufRead,BufNewFile *.gyp,*.gypi setlocal filetype=python
 
   if exists('+colorcolumn')
