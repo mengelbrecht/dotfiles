@@ -155,8 +155,8 @@ if has('gui_running')
   set guioptions-=a " Do not auto copy selection to clipboard
   set guioptions-=e " Do not use gui tab apperance
   set guioptions-=r " Do not show scrollbars
-  set guioptions-=l " Do not show scrollbars
   set guioptions-=R " Do not show scrollbars
+  set guioptions-=l " Do not show scrollbars
   set guioptions-=L " Do not show scrollbars
 
   if has('gui_macvim')
