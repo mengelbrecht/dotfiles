@@ -583,12 +583,17 @@ end
 " fzf
 " ------------------------------------------------------------------------------
 if has('nvim') && has_key(g:plugs, 'fzf.vim')
-  if executable('pt')
-    let $FZF_DEFAULT_COMMAND = 'pt -l --nocolor --nogroup --hidden --ignore .svn --ignore .git -g ""'
-  end
+  function! s:FZFGrep(bang, args)
+    let l:grepargs = empty(a:args) ? expand("<cword>") : a:args . join(a:000, ' ')
+    call fzf#vim#grep('rg --color=always --no-heading --line-number --column --smart-case --hidden --glob "!.git" --glob "!.svn" '.shellescape(l:grepargs), 1, a:bang)
+  endfunction
+
+  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git" --glob "!.svn" ""'
   let $FZF_DEFAULT_OPTS .= ' --inline-info'
+
   nnoremap <C-p> :FZF<CR>
   nnoremap <C-o> :Buffers<CR>
+  command! -bang -nargs=* FZG call s:FZFGrep(<bang>0, <q-args>)
 end
 
 " ------------------------------------------------------------------------------
