@@ -496,22 +496,22 @@ end
 " NERDTree
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'nerdtree')
-  let g:NERDTreeChDirMode     = 2 " Change cwd when root changes
-  let g:NERDTreeMinimalUI     = 1 " Reduce some clutter
-  let g:NERDTreeMouseMode     = 2 " Single click opens any node
-  let g:NERDTreeShowBookmarks = 1 " Show bookmarks
-  let g:NERDTreeShowHidden    = 1 " Show hidden files
-  let g:NERDTreeIgnore        = ['\.DS_Store$']
+  let g:NERDTreeChDirMode           = 2 " Change cwd when root changes
+  let g:NERDTreeDirArrowCollapsible = '-'
+  let g:NERDTreeDirArrowExpandable  = '+'
+  let g:NERDTreeIgnore              = ['\.DS_Store$']
+  let g:NERDTreeMinimalUI           = 1 " Reduce some clutter
+  let g:NERDTreeMouseMode           = 2 " Single click opens any node
+  let g:NERDTreeShowBookmarks       = 1 " Show bookmarks
+  let g:NERDTreeShowHidden          = 1 " Show hidden files
 
   " Show file tree
-  map <unique> <Leader>n :NERDTreeToggle<CR>
+  map <Leader><Leader> :NERDTreeToggle<CR>
   " Reveal file in file tree
-  map <unique> <Leader>r :NERDTreeFind<CR>
+  map <Leader>r :NERDTreeFind<CR>
 
-  augroup NERDTreeSettings
-    " Hide whitespace symbols in nerdtree
-    autocmd FileType nerdtree setlocal nolist
-  augroup END
+  " Hide whitespace symbols in nerdtree
+  autocmd FileType nerdtree setlocal nolist
 end
 
 " ------------------------------------------------------------------------------
@@ -542,7 +542,7 @@ if has_key(g:plugs, 'syntastic')
   let g:syntastic_cpp_checkers             = [] " or ['clang_tidy']
   let g:syntastic_cpp_clang_tidy_post_args = '-p build/compile_commands.json'
 
-  nnoremap <unique> <F4> :SyntasticCheck<CR>
+  nnoremap <F4> :SyntasticCheck<CR>
 end
 
 " ------------------------------------------------------------------------------
@@ -552,30 +552,31 @@ if has_key(g:plugs, 'YouCompleteMe')
   let g:ycm_autoclose_preview_window_after_completion = 1
   let g:ycm_key_list_select_completion                = ['<TAB>', '<Down>', '<Enter>']
   let g:ycm_global_ycm_extra_conf                     = '~/.vim/ycm_config.py'
-  let g:ycm_filetype_whitelist                        = { 'python': 1, 'cpp': 1 }
+  let g:ycm_filetype_whitelist                        = {'python': 1, 'cpp': 1}
   " let g:ycm_show_diagnostics_ui = 0 " Enable this line to have clang-tidy checks using syntastic
 
-  nnoremap <unique> jd :YcmCompleter GoToDefinition<CR>
-  nnoremap <unique> jj :YcmCompleter GoToDefinitionElseDeclaration<CR>
-  nnoremap <unique> jc :YcmCompleter GoToDeclaration<CR>
-  nnoremap <unique> jk :YcmCompleter GoToInclude<CR>
-  nnoremap <unique> jp :YcmDiags<CR>
-  nnoremap <F3>        :YcmForceCompileAndDiagnostics<CR>
+  nnoremap jd   :YcmCompleter GoToDefinition<CR>
+  nnoremap jj   :YcmCompleter GoToDefinitionElseDeclaration<CR>
+  nnoremap jc   :YcmCompleter GoToDeclaration<CR>
+  nnoremap jk   :YcmCompleter GoToInclude<CR>
+  nnoremap jp   :YcmDiags<CR>
+  nnoremap <F3> :YcmForceCompileAndDiagnostics<CR>
 end
 
 " ------------------------------------------------------------------------------
 " Fugitive
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'vim-fugitive')
-  nnoremap <unique> <Space>gs  :Gstatus<CR>
-  nnoremap <unique> <Space>gc  :Gcommit -v -q<CR>
-  nnoremap <unique> <Space>ga  :Gcommit -v -q --amend<CR>
-  nnoremap <unique> <Space>gd  :Gdiff<CR>
-  nnoremap <unique> <Space>gl  :silent! Glog<CR>:bot copen<CR>
-  nnoremap <unique> <Space>gg  :Ggrep<Space>
-  nnoremap <unique> <Space>gm  :Gmove<Space>
-  nnoremap <unique> <Space>gp  :Dispatch! git push<CR>
-  nnoremap <unique> <Space>gfr :Dispatch! git pull --rebase<CR>
+  nnoremap <Space>gs  :Gstatus<CR>
+  nnoremap <Space>gc  :Gcommit -v -q<CR>
+  nnoremap <Space>ga  :Gcommit -v -q --amend<CR>
+  nnoremap <Space>gd  :Gdiff<CR>
+  nnoremap <Space>gl  :silent! Glog<CR>:bot copen<CR>
+  nnoremap <Space>gg  :Ggrep<Space>
+  nnoremap <Space>gm  :Gmove<Space>
+  nnoremap <Space>gb  :Gblame<CR>
+  nnoremap <Space>gp  :Dispatch! git push<CR>
+  nnoremap <Space>gfr :Dispatch! git pull --rebase<CR>
 end
 
 " ------------------------------------------------------------------------------
