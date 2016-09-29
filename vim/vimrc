@@ -749,9 +749,9 @@ if has_key(g:plugs, 'vim-startify')
         \ {'bl': '~/.dotfiles'},
         \ {'bd': '/Volumes/DATA/repos/development'}]
   let g:startify_use_env    = 1
-  let g:startify_skiplist   = ['vim/plugged']
+  let g:startify_skiplist   = ['vim/plugged', '.git', resolve($VIMRUNTIME)]
 
-  nnoremap <Leader>s :Startify<CR>
+  nnoremap <silent> <Leader>s :Startify<CR>
 end
 
 " ------------------------------------------------------------------------------
