@@ -55,7 +55,7 @@ Plug 'tpope/vim-surround'
 " Languages
 Plug 'b4winckler/vim-objc', {'for': 'objc'}
 Plug 'keith/swift.vim', {'for': 'swift'}
-Plug 'kelan/gyp.vim'
+Plug 'kelan/gyp.vim', {'for': 'gyp'}
 Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
 Plug 'nickhutchinson/vim-cmake-syntax', {'for': 'cmake'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
