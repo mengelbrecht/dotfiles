@@ -41,7 +41,6 @@ Plug 'mhinz/vim-grepper', {'on': 'Grepper'}
 Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
 Plug 'mhinz/vim-startify'
 Plug 'myint/indent-finder'
-Plug 'ntpeters/vim-better-whitespace'
 Plug 'osyo-manga/vim-over', {'on': 'OverCommandLine'}
 Plug 'pgdouyon/vim-evanesco'
 Plug 'rakr/vim-one', {'on': []}
@@ -341,6 +340,9 @@ endfunction
 
 nnoremap <silent> <Leader>gt :call <SID>cd_git_toplevel()<CR>
 
+" ------------------------------------------------------------------------------
+" Whitespace
+" ------------------------------------------------------------------------------
 if g:colors_name     ==# "onedark"
   let s:ws_guifg       = synIDattr(synIDtrans(hlID("Cursor")), "fg", "gui")
   let s:ws_ctermfg     = synIDattr(synIDtrans(hlID("Cursor")), "fg", "cterm")
@@ -352,17 +354,17 @@ elseif g:colors_name ==# "one"
   let s:ws_guibg       = synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "gui")
   let s:ws_ctermbg     = synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "cterm")
 end
+exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:ws_guifg . " guibg=" . s:ws_guibg .
+  \ " ctermfg=" . s:ws_ctermfg . " ctermbg=" . s:ws_ctermbg
+
+" Use F5 to remove all trailing whitespace
+nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
+autocmd InsertLeave,BufReadPost * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave             * match ExtraWhitespace ''
 
 " ------------------------------------------------------------------------------
-" Vim Better Whitespace
 " ------------------------------------------------------------------------------
-if has_key(g:plugs, 'vim-better-whitespace')
-  exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:ws_guifg . " guibg=" . s:ws_guibg .
-    \ " ctermfg=" . s:ws_ctermfg . " ctermbg=" . s:ws_ctermbg
-
-  " Use F5 to remove all trailing spaces
-  nnoremap <silent> <F5> :StripWhitespace<CR>
-end
 
 " ------------------------------------------------------------------------------
 " Gitgutter
