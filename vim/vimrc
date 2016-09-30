@@ -328,6 +328,19 @@ endif
 
 colorscheme onedark
 
+" ------------------------------------------------------------------------------
+" Change to git root
+" ------------------------------------------------------------------------------
+function! s:cd_git_toplevel()
+  execute 'lcd ' . expand("%:p:h")
+  let l:toplevel = system('git rev-parse --show-toplevel')
+  if !v:shell_error
+    execute 'lcd ' . l:toplevel
+  endif
+endfunction
+
+nnoremap <silent> <Leader>gt :call <SID>cd_git_toplevel()<CR>
+
 if g:colors_name     ==# "onedark"
   let s:ws_guifg       = synIDattr(synIDtrans(hlID("Cursor")), "fg", "gui")
   let s:ws_ctermfg     = synIDattr(synIDtrans(hlID("Cursor")), "fg", "cterm")
