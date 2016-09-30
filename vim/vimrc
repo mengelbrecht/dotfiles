@@ -661,16 +661,16 @@ end
 " Fugitive
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'vim-fugitive')
-  nnoremap <Space>gs  :Gstatus<CR>
-  nnoremap <Space>gc  :Gcommit -v -q<CR>
-  nnoremap <Space>ga  :Gcommit -v -q --amend<CR>
-  nnoremap <Space>gd  :Gdiff<CR>
-  nnoremap <Space>gl  :silent! Glog<CR>:bot copen<CR>
-  nnoremap <Space>gg  :Ggrep<Space>
-  nnoremap <Space>gm  :Gmove<Space>
-  nnoremap <Space>gb  :Gblame<CR>
-  nnoremap <Space>gp  :Dispatch! git push<CR>
-  nnoremap <Space>gfr :Dispatch! git pull --rebase<CR>
+  nnoremap <Space>ga :Gcommit -v -q --amend<CR>
+  nnoremap <Space>gb :Gblame<CR>
+  nnoremap <Space>gc :Gcommit -v -q<CR>
+  nnoremap <Space>gd :Gdiff<CR>
+  nnoremap <Space>gg :Ggrep<Space>
+  nnoremap <Space>gl :silent! Glog<CR>:bot copen<CR>
+  nnoremap <Space>gm :Gmove<Space>
+  nnoremap <Space>gp :Dispatch! git push<CR>
+  nnoremap <Space>gr :Dispatch! git pull --rebase<CR>
+  nnoremap <Space>gs :Gstatus<CR>
 end
 
 " ------------------------------------------------------------------------------
