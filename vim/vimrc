@@ -36,7 +36,6 @@ Plug 'junegunn/gv.vim', {'on': 'GV'}
 Plug 'junegunn/vim-easy-align', {'on': ['<Plug>(LiveEasyAlign)', 'LiveEasyAlign']}
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
-Plug 'kshenoy/vim-signature'
 Plug 'mhinz/vim-grepper', {'on': 'Grepper'}
 Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
 Plug 'mhinz/vim-startify'
@@ -376,12 +375,6 @@ let g:plug_window = 'vertical rightbelow new'
 if has_key(g:plugs, 'vim-gitgutter')
   let g:gitgutter_sign_removed = '-'
 endif
-
-" ------------------------------------------------------------------------------
-" Signature
-" ------------------------------------------------------------------------------
-let g:SignatureMarkTextHLDynamic = 1
-let g:SignatureMarkerTextHLDynamic = 1
 
 " ------------------------------------------------------------------------------
 " Dirvish
