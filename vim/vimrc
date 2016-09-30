@@ -23,15 +23,15 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin()
+" Plug 'JazzCore/ctrlp-cmatcher', Cond(!has('nvim'), {'do': './install.sh'}) | Plug 'ctrlpvim/ctrlp.vim', Cond(!has('nvim'))
+" Plug 'junegunn/fzf', Cond(has('nvim'), {'do': './install --bin' }) | Plug 'junegunn/fzf.vim', Cond(has('nvim'))
 " Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 " Plug 'tpope/vim-dispatch' | Plug 'mileszs/ack.vim', {'on': 'Ack'}
-Plug 'JazzCore/ctrlp-cmatcher', Cond(!has('nvim'), {'do': './install.sh'}) | Plug 'ctrlpvim/ctrlp.vim', Cond(!has('nvim'))
 Plug 'airblade/vim-gitgutter'
 Plug 'bling/vim-bufferline'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'itchyny/lightline.vim'
 Plug 'joshdick/onedark.vim'
-Plug 'junegunn/fzf', Cond(has('nvim'), {'do': './install --bin' }) | Plug 'junegunn/fzf.vim', Cond(has('nvim'))
 Plug 'junegunn/gv.vim', {'on': 'GV'}
 Plug 'junegunn/vim-easy-align', {'on': ['<Plug>(LiveEasyAlign)', 'LiveEasyAlign']}
 Plug 'justinmk/vim-dirvish'
@@ -42,6 +42,7 @@ Plug 'mhinz/vim-startify'
 Plug 'myint/indent-finder'
 Plug 'osyo-manga/vim-over', {'on': 'OverCommandLine'}
 Plug 'pgdouyon/vim-evanesco'
+Plug 'pgdouyon/vim-niffler', {'on': ['Niffler', 'NifflerBuffer']}
 Plug 'rakr/vim-one', {'on': []}
 Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
 Plug 'scrooloose/syntastic', {'on': 'SyntasticCheck'}
@@ -493,6 +494,7 @@ if has_key(g:plugs, 'lightline.vim')
           \ ftype == 'vim-plug' ? ['Plugins', 1] :
           \ ftype == 'dirvish' ? ['Dirvish', 1] :
           \ ftype == 'startify' ? ['Startify', 1] :
+          \ ftype == 'niffler' ? ['Niffler', 1] :
           \ fname == '' ? ['[No Name]', 0] :
           \ [fname, 0]
   endfunction
@@ -722,6 +724,18 @@ if !has('nvim') && has_key(g:plugs, 'ctrlp.vim')
   nnoremap <C-o> :CtrlPBuffer<CR>
 end
 
+" ------------------------------------------------------------------------------
+" Niffler
+" ------------------------------------------------------------------------------
+if has_key(g:plugs, 'vim-niffler')
+  let g:niffler_user_command = 'rg --files --hidden --glob "!.git" --glob "!.svn" %s'
+
+  nnoremap <C-p> :Niffler -vcs<CR>
+  nnoremap <C-o> :NifflerBuffer<CR>
+
+  " Hide niffler buffer in the bufferlist
+  autocmd FileType niffler setlocal nobuflisted
+end
 " ------------------------------------------------------------------------------
 " Easy-Align
 " ------------------------------------------------------------------------------
