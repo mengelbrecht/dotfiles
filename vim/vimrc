@@ -371,12 +371,12 @@ if has_key(g:plugs, 'vim-dirvish')
   function! s:dirvish_init()
     call fugitive#detect(@%)
 
-    nnoremap <silent> <buffer> t :call dirvish#open('tabedit', 0)<cr>
-    nnoremap <silent> <buffer> s :call dirvish#open('split', 0)<cr>
-    nnoremap <silent> <buffer> v :call dirvish#open('vsplit', 0)<cr>
+    nnoremap <silent> <buffer> t :call dirvish#open('tabedit', 0)<CR>
+    nnoremap <silent> <buffer> s :call dirvish#open('split', 0)<CR>
+    nnoremap <silent> <buffer> v :call dirvish#open('vsplit', 0)<CR>
     nnoremap <buffer> + :edit %
     nnoremap <buffer> b :!mkdir %
-    nnoremap <silent> <buffer> p :cd %:p:h<CR>:echo "CWD now: " . getcwd()<CR>
+    nnoremap <silent> <buffer> p :lcd %:p:h<CR>
     nnoremap <silent> <buffer> <C-R> :<C-u>Dirvish %<CR>
 
     " Sort folders to top and alphabetically
