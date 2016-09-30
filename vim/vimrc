@@ -55,6 +55,7 @@ Plug 'tpope/vim-surround'
 " Languages
 Plug 'b4winckler/vim-objc', {'for': 'objc'}
 Plug 'keith/swift.vim', {'for': 'swift'}
+Plug 'kelan/gyp.vim'
 Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
 Plug 'nickhutchinson/vim-cmake-syntax', {'for': 'cmake'}
 Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
@@ -300,7 +301,6 @@ augroup AutocommandSettings
   autocmd InsertLeave * set listchars+=trail:·
 
   autocmd BufRead,BufNewFile *.mm setlocal filetype=objcpp
-  autocmd BufRead,BufNewFile *.gyp,*.gypi setlocal filetype=python
 
   if exists('+colorcolumn')
     autocmd FileType *           setlocal colorcolumn=
