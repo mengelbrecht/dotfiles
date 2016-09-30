@@ -410,7 +410,7 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.separator          = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
   let g:lightline.subseparator       = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
   let g:lightline.active             = {
-        \ 'left': [['mode', 'paste'], ['git'], ['readonly'], ['filename']],
+        \ 'left': [['mode', 'paste'], ['git'], ['readonly', 'cwd'], ['filename']],
         \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']]
         \ }
   let g:lightline.tab                = {'active': ['tabnum'], 'inactive': ['tabnum']}
@@ -424,6 +424,7 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.component_function = {
         \ 'readonly': 'LightLineReadonly',
         \ 'git': 'LightLineGit',
+        \ 'cwd': 'LightLineCWD',
         \ 'filename': 'LightLineFilename',
         \ 'fileformat': 'LightLineFileformat',
         \ 'filetype': 'LightLineFiletype',
@@ -472,10 +473,10 @@ if has_key(g:plugs, 'lightline.vim')
   endfunction
 
   function! s:get_buffername()
-    let fname = expand('%:t')
+    let fname = pathshorten(expand('%:.'))
     let ftype = &ft
     return fname == 'ControlP' ? ['CtrlP', 1] :
-          \ fname =~ 'NERD_tree' ? ['NERD', 1] :
+          \ ftype == 'nerdtree' ? ['NERD', 1] :
           \ ftype == 'qf' ? ['Quickfix', 1] :
           \ ftype == 'vim-plug' ? ['Plugins', 1] :
           \ ftype == 'dirvish' ? ['Dirvish', 1] :
@@ -526,6 +527,10 @@ if has_key(g:plugs, 'lightline.vim')
 
   function! LightLineGit()
     return s:is_special_buffer() ? '' : join(filter([s:get_git_hunk_status(), s:get_git_branch()], 'len(v:val)'), ' ')
+  endfunction
+
+  function! LightLineCWD()
+    return winwidth(0) < 100 ? '' : getcwd()
   endfunction
 
   function! LightLineFilename()
