@@ -364,7 +364,9 @@ autocmd InsertLeave,BufReadPost * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave             * match ExtraWhitespace ''
 
 " ------------------------------------------------------------------------------
+" Plug
 " ------------------------------------------------------------------------------
+let g:plug_window = 'vertical rightbelow new'
 
 " ------------------------------------------------------------------------------
 " Gitgutter
