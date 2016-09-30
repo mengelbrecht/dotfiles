@@ -361,9 +361,15 @@ exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:ws_guifg . " guibg=" . s
 " Use F5 to remove all trailing whitespace
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
-autocmd InsertLeave,BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter             * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd BufWinLeave             * match ExtraWhitespace ''
+function! s:match_whitespace(pattern)
+  if &buftype != 'nofile'
+    exe 'match ExtraWhitespace ' . a:pattern
+  end
+endfunction
+
+autocmd InsertLeave,BufWinEnter * call <SID>match_whitespace('/\s\+$/')
+autocmd InsertEnter             * call <SID>match_whitespace('/\s\+\%#\@<!$/')
+autocmd BufWinLeave             * call <SID>match_whitespace("''")
 
 " ------------------------------------------------------------------------------
 " Plug
