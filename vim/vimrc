@@ -149,7 +149,7 @@ set t_md=                      " Disable bold fonts in terminal
 set background=dark            " Use dark colorscheme
 
 if has('termguicolors')
-  set termguicolors                   " Enable 24bit colors in terminal
+  set termguicolors " Enable 24bit colors in terminal
 endif
 
 if has('nvim')
