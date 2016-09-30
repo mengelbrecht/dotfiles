@@ -1,8 +1,11 @@
-# OSX
+# macOS
 .DS_Store
 
 # Windows
 Thumbs.db
+
+# Vim
+*.swp
 
 # Xcode
 xcuserdata
