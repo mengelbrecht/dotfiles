@@ -90,6 +90,7 @@ set backspace=indent,eol,start " Fix backspace
 set nobackup                   " Disable backups
 set clipboard=unnamed          " Use the OS clipboard by default
 set ttyfast                    " Optimize for fast terminal connections
+set lazyredraw                 " Wait to redraw
 set ttimeout                   " Timeout on keycodes
 set ttimeoutlen=10             " Small timeout to reduce lag when pressing ESC in terminal
 set nomodeline                 " Hide modeline
@@ -136,6 +137,7 @@ set noshowmode                 " No need to show mode
 set showmatch                  " Show matching parenthesis
 set synmaxcol=240              " Limit syntax highlighting to 240 colums
 set laststatus=2               " Always show status line
+set scrolljump=8               " Scroll 8 lines at a time at top/bottom
 set scrolloff=3                " Always show one line above and below cursor
 set sidescrolloff=5            " Always show 5 columns before and after cursor
 set completeopt-=preview       " Disable preview window for YCM
