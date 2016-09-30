@@ -118,6 +118,7 @@ set listchars+=trail:·         " Trailing whitespace
 set listchars+=extends:#       " Character to show when wrap is off
 set listchars+=nbsp:%          " Non breakable whitespace
 set cf                         " Enable error jumping.
+set nostartofline              " Do not move cursor to start of line after line-wise command
 set gcr=a:blinkon0             " Non blinking cursor
 set hidden                     " Allow hidden buffers
 set matchpairs+=<:>            " Pairs to match
