@@ -354,13 +354,15 @@ elseif g:colors_name ==# "one"
   let s:ws_guibg       = synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "gui")
   let s:ws_ctermbg     = synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "cterm")
 end
+
 exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:ws_guifg . " guibg=" . s:ws_guibg .
   \ " ctermfg=" . s:ws_ctermfg . " ctermbg=" . s:ws_ctermbg
 
 " Use F5 to remove all trailing whitespace
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
-autocmd InsertLeave,BufReadPost * match ExtraWhitespace /\s\+$/
+autocmd InsertLeave,BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter             * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd BufWinLeave             * match ExtraWhitespace ''
 
 " ------------------------------------------------------------------------------
