@@ -694,6 +694,7 @@ end
 " CtrP
 " ------------------------------------------------------------------------------
 if !has('nvim') && has_key(g:plugs, 'ctrlp.vim')
+  let g:ctrlp_by_filename  = 1
   let g:ctrlp_user_command = 'rg --files --hidden --glob "!.git" --glob "!.svn" "" %s'
 
   if has_key(g:plugs, 'ctrlp-cmatcher')
