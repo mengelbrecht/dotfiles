@@ -598,7 +598,7 @@ if has_key(g:plugs, 'lightline.vim')
 
   function! LightLineFileformat()
     return &fileformat == 'unix' ? '' :
-          \ &fileformat == 'dos' ? 'CR-NL' :
+          \ &fileformat == 'dos' ? 'CRLF' :
           \ &fileformat == 'mac' ? 'CR' : '??'
   endfunction
 
