@@ -530,10 +530,10 @@ if has_key(g:plugs, 'lightline.vim')
 
   let s:ll_black      = [synIDattr(synIDtrans(hlID("Normal")), "bg", "gui"),     synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")]
   let s:ll_white      = [synIDattr(synIDtrans(hlID("Normal")), "fg", "gui"),     synIDattr(synIDtrans(hlID("Normal")), "fg", "cterm")]
-  let s:ll_red        = [synIDattr(synIDtrans(hlID("DiffDelete")), "fg", "gui"), synIDattr(synIDtrans(hlID("DiffDelete")), "fg", "cterm")]
-  let s:ll_green      = [synIDattr(synIDtrans(hlID("DiffAdd")), "fg", "gui"),    synIDattr(synIDtrans(hlID("DiffAdd")), "fg", "cterm")]
+  let s:ll_red        = [synIDattr(synIDtrans(hlID("Error")), "fg", "gui"), synIDattr(synIDtrans(hlID("Error")), "fg", "cterm")]
+  let s:ll_green      = [synIDattr(synIDtrans(hlID("String")), "fg", "gui"),    synIDattr(synIDtrans(hlID("String")), "fg", "cterm")]
   let s:ll_yellow     = [synIDattr(synIDtrans(hlID("Search")), "bg", "gui"),     synIDattr(synIDtrans(hlID("Search")), "bg", "cterm")]
-  let s:ll_blue       = [synIDattr(synIDtrans(hlID("DiffText")), "fg", "gui"),   synIDattr(synIDtrans(hlID("DiffText")), "fg", "cterm")]
+  let s:ll_blue       = [synIDattr(synIDtrans(hlID("Directory")), "fg", "gui"),   synIDattr(synIDtrans(hlID("Directory")), "fg", "cterm")]
   let s:ll_magenta    = [synIDattr(synIDtrans(hlID("Todo")), "fg", "gui"),       synIDattr(synIDtrans(hlID("Todo")), "fg", "cterm")]
   let s:ll_dark_grey  = [synIDattr(synIDtrans(hlID("CursorLine")), "bg", "gui"), synIDattr(synIDtrans(hlID("CursorLine")), "bg", "cterm")]
   let s:ll_light_grey = [synIDattr(synIDtrans(hlID("Pmenu")), "bg", "gui"),      synIDattr(synIDtrans(hlID("Pmenu")), "bg", "cterm")]
