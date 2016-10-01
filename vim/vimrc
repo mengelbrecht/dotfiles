@@ -340,6 +340,17 @@ endfunction
 
 nnoremap <silent> <Leader>gt :call <SID>cd_git_toplevel()<CR>
 
+" ----------------------------------------------------------------------------
+" Profile
+" ----------------------------------------------------------------------------
+function! s:profile()
+    profile start /tmp/profile.log
+    profile func *
+    profile file *
+endfunction
+
+command! Profile call <SID>profile()
+
 " ------------------------------------------------------------------------------
 " Whitespace
 " ------------------------------------------------------------------------------
