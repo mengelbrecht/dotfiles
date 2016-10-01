@@ -465,6 +465,31 @@ endif
 " Lightline
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'lightline.vim')
+  let s:buffer_name_map = {
+        \ 'dirvish': 'Dirvish',
+        \ 'nerdtree': 'NERD',
+        \ 'niffler': 'Niffler',
+        \ 'qf': 'Quickfix',
+        \ 'startify': 'Startify',
+        \ 'vim-plug': 'Plug'
+        \ }
+
+  function! s:buffer_update()
+    let b:is_special_buffer = has_key(s:buffer_name_map, &ft)
+    let b:buffer_name = get(s:buffer_name_map, &ft, '')
+  endfunction
+
+  function! s:buffer_init()
+    if exists('b:buffer_init')
+      return
+    endif
+    let b:buffer_init = 1
+    call s:buffer_update()
+  endfunction
+
+  autocmd BufWinEnter * call <SID>buffer_init()
+  autocmd FileType    * call <SID>buffer_update()
+
   let g:lightline                    = {}
   let g:lightline.colorscheme        = 'onedark'
   let g:lightline.separator          = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
@@ -477,19 +502,29 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.tabline            = {'left': [['tabs'], ['bufferline']], 'right': [['close']]}
   let g:lightline.component_expand   = {
         \ 'bufferline': 'LightLineBufferline',
-        \ 'lineinfo': 'LightLineLineInfo',
-        \ 'percent': 'LightLinePercent'
         \ }
   let g:lightline.component_type     = {'bufferline': 'tabsel'}
   let g:lightline.component_function = {
-        \ 'readonly': 'LightLineReadonly',
         \ 'cwd': 'LightLineCWD',
-        \ 'filename': 'LightLineFilename',
-        \ 'fileformat': 'LightLineFileformat',
-        \ 'filetype': 'LightLineFiletype',
         \ 'fileencoding': 'LightLineFileencoding',
-        \ 'whitespace': 'LightLineWhitespace',
-        \ 'mode': 'LightLineMode'
+        \ 'fileformat': 'LightLineFileformat',
+        \ 'filename': 'LightLineFilename',
+        \ 'filetype': 'LightLineFiletype',
+        \ 'mode': 'LightLineMode',
+        \ 'whitespace': 'LightLineWhitespace'
+        \ }
+  let g:lightline.component_function_visible_condition = {
+        \ 'cwd': '1',
+        \ 'fileencoding': '&fenc!=&enc',
+        \ 'fileformat': '&fileformat!="unix"',
+        \ 'filename': '!b:is_special_buffer',
+        \ 'filetype': '!b:is_special_buffer',
+        \ 'mode': '1',
+        \ 'whitespace': '!b:is_special_buffer'
+        \ }
+  let g:lightline.mode_map           = {
+        \ 'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'V', "\<C-v>": 'V',
+        \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S-BLOCK', 't': 'T'
         \ }
 
   let s:ll_black      = [synIDattr(synIDtrans(hlID("Normal")), "bg", "gui"),     synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")]
@@ -531,28 +566,6 @@ if has_key(g:plugs, 'lightline.vim')
     return substitute(a:input, '^\s*\(.\{-}\)\s*$', '\1', '')
   endfunction
 
-  function! s:get_buffername()
-    let fname = pathshorten(expand('%:.'))
-    let ftype = &ft
-    return fname == 'ControlP' ? ['CtrlP', 1] :
-          \ ftype == 'nerdtree' ? ['NERD', 1] :
-          \ ftype == 'qf' ? ['Quickfix', 1] :
-          \ ftype == 'vim-plug' ? ['Plugins', 1] :
-          \ ftype == 'dirvish' ? ['Dirvish', 1] :
-          \ ftype == 'startify' ? ['Startify', 1] :
-          \ ftype == 'niffler' ? ['Niffler', 1] :
-          \ fname == '' ? ['[No Name]', 0] :
-          \ [fname, 0]
-  endfunction
-
-  function! s:is_special_buffer()
-    return s:get_buffername()[1]
-  endfunction
-
-  function! LightLineReadonly()
-    return &readonly ? 'RO' : ''
-  endfunction
-
   function! LightLineBufferline()
     call bufferline#refresh_status()
     let buffers = [
@@ -569,60 +582,31 @@ if has_key(g:plugs, 'lightline.vim')
   endfunction
 
   function! LightLineFilename()
-    let bufname = s:get_buffername()
-    return bufname[1] ? '' : bufname[0] . (&modified ? '+' : &modifiable ? '' : '-')
+    return b:is_special_buffer ? '' :
+          \ (@% == '' ? '[No Name]' : pathshorten(@%)) .
+          \ (&modified ? '+' : &modifiable ? '' : '-')
   endfunction
 
   function! LightLineFiletype()
-    if winwidth(0) < 60 || s:is_special_buffer()
-      return ''
-    endif
-    return &filetype !=# '' ? &filetype : '--'
+    return b:is_special_buffer ? '' : &ft == '' ? '--' : &ft
   endfunction
 
   function! LightLineWhitespace()
-    if winwidth(0) < 65 || s:is_special_buffer()
-      return ''
-    endif
-    return &shiftwidth . (&expandtab ? "S" : "T")
+    return b:is_special_buffer ? '' : &shiftwidth . (&expandtab ? "S" : "T")
   endfunction
 
   function! LightLineFileformat()
-    if winwidth(0) < 70 || s:is_special_buffer()
-      return ''
-    endif
-    return &fileformat == 'unix' ? 'NL' :
+    return &fileformat == 'unix' ? '' :
           \ &fileformat == 'dos' ? 'CR-NL' :
           \ &fileformat == 'mac' ? 'CR' : '??'
   endfunction
 
   function! LightLineFileencoding()
-    if winwidth(0) < 75 || s:is_special_buffer()
-      return ''
-    endif
-    return &fenc !=# '' ? &fenc : &enc
-  endfunction
-
-  function! LightLinePercent()
-    return '%3p%%'
-  endfunction
-
-  function! LightLineLineInfo()
-    return "%3l:%-2v \u2630"
+    return &fenc == &enc ? '' : &fenc
   endfunction
 
   function! LightLineMode()
-      let bufname = s:get_buffername()
-      let fmode = lightline#mode()
-      return bufname[1] ? bufname[0] :
-          \ fmode == 'NORMAL'  ? 'N' :
-          \ fmode == 'INSERT'  ? 'I' :
-          \ fmode == 'VISUAL'  ? 'V' :
-          \ fmode == 'V-LINE'  ? 'V' :
-          \ fmode == 'V-BLOCK' ? 'V' :
-          \ fmode == 'REPLACE' ? 'R' :
-          \ fmode == 'COMMAND' ? 'C' :
-          \ fmode == 'TERMINAL' ? 'T' : fmode
+      return b:is_special_buffer ? b:buffer_name : lightline#mode()
   endfunction
 endif
 
