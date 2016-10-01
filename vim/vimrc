@@ -328,19 +328,6 @@ endif
 colorscheme onedark
 
 " ------------------------------------------------------------------------------
-" Change to git root
-" ------------------------------------------------------------------------------
-function! s:cd_git_toplevel()
-  execute 'lcd ' . expand("%:p:h")
-  let l:toplevel = system('git rev-parse --show-toplevel')
-  if !v:shell_error
-    execute 'lcd ' . l:toplevel
-  endif
-endfunction
-
-nnoremap <silent> <Leader>gt :call <SID>cd_git_toplevel()<CR>
-
-" ----------------------------------------------------------------------------
 " Profile
 " ----------------------------------------------------------------------------
 function! s:profile()
@@ -420,6 +407,49 @@ if has_key(g:plugs, 'vim-dirvish')
 endif
 
 " ------------------------------------------------------------------------------
+" Change to git root
+" ------------------------------------------------------------------------------
+function! s:cd_git_toplevel()
+  execute 'lcd ' . expand("%:p:h")
+  let l:toplevel = system('git rev-parse --show-toplevel')
+  if !v:shell_error
+    execute 'lcd ' . l:toplevel
+  endif
+endfunction
+
+nnoremap <silent> <Leader>gt :call <SID>cd_git_toplevel()<CR>
+
+" ------------------------------------------------------------------------------
+" GitInfo using gitgutter and fugitive
+" ------------------------------------------------------------------------------
+function! s:get_git_hunk_status()
+  if !exists('*GitGutterGetHunkSummary') || !get(g:, 'gitgutter_enabled', 0)
+    return ''
+  endif
+  let hunks = GitGutterGetHunkSummary()
+  let parts = [
+      \ hunks[0] > 0 ? g:gitgutter_sign_added . hunks[0] : '',
+      \ hunks[1] > 0 ? g:gitgutter_sign_modified . hunks[1] : '',
+      \ hunks[2] > 0 ? g:gitgutter_sign_removed . hunks[2] : ''
+      \ ]
+  return join(filter(parts, 'len(v:val)'), ' ')
+endfunction
+
+function! s:get_git_branch()
+  if !exists("*fugitive#head")
+    return ''
+  endif
+  let branch = fugitive#head()
+  return branch !=# '' ? s:symbol_vcs_branch . " " . branch : ''
+endfunction
+
+function! s:git_info()
+  echo 'Git stats for file: ' . join(filter([s:get_git_hunk_status(), s:get_git_branch()], 'len(v:val)'), ' ')
+endfunction
+
+nnoremap <Leader>gi :call <SID>git_info()<CR>
+
+" ------------------------------------------------------------------------------
 " Bufferline
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'vim-bufferline')
@@ -440,7 +470,7 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.separator          = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
   let g:lightline.subseparator       = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
   let g:lightline.active             = {
-        \ 'left': [['mode', 'paste'], ['git'], ['readonly', 'cwd'], ['filename']],
+        \ 'left': [['mode', 'paste'], ['readonly'], ['cwd'], ['filename']],
         \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']]
         \ }
   let g:lightline.tab                = {'active': ['tabnum'], 'inactive': ['tabnum']}
@@ -453,7 +483,6 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.component_type     = {'bufferline': 'tabsel'}
   let g:lightline.component_function = {
         \ 'readonly': 'LightLineReadonly',
-        \ 'git': 'LightLineGit',
         \ 'cwd': 'LightLineCWD',
         \ 'filename': 'LightLineFilename',
         \ 'fileformat': 'LightLineFileformat',
@@ -520,27 +549,6 @@ if has_key(g:plugs, 'lightline.vim')
     return s:get_buffername()[1]
   endfunction
 
-  function! s:get_git_hunk_status()
-    if winwidth(0) < 90 || !exists('*GitGutterGetHunkSummary') || !get(g:, 'gitgutter_enabled', 0)
-      return ''
-    endif
-    let hunks = GitGutterGetHunkSummary()
-    let parts = [
-        \ hunks[0] > 0 ? g:gitgutter_sign_added . hunks[0] : '',
-        \ hunks[1] > 0 ? g:gitgutter_sign_modified . hunks[1] : '',
-        \ hunks[2] > 0 ? g:gitgutter_sign_removed . hunks[2] : ''
-        \ ]
-    return join(filter(parts, 'len(v:val)'), ' ')
-  endfunction
-
-  function! s:get_git_branch()
-    if winwidth(0) < 80 || !exists("*fugitive#head")
-      return ''
-    endif
-    let branch = fugitive#head()
-    return branch !=# '' ? s:symbol_vcs_branch . " " . branch : ''
-  endfunction
-
   function! LightLineReadonly()
     return &readonly ? 'RO' : ''
   endfunction
@@ -554,10 +562,6 @@ if has_key(g:plugs, 'lightline.vim')
           \ ]
     call map(buffers, 's:strip(v:val)')
     return buffers
-  endfunction
-
-  function! LightLineGit()
-    return s:is_special_buffer() ? '' : join(filter([s:get_git_hunk_status(), s:get_git_branch()], 'len(v:val)'), ' ')
   endfunction
 
   function! LightLineCWD()
