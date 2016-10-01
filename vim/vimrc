@@ -579,7 +579,7 @@ if has_key(g:plugs, 'lightline.vim')
   endfunction
 
   function! LightLineCWD()
-    return winwidth(0) < 100 ? '' : getcwd()
+    return winwidth(0) < 80 ? '' : getcwd()
   endfunction
 
   function! LightLineFilename()
