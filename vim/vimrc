@@ -342,7 +342,7 @@ command! Profile call <SID>profile()
 " ------------------------------------------------------------------------------
 " Buffer Information
 " ------------------------------------------------------------------------------
-let s:buffer_name_map = {
+let s:special_buffers = {
       \ 'dirvish': 'Dirvish',
       \ 'fugitiveblame': 'Git Blame',
       \ 'gitcommit': 'Git Commit',
@@ -357,8 +357,8 @@ let s:buffer_name_map = {
       \ }
 
 function! s:buffer_update()
-  let b:is_special_buffer = has_key(s:buffer_name_map, &ft)
-  let b:buffer_name = get(s:buffer_name_map, &ft, '')
+  let b:is_special = has_key(s:special_buffers, &ft)
+  let b:special_name = get(s:special_buffers, &ft, '')
 endfunction
 
 function! s:buffer_init()
@@ -385,7 +385,7 @@ exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:background[0] . " guibg=
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 function! s:match_whitespace(pattern)
-  if !b:is_special_buffer && &buftype != 'nofile'
+  if !b:is_special && &buftype != 'nofile'
     exe 'match ExtraWhitespace ' . a:pattern
   endif
 endfunction
@@ -520,10 +520,12 @@ if has_key(g:plugs, 'lightline.vim')
         \ 'cwd': '1',
         \ 'fileencoding': '&fenc!=&enc',
         \ 'fileformat': '&fileformat!="unix"',
-        \ 'filename': '!b:is_special_buffer',
-        \ 'filetype': '!b:is_special_buffer',
+        \ 'filename': '!b:is_special',
+        \ 'filetype': '!b:is_special',
         \ 'mode': '1',
-        \ 'whitespace': '!b:is_special_buffer'
+        \ 'lineinfo': '!b:is_special',
+        \ 'percent': '!b:is_special',
+        \ 'whitespace': '!b:is_special'
         \ }
   let g:lightline.mode_map           = {
         \ 'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'V', "\<C-v>": 'V',
@@ -575,17 +577,17 @@ if has_key(g:plugs, 'lightline.vim')
   endfunction
 
   function! LightLineFilename()
-    return b:is_special_buffer ? '' :
+    return b:is_special ? '' :
           \ (@% == '' ? '[No Name]' : expand('%:.')) .
           \ (&modified ? '+' : &modifiable ? '' : '-')
   endfunction
 
   function! LightLineFiletype()
-    return b:is_special_buffer ? '' : &ft == '' ? '--' : &ft
+    return b:is_special ? '' : &ft == '' ? '--' : &ft
   endfunction
 
   function! LightLineWhitespace()
-    return b:is_special_buffer ? '' : &shiftwidth . (&expandtab ? "S" : "T")
+    return b:is_special ? '' : &shiftwidth . (&expandtab ? "S" : "T")
   endfunction
 
   function! LightLineFileformat()
@@ -599,7 +601,7 @@ if has_key(g:plugs, 'lightline.vim')
   endfunction
 
   function! LightLineMode()
-      return b:is_special_buffer ? b:buffer_name : lightline#mode()
+      return b:is_special ? b:special_name : lightline#mode()
   endfunction
 endif
 
