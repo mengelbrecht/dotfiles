@@ -535,19 +535,19 @@ if has_key(g:plugs, 'lightline.vim')
 
   let s:lightline_custom                 = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
   let s:lightline_custom.normal.left     = [[s:background, s:green], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
-  let s:lightline_custom.normal.right    = [[s:background, s:green], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.normal.right    = deepcopy(s:lightline_custom.normal.left)
   let s:lightline_custom.normal.middle   = [[s:green, s:background]]
   let s:lightline_custom.inactive.left   = [[s:foreground, s:shade_dark]]
-  let s:lightline_custom.inactive.right  = [[s:foreground, s:shade_dark]]
-  let s:lightline_custom.inactive.middle = [[s:foreground, s:shade_dark]]
+  let s:lightline_custom.inactive.right  = deepcopy(s:lightline_custom.inactive.left)
+  let s:lightline_custom.inactive.middle = deepcopy(s:lightline_custom.inactive.left)
   let s:lightline_custom.insert.left     = [[s:background, s:blue], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
-  let s:lightline_custom.insert.right    = [[s:background, s:blue], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.insert.right    = deepcopy(s:lightline_custom.insert.left)
   let s:lightline_custom.insert.middle   = [[s:blue, s:background]]
   let s:lightline_custom.replace.left    = [[s:background, s:red], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
-  let s:lightline_custom.replace.right   = [[s:background, s:red], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.replace.right   = deepcopy(s:lightline_custom.replace.left)
   let s:lightline_custom.replace.middle  = [[s:red, s:background]]
   let s:lightline_custom.visual.left     = [[s:background, s:purple], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
-  let s:lightline_custom.visual.right    = [[s:background, s:purple], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.visual.right    = deepcopy(s:lightline_custom.visual.left)
   let s:lightline_custom.visual.middle   = [[s:purple, s:background]]
   let s:lightline_custom.tabline.left    = [[s:foreground, s:shade_light],  [s:foreground, s:shade_dark]]
   let s:lightline_custom.tabline.right   = [[s:background, s:purple]]
