@@ -203,6 +203,10 @@ nnoremap Y y$
 vnoremap < <gv
 vnoremap > >gv
 
+" Move around lines visually (do not skip parts of wrapped lines)
+nnoremap j gj
+nnoremap k gk
+
 " Toggle wrapping
 map <F2> :set wrap!<CR>
 
