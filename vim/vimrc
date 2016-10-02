@@ -247,23 +247,11 @@ noremap <silent> <D-7>      :tabn 7<CR>
 noremap <silent> <D-8>      :tabn 8<CR>
 noremap <silent> <D-9>      :tabn 9<CR>
 
-" Replace and delete to black hole register unless they are prefixed with y
-nnoremap yc c
-vnoremap yc c
-nnoremap yC C
-vnoremap yC C
-nnoremap yd d
-vnoremap yd d
-nnoremap yD D
-vnoremap yD D
-nnoremap ys s
-vnoremap ys s
-nnoremap yS S
-vnoremap yS S
-nnoremap yx x
-vnoremap yx x
-nnoremap yX X
-vnoremap yX X
+" Replace and delete to black hole register and cut text with m (move)
+nnoremap m d
+vnoremap m d
+nnoremap M D
+vnoremap M D
 vnoremap p "_dP
 nnoremap c "_c
 vnoremap c "_c
