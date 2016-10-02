@@ -501,6 +501,7 @@ if has_key(g:plugs, 'lightline.vim')
         \ 'left': [['mode', 'paste'], ['readonly'], ['cwd'], ['filename']],
         \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']]
         \ }
+  let g:lightline.inactive           = {'left': [['filename']], 'right': [['percent', 'lineinfo']]}
   let g:lightline.tab                = {'active': ['tabnum'], 'inactive': ['tabnum']}
   let g:lightline.tabline            = {'left': [['tabs'], ['bufferline']], 'right': [['close']]}
   let g:lightline.component_expand   = {
@@ -537,8 +538,8 @@ if has_key(g:plugs, 'lightline.vim')
   let s:lightline_custom.normal.right    = deepcopy(s:lightline_custom.normal.left)
   let s:lightline_custom.normal.middle   = [[s:green, s:background]]
   let s:lightline_custom.inactive.left   = [[s:foreground, s:shade_dark]]
-  let s:lightline_custom.inactive.right  = deepcopy(s:lightline_custom.inactive.left)
-  let s:lightline_custom.inactive.middle = deepcopy(s:lightline_custom.inactive.left)
+  let s:lightline_custom.inactive.right  = [[s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.inactive.middle = [[s:foreground, s:shade_dark]]
   let s:lightline_custom.insert.left     = [[s:background, s:blue], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
   let s:lightline_custom.insert.right    = deepcopy(s:lightline_custom.insert.left)
   let s:lightline_custom.insert.middle   = [[s:blue, s:background]]
