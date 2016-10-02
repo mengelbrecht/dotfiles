@@ -281,6 +281,7 @@ endif
 " Autocommands
 " ------------------------------------------------------------------------------
 augroup AutocommandSettings
+  autocmd!
   " Restore cursor position
   autocmd BufReadPost *
     \ if line("'\"") > 1 && line("'\"") <= line("$") |
@@ -366,8 +367,11 @@ function! s:buffer_init()
   call s:buffer_update()
 endfunction
 
-autocmd BufWinEnter * call <SID>buffer_init()
-autocmd FileType    * call <SID>buffer_update()
+augroup BufferInfoEvents
+  autocmd!
+  autocmd BufWinEnter * call <SID>buffer_init()
+  autocmd FileType    * call <SID>buffer_update()
+augroup END
 
 " ------------------------------------------------------------------------------
 " Whitespace
@@ -384,9 +388,12 @@ function! s:match_whitespace(pattern)
   endif
 endfunction
 
-autocmd InsertLeave,BufWinEnter * call <SID>match_whitespace('/\s\+$/')
-autocmd InsertEnter             * call <SID>match_whitespace('/\s\+\%#\@<!$/')
-autocmd BufWinLeave             * call <SID>match_whitespace("''")
+augroup WhitespaceEvents
+  autocmd!
+  autocmd InsertLeave,BufWinEnter * call <SID>match_whitespace('/\s\+$/')
+  autocmd InsertEnter             * call <SID>match_whitespace('/\s\+\%#\@<!$/')
+  autocmd BufWinLeave             * call <SID>match_whitespace("''")
+augroup END
 
 " ------------------------------------------------------------------------------
 " Plug
@@ -725,6 +732,7 @@ if has_key(g:plugs, 'vim-niffler')
   " Hide niffler buffer in the bufferlist
   autocmd FileType niffler setlocal nobuflisted
 endif
+
 " ------------------------------------------------------------------------------
 " Easy-Align
 " ------------------------------------------------------------------------------
