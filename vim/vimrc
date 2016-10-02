@@ -579,7 +579,7 @@ if has_key(g:plugs, 'lightline.vim')
 
   function! LightLineFilename()
     return b:is_special_buffer ? '' :
-          \ (@% == '' ? '[No Name]' : pathshorten(@%)) .
+          \ (@% == '' ? '[No Name]' : expand('%:.')) .
           \ (&modified ? '+' : &modifiable ? '' : '-')
   endfunction
 
