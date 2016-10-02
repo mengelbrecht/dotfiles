@@ -353,9 +353,37 @@ endfunction
 command! Profile call <SID>profile()
 
 " ------------------------------------------------------------------------------
+" Buffer Information
+" ------------------------------------------------------------------------------
+let s:buffer_name_map = {
+      \ 'dirvish': 'Dirvish',
+      \ 'gitcommit': 'Git Commit',
+      \ 'nerdtree': 'NERD',
+      \ 'niffler': 'Niffler',
+      \ 'qf': 'Quickfix',
+      \ 'startify': 'Startify',
+      \ 'vim-plug': 'Plug'
+      \ }
+
+function! s:buffer_update()
+  let b:is_special_buffer = has_key(s:buffer_name_map, &ft)
+  let b:buffer_name = get(s:buffer_name_map, &ft, '')
+endfunction
+
+function! s:buffer_init()
+  if exists('b:buffer_init')
+    return
+  endif
+  let b:buffer_init = 1
+  call s:buffer_update()
+endfunction
+
+autocmd BufWinEnter * call <SID>buffer_init()
+autocmd FileType    * call <SID>buffer_update()
+
+" ------------------------------------------------------------------------------
 " Whitespace
 " ------------------------------------------------------------------------------
-
 exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:background[0] . " guibg=" . s:red[0] .
   \ " ctermfg=" . s:background[1] . " ctermbg=" . s:red[1]
 
@@ -363,7 +391,7 @@ exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:background[0] . " guibg=
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 function! s:match_whitespace(pattern)
-  if &buftype != 'nofile'
+  if !b:is_special_buffer && &buftype != 'nofile'
     exe 'match ExtraWhitespace ' . a:pattern
   endif
 endfunction
@@ -468,31 +496,6 @@ endif
 " Lightline
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'lightline.vim')
-  let s:buffer_name_map = {
-        \ 'dirvish': 'Dirvish',
-        \ 'nerdtree': 'NERD',
-        \ 'niffler': 'Niffler',
-        \ 'qf': 'Quickfix',
-        \ 'startify': 'Startify',
-        \ 'vim-plug': 'Plug'
-        \ }
-
-  function! s:buffer_update()
-    let b:is_special_buffer = has_key(s:buffer_name_map, &ft)
-    let b:buffer_name = get(s:buffer_name_map, &ft, '')
-  endfunction
-
-  function! s:buffer_init()
-    if exists('b:buffer_init')
-      return
-    endif
-    let b:buffer_init = 1
-    call s:buffer_update()
-  endfunction
-
-  autocmd BufWinEnter * call <SID>buffer_init()
-  autocmd FileType    * call <SID>buffer_update()
-
   let g:lightline                    = {}
   let g:lightline.colorscheme        = 'custom'
   let g:lightline.separator          = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
