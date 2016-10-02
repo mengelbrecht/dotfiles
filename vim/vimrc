@@ -286,9 +286,6 @@ augroup AutocommandSettings
     \   exe "normal! g`\"" |
     \ endif
 
-  autocmd InsertEnter * set listchars-=trail:·
-  autocmd InsertLeave * set listchars+=trail:·
-
   autocmd BufRead,BufNewFile *.mm setlocal filetype=objcpp
 
   if exists('+colorcolumn')
@@ -373,6 +370,19 @@ augroup BufferInfoEvents
   autocmd!
   autocmd BufWinEnter,BufReadPre * call <SID>buffer_init()
   autocmd FileType               * call <SID>buffer_update()
+augroup END
+
+" ------------------------------------------------------------------------------
+" Listchars
+" ------------------------------------------------------------------------------
+augroup ListCharEvents
+  autocmd!
+  autocmd InsertEnter * setlocal listchars-=trail:·
+  autocmd InsertLeave * setlocal listchars+=trail:·
+  autocmd FileType    *
+        \ if b:is_special |
+        \   setlocal nolist |
+        \ endif
 augroup END
 
 " ------------------------------------------------------------------------------
@@ -623,9 +633,6 @@ if has_key(g:plugs, 'nerdtree')
   map <Leader><Leader> :NERDTreeToggle<CR>
   " Reveal file in file tree
   map <Leader>r :NERDTreeFind<CR>
-
-  " Hide whitespace symbols in nerdtree
-  autocmd FileType nerdtree setlocal nolist
 endif
 
 " ------------------------------------------------------------------------------
