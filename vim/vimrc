@@ -328,6 +328,18 @@ endif
 
 colorscheme onedark
 
+if g:colors_name ==# 'onedark' || (g:colors_name ==# 'one' && &background ==# 'dark')
+  let s:red         = ['#E06C75', '204']
+  let s:yellow      = ['#E5C07B', '180']
+  let s:green       = ['#98C379', '114']
+  let s:blue        = ['#61AFEF', '39']
+  let s:purple      = ['#C678DD', '170']
+  let s:background  = ['#282C34', '235']
+  let s:foreground  = ['#ABB2BF', '145']
+  let s:shade_dark  = ['#2C323C', '236']
+  let s:shade_light = ['#3E4452', '237']
+endif
+
 " ------------------------------------------------------------------------------
 " Profile
 " ----------------------------------------------------------------------------
@@ -342,20 +354,9 @@ command! Profile call <SID>profile()
 " ------------------------------------------------------------------------------
 " Whitespace
 " ------------------------------------------------------------------------------
-if g:colors_name     ==# "onedark"
-  let s:ws_guifg       = synIDattr(synIDtrans(hlID("Cursor")), "fg", "gui")
-  let s:ws_ctermfg     = synIDattr(synIDtrans(hlID("Cursor")), "fg", "cterm")
-  let s:ws_guibg       = synIDattr(synIDtrans(hlID("SpellBad")), "fg", "gui")
-  let s:ws_ctermbg     = synIDattr(synIDtrans(hlID("SpellBad")), "fg", "cterm")
-elseif g:colors_name ==# "one"
-  let s:ws_guifg       = synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "gui")
-  let s:ws_ctermfg     = synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "cterm")
-  let s:ws_guibg       = synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "gui")
-  let s:ws_ctermbg     = synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "cterm")
-endif
 
-exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:ws_guifg . " guibg=" . s:ws_guibg .
-  \ " ctermfg=" . s:ws_ctermfg . " ctermbg=" . s:ws_ctermbg
+exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:background[0] . " guibg=" . s:red[0] .
+  \ " ctermfg=" . s:background[1] . " ctermbg=" . s:red[1]
 
 " Use F5 to remove all trailing whitespace
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
@@ -492,7 +493,7 @@ if has_key(g:plugs, 'lightline.vim')
   autocmd FileType    * call <SID>buffer_update()
 
   let g:lightline                    = {}
-  let g:lightline.colorscheme        = 'onedark'
+  let g:lightline.colorscheme        = 'custom'
   let g:lightline.separator          = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
   let g:lightline.subseparator       = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
   let g:lightline.active             = {
@@ -528,40 +529,30 @@ if has_key(g:plugs, 'lightline.vim')
         \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S-BLOCK', 't': 'T'
         \ }
 
-  let s:ll_black      = [synIDattr(synIDtrans(hlID("Normal")), "bg", "gui"),     synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")]
-  let s:ll_white      = [synIDattr(synIDtrans(hlID("Normal")), "fg", "gui"),     synIDattr(synIDtrans(hlID("Normal")), "fg", "cterm")]
-  let s:ll_red        = [synIDattr(synIDtrans(hlID("Error")), "fg", "gui"), synIDattr(synIDtrans(hlID("Error")), "fg", "cterm")]
-  let s:ll_green      = [synIDattr(synIDtrans(hlID("String")), "fg", "gui"),    synIDattr(synIDtrans(hlID("String")), "fg", "cterm")]
-  let s:ll_yellow     = [synIDattr(synIDtrans(hlID("Search")), "bg", "gui"),     synIDattr(synIDtrans(hlID("Search")), "bg", "cterm")]
-  let s:ll_blue       = [synIDattr(synIDtrans(hlID("Directory")), "fg", "gui"),   synIDattr(synIDtrans(hlID("Directory")), "fg", "cterm")]
-  let s:ll_magenta    = [synIDattr(synIDtrans(hlID("Todo")), "fg", "gui"),       synIDattr(synIDtrans(hlID("Todo")), "fg", "cterm")]
-  let s:ll_dark_grey  = [synIDattr(synIDtrans(hlID("CursorLine")), "bg", "gui"), synIDattr(synIDtrans(hlID("CursorLine")), "bg", "cterm")]
-  let s:ll_light_grey = [synIDattr(synIDtrans(hlID("Pmenu")), "bg", "gui"),      synIDattr(synIDtrans(hlID("Pmenu")), "bg", "cterm")]
+  let s:lightline_custom                 = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
+  let s:lightline_custom.normal.left     = [[s:background, s:green], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.normal.right    = [[s:background, s:green], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.normal.middle   = [[s:green, s:background]]
+  let s:lightline_custom.inactive.left   = [[s:foreground, s:shade_dark]]
+  let s:lightline_custom.inactive.right  = [[s:foreground, s:shade_dark]]
+  let s:lightline_custom.inactive.middle = [[s:foreground, s:shade_dark]]
+  let s:lightline_custom.insert.left     = [[s:background, s:blue], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.insert.right    = [[s:background, s:blue], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.insert.middle   = [[s:blue, s:background]]
+  let s:lightline_custom.replace.left    = [[s:background, s:red], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.replace.right   = [[s:background, s:red], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.replace.middle  = [[s:red, s:background]]
+  let s:lightline_custom.visual.left     = [[s:background, s:purple], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.visual.right    = [[s:background, s:purple], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
+  let s:lightline_custom.visual.middle   = [[s:purple, s:background]]
+  let s:lightline_custom.tabline.left    = [[s:foreground, s:shade_light],  [s:foreground, s:shade_dark]]
+  let s:lightline_custom.tabline.right   = [[s:background, s:purple]]
+  let s:lightline_custom.tabline.middle  = [[s:green, s:background]]
+  let s:lightline_custom.tabline.tabsel  = [[s:background, s:green]]
+  let s:lightline_custom.normal.error    = [[s:background, s:red]]
+  let s:lightline_custom.normal.warning  = [[s:background, s:yellow]]
 
-  let s:lightline_onedark                 = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
-  let s:lightline_onedark.normal.left     = [[s:ll_black, s:ll_green], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.normal.right    = [[s:ll_black, s:ll_green], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.normal.middle   = [[s:ll_green, s:ll_black]]
-  let s:lightline_onedark.inactive.left   = [[s:ll_white, s:ll_dark_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.inactive.right  = [[s:ll_white, s:ll_dark_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.inactive.middle = [[s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.insert.left     = [[s:ll_black, s:ll_blue], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.insert.right    = [[s:ll_black, s:ll_blue], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.insert.middle   = [[s:ll_blue, s:ll_black]]
-  let s:lightline_onedark.replace.left    = [[s:ll_black, s:ll_red], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.replace.right   = [[s:ll_black, s:ll_red], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.replace.middle  = [[s:ll_red, s:ll_black]]
-  let s:lightline_onedark.visual.left     = [[s:ll_black, s:ll_magenta], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.visual.right    = [[s:ll_black, s:ll_magenta], [s:ll_white, s:ll_light_grey], [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.visual.middle   = [[s:ll_magenta, s:ll_black]]
-  let s:lightline_onedark.tabline.left    = [[s:ll_white, s:ll_light_grey],  [s:ll_white, s:ll_dark_grey]]
-  let s:lightline_onedark.tabline.right   = [[s:ll_black, s:ll_magenta]]
-  let s:lightline_onedark.tabline.middle  = [[s:ll_green, s:ll_black]]
-  let s:lightline_onedark.tabline.tabsel  = [[s:ll_black, s:ll_green]]
-  let s:lightline_onedark.normal.error    = [[s:ll_black, s:ll_red]]
-  let s:lightline_onedark.normal.warning  = [[s:ll_black, s:ll_yellow]]
-
-  let g:lightline#colorscheme#onedark#palette = lightline#colorscheme#flatten(s:lightline_onedark)
+  let g:lightline#colorscheme#custom#palette = lightline#colorscheme#flatten(s:lightline_custom)
 
   function! s:strip(input)
     return substitute(a:input, '^\s*\(.\{-}\)\s*$', '\1', '')
