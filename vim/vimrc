@@ -344,7 +344,11 @@ command! Profile call <SID>profile()
 " ------------------------------------------------------------------------------
 let s:buffer_name_map = {
       \ 'dirvish': 'Dirvish',
+      \ 'fugitiveblame': 'Git Blame',
       \ 'gitcommit': 'Git Commit',
+      \ 'gitrebase': 'Git Rebase',
+      \ 'GV': 'GV',
+      \ 'help': 'Help',
       \ 'nerdtree': 'NERD',
       \ 'niffler': 'Niffler',
       \ 'qf': 'Quickfix',
