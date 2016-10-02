@@ -392,7 +392,7 @@ endfunction
 
 augroup WhitespaceEvents
   autocmd!
-  autocmd InsertLeave,BufWinEnter * call <SID>match_whitespace('/\s\+$/')
+  autocmd InsertLeave,BufReadPost * call <SID>match_whitespace('/\s\+$/')
   autocmd InsertEnter             * call <SID>match_whitespace('/\s\+\%#\@<!$/')
   autocmd BufWinLeave             * call <SID>match_whitespace("''")
 augroup END
