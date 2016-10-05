@@ -516,7 +516,7 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.separator        = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
   let g:lightline.subseparator     = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
   let g:lightline.active           = {
-        \ 'left': [['mode', 'paste'], ['readonly'], ['cwd'], ['filename']],
+        \ 'left': [['mode', 'paste'], ['readonly', 'cwd'], ['filename']],
         \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']]
         \ }
   let g:lightline.inactive         = {'left': [['filename']], 'right': [['percent', 'lineinfo']]}
@@ -532,7 +532,7 @@ if has_key(g:plugs, 'lightline.vim')
         \ }
   let g:lightline.component_type   = {'buffers': 'tabsel'}
   let g:lightline.component        = {
-        \ 'cwd': '%{getcwd()}',
+        \ 'cwd': '%{fnamemodify(getcwd(), ":~")}',
         \ 'fileencoding': '%{b:is_special || &fenc == &enc || &fenc == "" ? "" : &fenc}',
         \ 'fileformat': '%{b:is_special || &ff == "unix" ? "" : &ff == "dos" ? "CRLF" : &ff == "mac" ? "CR" : "??"}',
         \ 'filename': '%{b:is_special || &bt == "nofile" ? "" : (@% == "" ? "*" : expand("%:.")) . (&mod ? "+" : &ma ? "" : "-")}',
