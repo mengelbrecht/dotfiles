@@ -28,10 +28,8 @@ call plug#begin()
 " Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 " Plug 'tpope/vim-dispatch' | Plug 'mileszs/ack.vim', {'on': 'Ack'}
 Plug 'airblade/vim-gitgutter'
-Plug 'bling/vim-bufferline'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'itchyny/lightline.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'junegunn/gv.vim', {'on': 'GV'}
 Plug 'junegunn/vim-easy-align', {'on': ['<Plug>(LiveEasyAlign)', 'LiveEasyAlign']}
 Plug 'justinmk/vim-dirvish'
@@ -43,7 +41,6 @@ Plug 'myint/indent-finder'
 Plug 'osyo-manga/vim-over', {'on': 'OverCommandLine'}
 Plug 'pgdouyon/vim-evanesco'
 Plug 'pgdouyon/vim-niffler', {'on': ['Niffler', 'NifflerBuffer']}
-Plug 'rakr/vim-one', {'on': []}
 Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
 Plug 'scrooloose/syntastic', {'on': 'SyntasticCheck'}
 Plug 'tpope/vim-commentary'
@@ -52,6 +49,12 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession', {'on': 'Obsession'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+
+" Colorschemes
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'NovaDev94/lightline-onedark'
+Plug 'joshdick/onedark.vim'
+Plug 'morhetz/gruvbox'
 
 " Languages
 Plug 'b4winckler/vim-objc', {'for': 'objc'}
@@ -149,7 +152,6 @@ set vb t_vb=                   " Disable visual bell
 set linespace=1                " Use 1 pixel space between lines
 set t_Co=256                   " Terminal supports 256 colors
 set t_md=                      " Disable bold fonts in terminal
-set background=dark            " Use dark colorscheme
 
 if has('termguicolors')
   set termguicolors " Enable 24bit colors in terminal
@@ -172,15 +174,51 @@ if has('gui_running')
   if has('gui_macvim')
     set guifont=PragmataPro\ Mono:h14 " Set font
     set macligatures                  " Enable ligatures
-    if &background ==# 'dark'
-      set macthinstrokes              " Use thin strokes in dark colorscheme
-    endif
   endif
 endif
 
 " Disable tabs
 " autocmd BufWinEnter,BufNewFile * silent tabo
 
+" ------------------------------------------------------------------------------
+" Colorscheme
+" ------------------------------------------------------------------------------
+let s:theme = 'gruvbox'
+
+if s:theme == 'gruvbox'
+  let g:gruvbox_italic        = 1
+  let g:gruvbox_bold          = 0
+  let g:gruvbox_contrast_dark = 'hard'
+  let g:gruvbox_sign_column   = 'bg0'
+
+  set background=dark
+  colorscheme gruvbox
+
+  let s:whitespace_fg   = [synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "cterm")]
+  let s:whitespace_bg   = [synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "cterm")]
+elseif s:theme == 'onedark'
+  let g:onedark_terminal_italics = 1
+
+  set background=dark
+  colorscheme onedark
+
+  let s:whitespace_fg   = [synIDattr(synIDtrans(hlID("Normal")), "bg", "gui"), synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")]
+  let s:whitespace_bg   = [synIDattr(synIDtrans(hlID("Error")), "fg", "gui"), synIDattr(synIDtrans(hlID("Error")), "fg", "cterm")]
+elseif s:theme == 'papercolor'
+  set background=light
+  colorscheme PaperColor
+
+  let s:whitespace_fg   = [synIDattr(synIDtrans(hlID("Error")), "fg", "gui"), synIDattr(synIDtrans(hlID("Error")), "fg", "cterm")]
+  let s:whitespace_bg   = [synIDattr(synIDtrans(hlID("Error")), "bg", "gui"), synIDattr(synIDtrans(hlID("Error")), "bg", "cterm")]
+endif
+
+if has('gui_macvim') && &background ==# 'dark'
+  set macthinstrokes " Use thin strokes in dark colorscheme
+endif
+
+" ------------------------------------------------------------------------------
+" Symbols
+" ------------------------------------------------------------------------------
 let s:powerline_font              = 1 " Enable for powerline glyphs
 if s:powerline_font
   let s:symbol_separator_left     = "\uE0B0"
@@ -304,31 +342,6 @@ augroup AutocommandSettings
 augroup END
 
 " ------------------------------------------------------------------------------
-" Colorscheme
-" ------------------------------------------------------------------------------
-let g:one_allow_italics        = 1
-let g:onedark_terminal_italics = 1
-
-if !has('gui_running')
-  let g:one_termcolors     = 16
-  let g:onedark_termcolors = 16
-endif
-
-colorscheme onedark
-
-if g:colors_name ==# 'onedark' || (g:colors_name ==# 'one' && &background ==# 'dark')
-  let s:red         = ['#E06C75', '204']
-  let s:yellow      = ['#E5C07B', '180']
-  let s:green       = ['#98C379', '114']
-  let s:blue        = ['#61AFEF', '39']
-  let s:purple      = ['#C678DD', '170']
-  let s:background  = ['#282C34', '235']
-  let s:foreground  = ['#ABB2BF', '145']
-  let s:shade_dark  = ['#2C323C', '236']
-  let s:shade_light = ['#3E4452', '237']
-endif
-
-" ------------------------------------------------------------------------------
 " Profile
 " ----------------------------------------------------------------------------
 function! s:profile()
@@ -392,10 +405,10 @@ augroup END
 " ------------------------------------------------------------------------------
 " Whitespace
 " ------------------------------------------------------------------------------
-exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:background[0] . " guibg=" . s:red[0] .
-  \ " ctermfg=" . s:background[1] . " ctermbg=" . s:red[1]
+exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:whitespace_fg[0] . " guibg=" . s:whitespace_bg[0] .
+  \ " ctermfg=" . s:whitespace_fg[1] . " ctermbg=" . s:whitespace_bg[1]
 
-" Use F5 to remove all trailing whitespace
+" Remove all trailing whitespace
 nnoremap <silent> <F5> :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
 
 function! s:match_whitespace(pattern)
@@ -492,131 +505,85 @@ endfunction
 nnoremap <Leader>gi :call <SID>git_info()<CR>
 
 " ------------------------------------------------------------------------------
-" Bufferline
-" ------------------------------------------------------------------------------
-if has_key(g:plugs, 'vim-bufferline')
-  let g:bufferline_echo                = 0
-  let g:bufferline_active_buffer_left  = ''
-  let g:bufferline_active_buffer_right = ''
-  let g:bufferline_show_bufnr          = 0
-  let g:bufferline_fname_mod           = ':~:.:s?^$?[No Name]?'
-  let g:bufferline_pathshorten         = 1
-endif
-
-" ------------------------------------------------------------------------------
 " Lightline
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'lightline.vim')
-  let g:lightline                    = {}
-  let g:lightline.colorscheme        = 'custom'
-  let g:lightline.separator          = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
-  let g:lightline.subseparator       = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
-  let g:lightline.active             = {
+  let g:lightline                  = {}
+  let g:lightline.colorscheme      = g:colors_name
+  let g:lightline.separator        = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
+  let g:lightline.subseparator     = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
+  let g:lightline.active           = {
         \ 'left': [['mode', 'paste'], ['readonly'], ['cwd'], ['filename']],
         \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']]
         \ }
-  let g:lightline.inactive           = {'left': [['filename']], 'right': [['percent', 'lineinfo']]}
-  let g:lightline.tab                = {'active': ['tabnum'], 'inactive': ['tabnum']}
-  let g:lightline.tabline            = {'left': [['tabs'], ['bufferline']], 'right': [['close']]}
-  let g:lightline.component_expand   = {
-        \ 'bufferline': 'LightLineBufferline',
-        \ }
-  let g:lightline.component_type     = {'bufferline': 'tabsel'}
-  let g:lightline.component_function = {
-        \ 'cwd': 'LightLineCWD',
-        \ 'fileencoding': 'LightLineFileencoding',
-        \ 'fileformat': 'LightLineFileformat',
-        \ 'filename': 'LightLineFilename',
-        \ 'filetype': 'LightLineFiletype',
-        \ 'mode': 'LightLineMode',
-        \ 'whitespace': 'LightLineWhitespace'
-        \ }
-  let g:lightline.component_function_visible_condition = {
-        \ 'cwd': '1',
-        \ 'fileencoding': '&fenc!=&enc',
-        \ 'fileformat': '&fileformat!="unix"',
-        \ 'filename': '!b:is_special',
-        \ 'filetype': '!b:is_special',
-        \ 'mode': '1',
-        \ 'lineinfo': '!b:is_special',
-        \ 'percent': '!b:is_special',
-        \ 'whitespace': '!b:is_special'
-        \ }
-  let g:lightline.mode_map           = {
+  let g:lightline.inactive         = {'left': [['filename']], 'right': [['percent', 'lineinfo']]}
+  let g:lightline.tab              = {'active': ['tabnum'], 'inactive': ['tabnum']}
+  let g:lightline.tabline          = {'left': [['buffers']], 'right': [['tabs']]}
+  let g:lightline.mode_map         = {
         \ 'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'V', "\<C-v>": 'V',
         \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S-BLOCK', 't': 'T'
         \ }
+  let g:lightline.component_expand = {
+        \ 'buffers': 'LightLineBuffers',
+        \ 'tabs': 'LightLineTabs'
+        \ }
+  let g:lightline.component_type   = {'buffers': 'tabsel'}
+  let g:lightline.component        = {
+        \ 'cwd': '%{getcwd()}',
+        \ 'fileencoding': '%{b:is_special || &fenc == &enc || &fenc == "" ? "" : &fenc}',
+        \ 'fileformat': '%{b:is_special || &ff == "unix" ? "" : &ff == "dos" ? "CRLF" : &ff == "mac" ? "CR" : "??"}',
+        \ 'filename': '%{b:is_special || &bt == "nofile" ? "" : (@% == "" ? "*" : expand("%:.")) . (&mod ? "+" : &ma ? "" : "-")}',
+        \ 'filetype': '%{b:is_special ? "" : &ft == "" ? "--" : &ft}',
+        \ 'mode': '%{b:is_special ? b:special_name : lightline#mode()}',
+        \ 'whitespace': '%{b:is_special ? "" : &shiftwidth . (&expandtab ? "S" : "T")}'
+        \ }
 
-  let s:lightline_custom                 = {'normal': {}, 'inactive': {}, 'insert': {}, 'replace': {}, 'visual': {}, 'tabline': {}}
-  let s:lightline_custom.normal.left     = [[s:background, s:green], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
-  let s:lightline_custom.normal.right    = deepcopy(s:lightline_custom.normal.left)
-  let s:lightline_custom.normal.middle   = [[s:green, s:background]]
-  let s:lightline_custom.inactive.left   = [[s:foreground, s:shade_dark]]
-  let s:lightline_custom.inactive.right  = [[s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
-  let s:lightline_custom.inactive.middle = [[s:foreground, s:shade_dark]]
-  let s:lightline_custom.insert.left     = [[s:background, s:blue], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
-  let s:lightline_custom.insert.right    = deepcopy(s:lightline_custom.insert.left)
-  let s:lightline_custom.insert.middle   = [[s:blue, s:background]]
-  let s:lightline_custom.replace.left    = [[s:background, s:red], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
-  let s:lightline_custom.replace.right   = deepcopy(s:lightline_custom.replace.left)
-  let s:lightline_custom.replace.middle  = [[s:red, s:background]]
-  let s:lightline_custom.visual.left     = [[s:background, s:purple], [s:foreground, s:shade_light], [s:foreground, s:shade_dark]]
-  let s:lightline_custom.visual.right    = deepcopy(s:lightline_custom.visual.left)
-  let s:lightline_custom.visual.middle   = [[s:purple, s:background]]
-  let s:lightline_custom.tabline.left    = [[s:foreground, s:shade_light],  [s:foreground, s:shade_dark]]
-  let s:lightline_custom.tabline.right   = [[s:background, s:purple]]
-  let s:lightline_custom.tabline.middle  = [[s:green, s:background]]
-  let s:lightline_custom.tabline.tabsel  = [[s:background, s:green]]
-  let s:lightline_custom.normal.error    = [[s:background, s:red]]
-  let s:lightline_custom.normal.warning  = [[s:background, s:yellow]]
+  let g:lightline.component_visible_condition = {
+        \ 'fileencoding': '!b:is_special&&&fenc!=&enc&&&fenc!=""',
+        \ 'fileformat': '!b:is_special&&&fileformat!="unix"',
+        \ 'filename': '!b:is_special&&&bt!="nofile"',
+        \ 'filetype': '!b:is_special',
+        \ 'whitespace': '!b:is_special'
+        \ }
 
-  let g:lightline#colorscheme#custom#palette = lightline#colorscheme#flatten(s:lightline_custom)
+  " Copy the left tabline style because the tabs shall look like buffers
+  autocmd VimEnter,ColorScheme *
+        \ exe 'let g:lightline#colorscheme#' . g:lightline.colorscheme . '#palette.tabline.right = ' .
+        \ 'copy(g:lightline#colorscheme#' . g:lightline.colorscheme . '#palette.tabline.left)'
 
-  function! s:strip(input)
-    return substitute(a:input, '^\s*\(.\{-}\)\s*$', '\1', '')
+  function! s:get_buffer_name(i)
+    let l:name = fnamemodify(bufname(a:i), ':.')
+    return (l:name !=# '' ? substitute(pathshorten(l:name), '%', '%%', "g") : '*') . (getbufvar(a:i, '&mod') ? '+' : '')
   endfunction
 
-  function! LightLineBufferline()
-    call bufferline#refresh_status()
-    let buffers = [
-          \ g:bufferline_status_info.before,
-          \ g:bufferline_status_info.current,
-          \ g:bufferline_status_info.after
-          \ ]
-    call map(buffers, 's:strip(v:val)')
-    return buffers
+  function! s:get_buffer_names(from, to)
+    let l:i = a:from
+    let l:buffers = []
+    while l:i <= a:to
+      if bufexists(l:i) && buflisted(l:i)
+        call add(l:buffers, s:get_buffer_name(l:i))
+      endif
+      let l:i += 1
+    endwhile
+    return l:buffers
   endfunction
 
-  function! LightLineCWD()
-    return winwidth(0) < 80 ? '' : getcwd()
+  function! LightLineBuffers()
+    let l:current_index = bufnr('%')
+    if !bufexists(l:current_index) || !buflisted(l:current_index)
+      let l:current_name = bufname('%')
+      let l:current = [l:current_name != '' ? l:current_name : 'Scratch']
+    else
+      let l:current = s:get_buffer_names(l:current_index, l:current_index)
+    endif
+    return [s:get_buffer_names(1, l:current_index - 1),
+          \ l:current,
+          \ s:get_buffer_names(l:current_index + 1, bufnr('$'))]
   endfunction
 
-  function! LightLineFilename()
-    return b:is_special ? '' :
-          \ (@% == '' ? '[No Name]' : expand('%:.')) .
-          \ (&modified ? '+' : &modifiable ? '' : '-')
-  endfunction
-
-  function! LightLineFiletype()
-    return b:is_special ? '' : &ft == '' ? '--' : &ft
-  endfunction
-
-  function! LightLineWhitespace()
-    return b:is_special ? '' : &shiftwidth . (&expandtab ? "S" : "T")
-  endfunction
-
-  function! LightLineFileformat()
-    return &fileformat == 'unix' ? '' :
-          \ &fileformat == 'dos' ? 'CRLF' :
-          \ &fileformat == 'mac' ? 'CR' : '??'
-  endfunction
-
-  function! LightLineFileencoding()
-    return &fenc == &enc ? '' : &fenc
-  endfunction
-
-  function! LightLineMode()
-      return b:is_special ? b:special_name : lightline#mode()
+  function! LightLineTabs()
+    let l:tabs = lightline#tabs()
+    return [reverse(l:tabs[0]), l:tabs[1], reverse(l:tabs[2])]
   endfunction
 endif
 
