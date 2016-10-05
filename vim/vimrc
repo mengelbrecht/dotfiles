@@ -34,6 +34,7 @@ Plug 'junegunn/gv.vim', {'on': 'GV'}
 Plug 'junegunn/vim-easy-align', {'on': ['<Plug>(LiveEasyAlign)', 'LiveEasyAlign']}
 Plug 'justinmk/vim-dirvish'
 Plug 'justinmk/vim-sneak'
+Plug 'mgee/lightline-bufferline'
 Plug 'mhinz/vim-grepper', {'on': 'Grepper'}
 Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
 Plug 'mhinz/vim-startify'
@@ -526,7 +527,7 @@ if has_key(g:plugs, 'lightline.vim')
         \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S-BLOCK', 't': 'T'
         \ }
   let g:lightline.component_expand = {
-        \ 'buffers': 'LightLineBuffers',
+        \ 'buffers': 'lightline#bufferline#buffers',
         \ 'tabs': 'LightLineTabs'
         \ }
   let g:lightline.component_type   = {'buffers': 'tabsel'}
@@ -552,36 +553,6 @@ if has_key(g:plugs, 'lightline.vim')
   autocmd VimEnter,ColorScheme *
         \ exe 'let g:lightline#colorscheme#' . g:lightline.colorscheme . '#palette.tabline.right = ' .
         \ 'copy(g:lightline#colorscheme#' . g:lightline.colorscheme . '#palette.tabline.left)'
-
-  function! s:get_buffer_name(i)
-    let l:name = fnamemodify(bufname(a:i), ':.')
-    return (l:name !=# '' ? substitute(pathshorten(l:name), '%', '%%', "g") : '*') . (getbufvar(a:i, '&mod') ? '+' : '')
-  endfunction
-
-  function! s:get_buffer_names(from, to)
-    let l:i = a:from
-    let l:buffers = []
-    while l:i <= a:to
-      if bufexists(l:i) && buflisted(l:i)
-        call add(l:buffers, s:get_buffer_name(l:i))
-      endif
-      let l:i += 1
-    endwhile
-    return l:buffers
-  endfunction
-
-  function! LightLineBuffers()
-    let l:current_index = bufnr('%')
-    if !bufexists(l:current_index) || !buflisted(l:current_index)
-      let l:current_name = bufname('%')
-      let l:current = [l:current_name != '' ? l:current_name : 'Scratch']
-    else
-      let l:current = s:get_buffer_names(l:current_index, l:current_index)
-    endif
-    return [s:get_buffer_names(1, l:current_index - 1),
-          \ l:current,
-          \ s:get_buffer_names(l:current_index + 1, bufnr('$'))]
-  endfunction
 
   function! LightLineTabs()
     let l:tabs = lightline#tabs()
