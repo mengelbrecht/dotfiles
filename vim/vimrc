@@ -368,8 +368,8 @@ endfunction
 
 augroup BufferInfoEvents
   autocmd!
-  autocmd BufWinEnter,BufReadPre * call <SID>buffer_init()
-  autocmd FileType               * call <SID>buffer_update()
+  autocmd VimEnter,WinEnter,BufWinEnter,BufReadPre,BufNew * call <SID>buffer_init()
+  autocmd FileType                                        * call <SID>buffer_update()
 augroup END
 
 " ------------------------------------------------------------------------------
