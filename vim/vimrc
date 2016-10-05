@@ -178,6 +178,9 @@ if has('gui_running')
   endif
 endif
 
+" Disable tabs
+" autocmd BufWinEnter,BufNewFile * silent tabo
+
 let s:powerline_font              = 1 " Enable for powerline glyphs
 if s:powerline_font
   let s:symbol_separator_left     = "\uE0B0"
