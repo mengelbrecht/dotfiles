@@ -345,6 +345,7 @@ command! Profile call <SID>profile()
 let s:special_buffers = {
       \ 'dirvish': 'Dirvish',
       \ 'fugitiveblame': 'Git Blame',
+      \ 'git': 'Git',
       \ 'gitcommit': 'Git Commit',
       \ 'gitrebase': 'Git Rebase',
       \ 'GV': 'GV',
