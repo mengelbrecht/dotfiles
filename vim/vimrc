@@ -199,6 +199,7 @@ if s:theme == 'gruvbox'
   let s:whitespace_bg   = [synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "cterm")]
 elseif s:theme == 'onedark'
   let g:onedark_terminal_italics = 1
+  let g:lightline#onedark#disable_bold_style = 1
 
   set background=dark
   colorscheme onedark
