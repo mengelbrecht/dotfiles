@@ -789,11 +789,11 @@ endif
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'vim-startify')
   let g:startify_list_order = [
-        \ ['Bookmarks'],  'bookmarks',
-        \ ['MRU'],        'files',
+        \ ['Bookmarks'],                     'bookmarks',
+        \ ['MRU'],                           'files',
         \ ['MRU in CWD [' . getcwd() . ']'], 'dir',
-        \ ['Sessions'],   'sessions',
-        \ ['Commands'],   'commands']
+        \ ['Sessions'],                      'sessions',
+        \ ['Commands'],                      'commands']
   let g:startify_bookmarks  = [
         \ {'bc': '~/.dotfiles/vim/vimrc'},
         \ {'bz': '~/.dotfiles/zshrc'},
