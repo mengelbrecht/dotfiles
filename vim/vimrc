@@ -776,8 +776,9 @@ if has_key(g:plugs, 'vim-grepper')
         \ 'highlight': 1,
         \ 'tools': ['rg', 'git', 'grep'],
         \ 'rg': {
-        \   'grepprg': 'rg --no-heading --line-number --column --hidden --glob "!.git" --glob "!.svn" $* .',
-        \   'grepformat': '%f:%l:%c:%m'
+        \   'grepprg': 'rg --vimgrep --no-heading --hidden --glob "!.git" --glob "!.svn" $* .',
+        \   'grepformat': '%f:%l:%c:%m',
+        \   'escape': '\^$.*+?()[]{}|'
         \ }}
 
   nnoremap <Leader>vv :Grepper -tool rg -cword -noprompt<CR>
