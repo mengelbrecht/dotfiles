@@ -198,8 +198,8 @@ if s:theme == 'gruvbox'
   set background=dark
   colorscheme gruvbox
 
-  let s:whitespace_fg   = [synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "cterm")]
-  let s:whitespace_bg   = [synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "cterm")]
+  let s:whitespace_fg = [synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "cterm")]
+  let s:whitespace_bg = [synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "cterm")]
 elseif s:theme == 'onedark'
   let g:onedark_terminal_italics = 1
   let g:lightline#onedark#disable_bold_style = 1
@@ -207,14 +207,14 @@ elseif s:theme == 'onedark'
   set background=dark
   colorscheme onedark
 
-  let s:whitespace_fg   = [synIDattr(synIDtrans(hlID("Normal")), "bg", "gui"), synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")]
-  let s:whitespace_bg   = [synIDattr(synIDtrans(hlID("Error")), "fg", "gui"), synIDattr(synIDtrans(hlID("Error")), "fg", "cterm")]
+  let s:whitespace_fg = [synIDattr(synIDtrans(hlID("Normal")), "bg", "gui"), synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")]
+  let s:whitespace_bg = [synIDattr(synIDtrans(hlID("Error")), "fg", "gui"), synIDattr(synIDtrans(hlID("Error")), "fg", "cterm")]
 elseif s:theme == 'papercolor'
   set background=light
   colorscheme PaperColor
 
-  let s:whitespace_fg   = [synIDattr(synIDtrans(hlID("Error")), "fg", "gui"), synIDattr(synIDtrans(hlID("Error")), "fg", "cterm")]
-  let s:whitespace_bg   = [synIDattr(synIDtrans(hlID("Error")), "bg", "gui"), synIDattr(synIDtrans(hlID("Error")), "bg", "cterm")]
+  let s:whitespace_fg = [synIDattr(synIDtrans(hlID("Error")), "fg", "gui"), synIDattr(synIDtrans(hlID("Error")), "fg", "cterm")]
+  let s:whitespace_bg = [synIDattr(synIDtrans(hlID("Error")), "bg", "gui"), synIDattr(synIDtrans(hlID("Error")), "bg", "cterm")]
 endif
 
 if has('gui_macvim') && &background ==# 'dark'
@@ -657,8 +657,8 @@ if has('nvim') && has_key(g:plugs, 'fzf.vim')
     call fzf#vim#grep('rg --color=always --no-heading --line-number --column --smart-case --hidden --glob "!.git" --glob "!.svn" '.shellescape(l:grepargs), 1, a:bang)
   endfunction
 
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git" --glob "!.svn" ""'
-  let $FZF_DEFAULT_OPTS .= ' --inline-info'
+  let $FZF_DEFAULT_COMMAND  = 'rg --files --hidden --glob "!.git" --glob "!.svn" ""'
+  let $FZF_DEFAULT_OPTS    .= ' --inline-info'
 
   nnoremap <C-p> :FZF<CR>
   nnoremap <C-o> :Buffers<CR>
@@ -708,7 +708,7 @@ endif
 " Ack.vim
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'ack.vim')
-  let g:ackprg         = 'rg --no-heading --line-number --column'
+  let g:ackprg           = 'rg --no-heading --line-number --column'
   let g:ackhighlight     = 1
   let g:ack_use_dispatch = 1
 
