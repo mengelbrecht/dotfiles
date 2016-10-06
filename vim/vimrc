@@ -737,12 +737,14 @@ endif
 " Startify
 " ------------------------------------------------------------------------------
 if has_key(g:plugs, 'vim-startify')
+  let s:startify_cwd = fnamemodify(getcwd(), ':~')
   let g:startify_list_order = [
-        \ ['Bookmarks'],                     'bookmarks',
-        \ ['MRU'],                           'files',
-        \ ['MRU in CWD [' . getcwd() . ']'], 'dir',
-        \ ['Sessions'],                      'sessions',
-        \ ['Commands'],                      'commands']
+        \ ['Bookmarks'],                           'bookmarks',
+        \ ['MRU'],                                 'files',
+        \ ['MRU in CWD [' . s:startify_cwd . ']'], 'dir',
+        \ ['Sessions'],                            'sessions',
+        \ ['Commands'],                            'commands',
+        \ ]
   let g:startify_bookmarks  = [
         \ {'bc': '~/.dotfiles/vim/vimrc'},
         \ {'bz': '~/.dotfiles/zshrc'},
