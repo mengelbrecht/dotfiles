@@ -87,12 +87,14 @@ let g:loaded_tarPlugin        = 1
 let g:loaded_vimballPlugin    = 1
 let g:loaded_zipPlugin        = 1
 
+if has('vim_starting')
+  set encoding=utf8            " Always use unicode
+endif
 set shell=$SHELL               " Use zsh as shell
 set viminfo=/100,:100,'100     " Save command history and search patterns
 set autoread                   " Automatically load changes
 set undolevels=1000            " Large undo levels
 set history=100                " Size of command history
-set encoding=utf8              " Always use unicode
 set backspace=indent,eol,start " Fix backspace
 set nobackup                   " Disable backups
 set clipboard=unnamed          " Use the OS clipboard by default
