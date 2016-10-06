@@ -344,6 +344,8 @@ augroup AutocommandSettings
 
   autocmd FileType fzf tnoremap <ESC> <C-\><C-n>:Sayonara<CR>
   autocmd FileType c,cpp setlocal commentstring=//%s
+  autocmd FileType help nnoremap <buffer><silent> <CR> <C-]>
+  autocmd FileType help nnoremap <buffer><silent> <BS> <C-t>
 augroup END
 
 " ------------------------------------------------------------------------------
