@@ -722,6 +722,7 @@ endif
 if has_key(g:plugs, 'vim-grepper')
   let g:grepper = {
         \ 'highlight': 1,
+        \ 'simple_prompt': 1,
         \ 'tools': ['rg', 'git', 'grep'],
         \ 'rg': {
         \   'grepprg': 'rg --vimgrep --no-heading --hidden --glob "!.git" --glob "!.svn" $* .',
