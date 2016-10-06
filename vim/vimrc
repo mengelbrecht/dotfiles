@@ -198,6 +198,9 @@ if s:theme == 'gruvbox'
   set background=dark
   colorscheme gruvbox
 
+  highlight! link NonText GruvboxBg1
+  highlight! link SpecialKey GruvboxBg1
+  highlight! link LineNr GruvboxBg2
   let s:whitespace_fg = [synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "cterm")]
   let s:whitespace_bg = [synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "cterm")]
 elseif s:theme == 'onedark'
