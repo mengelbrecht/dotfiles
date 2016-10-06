@@ -377,7 +377,7 @@ let s:special_buffers = {
       \ 'niffler': 'Niffler',
       \ 'qf': 'Quickfix',
       \ 'startify': 'Startify',
-      \ 'vim-plug': 'Plug'
+      \ 'vim-plug': 'Plug',
       \ }
 
 function! s:buffer_update()
@@ -495,7 +495,7 @@ function! s:get_git_hunk_status()
   let parts = [
       \ hunks[0] > 0 ? g:gitgutter_sign_added . hunks[0] : '',
       \ hunks[1] > 0 ? g:gitgutter_sign_modified . hunks[1] : '',
-      \ hunks[2] > 0 ? g:gitgutter_sign_removed . hunks[2] : ''
+      \ hunks[2] > 0 ? g:gitgutter_sign_removed . hunks[2] : '',
       \ ]
   return join(filter(parts, 'len(v:val)'), ' ')
 endfunction
@@ -524,18 +524,18 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.subseparator     = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
   let g:lightline.active           = {
         \ 'left': [['mode', 'paste'], ['readonly', 'cwd'], ['filename']],
-        \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']]
+        \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']],
         \ }
   let g:lightline.inactive         = {'left': [['filename']], 'right': [['percent', 'lineinfo']]}
   let g:lightline.tab              = {'active': ['tabnum'], 'inactive': ['tabnum']}
   let g:lightline.tabline          = {'left': [['buffers']], 'right': [['tabs']]}
   let g:lightline.mode_map         = {
         \ 'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'V', "\<C-v>": 'V',
-        \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S-BLOCK', 't': 'T'
+        \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S-BLOCK', 't': 'T',
         \ }
   let g:lightline.component_expand = {
         \ 'buffers': 'lightline#bufferline#buffers',
-        \ 'tabs': 'LightLineTabs'
+        \ 'tabs': 'LightLineTabs',
         \ }
   let g:lightline.component_type   = {'buffers': 'tabsel'}
   let g:lightline.component        = {
@@ -545,7 +545,7 @@ if has_key(g:plugs, 'lightline.vim')
         \ 'filename': '%{b:is_special || &bt == "nofile" ? "" : (@% == "" ? "*" : expand("%:.")) . (&mod ? "+" : &ma ? "" : "-")}',
         \ 'filetype': '%{b:is_special ? "" : &ft == "" ? "--" : &ft}',
         \ 'mode': '%{b:is_special ? b:special_name : lightline#mode()}',
-        \ 'whitespace': '%{b:is_special ? "" : &shiftwidth . (&expandtab ? "S" : "T")}'
+        \ 'whitespace': '%{b:is_special ? "" : &shiftwidth . (&expandtab ? "S" : "T")}',
         \ }
 
   let g:lightline.component_visible_condition = {
@@ -553,7 +553,7 @@ if has_key(g:plugs, 'lightline.vim')
         \ 'fileformat': '!b:is_special&&&fileformat!="unix"',
         \ 'filename': '!b:is_special&&&bt!="nofile"',
         \ 'filetype': '!b:is_special',
-        \ 'whitespace': '!b:is_special'
+        \ 'whitespace': '!b:is_special',
         \ }
 
   " Copy the left tabline style because the tabs shall look like buffers
@@ -730,7 +730,7 @@ if has_key(g:plugs, 'vim-grepper')
         \ 'rg': {
         \   'grepprg': 'rg --vimgrep --no-heading --hidden --glob "!.git" --glob "!.svn" $* .',
         \   'grepformat': '%f:%l:%c:%m',
-        \   'escape': '\^$.*+?()[]{}|'
+        \   'escape': '\^$.*+?()[]{}|',
         \ }}
 
   nnoremap <Leader>vv :Grepper -tool rg -cword -noprompt<CR>
@@ -753,7 +753,8 @@ if has_key(g:plugs, 'vim-startify')
         \ {'bc': '~/.dotfiles/vim/vimrc'},
         \ {'bz': '~/.dotfiles/zshrc'},
         \ {'bl': '~/.dotfiles'},
-        \ {'bd': '/Volumes/DATA/repos/development'}]
+        \ {'bd': '/Volumes/DATA/repos/development'},
+        \ ]
   let g:startify_use_env    = 1
   let g:startify_skiplist   = ['vim/plugged', '.git', resolve($VIMRUNTIME)]
 
