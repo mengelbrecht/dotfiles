@@ -242,10 +242,9 @@ else
   let s:symbol_subseparator_right = "\u2502"
   let s:symbol_vcs_branch         = "\u16B4"
 endif
+" Misc Mappings {{{
+inoremap jj <Esc>
 
-" ------------------------------------------------------------------------------
-" Keymappings
-" ------------------------------------------------------------------------------
 " Yank from the cursor to the end of the line, to be consistent with C and D.
 nnoremap Y y$
 
@@ -266,6 +265,11 @@ nnoremap <silent> _ :set invhlsearch<CR>
 " Find merge conflict markers
 nnoremap <Leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
 
+nnoremap <expr> <CR> foldlevel(line('.')) ? 'za' : '\<CR>'
+
+nmap z/   yygccp
+xmap z/ V<Esc>gvygvgc`>p
+" }}}
 " Easier window switching
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
