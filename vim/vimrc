@@ -24,7 +24,6 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin()
-" Plug 'tpope/vim-dispatch' | Plug 'mileszs/ack.vim', {'on': 'Ack'}
 Plug 'airblade/vim-gitgutter'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'itchyny/lightline.vim'
@@ -664,18 +663,6 @@ if has_key(g:plugs, 'vim-easy-align')
 
   " Start interactive EasyAlign for a motion/text object (e.g. gaip)
   nmap ga <Plug>(LiveEasyAlign)
-endif
-
-" ------------------------------------------------------------------------------
-" Ack.vim
-" ------------------------------------------------------------------------------
-if has_key(g:plugs, 'ack.vim')
-  let g:ackprg           = 'rg --no-heading --line-number --column'
-  let g:ackhighlight     = 1
-  let g:ack_use_dispatch = 1
-
-  nnoremap <Leader>vv :Ack <cword><CR>
-  nnoremap <Leader>ff :Ack<Space>
 endif
 
 " ------------------------------------------------------------------------------
