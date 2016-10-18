@@ -117,7 +117,7 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 # Update and upgrade all packages, afterwards perform a cleanup
 brewup() {
-  brew update && brew upgrade --all && brew cleanup
+  brew update && brew upgrade && brew cleanup
 }
 
 # Set executable permissions to folders only
