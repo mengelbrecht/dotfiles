@@ -178,20 +178,26 @@ bindkey "^[b" backward-word
 # Aliases
 #-------------------------------------------------------------------------------
 
-if (( $+commands[dircolors] )); then
-  eval "$(dircolors --sh)" # exports LS_COLORS
-  alias ls='ls --group-directories-first --color=auto'
+if which exa &> /dev/null; then
+  alias ls='exa --group-directories-first'
+  alias l='ls'
+  alias ll='ls -l'
+  alias la='ll -a'
 else
-  export LSCOLORS='exfxcxdxbxGxDxabagacad'
-  # Define colors for the completion system.
-  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
-  alias ls='ls -G'
-fi
+  if (( $+commands[dircolors] )); then
+    eval "$(dircolors --sh)" # exports LS_COLORS
+    alias ls='ls --group-directories-first --color=auto'
+  else
+    export LSCOLORS='exfxcxdxbxGxDxabagacad'
+    # Define colors for the completion system.
+    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
+    alias ls='ls -G'
+  fi
 
-alias l='ls'
-alias ll='ls -lh'
-alias lr='ll -R'
-alias la='ll -A'
+  alias l='ls'
+  alias ll='ls -lh'
+  alias la='ll -A'
+fi
 
 export GREP_COLOR='37;45'             # BSD
 export GREP_COLORS="mt=${GREP_COLOR}" # GNU
