@@ -253,12 +253,12 @@ chflags nohidden ~/Library
 
 # Expand the following File Info panes:
 defaults write com.apple.finder FXInfoPanesExpanded -dict \
-   Comments -bool false \
-   General -bool true \
-   OpenWith -bool true \
-   MetaData -bool false \
-   Name -bool false \
-   Privileges -bool true
+    Comments -bool false \
+    General -bool true \
+    OpenWith -bool true \
+    MetaData -bool false \
+    Name -bool false \
+    Privileges -bool true
 
 ###############################################################################
 # Dock, Dashboard, and hot corners                                            #
