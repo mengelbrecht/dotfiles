@@ -468,43 +468,6 @@ augroup WhitespaceEvents
   autocmd InsertEnter             * call <SID>match_whitespace('/\s\+\%#\@<!$/')
 augroup END
 
-" ------------------------------------------------------------------------------
-" Plug
-" ------------------------------------------------------------------------------
-let g:plug_window = 'vertical rightbelow new'
-
-" ------------------------------------------------------------------------------
-" Gitgutter
-" ------------------------------------------------------------------------------
-if has_key(g:plugs, 'vim-gitgutter')
-  let g:gitgutter_sign_removed = '-'
-endif
-
-" ------------------------------------------------------------------------------
-" Dirvish
-" ------------------------------------------------------------------------------
-if has_key(g:plugs, 'vim-dirvish')
-  function! s:dirvish_init()
-    call fugitive#detect(@%)
-
-    nnoremap <silent> <buffer> t :call dirvish#open('tabedit', 0)<CR>
-    nnoremap <silent> <buffer> s :call dirvish#open('split', 0)<CR>
-    nnoremap <silent> <buffer> v :call dirvish#open('vsplit', 0)<CR>
-    nnoremap <buffer> + :edit %
-    nnoremap <buffer> b :!mkdir %
-    nnoremap <silent> <buffer> p :lcd %:p:h<CR>
-    nnoremap <silent> <buffer> <C-R> :<C-u>Dirvish %<CR>
-
-    " Sort folders to top and alphabetically
-    sort ir /^.*[^\/]$/
-  endfunction
-
-  nnoremap <silent> <Leader><Leader> :Dirvish<CR>
-  nnoremap <silent> <Leader>r        :Dirvish %<CR>
-
-  autocmd FileType dirvish call <SID>dirvish_init()
-endif
-
 " Git Root {{{
 function! s:cd_git_toplevel()
   execute 'lcd ' . expand("%:p:h")
@@ -545,6 +508,45 @@ endfunction
 
 nnoremap <Leader>gi :call <SID>git_info()<CR>
 " }}}
+" }}}
+
+" Plug {{{
+let g:plug_window = 'vertical rightbelow new'
+" }}}
+
+" Sleuth {{{
+let g:sleuth_width = 4
+let g:sleuth_trigger_ratio = 16 " Allow some fuzz on heuristics
+" }}}
+
+" Gitgutter {{{
+if has_key(g:plugs, 'vim-gitgutter')
+  let g:gitgutter_sign_column_always = 1
+  let g:gitgutter_sign_removed = '-'
+endif
+" }}}
+
+" Dirvish {{{
+if has_key(g:plugs, 'vim-dirvish')
+  function! s:dirvish_init()
+    call fugitive#detect(@%)
+
+    nnoremap <silent> <buffer> t :call dirvish#open('tabedit', 0)<CR>
+    nnoremap <silent> <buffer> s :call dirvish#open('split', 0)<CR>
+    nnoremap <silent> <buffer> v :call dirvish#open('vsplit', 0)<CR>
+    nnoremap <buffer> + :edit %
+    nnoremap <buffer> b :!mkdir %
+    nnoremap <silent> <buffer> p :lcd %:p:h<CR>
+    nnoremap <silent> <buffer> <C-R> :<C-u>Dirvish %<CR>
+
+    " Sort folders to top and alphabetically
+    sort ir /^.*[^\/]$/
+  endfunction
+
+  nnoremap <silent> <Leader>r        :Dirvish %<CR>
+
+  autocmd FileType dirvish call <SID>dirvish_init()
+endif
 " }}}
 
 " Bufferline {{{
