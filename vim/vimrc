@@ -744,9 +744,7 @@ if has_key(g:plugs, 'vim-easy-align')
 endif
 " }}}
 
-" ------------------------------------------------------------------------------
-" Grepper
-" ------------------------------------------------------------------------------
+" Grepper {{{
 if has_key(g:plugs, 'vim-grepper')
   let g:grepper = {
         \ 'highlight': 1,
@@ -761,6 +759,7 @@ if has_key(g:plugs, 'vim-grepper')
   nnoremap <Leader>vv :Grepper -tool rg -cword -noprompt<CR>
   nnoremap <Leader>ff :Grepper -tool rg<CR>
 endif
+" }}}
 
 " clang-format {{{
 if has_key(g:plugs, 'vim-clang-format')
