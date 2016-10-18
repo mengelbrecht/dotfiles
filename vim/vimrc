@@ -660,6 +660,11 @@ if has_key(g:plugs, 'vim-sneak')
 endif
 " }}}
 
+" gtfo {{{
+if has_key(g:plugs, 'vim-gtfo')
+  let g:gtfo#terminals = {'mac' : 'iterm'}
+endif
+" }}}
 
 " Fugitive {{{
 if has_key(g:plugs, 'vim-fugitive')
