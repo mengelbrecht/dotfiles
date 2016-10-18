@@ -16,6 +16,7 @@
 	threads = 0
 [push]
 	default = simple
+	recurseSubmodules = check
 [rebase]
 	autoStash = true
 [svn]
