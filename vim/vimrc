@@ -535,7 +535,7 @@ if has_key(g:plugs, 'lightline.vim')
   let g:lightline.tabline          = {'left': [['buffers']], 'right': [['tabs']]}
   let g:lightline.mode_map         = {
         \ 'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'V', "\<C-v>": 'V',
-        \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S-BLOCK', 't': 'T',
+        \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S', 't': 'T',
         \ }
   let g:lightline.component_expand = {
         \ 'buffers': 'lightline#bufferline#buffers',
