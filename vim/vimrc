@@ -530,7 +530,7 @@ if has_key(g:plugs, 'lightline.vim')
         \ 'left': [['mode', 'paste'], ['readonly', 'cwd'], ['filename']],
         \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']],
         \ }
-  let g:lightline.inactive         = {'left': [['filename']], 'right': [['percent', 'lineinfo']]}
+  let g:lightline.inactive         = {'left': [['name']], 'right': [['percent', 'lineinfo']]}
   let g:lightline.tab              = {'active': ['tabnum'], 'inactive': ['tabnum']}
   let g:lightline.tabline          = {'left': [['buffers']], 'right': [['tabs']]}
   let g:lightline.mode_map         = {
@@ -549,6 +549,7 @@ if has_key(g:plugs, 'lightline.vim')
         \ 'filename': '%{b:is_special || &bt == "nofile" ? "" : (@% == "" ? "*" : expand("%:.")) . (&mod ? "+" : &ma ? "" : "-")}',
         \ 'filetype': '%{b:is_special ? "" : &ft == "" ? "--" : &ft}',
         \ 'mode': '%{b:is_special ? b:special_name : lightline#mode()}',
+        \ 'name': '%{b:is_special ? b:special_name : expand("%:.")}',
         \ 'whitespace': '%{b:is_special ? "" : &shiftwidth . (&expandtab ? "S" : "T")}',
         \ }
 
