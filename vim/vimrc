@@ -26,7 +26,6 @@ endfunction
 call plug#begin()
 " Plug 'JazzCore/ctrlp-cmatcher', Cond(!has('nvim'), {'do': './install.sh'}) | Plug 'ctrlpvim/ctrlp.vim', Cond(!has('nvim'))
 " Plug 'junegunn/fzf', Cond(has('nvim'), {'do': './install --bin' }) | Plug 'junegunn/fzf.vim', Cond(has('nvim'))
-" Plug 'scrooloose/nerdtree', {'on': ['NERDTreeToggle', 'NERDTreeFind']}
 " Plug 'tpope/vim-dispatch' | Plug 'mileszs/ack.vim', {'on': 'Ack'}
 Plug 'airblade/vim-gitgutter'
 Plug 'coderifous/textobj-word-column.vim'
@@ -570,25 +569,6 @@ if has_key(g:plugs, 'lightline.vim')
     let l:tabs = lightline#tabs()
     return [reverse(l:tabs[0]), l:tabs[1], reverse(l:tabs[2])]
   endfunction
-endif
-
-" ------------------------------------------------------------------------------
-" NERDTree
-" ------------------------------------------------------------------------------
-if has_key(g:plugs, 'nerdtree')
-  let g:NERDTreeChDirMode           = 2 " Change cwd when root changes
-  let g:NERDTreeDirArrowCollapsible = '-'
-  let g:NERDTreeDirArrowExpandable  = '+'
-  let g:NERDTreeIgnore              = ['\.DS_Store$']
-  let g:NERDTreeMinimalUI           = 1 " Reduce some clutter
-  let g:NERDTreeMouseMode           = 2 " Single click opens any node
-  let g:NERDTreeShowBookmarks       = 1 " Show bookmarks
-  let g:NERDTreeShowHidden          = 1 " Show hidden files
-
-  " Show file tree
-  map <Leader><Leader> :NERDTreeToggle<CR>
-  " Reveal file in file tree
-  map <Leader>r :NERDTreeFind<CR>
 endif
 
 " ------------------------------------------------------------------------------
