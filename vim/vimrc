@@ -24,8 +24,6 @@ function! Cond(cond, ...)
 endfunction
 
 call plug#begin()
-" Plug 'JazzCore/ctrlp-cmatcher', Cond(!has('nvim'), {'do': './install.sh'}) | Plug 'ctrlpvim/ctrlp.vim', Cond(!has('nvim'))
-" Plug 'junegunn/fzf', Cond(has('nvim'), {'do': './install --bin' }) | Plug 'junegunn/fzf.vim', Cond(has('nvim'))
 " Plug 'tpope/vim-dispatch' | Plug 'mileszs/ack.vim', {'on': 'Ack'}
 Plug 'airblade/vim-gitgutter'
 Plug 'coderifous/textobj-word-column.vim'
@@ -41,7 +39,7 @@ Plug 'mhinz/vim-startify'
 Plug 'myint/indent-finder'
 Plug 'osyo-manga/vim-over', {'on': 'OverCommandLine'}
 Plug 'pgdouyon/vim-evanesco'
-Plug 'pgdouyon/vim-niffler', {'on': ['Niffler', 'NifflerBuffer']}
+Plug 'pgdouyon/vim-niffler'
 Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
 Plug 'scrooloose/syntastic', {'on': 'SyntasticCheck'}
 Plug 'tpope/vim-commentary'
@@ -617,50 +615,46 @@ if has_key(g:plugs, 'vim-fugitive')
   nnoremap <Space>gs :Gstatus<CR>
 endif
 
-" ------------------------------------------------------------------------------
-" fzf
-" ------------------------------------------------------------------------------
-if has('nvim') && has_key(g:plugs, 'fzf.vim')
-  function! s:FZFGrep(bang, args)
-    let l:grepargs = empty(a:args) ? expand("<cword>") : a:args . join(a:000, ' ')
-    call fzf#vim#grep('rg --color=always --no-heading --line-number --column --smart-case --hidden --glob "!.git" --glob "!.svn" '.shellescape(l:grepargs), 1, a:bang)
+" Niffler {{{
+if has_key(g:plugs, 'vim-niffler')
+  let g:niffler_mru_max_history  = 0
+  let g:niffler_user_command     = 'rg --files --hidden --glob "!.git" --glob "!.svn" --glob "!Applications/" --glob "!Library/" %s'
+  let g:niffler_marked_indicator = s:symbol_separator_left . ' '
+  let s:mru_blacklist = ['COMMIT_EDITMSG', fnamemodify(resolve($VIMRUNTIME), ':p') . 'doc']
+
+  function! s:filter_file(fname)
+    if !filereadable(a:fname)
+      return 0
+    endif
+    for l:pattern in s:mru_blacklist
+      if a:fname =~# l:pattern
+        return 0
+      endif
+    endfor
+    return 1
   endfunction
 
-  let $FZF_DEFAULT_COMMAND  = 'rg --files --hidden --glob "!.git" --glob "!.svn" ""'
-  let $FZF_DEFAULT_OPTS    .= ' --inline-info'
+  function! MRUFiles()
+    let l:files = map(v:oldfiles, 'fnamemodify(v:val, ":p")')
+    let l:filtered = filter(l:files, 's:filter_file(v:val)')
+    return map(l:filtered, 'fnamemodify(v:val, ":~")')
+  endfunction
 
-  nnoremap <C-p> :FZF<CR>
-  nnoremap <C-o> :Buffers<CR>
-  command! -bang -nargs=* FZG call s:FZFGrep(<bang>0, <q-args>)
-endif
+  function! OpenFile(sel) dict
+    let l:sel = fnamemodify(a:sel, ':p')
+    execute 'silent' (bufexists(l:sel) ? 'buffer' : 'edit') fnameescape(l:sel)
+  endfunction
 
-" ------------------------------------------------------------------------------
-" CtrP
-" ------------------------------------------------------------------------------
-if !has('nvim') && has_key(g:plugs, 'ctrlp.vim')
-  let g:ctrlp_by_filename  = 1
-  let g:ctrlp_user_command = 'rg --files --hidden --glob "!.git" --glob "!.svn" "" %s'
+  command! -nargs=0 NifflerMRUCustom :call niffler#custom({'source': MRUFiles(), 'sink': function('OpenFile'), 'prompt': 'MRU'})
 
-  if has_key(g:plugs, 'ctrlp-cmatcher')
-    let g:ctrlp_match_func = {'match' : 'matcher#cmatch'}
-  endif
-
-  nnoremap <C-p> :CtrlP<CR>
-  nnoremap <C-o> :CtrlPBuffer<CR>
-endif
-
-" ------------------------------------------------------------------------------
-" Niffler
-" ------------------------------------------------------------------------------
-if has_key(g:plugs, 'vim-niffler')
-  let g:niffler_user_command = 'rg --files --hidden --glob "!.git" --glob "!.svn" %s'
-
-  nnoremap <C-p> :Niffler -vcs<CR>
-  nnoremap <C-o> :NifflerBuffer<CR>
+  nnoremap <C-p>         :Niffler -vcs<CR>
+  nnoremap <silent><C-o> :NifflerBuffer<CR>
+  nnoremap <silent><C-z> :NifflerMRUCustom<CR>
 
   " Hide niffler buffer in the bufferlist
   autocmd FileType niffler setlocal nobuflisted
 endif
+" }}}
 
 " ------------------------------------------------------------------------------
 " Easy-Align
