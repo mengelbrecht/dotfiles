@@ -2,11 +2,12 @@
 " vimrc
 "
 " Inspired by
-"     https://github.com/Soliah/dotfiles/blob/master/vimrc
-"     https://github.com/wincent/wincent/tree/master/roles/dotfiles/files/.vim
-"     https://github.com/junegunn/dotfiles/blob/master/vimrc
-"     https://github.com/mhinz/dotfiles/blob/master/vim/vimrc
-"     https://github.com/cHoco/dotFiles/blob/master/vimrc
+"   https://github.com/Soliah/dotfiles/blob/master/vimrc
+"   https://github.com/wincent/wincent/tree/master/roles/dotfiles/files/.vim
+"   https://github.com/junegunn/dotfiles/blob/master/vimrc
+"   https://github.com/mhinz/dotfiles/blob/master/vim/vimrc
+"   https://github.com/cHoco/dotFiles/blob/master/vimrc
+"   https://github.com/pgdouyon/dotfiles/blob/master/config/nvim/init.vim
 " ------------------------------------------------------------------------------
 
 " ------------------------------------------------------------------------------
