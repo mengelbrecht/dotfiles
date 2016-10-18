@@ -65,7 +65,9 @@ call plug#end()
 " }}}
 
 " Settings {{{
+" General {{{
 let mapleader                 = "\<SPACE>"
+
 let g:netrw_dirhistmax        = 0 " Disable .netrwhist file creation
 " Disable loading of plugins bundled with vim
 let g:loaded_2html_plugin     = 1
@@ -81,73 +83,99 @@ let g:loaded_vimballPlugin    = 1
 let g:loaded_zipPlugin        = 1
 
 if has('vim_starting')
-  set encoding=utf8            " Always use unicode
+  set encoding=utf8        " Always use unicode
 endif
-set shell=$SHELL               " Use zsh as shell
-set viminfo=/100,:100,'100     " Save command history and search patterns
-set autoread                   " Automatically load changes
-set undolevels=1000            " Large undo levels
-set history=100                " Size of command history
-set backspace=indent,eol,start " Fix backspace
-set nobackup                   " Disable backups
-set clipboard=unnamed          " Use the OS clipboard by default
-set ttyfast                    " Optimize for fast terminal connections
-set lazyredraw                 " Wait to redraw
-set ttimeout                   " Timeout on keycodes
-set ttimeoutlen=10             " Small timeout to reduce lag when pressing ESC in terminal
-set nomodeline                 " Hide modeline
-set wildchar=<Tab>             " Complete with Tab
+set shell=$SHELL           " Use zsh as shell
+set viminfo=/100,:100,'100 " Save command history and search patterns
+set autoread               " Automatically load changes
+set undolevels=1000        " Large undo levels
+set history=200            " Size of command history
+set nobackup               " Disable backups
+set clipboard=unnamed      " Use the OS clipboard by default
+set ttyfast                " Optimize for fast terminal connections
+set lazyredraw             " Wait to redraw
+set ttimeout               " Timeout on keycodes
+set ttimeoutlen=10         " Small timeout to reduce lag when pressing ESC in terminal
+" }}}
+
+" Completion {{{
+set completeopt-=preview       " Disable preview window
 set wildmenu                   " Show list
 set wildmode=longest:full,full " Show all matches
-set whichwrap+=<,>,h,l,[,]     " Move lines using arrows.
-set virtualedit=onemore        " Allow for cursor beyond last character
-set switchbuf=usetab           " Switch to the window of the buffer
+" }}}
+
+" Searching {{{
 set incsearch                  " Show partial matches as search is entered.
 set hlsearch                   " Highlight search patterns.
 set ignorecase                 " Enable case insensitive search.
 set smartcase                  " Disable case insensitivity if mixed case.
-set wrapscan                   " Wrap to top of buffer when searching.
 set gdefault                   " Make search and replace global by default.
-set autoindent                 " Keep indentation
-set tabstop=4                  " Set tab to equal 4 spaces
-set softtabstop=4              " Set soft tabs equal to 4 spaces
-set shiftwidth=4               " Set auto indent spacing
-set shiftround                 " Shift to the next round tab stop
-set expandtab                  " Expand tabs into spaces
-set smarttab                   " Insert spaces in front of lines
-set list                       " Show whitespace
-set listchars=tab:╶─           " Tab symbol
-set listchars+=trail:·         " Trailing whitespace
-set listchars+=extends:#       " Character to show when wrap is off
-set listchars+=nbsp:%          " Non breakable whitespace
-set cf                         " Enable error jumping.
-set nostartofline              " Do not move cursor to start of line after line-wise command
-set gcr=a:blinkon0             " Non blinking cursor
-set hidden                     " Allow hidden buffers
-set matchpairs+=<:>            " Pairs to match
-set nowrap                     " Wrap text
+" }}}
+
+" Whitespace {{{
+set autoindent           " Keep indentation
+set tabstop=4            " Set tab to equal 4 spaces
+set softtabstop=4        " Set soft tabs equal to 4 spaces
+set shiftwidth=4         " Set auto indent spacing
+set shiftround           " Shift to the next round tab stop
+set expandtab            " Expand tabs into spaces
+set smarttab             " Insert spaces in front of lines
+set list                 " Show whitespace
+set listchars=tab:╶─     " Tab symbol
+set listchars+=trail:·   " Trailing whitespace
+set listchars+=extends:# " Character to show when wrap is off
+set listchars+=nbsp:%    " Non breakable whitespace
+" }}}
+
+" Basic UX {{{
+set backspace=indent,eol,start " Fix backspace
+set confirm                    " Confirm instead of fail
 set cursorline                 " Highlight current line
+set foldlevelstart=0           " Close all folds by default
+set foldmethod=marker          " Use markers for folds
+set fillchars=vert:│           " Use longest bar for vertical split
+set fillchars+=fold:─          " Use longest dash for folds
+set hidden                     " Allow hidden buffers
+set laststatus=2               " Always show status line
+set linespace=1                " Use 1 pixel space between lines
+set matchpairs+=<:>            " Pairs to match
+set noerrorbells               " Disable error bells
+set nomodeline                 " Hide modeline
+set noshowmode                 " No need to show mode
+set nostartofline              " Do not move cursor to start of line after line-wise command
+set nowrap                     " Wrap text
 set number                     " Enable line numbers
-set ruler                      " Show the cursor position
+set scrolljump=8               " Scroll 8 lines at a time at top/bottom
+set scrolloff=5                " Always show one line above and below cursor
 set shortmess=aIoO             " Show short messages, no intro
+set showcmd                    " Show last command
+set showmatch                  " Show matching parenthesis
+set showtabline=2              " Always show the tabline
+set sidescrolloff=5            " Always show 5 columns before and after cursor
 set splitbelow                 " Open new splits below
 set splitright                 " Open new splits on the right
-set foldlevelstart=99          " Open all folds by default
-set showtabline=2              " Always show the tabline
-set showcmd                    " Show last command
-set noshowmode                 " No need to show mode
-set showmatch                  " Show matching parenthesis
+set switchbuf=usetab           " Switch to the window of the buffer
 set synmaxcol=240              " Limit syntax highlighting to 240 colums
-set laststatus=2               " Always show status line
-set scrolljump=8               " Scroll 8 lines at a time at top/bottom
-set scrolloff=3                " Always show one line above and below cursor
-set sidescrolloff=5            " Always show 5 columns before and after cursor
-set completeopt-=preview       " Disable preview window for YCM
-set noerrorbells               " Disable error bells
 set vb t_vb=                   " Disable visual bell
-set linespace=1                " Use 1 pixel space between lines
-set t_Co=256                   " Terminal supports 256 colors
-set t_md=                      " Disable bold fonts in terminal
+set virtualedit=onemore        " Allow for cursor beyond last character
+set whichwrap+=<,>,h,l,[,]     " Move lines using arrows.
+
+" Inspired by http://dhruvasagar.com/2013/03/28/vim-better-foldtext
+function! CustomFoldText()
+  let l:name = substitute(getline(v:foldstart), '^\s*"\?\s*\|\s*"\?\s*{{' . '{\d*\s*', '', 'g')
+  let l:lines = v:foldend - v:foldstart + 1
+  let l:foldchar = matchstr(&fillchars, 'fold:\zs.')
+  let l:end = l:lines . ' lines ' . printf('%4.1f', l:lines*100.0/line('$')) . '% ' . repeat(l:foldchar, 4)
+  let l:width = winwidth(0) - strwidth(l:end) - &foldcolumn - &numberwidth - 2 " 2 for sign colum
+  let l:start = strpart(repeat(l:foldchar, 5) . repeat('━' . l:foldchar . l:foldchar, v:foldlevel - 1) . ' ' . l:name . ' ', 0, l:width)
+  return l:start . repeat(' ', l:width  - strwidth(l:start)) . l:end
+endfunction
+set foldtext=CustomFoldText()
+" }}}
+
+" Terminal UX {{{
+set t_Co=256 " Terminal supports 256 colors
+set t_md=    " Disable bold fonts in terminal
 
 if has('termguicolors')
   set termguicolors " Enable 24bit colors in terminal
@@ -156,25 +184,7 @@ endif
 if has('nvim')
   let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
 endif
-
-if has('gui_running')
-  set guioptions-=m " Disable menu bar
-  set guioptions-=T " Disable the toolbar
-  set guioptions-=a " Do not auto copy selection to clipboard
-  set guioptions-=e " Do not use gui tab apperance
-  set guioptions-=r " Do not show scrollbars
-  set guioptions-=R " Do not show scrollbars
-  set guioptions-=l " Do not show scrollbars
-  set guioptions-=L " Do not show scrollbars
-
-  if has('gui_macvim')
-    set guifont=PragmataPro\ Mono:h14 " Set font
-    set macligatures                  " Enable ligatures
-  endif
-endif
-
-" Disable tabs
-" autocmd BufWinEnter,BufNewFile * silent tabo
+" }}}
 
 " Colorscheme {{{
 let s:theme = 'gruvbox'
@@ -212,10 +222,6 @@ elseif s:theme == 'papercolor'
 endif
 " }}}
 
-if has('gui_macvim') && &background ==# 'dark'
-  set macthinstrokes " Use thin strokes in dark colorscheme
-endif
-
 " Symbols {{{
 let s:powerline_font              = 1 " Enable for powerline glyphs
 if s:powerline_font
@@ -225,13 +231,38 @@ if s:powerline_font
   let s:symbol_subseparator_right = "\uE0B3"
   let s:symbol_vcs_branch         = "\uE0A0"
 else
-  let s:symbol_separator_left     = ""
-  let s:symbol_separator_right    = ""
-  let s:symbol_subseparator_left  = "\u2502"
-  let s:symbol_subseparator_right = "\u2502"
+  let s:symbol_separator_left     = "▏"
+  let s:symbol_separator_right    = "▕"
+  let s:symbol_subseparator_left  = "│"
+  let s:symbol_subseparator_right = "│"
   let s:symbol_vcs_branch         = "\u16B4"
 endif
 " }}}
+
+" GUI {{{
+if has('gui_running')
+  set guicursor=a:blinkon0 " Non blinking cursor
+  set guioptions-=m        " Disable menu bar
+  set guioptions-=T        " Disable the toolbar
+  set guioptions-=a        " Do not auto copy selection to clipboard
+  set guioptions-=e        " Do not use gui tab apperance
+  set guioptions-=r        " Do not show scrollbars
+  set guioptions-=R        " Do not show scrollbars
+  set guioptions-=l        " Do not show scrollbars
+  set guioptions-=L        " Do not show scrollbars
+
+  if has('gui_macvim')
+    set guifont=PragmataPro\ Mono:h14 " Set font
+    set macligatures                  " Enable ligatures
+
+    if &background ==# 'dark'
+      set macthinstrokes " Use thin strokes in dark colorscheme
+    endif
+  endif
+endif
+" }}}
+" }}}
+
 " Misc Mappings {{{
 inoremap jj <Esc>
 
