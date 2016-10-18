@@ -12,7 +12,7 @@
 
 " Plugins {{{
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !curl -fLo "${HOME}/.vim/autoload/plug.vim" --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall | source $MYVIMRC
 endif
 
@@ -263,6 +263,7 @@ endif
 " }}}
 " }}}
 
+" Mappings {{{
 " Misc Mappings {{{
 inoremap jj <Esc>
 
@@ -361,32 +362,64 @@ if has('nvim')
 endif
 " }}}
 
-" ------------------------------------------------------------------------------
-" Autocommands
-" ------------------------------------------------------------------------------
-augroup AutocommandSettings
+" Bookmarks {{{
+nnoremap <silent><Leader>ec :e $MYVIMRC<CR>
+nnoremap <silent><Leader>el :e ~/.dotfiles<CR>
+nnoremap <silent><Leader>ez :e ~/.dotfiles/zshrc<CR>
+nnoremap <silent><Leader>ed :e /Volumes/DATA/repos/development<CR>
+" }}}
+" }}}
+
+" Autocommands {{{
+" Cursor Position {{{
+augroup CursorPosition
   autocmd!
+
   " Restore cursor position
-  autocmd BufReadPost *
-    \ if line("'\"") > 1 && line("'\"") <= line("$") |
-    \   exe "normal! g`\"" |
-    \ endif
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+augroup END
+" }}}
 
-  autocmd BufRead,BufNewFile *.mm setlocal filetype=objcpp
-
-  if exists('+colorcolumn')
+" Color column {{{
+if exists('+colorcolumn')
+  augroup ColorColumn
+    autocmd!
     autocmd FileType *           setlocal colorcolumn=
     autocmd FileType sh,zsh      setlocal colorcolumn=80
     autocmd FileType cpp         setlocal colorcolumn=100
     autocmd FileType python,ruby setlocal colorcolumn=120
     autocmd FileType gitcommit   setlocal colorcolumn=50,72
-  endif
+  augroup END
+endif
+" }}}
 
-  autocmd FileType fzf tnoremap <ESC> <C-\><C-n>:Sayonara<CR>
-  autocmd FileType c,cpp setlocal commentstring=//%s
+" ObjC {{{
+augroup ObjC
+  autocmd!
+  autocmd BufRead,BufNewFile *.mm setlocal filetype=objcpp
+augroup END
+" }}}
+
+" Python {{{
+augroup Python
+  autocmd!
+  autocmd BufRead,BufNewFile *.gyp,*.gypi setlocal filetype=python sw=4 ts=4
+augroup END
+" }}}
+
+" Help {{{
+augroup Help
+  autocmd!
   autocmd FileType help nnoremap <buffer><silent> <CR> <C-]>
   autocmd FileType help nnoremap <buffer><silent> <BS> <C-t>
 augroup END
+" }}}
+
+  autocmd FileType cpp setlocal commentstring=//%s
+
+  " Disable tabs
+  " autocmd BufWinEnter,BufNewFile * silent tabo
+" }}}
 
 " Custom Functionality {{{
 " Profile {{{
@@ -447,9 +480,7 @@ augroup Listchars
 augroup END
 " }}}
 
-" ------------------------------------------------------------------------------
-" Whitespace
-" ------------------------------------------------------------------------------
+" Whitespace {{{
 exe "hi ExtraWhitespace gui=none cterm=none guifg=" . s:whitespace_fg[0] . " guibg=" . s:whitespace_bg[0] .
   \ " ctermfg=" . s:whitespace_fg[1] . " ctermbg=" . s:whitespace_bg[1]
 
@@ -462,11 +493,12 @@ function! s:match_whitespace(pattern)
   endif
 endfunction
 
-augroup WhitespaceEvents
+augroup Whitespace
   autocmd!
   autocmd InsertLeave,BufReadPost * call <SID>match_whitespace('/\s\+$/')
   autocmd InsertEnter             * call <SID>match_whitespace('/\s\+\%#\@<!$/')
 augroup END
+" }}}
 
 " Git Root {{{
 function! s:cd_git_toplevel()
@@ -510,6 +542,7 @@ nnoremap <Leader>gi :call <SID>git_info()<CR>
 " }}}
 " }}}
 
+" Plugin Settings {{{
 " Plug {{{
 let g:plug_window = 'vertical rightbelow new'
 " }}}
@@ -771,6 +804,7 @@ if has_key(g:plugs, 'vim-cpp-enhanced-highlight')
   let g:cpp_class_scope_highlight           = 1 " Highlight class scope
   let g:cpp_experimental_template_highlight = 1 " Highlight template functions
 endif
+" }}}
 " }}}
 
 " Local Config {{{
