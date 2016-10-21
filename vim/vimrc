@@ -688,19 +688,16 @@ endif
 
 " Niffler {{{
 if has_key(g:plugs, 'vim-niffler')
-  let g:niffler_mru_max_history  = 0
-  let g:niffler_user_command     = 'rg --files --hidden --glob "!.git" --glob "!.svn" --glob "!Applications/" --glob "!Library/" %s'
   let g:niffler_marked_indicator = s:symbol_separator_left . ' '
-  let s:mru_blacklist = ['COMMIT_EDITMSG', fnamemodify(resolve($VIMRUNTIME), ':p') . 'doc']
+  let g:niffler_mru_max_history  = 0
+  let g:niffler_prompt           = '%s> '
+  let g:niffler_user_command     = 'rg --files --hidden --glob "!.git" --glob "!.svn" --glob "!Applications/" --glob "!Library/" %s'
+  let s:mru_blacklist            = ['COMMIT_EDITMSG', fnamemodify(resolve($VIMRUNTIME), ':p') . 'doc']
 
   function! s:filter_file(fname)
-    if !filereadable(a:fname)
-      return 0
-    endif
+    if !filereadable(a:fname) | return 0 | endif
     for l:pattern in s:mru_blacklist
-      if a:fname =~# l:pattern
-        return 0
-      endif
+      if a:fname =~# l:pattern | return 0 | endif
     endfor
     return 1
   endfunction
