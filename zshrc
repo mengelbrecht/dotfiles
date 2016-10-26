@@ -207,6 +207,8 @@ alias o='open'
 
 alias rm='nocorrect rm -i'
 
+alias tm='((tmux has -t default &> /dev/null) && tmux -u attach -t default) || tmux -u new -s default'
+
 function diff {
   if (( $+commands[git] )); then
     git --no-pager diff --color=auto --no-ext-diff --no-index "$@"

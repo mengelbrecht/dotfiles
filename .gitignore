@@ -8,6 +8,8 @@ atom/compile-cache
 atom/packages
 atom/storage
 
+tmux/plugins
+
 vim/autoload
 vim/plugged
 vim/session
