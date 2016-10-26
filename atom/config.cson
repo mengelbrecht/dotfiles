@@ -24,6 +24,10 @@
       "auto-detect-indentation"
     ]
     telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "gruvbox-plus-syntax"
+    ]
     useCustomTitleBar: true
   "cursor-blink-interval":
     cursorBlinkInterval: 1200
