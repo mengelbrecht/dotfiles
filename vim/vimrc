@@ -255,10 +255,10 @@ if has('gui_running')
   set guioptions-=R        " Do not show scrollbars
   set guioptions-=l        " Do not show scrollbars
   set guioptions-=L        " Do not show scrollbars
+  set guifont=PragmataPro\ Mono:h14
 
   if has('gui_macvim')
-    set guifont=PragmataPro\ Mono:h14 " Set font
-    set macligatures                  " Enable ligatures
+    set macligatures " Enable ligatures
 
     if &background ==# 'dark'
       set macthinstrokes " Use thin strokes in dark colorscheme
