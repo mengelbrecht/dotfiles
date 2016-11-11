@@ -741,7 +741,7 @@ if has_key(g:plugs, 'vim-grepper')
         \ 'simple_prompt': 1,
         \ 'tools': ['rg', 'git', 'grep'],
         \ 'rg': {
-        \   'grepprg': 'rg --vimgrep --no-heading --hidden --glob "!.git" --glob "!.svn" $* .',
+        \   'grepprg': 'rg --vimgrep --no-heading --hidden --glob "!.git" --glob "!.svn"',
         \   'grepformat': '%f:%l:%c:%m',
         \   'escape': '\^$.*+?()[]{}|',
         \ }}
