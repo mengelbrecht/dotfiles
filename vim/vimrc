@@ -311,7 +311,7 @@ nnoremap <silent> <Leader>c :cclose<Bar>lclose<CR>
 " Buffer Mappings {{{
 nnoremap <silent> <C-t> :enew<CR>
 nnoremap <silent> <C-x> :Sayonara!<CR>
-nnoremap <silent> <C-y> :Sayonara<CR>
+nnoremap <silent> <C-z> :Sayonara<CR>
 nnoremap <silent> <C-u> :bprev<CR>
 nnoremap <silent> <C-i> :bnext<CR>
 " }}}
@@ -717,7 +717,7 @@ if has_key(g:plugs, 'vim-niffler')
 
   nnoremap <C-p>         :Niffler -vcs<CR>
   nnoremap <silent><C-o> :NifflerBuffer<CR>
-  nnoremap <silent><C-z> :NifflerMRUCustom<CR>
+  nnoremap <silent><C-y> :NifflerMRUCustom<CR>
 
   " Hide niffler buffer in the bufferlist
   autocmd FileType niffler setlocal nobuflisted
