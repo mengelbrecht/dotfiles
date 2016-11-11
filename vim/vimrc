@@ -50,7 +50,6 @@ Plug 'tpope/vim-surround'
 
 " Colorschemes {{{
 Plug 'NLKNguyen/papercolor-theme'
-Plug 'NovaDev94/lightline-onedark'
 Plug 'joshdick/onedark.vim'
 Plug 'morhetz/gruvbox'
 " }}}
