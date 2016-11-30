@@ -4,7 +4,7 @@ require 'English'
 
 #------------------------------------------------------------------------------
 task default: %w(update)
-task setup: %w(osx homebrew shellhelpers dotfiles)
+task setup: %w(osx dotfiles homebrew shellhelpers)
 
 verbose(false)
 
@@ -23,22 +23,6 @@ EXCLUDES = [
   'Terminal',
   'Xcode',
   'macOS-setup.sh'
-].freeze
-
-HOMEBREW_PACKAGES = [
-  'cloc',
-  'cmake',
-  'coreutils',
-  'ghostscript',
-  'git',
-  'git-lfs',
-  'ncdu',
-  'neovim/neovim/neovim',
-  'ninja',
-  'reattach-to-user-namespace',
-  'ripgrep',
-  'subversion',
-  'tmux'
 ].freeze
 
 LOCAL_FILES = [
@@ -60,6 +44,17 @@ task :osx do
   sh File.join(ROOT, 'macOS-setup.sh')
 end
 
+task :dotfiles do
+  Dir.foreach(ROOT).select { |f| !f.start_with?('.') && !EXCLUDES.include?(f) }.each do |f|
+    symlink_path(File.join(ROOT, f), File.join(HOME, ".#{File.basename(f)}"))
+  end
+
+  LOCAL_FILES.map { |f| File.join(ROOT, f) }.select { |f| !File.exist?(f) }.each do |f|
+    FileUtils.touch(f)
+    info("created empty local file '#{f}'")
+  end
+end
+
 task :homebrew do
   next unless MACOS
 
@@ -73,9 +68,8 @@ task :homebrew do
     sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
     brew_bin = "#{HOMEBREW_PATH}/bin/brew"
   end
-
-  installed_packages = `#{brew_bin} list`.split
-  (HOMEBREW_PACKAGES - installed_packages).each { |name| sh "#{brew_bin} install #{name}" }
+  sh "#{brew_bin} tap Homebrew/bundle"
+  sh "#{brew_bin} bundle --global"
 end
 
 task :shellhelpers do
@@ -83,17 +77,6 @@ task :shellhelpers do
 
   SHELL_HELPERS.select { |h| File.exist?(h) }.each do |h|
     symlink_path(h, File.join(File.join(HOMEBREW_PATH, 'bin'), File.basename(h, '.*')))
-  end
-end
-
-task :dotfiles do
-  Dir.foreach(ROOT).select { |f| !f.start_with?('.') && !EXCLUDES.include?(f) }.each do |f|
-    symlink_path(File.join(ROOT, f), File.join(HOME, ".#{File.basename(f)}"))
-  end
-
-  LOCAL_FILES.map { |f| File.join(ROOT, f) }.select { |f| !File.exist?(f) }.each do |f|
-    FileUtils.touch(f)
-    info("created empty local file '#{f}'")
   end
 end
 
