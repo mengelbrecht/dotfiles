@@ -61,7 +61,7 @@ task :osx do
 end
 
 task :homebrew do
-  next unless MACOS || LINUX
+  next unless MACOS
 
   brew_bin = `which brew 2> /dev/null`.strip
   unless $CHILD_STATUS.success?
@@ -70,11 +70,7 @@ task :homebrew do
       next
     end
     info('installing homebrew')
-    if MACOS
-      sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-    elsif LINUX
-      sh "git clone https://github.com/Homebrew/linuxbrew.git #{HOMEBREW_PATH}"
-    end
+    sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
     brew_bin = "#{HOMEBREW_PATH}/bin/brew"
   end
 
