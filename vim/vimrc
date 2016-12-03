@@ -28,6 +28,7 @@ call plug#begin()
 Plug 'airblade/vim-gitgutter'
 Plug 'coderifous/textobj-word-column.vim'
 Plug 'itchyny/lightline.vim'
+Plug 'danlevan/colemak.vim'
 Plug 'junegunn/gv.vim', {'on': 'GV'}
 Plug 'junegunn/vim-easy-align', {'on': ['<Plug>(LiveEasyAlign)', 'LiveEasyAlign']}
 Plug 'justinmk/vim-dirvish'
@@ -299,10 +300,18 @@ xmap z/ V<Esc>gvygvgc`>p
 
 " Window Mappings {{{
 " Easier window switching
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+
+if has_key(g:plugs, 'colemak.vim')
+  nnoremap <C-j> <C-w>h
+  nnoremap <C-k> <C-w>j
+  nnoremap <C-h> <C-w>k
+  nnoremap <C-l> <C-w>l
+else
+  nnoremap <C-h> <C-w>h
+  nnoremap <C-j> <C-w>j
+  nnoremap <C-k> <C-w>k
+  nnoremap <C-l> <C-w>l
+endif
 
 " Close quickfix and location list
 nnoremap <silent> <Leader>c :cclose<Bar>lclose<CR>
