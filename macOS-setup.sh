@@ -566,7 +566,7 @@ defaults write com.apple.dt.Xcode IDECustomDerivedDataLocation -string "DerivedD
 defaults write com.apple.dt.Xcode IDEEditorCoordinatorTarget_DoubleClick -string "SeparateTab"
 
 # Display build times
-defaults write com.apple.dt.Xcode ShowBuildOperationDuration YES
+defaults write com.apple.dt.Xcode ShowBuildOperationDuration -bool true
 
 ###############################################################################
 # Textmate                                                                    #
