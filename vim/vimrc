@@ -668,10 +668,9 @@ endif
 if has_key(g:plugs, 'vim-sneak')
   let g:sneak#streak = 1
 
-  hi link SneakPluginTarget IncSearch
-  hi link SneakLabelTarget  IncSearch
-  hi link SneakLabelMask    Comment
-  hi link SneakScope        Comment
+  hi link Sneak          IncSearch
+  hi link SneakLabel     IncSearch
+  hi link SneakLabelMask Comment
 endif
 " }}}
 
