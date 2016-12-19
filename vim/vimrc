@@ -246,6 +246,7 @@ endif
 
 " GUI {{{
 if has('gui_running')
+  set fullscreen
   set guicursor=a:blinkon0 " Non blinking cursor
   set guioptions-=m        " Disable menu bar
   set guioptions-=T        " Disable the toolbar
