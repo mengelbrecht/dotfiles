@@ -742,7 +742,7 @@
 			<key>Rows</key>
 			<integer>24</integer>
 			<key>Screen</key>
-			<integer>-1</integer>
+			<integer>0</integer>
 			<key>Scrollback Lines</key>
 			<integer>10000</integer>
 			<key>Selected Text Color</key>
@@ -800,7 +800,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>ASCII Anti Aliased</key>
@@ -1382,7 +1382,7 @@
 			<key>Rows</key>
 			<integer>24</integer>
 			<key>Screen</key>
-			<integer>-1</integer>
+			<integer>0</integer>
 			<key>Scrollback Lines</key>
 			<integer>10000</integer>
 			<key>Scrollback in Alternate Screen</key>
@@ -1440,7 +1440,7 @@
 			<key>Visual Bell</key>
 			<false/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>ASCII Anti Aliased</key>
@@ -2076,7 +2076,7 @@
 			<key>Rows</key>
 			<integer>24</integer>
 			<key>Screen</key>
-			<integer>-1</integer>
+			<integer>0</integer>
 			<key>Scrollback Lines</key>
 			<integer>10000</integer>
 			<key>Scrollback in Alternate Screen</key>
@@ -2142,7 +2142,7 @@
 			<key>Visual Bell</key>
 			<false/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
