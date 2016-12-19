@@ -630,6 +630,13 @@ defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${HOME}/.dotfile
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 
 ###############################################################################
+# MacVim                                                                      #
+###############################################################################
+
+defaults write org.vim.MacVim MMFullScreenFadeTime -float 0.05
+defaults write org.vim.MacVim MMUseCGLayerAlways -bool true
+
+###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
 
