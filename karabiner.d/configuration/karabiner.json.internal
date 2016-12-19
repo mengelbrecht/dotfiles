@@ -1,0 +1,18 @@
+{
+    "profiles": [
+        {
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": {
+                "caps_lock": "hyper",
+                "spacebar": "hyper_minus_cmd"
+            },
+            "standalone_modifiers": {
+                "caps_lock": "escape",
+                "left_shift": "delete_or_backspace",
+                "right_shift": "escape",
+                "hyper_minus_cmd": "spacebar"
+            }
+        }
+    ]
+}

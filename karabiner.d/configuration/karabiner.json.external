@@ -1,0 +1,25 @@
+{
+    "profiles": [
+        {
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": {
+                "caps_lock": "hyper",
+                "left_option": "left_command",
+                "left_command": "left_option",
+                "right_option": "right_command",
+                "right_command": "right_option",
+                "insert": "fn",
+                "grave_accent_and_tilde": "non_us_backslash",
+                "non_us_backslash": "grave_accent_and_tilde",
+                "spacebar": "hyper_minus_cmd"
+            },
+            "standalone_modifiers": {
+                "hyper": "escape",
+                "left_shift": "delete_or_backspace",
+                "right_shift": "escape",
+                "hyper_minus_cmd": "spacebar"
+            }
+        }
+    ]
+}
