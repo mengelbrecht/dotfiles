@@ -30,14 +30,52 @@
 	<string>0.216386 0.231364 0.2553 1</string>
 	<key>DVTDebuggerInstructionPointerColor</key>
 	<string>0.708155 0.741288 0.405974 1</string>
+	<key>DVTMarkupTextBackgroundColor</key>
+	<string>0.183412 0.190516 0.199834 1</string>
+	<key>DVTMarkupTextBorderColor</key>
+	<string>0.248739 0.255275 0.263847 1</string>
+	<key>DVTMarkupTextCodeFont</key>
+	<string>PragmataPro - 13.0</string>
+	<key>DVTMarkupTextEmphasisColor</key>
+	<string>0.770437 0.783913 0.778299 1</string>
+	<key>DVTMarkupTextEmphasisFont</key>
+	<string>.AppleSystemUIFontItalic - 13.0</string>
+	<key>DVTMarkupTextInlineCodeColor</key>
+	<string>0.770437 0.783913 0.778299 0.7</string>
+	<key>DVTMarkupTextLinkColor</key>
+	<string>0.506524 0.633807 0.747343 1</string>
+	<key>DVTMarkupTextLinkFont</key>
+	<string>.AppleSystemUIFont - 13.0</string>
+	<key>DVTMarkupTextNormalColor</key>
+	<string>0.770437 0.783913 0.778299 1</string>
+	<key>DVTMarkupTextNormalFont</key>
+	<string>.AppleSystemUIFont - 13.0</string>
+	<key>DVTMarkupTextOtherHeadingColor</key>
+	<string>0.770437 0.783913 0.778299 0.5</string>
+	<key>DVTMarkupTextOtherHeadingFont</key>
+	<string>.AppleSystemUIFont - 18.2</string>
+	<key>DVTMarkupTextPrimaryHeadingColor</key>
+	<string>0.770437 0.783913 0.778299 1</string>
+	<key>DVTMarkupTextPrimaryHeadingFont</key>
+	<string>.AppleSystemUIFont - 31.2</string>
+	<key>DVTMarkupTextSecondaryHeadingColor</key>
+	<string>0.770437 0.783913 0.778299 1</string>
+	<key>DVTMarkupTextSecondaryHeadingFont</key>
+	<string>.AppleSystemUIFont - 23.4</string>
+	<key>DVTMarkupTextStrongColor</key>
+	<string>0.770437 0.783913 0.778299 1</string>
+	<key>DVTMarkupTextStrongFont</key>
+	<string>.AppleSystemUIFontEmphasized - 13.0</string>
 	<key>DVTSourceTextBackground</key>
 	<string>0.112404 0.120126 0.130254 1</string>
 	<key>DVTSourceTextBlockDimBackgroundColor</key>
 	<string>0.5 0.5 0.5 1</string>
+	<key>DVTSourceTextCurrentLineHighlightColor</key>
+	<string>0.294118 0.305882 0.333333 1</string>
 	<key>DVTSourceTextInsertionPointColor</key>
 	<string>0.770437 0.783913 0.778299 1</string>
 	<key>DVTSourceTextInvisiblesColor</key>
-	<string>0.293494 0.306201 0.33183 1</string>
+	<string>0.294118 0.305882 0.333333 1</string>
 	<key>DVTSourceTextSelectionColor</key>
 	<string>0.216386 0.231364 0.2553 1</string>
 	<key>DVTSourceTextSyntaxColors</key>
