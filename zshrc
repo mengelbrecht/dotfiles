@@ -128,7 +128,12 @@ defMod() {
 
 # Grep the history
 greph() {
-  history 0 | grep "$@"
+  history 0 | grep "${@}"
+}
+
+# Fetch gitignore settings
+gi() {
+  curl -L -s "https://www.gitignore.io/api/${@}"
 }
 
 #-------------------------------------------------------------------------------
