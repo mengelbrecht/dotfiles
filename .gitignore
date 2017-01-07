@@ -8,8 +8,7 @@ atom/compile-cache
 atom/packages
 atom/storage
 
-karabiner.d/configuration/karabiner.json
-karabiner.d/log
+config/karabiner/karabiner.json
 
 tmux/plugins
 

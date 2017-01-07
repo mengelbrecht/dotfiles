@@ -1,0 +1,39 @@
+{
+    "profiles": [
+        {
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": {
+                "keyboard_type": "iso"
+            },
+            "one_to_many_mappings": {
+                "caps_lock": [
+                    "left_control",
+                    "left_shift",
+                    "left_option",
+                    "left_command"
+                ],
+                "spacebar": [
+                    "left_control",
+                    "left_shift",
+                    "left_option"
+                ]
+            },
+            "simple_modifications": {
+                "left_option": "left_command",
+                "left_command": "left_option",
+                "right_option": "right_command",
+                "right_command": "right_option",
+                "insert": "fn",
+                "grave_accent_and_tilde": "non_us_backslash",
+                "non_us_backslash": "grave_accent_and_tilde"
+            },
+            "standalone_keys": {
+                "caps_lock": "escape",
+                "left_shift": "delete_or_backspace",
+                "right_shift": "escape",
+                "spacebar": "spacebar"
+            }
+        }
+    ]
+}
