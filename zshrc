@@ -52,6 +52,9 @@ fi
 #-------------------------------------------------------------------------------
 
 if [[ "${OSTYPE}" =~ "darwin" ]]; then
+  # Load ssh identities
+  ssh-add -A -K 2> /dev/null
+
   # Add coreutils without 'g' prefix to path
   if [[ -d "${homebrew}/opt/coreutils" ]]; then
     export PATH="${homebrew}/opt/coreutils/libexec/gnubin:${PATH}"
