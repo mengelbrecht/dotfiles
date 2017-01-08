@@ -727,9 +727,6 @@ if has_key(g:plugs, 'vim-niffler')
   nnoremap <C-p>         :Niffler -vcs<CR>
   nnoremap <silent><C-o> :NifflerBuffer<CR>
   nnoremap <silent><C-y> :NifflerMRUCustom<CR>
-
-  " Hide niffler buffer in the bufferlist
-  autocmd FileType niffler setlocal nobuflisted
 endif
 " }}}
 
