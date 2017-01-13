@@ -134,11 +134,11 @@
 		<key>xcode.syntax.character</key>
 		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.comment</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro-Italic - 14.0</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>PragmataPro - 14.0</string>
+		<string>PragmataPro-Italic - 14.0</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>PragmataPro-Bold - 14.0</string>
+		<string>PragmataPro-BoldItalic - 14.0</string>
 		<key>xcode.syntax.identifier.class</key>
 		<string>PragmataPro - 14.0</string>
 		<key>xcode.syntax.identifier.class.system</key>
