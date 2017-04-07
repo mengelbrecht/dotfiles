@@ -258,7 +258,6 @@ alias gcP='git cherry-pick --no-commit'
 alias gcr='git revert'
 alias gcR='git reset "HEAD^"'
 alias gcs='git show'
-alias gcl='git-commit-lost'
 
 # Conflict (C)
 alias gCl='git status | sed -n "s/^.*both [a-z]*ed: *//p"'
@@ -363,10 +362,8 @@ alias gSf='git submodule foreach'
 alias gSi='git submodule init'
 alias gSI='git submodule update --init --recursive'
 alias gSl='git submodule status'
-alias gSm='git-submodule-move'
 alias gSs='git submodule sync'
 alias gSu='git submodule foreach git pull origin master'
-alias gSx='git-submodule-remove'
 
 # Working Copy (w)
 alias gws='git status --short'
