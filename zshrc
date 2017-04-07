@@ -415,7 +415,7 @@ unsetopt MENU_COMPLETE  # always display menu, don't directly insert
 
 # Use caching to make completion for commands such as dpkg and apt usable.
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "${ZDOTDIR:-${HOME}}/.zcompcache"
+zstyle ':completion::complete:*' cache-path "${HOME}/.zcompcache"
 
 # Group matches and describe.
 zstyle ':completion:*:*:*:*:*' menu select
@@ -497,7 +497,7 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<-
 # History
 #-------------------------------------------------------------------------------
 
-HISTFILE="${ZDOTDIR:-${HOME}}/.zhistory"
+HISTFILE="${HOME}/.zhistory"
 
 HISTSIZE=10000 # max entries
 SAVEHIST=10000
