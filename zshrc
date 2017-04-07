@@ -563,6 +563,12 @@ ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[path_approx]='fg=yellow'
 # }}}
 
+# Autosuggestions {{{
+source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
+# }}}
+
 # Slimline {{{
 export SLIMLINE_GIT_REPO_INDICATOR=''
 
