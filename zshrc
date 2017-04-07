@@ -68,23 +68,6 @@ if [[ "${OSTYPE}" =~ "darwin" ]]; then
 fi
 
 #-------------------------------------------------------------------------------
-# Linux Specifics
-#-------------------------------------------------------------------------------
-
-if [[ "${OSTYPE}" =~ "linux" ]]; then
-  local gcc_path="/package/host/localhost/gcc-5"
-  if [[ -d "${gcc_path}" ]]; then
-    export PATH="${gcc_path}/bin:${PATH}"
-    export LD_LIBRARY_PATH="${gcc_path}/lib64:${LD_LIBRARY_PATH}"
-
-    if [[ -d "${HOME}/.homebrew" ]]; then
-      [[ ! -h "${HOME}/.homebrew/bin/gcc-5" ]] && ln -s "${gcc_path}/bin/gcc" "${HOME}/.homebrew/bin/gcc-5"
-      [[ ! -h "${HOME}/.homebrew/bin/g++-5" ]] && ln -s "${gcc_path}/bin/g++" "${HOME}/.homebrew/bin/g++-5"
-    fi
-  fi
-fi
-
-#-------------------------------------------------------------------------------
 # Cygwin Specifics
 #-------------------------------------------------------------------------------
 
