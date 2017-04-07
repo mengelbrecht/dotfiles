@@ -206,6 +206,9 @@ else
   alias la='ll -A'
 fi
 
+if (( $+commands[htop] )); then
+  alias top=htop
+fi
 export GREP_COLOR='37;45'             # BSD
 export GREP_COLORS="mt=${GREP_COLOR}" # GNU
 alias grep="grep --color=auto"
