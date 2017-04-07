@@ -212,6 +212,20 @@ function diff {
   fi
 }
 
+# Vagrant
+
+alias vus="vagrant up --provider vmware_fusion && vagrant ssh"
+alias vups="vagrant up --provider vmware_fusion --provision && vagrant ssh"
+alias vup="vagrant up --provider vmware_fusion --provision"
+alias vu="vagrant up --provider vmware_fusion"
+alias vs="vagrant ssh"
+alias vh="vagrant halt"
+alias vp="vagrant provision"
+alias vr="vagrant reload"
+alias vrp="vagrant reload --provision"
+alias vrps="vagrant reload --provision && vagrant ssh"
+
+
 _git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
 _git_log_oneline_format='%C(auto,yellow)%h %C(auto,green)%ad%C(auto,red)%d %C(auto,reset)%s%C(auto,blue) [%cn]%C(auto,reset)'
 _git_log_brief_format='%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
