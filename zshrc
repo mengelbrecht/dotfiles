@@ -98,31 +98,6 @@ export PAGER='less'
 export LESS='-F -g -i -M -R -S -w -X -z-4'
 
 #-------------------------------------------------------------------------------
-# Helper Functions
-#-------------------------------------------------------------------------------
-
-# Update and upgrade all packages, afterwards perform a cleanup
-brewup() {
-  brew update && brew upgrade && brew cleanup
-}
-
-# Set executable permissions to folders only
-defMod() {
-  find . -type d -exec chmod 755 {} +
-  find . -type f -exec chmod 644 {} +
-}
-
-# Grep the history
-greph() {
-  history 0 | grep "${@}"
-}
-
-# Fetch gitignore settings
-gi() {
-  curl -L -s "https://www.gitignore.io/api/${@}"
-}
-
-#-------------------------------------------------------------------------------
 # Directory
 #-------------------------------------------------------------------------------
 
@@ -204,13 +179,6 @@ alias tm='((tmux has -t default &> /dev/null) && tmux -u attach -t default) || t
 
 alias cask='brew cask'
 
-function diff {
-  if (( $+commands[git] )); then
-    git --no-pager diff --color=auto --no-ext-diff --no-index "$@"
-  else
-    command diff --unified "$@"
-  fi
-}
 
 # Vagrant
 
@@ -395,14 +363,46 @@ alias gXw='gXr && gXc'
 
 autoload -Uz compinit && compinit -C -d ${ZDOTDIR:-${HOME}}/.zcompdump
 
-{
-  # Compile the completion dump to increase startup speed.
-  local zcompdump="${ZDOTDIR:-${HOME}}/.zcompdump"
-  if [[ -s "${zcompdump}" && (! -s "${zcompdump}.zwc" || "${zcompdump}" -nt "${zcompdump}.zwc") ]]; then
-    zcompile "${zcompdump}"
-  fi
-} &!
+# Helper Functions {{{
 
+diff() {
+  if (( $+commands[git] )); then
+    git --no-pager diff --color=auto --no-ext-diff --no-index "$@"
+  else
+    command diff --unified "$@"
+  fi
+}
+
+# Update and upgrade all packages, afterwards perform a cleanup
+brewup() {
+  brew update && brew upgrade && brew cleanup
+}
+
+# Set executable permissions to folders only
+defMod() {
+  find . -type d -exec chmod 755 {} +
+  find . -type f -exec chmod 644 {} +
+}
+
+# Grep the history
+greph() {
+  history 0 | grep "${@}"
+}
+
+# Fetch gitignore settings
+gi() {
+  curl -L -s "https://www.gitignore.io/api/${@}"
+}
+
+mkcd() {
+  [[ -n "$1" ]] && mkdir -p "$1" && builtin cd "$1"
+}
+
+cdls() {
+  builtin cd "$argv[-1]" && ls -l "${(@)argv[1,-2]}"
+}
+
+# }}}
 setopt CORRECT          # correct command names
 setopt ALWAYS_TO_END    # cursor moves to end of completion
 setopt AUTO_LIST        # list choices
@@ -532,6 +532,13 @@ ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
 ZSH_HIGHLIGHT_STYLES[path]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[path_prefix]='fg=cyan'
 ZSH_HIGHLIGHT_STYLES[path_approx]='fg=yellow'
+{
+  # Compile the completion dump to increase startup speed.
+  local zcompdump="${HOME}/.zcompdump"
+  if [[ -s "${zcompdump}" && (! -s "${zcompdump}.zwc" || "${zcompdump}" -nt "${zcompdump}.zwc") ]]; then
+    zcompile "${zcompdump}"
+  fi
+} &!
 
 #-------------------------------------------------------------------------------
 # History Substring Search
