@@ -33,5 +33,17 @@
 	conflictstyle = diff3
 [mergetool]
 	prompt = false
+[stash]
+	showPatch = true
+[log]
+	decorate = full
+[pull]
+	ff = only
+[status]
+	showUntrackedFiles = all
 [diff]
-	submodule = diff
+	tool = icdiff
+[difftool]
+	prompt = false
+[difftool "icdiff"]
+	cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
