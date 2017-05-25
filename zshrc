@@ -588,6 +588,7 @@ ZSH_HIGHLIGHT_STYLES[path_approx]='fg=yellow'
 source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
+ZSH_AUTOSUGGEST_USE_ASYNC=1
 # }}}
 
 # enhancd {{{
