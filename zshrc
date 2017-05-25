@@ -55,6 +55,8 @@ if [[ "${OSTYPE}" =~ "darwin" ]]; then
     export MANPATH="${homebrew}/opt/coreutils/libexec/gnuman:${MANPATH}"
   fi
 
+  export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
+
   if [[ -d "${homebrew}/opt/groovy" ]]; then
     export GROOVY_HOME="/usr/local/opt/groovy/libexec"
   fi
