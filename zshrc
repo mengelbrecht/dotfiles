@@ -408,6 +408,21 @@ httpless() {
     http --pretty=all --print=hb "$@" | less -R;
 }
 
+fd() {
+  local dir
+  local default_dirs=(.* *)
+  dir=$(find ${1:-${default_dirs[@]}} -type d ! -path ".git*" ! -path "*/.git*" ! -path ".svn*" ! -path "*/.svn*" 2> /dev/null | fzf --no-multi) && builtin cd "$dir"
+}
+
+fshow() {
+  local commit
+  commit=$(git log --color=always --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" | fzf --ansi --no-sort --reverse --tiebreak=index --extended | awk '{print $1}')
+  if [[ -n ${commit} ]]; then
+    echo ${commit} | pbcopy
+    git show ${commit}
+  fi
+}
+
 # }}}
 
 # Completion System {{{
@@ -521,7 +536,7 @@ setopt SHARE_HISTORY        # share across sessions
 setopt HIST_IGNORE_DUPS     # ignore duplicates
 setopt HIST_IGNORE_ALL_DUPS # new entries replace old ones
 setopt HIST_IGNORE_SPACE    # trim entries
-setopt HIST_SAVE_NO_DUPS    # don't save duplicates
+setopt HIST_SAVE_NO_DUPS    # dont save duplicates
 setopt HIST_VERIFY          # verify history entry before executing
 # }}}
 
@@ -573,6 +588,30 @@ ZSH_HIGHLIGHT_STYLES[path_approx]='fg=yellow'
 source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
+# }}}
+
+# enhancd {{{
+
+export ENHANCD_DOT_SHOW_FULLPATH=1
+
+source "${HOME}/.zsh/enhancd/init.sh"
+
+# }}}
+
+# fzf {{{
+
+if (( $+commands[fzf] )); then
+  export FZF_DEFAULT_OPTS="--reverse --cycle --inline-info --select-1 --exit-0 --multi --color=16"
+  export FZF_COMPLETION_TRIGGER='\\'
+  export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git" --glob "!.svn" --glob "!Applications/" --glob "!Library/"'
+  export FZF_CTRL_T_COMMAND="${FZF_DEFAULT_COMMAND}"
+
+  if [[ -e "/usr/local/opt/fzf" ]]; then
+    source "/usr/local/opt/fzf/shell/completion.zsh" 2> /dev/null
+    source "/usr/local/opt/fzf/shell/key-bindings.zsh"
+  fi
+fi
+
 # }}}
 
 # Slimline {{{
