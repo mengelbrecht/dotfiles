@@ -404,6 +404,10 @@ cdls() {
   builtin cd "$argv[-1]" && ls -l "${(@)argv[1,-2]}"
 }
 
+httpless() {
+    http --pretty=all --print=hb "$@" | less -R;
+}
+
 # }}}
 
 # Completion System {{{
