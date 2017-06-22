@@ -33,7 +33,7 @@ elif [[ -f "/usr/local/bin/brew" ]]; then
   homebrew="/usr/local"
 fi
 
-if [[ -d "${homebrew}" && "${homebrew}" != "/usr/local" ]]; then
+if [[ -d "${homebrew}" ]]; then
   export PATH="${homebrew}/bin:${PATH}"
   export MANPATH="${homebrew}/share/man:${MANPATH}"
   export INFOPATH="${homebrew}/share/info:${INFOPATH}"
