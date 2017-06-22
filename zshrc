@@ -423,6 +423,11 @@ fshow() {
   fi
 }
 
+shrinkPDF() {
+  ps2pdf "${1}"
+  mv "${1}.pdf" "${1}"
+}
+
 # }}}
 
 # Completion System {{{
