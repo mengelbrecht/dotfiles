@@ -431,6 +431,9 @@ augroup END
 
   autocmd FileType cpp setlocal commentstring=//%s
 
+  " Undefine <CR> in the quickfix window because it is used to jump to the item under the cursor
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+
   " Disable tabs
   " autocmd BufWinEnter,BufNewFile * silent tabo
 " }}}
