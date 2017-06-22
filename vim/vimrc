@@ -36,7 +36,6 @@ Plug 'justinmk/vim-gtfo'
 Plug 'justinmk/vim-sneak'
 Plug 'mgee/lightline-bufferline'
 Plug 'mgee/vim-sleuth'
-Plug 'mhinz/vim-grepper', {'on': 'Grepper'}
 Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
 Plug 'osyo-manga/vim-over', {'on': 'OverCommandLine'}
 Plug 'pgdouyon/vim-niffler'
@@ -47,6 +46,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession', {'on': 'Obsession'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'wincent/ferret', {'on': ['Ack', 'Acks', 'Back']}
 " }}}
 
 " Colorschemes {{{
@@ -737,23 +737,6 @@ if has_key(g:plugs, 'vim-easy-align')
 
   " Start interactive EasyAlign for a motion/text object (e.g. gaip)
   nmap ga <Plug>(LiveEasyAlign)
-endif
-" }}}
-
-" Grepper {{{
-if has_key(g:plugs, 'vim-grepper')
-  let g:grepper = {
-        \ 'highlight': 1,
-        \ 'simple_prompt': 1,
-        \ 'tools': ['rg', 'git', 'grep'],
-        \ 'rg': {
-        \   'grepprg': 'rg --vimgrep --no-heading --hidden --glob "!.git" --glob "!.svn"',
-        \   'grepformat': '%f:%l:%c:%m',
-        \   'escape': '\^$.*+?()[]{}|',
-        \ }}
-
-  nnoremap <Leader>vv :Grepper -tool rg -cword -noprompt<CR>
-  nnoremap <Leader>ff :Grepper -tool rg<CR>
 endif
 " }}}
 
