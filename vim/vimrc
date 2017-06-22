@@ -380,7 +380,6 @@ endif
 nnoremap <silent><Leader>ec :e $MYVIMRC<CR>
 nnoremap <silent><Leader>el :e ~/.dotfiles<CR>
 nnoremap <silent><Leader>ez :e ~/.dotfiles/zshrc<CR>
-nnoremap <silent><Leader>ed :e /Volumes/DATA/repos/development<CR>
 " }}}
 " }}}
 
