@@ -19,7 +19,7 @@
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 	branch = master
 [submodule "tmux/plugins/tpm"]
-	path = tmux/plugins/tpm
+	path = config/tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
 [submodule "zsh/zsh-autosuggestions"]
 	path = config/zsh/plugins/zsh-autosuggestions
