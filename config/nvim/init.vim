@@ -46,6 +46,7 @@ Plug 'tpope/vim-obsession', {'on': 'Obsession'}
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'wincent/ferret', {'on': ['Ack', 'Acks', 'Back']}
+Plug 'wincent/terminus'
 " }}}
 
 " Colorschemes {{{
@@ -86,11 +87,26 @@ let g:loaded_tarPlugin        = 1
 let g:loaded_vimballPlugin    = 1
 let g:loaded_zipPlugin        = 1
 
+if !has('nvim')
+  " Create cache directory if it doesn't exists
+  if empty($XDG_CACHE_HOME)
+    let $XDG_CACHE_HOME = '~/.cache'
+  endif
+  if !isdirectory($XDG_CACHE_HOME . "/vim")
+    call mkdir($XDG_CACHE_HOME . "/vim", "p")
+  endif
+endif
+
 if has('vim_starting')
   set encoding=utf8        " Always use unicode
 endif
 set shell=$SHELL           " Use zsh as shell
 set viminfo=/100,:100,'100 " Save command history and search patterns
+
+if !has('nvim')
+  set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
+endif
+
 set autoread               " Automatically load changes
 set undolevels=1000        " Large undo levels
 set history=200            " Size of command history
@@ -186,7 +202,7 @@ if has('termguicolors')
 endif
 
 if has('nvim')
-  let $NVIM_TUI_ENABLE_CURSOR_SHAPE = 1
+  set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
 endif
 " }}}
 

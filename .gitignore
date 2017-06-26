@@ -10,6 +10,6 @@ atom/storage
 
 tmux/plugins
 
-vim/autoload
-vim/plugged
-vim/session
+config/nvim/autoload
+config/nvim/plugged
+config/nvim/session
