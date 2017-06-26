@@ -626,7 +626,7 @@ defaults write com.torusknot.SourceTreeNotMAS agreedToUpdateConfig -bool false
 ###############################################################################
 
 # Load prefs from dotfiles
-defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${HOME}/.dotfiles/iTerm"
+defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${HOME}/.config/iTerm"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 
 ###############################################################################
