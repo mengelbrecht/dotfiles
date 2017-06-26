@@ -38,21 +38,6 @@ if [[ ! -d "${ZCACHEDIR}" ]]; then
 fi
 # }}}
 
-# Editors {{{
-if which nvim &> /dev/null; then
-  export EDITOR='nvim'
-  export VISUAL='nvim'
-else
-  export EDITOR='vim'
-  export VISUAL='vim'
-fi
-
-export PAGER='less'
-export LESS='-F -g -i -M -R -S -w -X -z-4'
-# Disable less search history
-export LESSHISTFILE=-
-# }}}
-
 # Homebrew {{{
 export HOMEBREW_NO_ANALYTICS=1
 
@@ -70,7 +55,21 @@ if [[ -d "${homebrew}" ]]; then
 fi
 
 alias cask='brew cask'
+# }}}
 
+# Editors {{{
+if (( $+commands[nvim] )); then
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+else
+  export EDITOR='vim'
+  export VISUAL='vim'
+fi
+
+export PAGER='less'
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+# Disable less search history
+export LESSHISTFILE=-
 # }}}
 
 # macOS Specifics {{{
