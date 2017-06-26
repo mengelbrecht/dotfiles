@@ -5,13 +5,13 @@
 	autocrlf = input
 	safecrlf = warn
 	trustctime = false
-	excludesfile = ~/.gitexcludes
+	excludesfile = ~/.config/git/ignore
 [credential]
 	helper = osxkeychain
 [grep]
 	lineNumber = true
 [include]
-	path = ~/.gitconfig.local
+	path = ~/.config/git/config.local
 [pack]
 	threads = 0
 [push]

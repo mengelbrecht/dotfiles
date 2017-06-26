@@ -26,7 +26,7 @@ EXCLUDES = [
 ].freeze
 
 LOCAL_FILES = [
-  'gitconfig.local',
+  'config/git/config.local',
   'config/vim/vimrc.local',
   'config/zsh/config.local'
 ].freeze
