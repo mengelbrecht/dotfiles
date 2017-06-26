@@ -1,5 +1,5 @@
 [submodule "hammerspoon"]
-	path = hammerspoon
+	path = config/hammerspoon
 	url = https://github.com/mgee/hammerspoon-config.git
 	branch = master
 [submodule "zsh/slimline"]

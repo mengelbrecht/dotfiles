@@ -636,6 +636,12 @@ defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
 defaults write org.vim.MacVim MMFullScreenFadeTime -float 0.05
 defaults write org.vim.MacVim MMUseCGLayerAlways -bool true
 
+# Hammerspoon {{{
+
+defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+
+# }}}
+
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
