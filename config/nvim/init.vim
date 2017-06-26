@@ -87,26 +87,11 @@ let g:loaded_tarPlugin        = 1
 let g:loaded_vimballPlugin    = 1
 let g:loaded_zipPlugin        = 1
 
-if !has('nvim')
-  " Create cache directory if it doesn't exists
-  if empty($XDG_CACHE_HOME)
-    let $XDG_CACHE_HOME = '~/.cache'
-  endif
-  if !isdirectory($XDG_CACHE_HOME . "/vim")
-    call mkdir($XDG_CACHE_HOME . "/vim", "p")
-  endif
-endif
-
 if has('vim_starting')
   set encoding=utf8        " Always use unicode
 endif
 set shell=$SHELL           " Use zsh as shell
 set viminfo=/100,:100,'100 " Save command history and search patterns
-
-if !has('nvim')
-  set viminfo+=n$XDG_CACHE_HOME/vim/viminfo
-endif
-
 set autoread               " Automatically load changes
 set undolevels=1000        " Large undo levels
 set history=200            " Size of command history
