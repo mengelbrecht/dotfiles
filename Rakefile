@@ -28,7 +28,7 @@ EXCLUDES = [
 LOCAL_FILES = [
   'gitconfig.local',
   'vim/vimrc.local',
-  'zshrc.local'
+  'config/zsh/config.local'
 ].freeze
 
 SHELL_HELPERS = [

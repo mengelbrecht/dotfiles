@@ -24,6 +24,35 @@ fi
 TMPPREFIX="${TMPDIR%/}/zsh"
 # }}}
 
+# Directories {{{
+export XDG_CONFIG_HOME="${HOME}/.config"
+export XDG_DATA_HOME="${HOME}/.local/share"
+export XDG_CACHE_HOME="${HOME}/.cache"
+export XDG_RUNTIME_DIR="${TMPDIR}"
+
+export ZPLUGINDIR="${ZDOTDIR}/plugins"
+export ZCACHEDIR="${XDG_CACHE_HOME}/zsh"
+
+if [[ ! -d "${ZCACHEDIR}" ]]; then
+  mkdir -p "${ZCACHEDIR}"
+fi
+# }}}
+
+# Editors {{{
+if which nvim &> /dev/null; then
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+else
+  export EDITOR='vim'
+  export VISUAL='vim'
+fi
+
+export PAGER='less'
+export LESS='-F -g -i -M -R -S -w -X -z-4'
+# Disable less search history
+export LESSHISTFILE=-
+# }}}
+
 # Homebrew {{{
 export HOMEBREW_NO_ANALYTICS=1
 
@@ -63,19 +92,6 @@ if [[ "${OSTYPE}" =~ "darwin" ]]; then
 
   alias o='open'
 fi
-# }}}
-
-# Editors {{{
-if which nvim &> /dev/null; then
-  export EDITOR='nvim'
-  export VISUAL='nvim'
-else
-  export EDITOR='vim'
-  export VISUAL='vim'
-fi
-
-export PAGER='less'
-export LESS='-F -g -i -M -R -S -w -X -z-4'
 # }}}
 
 # Directory {{{
@@ -447,7 +463,7 @@ unsetopt MENU_COMPLETE  # always display menu, don't directly insert
 # Style {{{
 # Use caching to make completion for commands such as dpkg and apt usable.
 zstyle ':completion::complete:*' use-cache on
-zstyle ':completion::complete:*' cache-path "${HOME}/.zcompcache"
+zstyle ':completion::complete:*' cache-path "${ZCACHEDIR}/zcompcache"
 
 # Group matches and describe.
 zstyle ':completion:*:*:*:*:*' menu select
@@ -548,14 +564,15 @@ setopt HIST_VERIFY          # verify history entry before executing
 # Plugins {{{
 
 # Completions {{{
-source "${HOME}/.zsh/zsh-completions/zsh-completions.plugin.zsh"
+source "${ZPLUGINDIR}/zsh-completions/zsh-completions.plugin.zsh"
 
 # Cache {{{
-autoload -Uz compinit && compinit -C -d "${HOME}/.zcompdump"
+local zcompdump="${ZCACHEDIR}/zcompdump"
+
+autoload -Uz compinit && compinit -C -d "${zcompdump}"
 
 {
   # Compile the completion dump to increase startup speed.
-  local zcompdump="${HOME}/.zcompdump"
   if [[ -s "${zcompdump}" && (! -s "${zcompdump}.zwc" || "${zcompdump}" -nt "${zcompdump}.zwc") ]]; then
     zcompile "${zcompdump}"
   fi
@@ -564,7 +581,7 @@ autoload -Uz compinit && compinit -C -d "${HOME}/.zcompdump"
 # }}}
 
 # History Substring Search {{{
-source "${HOME}/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh"
+source "${ZPLUGINDIR}/zsh-history-substring-search/zsh-history-substring-search.zsh"
 
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_FOUND='bg=magenta,fg=white,bold'
 HISTORY_SUBSTRING_SEARCH_HIGHLIGHT_NOT_FOUND='bg=red,fg=white,bold'
@@ -580,7 +597,7 @@ bindkey '^[[B' history-substring-search-down
 # }}}
 
 # Syntax Highlighting {{{
-source "${HOME}/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
+source "${ZPLUGINDIR}/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh"
 
 typeset -A ZSH_HIGHLIGHT_STYLES
 ZSH_HIGHLIGHT_STYLES[precommand]='fg=green'
@@ -590,7 +607,7 @@ ZSH_HIGHLIGHT_STYLES[path_approx]='fg=yellow'
 # }}}
 
 # Autosuggestions {{{
-source "${HOME}/.zsh/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+source "${ZPLUGINDIR}/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 ZSH_AUTOSUGGEST_USE_ASYNC=1
@@ -600,7 +617,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 
 export ENHANCD_DOT_SHOW_FULLPATH=1
 
-source "${HOME}/.zsh/enhancd/init.sh"
+source "${ZPLUGINDIR}/enhancd/init.sh"
 
 # }}}
 
@@ -621,15 +638,15 @@ fi
 # }}}
 
 # Slimline {{{
-export SLIMLINE_GIT_REPO_INDICATOR=''
+export GITLINE_REPO_INDICATOR=''
 
-source "${HOME}/.zsh/slimline/slimline.plugin.zsh"
+source "${ZPLUGINDIR}/slimline/slimline.plugin.zsh"
 # }}}
 
 # }}}
 
 # Local zshrc file {{{
-if [[ -s "${HOME}/.zshrc.local" ]]; then
-  source "${HOME}/.zshrc.local"
+if [[ -s "${ZDOTDIR}/local" ]]; then
+  source "${ZDOTDIR}/local"
 fi
 # }}}
