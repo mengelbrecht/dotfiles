@@ -18,9 +18,6 @@
 	path = config/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 	branch = master
-[submodule "tmux/plugins/tpm"]
-	path = config/tmux/tpm
-	url = https://github.com/tmux-plugins/tpm
 [submodule "config/zsh/plugins/zsh-autosuggestions"]
 	path = config/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
@@ -28,4 +25,20 @@
 [submodule "config/zsh/plugins/enhancd"]
 	path = config/zsh/plugins/enhancd
 	url = https://github.com/b4b4r07/enhancd.git
+	branch = master
+[submodule "config/tmux/plugins/tmux-better-mouse-mode"]
+	path = config/tmux/plugins/tmux-better-mouse-mode
+	url = https://github.com/NHDaly/tmux-better-mouse-mode.git
+	branch = master
+[submodule "config/tmux/plugins/tmux-pain-control"]
+	path = config/tmux/plugins/tmux-pain-control
+	url = https://github.com/tmux-plugins/tmux-pain-control.git
+	branch = master
+[submodule "config/tmux/plugins/tmux-yank"]
+	path = config/tmux/plugins/tmux-yank
+	url = https://github.com/tmux-plugins/tmux-yank.git
+	branch = master
+[submodule "config/tmux/plugins/tmux-prefix-highlight"]
+	path = config/tmux/plugins/tmux-prefix-highlight
+	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
 	branch = master

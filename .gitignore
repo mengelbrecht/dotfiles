@@ -8,8 +8,6 @@ atom/compile-cache
 atom/packages
 atom/storage
 
-config/tmux/plugins
-
 config/nvim/autoload
 config/nvim/plugged
 config/nvim/session
