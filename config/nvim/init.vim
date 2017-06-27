@@ -10,67 +10,11 @@
 "   https://github.com/pgdouyon/dotfiles/blob/master/config/nvim/init.vim
 " ------------------------------------------------------------------------------
 
-" Plugins {{{
-" Prelude {{{
-if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo "$HOME/.vim/autoload/plug.vim" --create-dirs 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall | source $MYVIMRC
-endif
-
-function! Cond(cond, ...)
-  let opts = get(a:000, 0, {})
-  return a:cond ? opts : extend(opts, { 'on': [], 'for': [] })
-endfunction
-" }}}
-
-call plug#begin()
-" General {{{
-Plug 'airblade/vim-gitgutter'
-Plug 'coderifous/textobj-word-column.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'junegunn/gv.vim', {'on': 'GV'}
-Plug 'junegunn/vim-easy-align', {'on': ['<Plug>(LiveEasyAlign)', 'LiveEasyAlign']}
-Plug 'justinmk/vim-dirvish'
-Plug 'justinmk/vim-gtfo'
-Plug 'justinmk/vim-sneak'
-Plug 'mgee/lightline-bufferline'
-Plug 'mgee/vim-sleuth'
-Plug 'mhinz/vim-sayonara', {'on': 'Sayonara'}
-Plug 'osyo-manga/vim-over', {'on': 'OverCommandLine'}
-Plug 'pgdouyon/vim-niffler'
-Plug 'rhysd/vim-clang-format', {'on': 'ClangFormat'}
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-eunuch'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession', {'on': 'Obsession'}
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'wincent/ferret', {'on': ['Ack', 'Acks', 'Back']}
-Plug 'wincent/terminus'
-" }}}
-
-" Colorschemes {{{
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'joshdick/onedark.vim'
-Plug 'morhetz/gruvbox'
-" }}}
-
-" Languages {{{
-Plug 'b4winckler/vim-objc', {'for': 'objc'}
-Plug 'keith/swift.vim', {'for': 'swift'}
-Plug 'mitsuhiko/vim-python-combined', {'for': 'python'}
-Plug 'nickhutchinson/vim-cmake-syntax', {'for': 'cmake'}
-Plug 'octol/vim-cpp-enhanced-highlight', {'for': 'cpp'}
-Plug 'tbastos/vim-lua', {'for': 'lua'}
-Plug 'tmux-plugins/vim-tmux', {'for': 'tmux'}
-Plug 'tpope/vim-git'
-Plug 'vim-ruby/vim-ruby', {'for': 'ruby'}
-" }}}
-call plug#end()
-" }}}
-
 " Settings {{{
 " General {{{
+filetype plugin indent on
+syntax enable
+
 let mapleader                 = "\<SPACE>"
 
 let g:netrw_dirhistmax        = 0 " Disable .netrwhist file creation
@@ -551,206 +495,180 @@ nnoremap <Leader>gi :call <SID>git_info()<CR>
 " }}}
 
 " Plugin Settings {{{
-" Plug {{{
-let g:plug_window = 'vertical rightbelow new'
-" }}}
-
 " Sleuth {{{
 let g:sleuth_width = 4
 let g:sleuth_trigger_ratio = 16 " Allow some fuzz on heuristics
 " }}}
 
 " Gitgutter {{{
-if has_key(g:plugs, 'vim-gitgutter')
-  let g:gitgutter_sign_column_always = 1
-  let g:gitgutter_sign_removed = '-'
-endif
+let g:gitgutter_sign_column_always = 1
+let g:gitgutter_sign_removed = '-'
 " }}}
 
 " Dirvish {{{
-if has_key(g:plugs, 'vim-dirvish')
-  function! s:dirvish_init()
-    call fugitive#detect(@%)
+function! s:dirvish_init()
+  call fugitive#detect(@%)
 
-    nnoremap <silent> <buffer> t :call dirvish#open('tabedit', 0)<CR>
-    nnoremap <silent> <buffer> s :call dirvish#open('split', 0)<CR>
-    nnoremap <silent> <buffer> v :call dirvish#open('vsplit', 0)<CR>
-    nnoremap <buffer> + :edit %
-    nnoremap <buffer> b :!mkdir %
-    nnoremap <silent> <buffer> p :lcd %:p:h<CR>
-    nnoremap <silent> <buffer> <C-R> :<C-u>Dirvish %<CR>
+  nnoremap <silent> <buffer> t :call dirvish#open('tabedit', 0)<CR>
+  nnoremap <silent> <buffer> s :call dirvish#open('split', 0)<CR>
+  nnoremap <silent> <buffer> v :call dirvish#open('vsplit', 0)<CR>
+  nnoremap <buffer> + :edit %
+  nnoremap <buffer> b :!mkdir %
+  nnoremap <silent> <buffer> p :lcd %:p:h<CR>
+  nnoremap <silent> <buffer> <C-R> :<C-u>Dirvish %<CR>
 
-    " Sort folders to top and alphabetically
-    sort ir /^.*[^\/]$/
-  endfunction
+  " Sort folders to top and alphabetically
+  sort ir /^.*[^\/]$/
+endfunction
 
-  nnoremap <silent> <Leader>r        :Dirvish %<CR>
+nnoremap <silent> <Leader>r        :Dirvish %<CR>
 
-  autocmd FileType dirvish call <SID>dirvish_init()
-endif
+autocmd FileType dirvish call <SID>dirvish_init()
 " }}}
 
 " Bufferline {{{
-if has_key(g:plugs, 'lightline-bufferline')
-  nmap <D-1> <Plug>lightline#bufferline#go(1)
-  nmap <D-2> <Plug>lightline#bufferline#go(2)
-  nmap <D-3> <Plug>lightline#bufferline#go(3)
-  nmap <D-4> <Plug>lightline#bufferline#go(4)
-  nmap <D-5> <Plug>lightline#bufferline#go(5)
-  nmap <D-6> <Plug>lightline#bufferline#go(6)
-  nmap <D-7> <Plug>lightline#bufferline#go(7)
-  nmap <D-8> <Plug>lightline#bufferline#go(8)
-  nmap <D-9> <Plug>lightline#bufferline#go(9)
-  nmap <D-0> <Plug>lightline#bufferline#go(10)
-endif
+nmap <D-1> <Plug>lightline#bufferline#go(1)
+nmap <D-2> <Plug>lightline#bufferline#go(2)
+nmap <D-3> <Plug>lightline#bufferline#go(3)
+nmap <D-4> <Plug>lightline#bufferline#go(4)
+nmap <D-5> <Plug>lightline#bufferline#go(5)
+nmap <D-6> <Plug>lightline#bufferline#go(6)
+nmap <D-7> <Plug>lightline#bufferline#go(7)
+nmap <D-8> <Plug>lightline#bufferline#go(8)
+nmap <D-9> <Plug>lightline#bufferline#go(9)
+nmap <D-0> <Plug>lightline#bufferline#go(10)
 " }}}
 
 " Lightline {{{
-if has_key(g:plugs, 'lightline.vim')
-  let g:lightline                  = {}
-  let g:lightline.colorscheme      = g:colors_name
-  let g:lightline.separator        = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
-  let g:lightline.subseparator     = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
-  let g:lightline.active           = {
-        \ 'left': [['mode', 'paste'], ['readonly', 'cwd'], ['filename']],
-        \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']],
-        \ }
-  let g:lightline.inactive         = {'left': [['name']], 'right': [['percent', 'lineinfo']]}
-  let g:lightline.tab              = {'active': ['tabnum'], 'inactive': ['tabnum']}
-  let g:lightline.tabline          = {'left': [['buffers']], 'right': [['tabs']]}
-  let g:lightline.mode_map         = {
-        \ 'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'V', "\<C-v>": 'V',
-        \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S', 't': 'T',
-        \ }
-  let g:lightline.component_expand = {
-        \ 'buffers': 'lightline#bufferline#buffers',
-        \ 'tabs': 'LightLineTabs',
-        \ }
-  let g:lightline.component_type   = {'buffers': 'tabsel'}
-  let g:lightline.component        = {
-        \ 'cwd': '%{fnamemodify(getcwd(), ":~")}',
-        \ 'fileencoding': '%{b:is_special || &fenc == &enc || &fenc == "" ? "" : &fenc}',
-        \ 'fileformat': '%{b:is_special || &ff == "unix" ? "" : &ff == "dos" ? "CRLF" : &ff == "mac" ? "CR" : "??"}',
-        \ 'filename': '%{b:is_special || &bt == "nofile" ? "" : (@% == "" ? "*" : expand("%:.")) . (&mod ? "+" : &ma ? "" : "-")}',
-        \ 'filetype': '%{b:is_special ? "" : &ft == "" ? "--" : &ft}',
-        \ 'mode': '%{b:is_special ? b:special_name : lightline#mode()}',
-        \ 'name': '%{b:is_special ? b:special_name : expand("%:.")}',
-        \ 'whitespace': '%{b:is_special ? "" : &shiftwidth . (&expandtab ? "S" : "T")}',
-        \ }
+let g:lightline                  = {}
+let g:lightline.colorscheme      = g:colors_name
+let g:lightline.separator        = {'left': s:symbol_separator_left, 'right': s:symbol_separator_right}
+let g:lightline.subseparator     = {'left': s:symbol_subseparator_left, 'right': s:symbol_subseparator_right}
+let g:lightline.active           = {
+      \ 'left': [['mode', 'paste'], ['readonly', 'cwd'], ['filename']],
+      \ 'right': [['percent', 'lineinfo'], ['whitespace', 'fileformat', 'fileencoding'], ['filetype']],
+      \ }
+let g:lightline.inactive         = {'left': [['name']], 'right': [['percent', 'lineinfo']]}
+let g:lightline.tab              = {'active': ['tabnum'], 'inactive': ['tabnum']}
+let g:lightline.tabline          = {'left': [['buffers']], 'right': [['tabs']]}
+let g:lightline.mode_map         = {
+      \ 'n': 'N', 'i': 'I', 'R': 'R', 'v': 'V', 'V': 'V', "\<C-v>": 'V',
+      \ 'c': 'C', 's': 'S', 'S': 'S', "\<C-s>": 'S', 't': 'T',
+      \ }
+let g:lightline.component_expand = {
+      \ 'buffers': 'lightline#bufferline#buffers',
+      \ 'tabs': 'LightLineTabs',
+      \ }
+let g:lightline.component_type   = {'buffers': 'tabsel'}
+let g:lightline.component        = {
+      \ 'cwd': '%{fnamemodify(getcwd(), ":~")}',
+      \ 'fileencoding': '%{b:is_special || &fenc == &enc || &fenc == "" ? "" : &fenc}',
+      \ 'fileformat': '%{b:is_special || &ff == "unix" ? "" : &ff == "dos" ? "CRLF" : &ff == "mac" ? "CR" : "??"}',
+      \ 'filename': '%{b:is_special || &bt == "nofile" ? "" : (@% == "" ? "*" : expand("%:.")) . (&mod ? "+" : &ma ? "" : "-")}',
+      \ 'filetype': '%{b:is_special ? "" : &ft == "" ? "--" : &ft}',
+      \ 'mode': '%{b:is_special ? b:special_name : lightline#mode()}',
+      \ 'name': '%{b:is_special ? b:special_name : expand("%:.")}',
+      \ 'whitespace': '%{b:is_special ? "" : &shiftwidth . (&expandtab ? "S" : "T")}',
+      \ }
 
-  let g:lightline.component_visible_condition = {
-        \ 'fileencoding': '!b:is_special&&&fenc!=&enc&&&fenc!=""',
-        \ 'fileformat': '!b:is_special&&&fileformat!="unix"',
-        \ 'filename': '!b:is_special&&&bt!="nofile"',
-        \ 'filetype': '!b:is_special',
-        \ 'whitespace': '!b:is_special',
-        \ }
+let g:lightline.component_visible_condition = {
+      \ 'fileencoding': '!b:is_special&&&fenc!=&enc&&&fenc!=""',
+      \ 'fileformat': '!b:is_special&&&fileformat!="unix"',
+      \ 'filename': '!b:is_special&&&bt!="nofile"',
+      \ 'filetype': '!b:is_special',
+      \ 'whitespace': '!b:is_special',
+      \ }
 
-  " Copy the left tabline style because the tabs shall look like buffers
-  autocmd VimEnter,ColorScheme *
-        \ exe 'let g:lightline#colorscheme#' . g:lightline.colorscheme . '#palette.tabline.right = ' .
-        \ 'copy(g:lightline#colorscheme#' . g:lightline.colorscheme . '#palette.tabline.left)'
+" Copy the left tabline style because the tabs shall look like buffers
+autocmd VimEnter,ColorScheme *
+      \ exe 'let g:lightline#colorscheme#' . g:lightline.colorscheme . '#palette.tabline.right = ' .
+      \ 'copy(g:lightline#colorscheme#' . g:lightline.colorscheme . '#palette.tabline.left)'
 
-  function! LightLineTabs()
-    let l:tabs = lightline#tabs()
-    return [reverse(l:tabs[0]), l:tabs[1], reverse(l:tabs[2])]
-  endfunction
-endif
+function! LightLineTabs()
+  let l:tabs = lightline#tabs()
+  return [reverse(l:tabs[0]), l:tabs[1], reverse(l:tabs[2])]
+endfunction
 " }}}
 
 " Sneak {{{
-if has_key(g:plugs, 'vim-sneak')
-  let g:sneak#streak = 1
+let g:sneak#streak = 1
 
-  hi link Sneak          IncSearch
-  hi link SneakLabel     IncSearch
-  hi link SneakLabelMask Comment
-endif
+hi link Sneak          IncSearch
+hi link SneakLabel     IncSearch
+hi link SneakLabelMask Comment
 " }}}
 
 " gtfo {{{
-if has_key(g:plugs, 'vim-gtfo')
-  let g:gtfo#terminals = {'mac' : 'iterm'}
-endif
+let g:gtfo#terminals = {'mac' : 'iterm'}
 " }}}
 
 " Fugitive {{{
-if has_key(g:plugs, 'vim-fugitive')
-  nnoremap <Space>ga :Gcommit -v -q --amend<CR>
-  nnoremap <Space>gb :Gblame<CR>
-  nnoremap <Space>gc :Gcommit -v -q<CR>
-  nnoremap <Space>gd :Gdiff<CR>
-  nnoremap <Space>gg :Ggrep<Space>
-  nnoremap <Space>gl :silent! Glog<CR>:bot copen<CR>
-  nnoremap <Space>gm :Gmove<Space>
-  nnoremap <Space>gp :Dispatch! git push<CR>
-  nnoremap <Space>gr :Dispatch! git pull --rebase<CR>
-  nnoremap <Space>gs :Gstatus<CR>
-endif
+nnoremap <Space>ga :Gcommit -v -q --amend<CR>
+nnoremap <Space>gb :Gblame<CR>
+nnoremap <Space>gc :Gcommit -v -q<CR>
+nnoremap <Space>gd :Gdiff<CR>
+nnoremap <Space>gg :Ggrep<Space>
+nnoremap <Space>gl :silent! Glog<CR>:bot copen<CR>
+nnoremap <Space>gm :Gmove<Space>
+nnoremap <Space>gp :Dispatch! git push<CR>
+nnoremap <Space>gr :Dispatch! git pull --rebase<CR>
+nnoremap <Space>gs :Gstatus<CR>
 " }}}
 
 " Niffler {{{
-if has_key(g:plugs, 'vim-niffler')
-  let g:niffler_marked_indicator = s:symbol_separator_left . ' '
-  let g:niffler_mru_max_history  = 1
-  let g:niffler_prompt           = '%s> '
-  let g:niffler_user_command     = 'rg --files --hidden --glob "!.git" --glob "!.svn" --glob "!Applications/" --glob "!Library/" %s'
-  let s:mru_blacklist            = ['COMMIT_EDITMSG', fnamemodify(resolve($VIMRUNTIME), ':p') . 'doc']
+let g:niffler_marked_indicator = s:symbol_separator_left . ' '
+let g:niffler_mru_max_history  = 1
+let g:niffler_prompt           = '%s> '
+let g:niffler_user_command     = 'rg --files --hidden --glob "!.git" --glob "!.svn" --glob "!Applications/" --glob "!Library/" %s'
+let s:mru_blacklist            = ['COMMIT_EDITMSG', fnamemodify(resolve($VIMRUNTIME), ':p') . 'doc']
 
-  function! s:filter_file(fname)
-    if !filereadable(a:fname) | return 0 | endif
-    for l:pattern in s:mru_blacklist
-      if a:fname =~# l:pattern | return 0 | endif
-    endfor
-    return 1
-  endfunction
+function! s:filter_file(fname)
+  if !filereadable(a:fname) | return 0 | endif
+  for l:pattern in s:mru_blacklist
+    if a:fname =~# l:pattern | return 0 | endif
+  endfor
+  return 1
+endfunction
 
-  function! MRUFiles()
-    let l:files = map(v:oldfiles, 'fnamemodify(v:val, ":p")')
-    let l:filtered = filter(l:files, 's:filter_file(v:val)')
-    return map(l:filtered, 'fnamemodify(v:val, ":~")')
-  endfunction
+function! MRUFiles()
+  let l:files = map(v:oldfiles, 'fnamemodify(v:val, ":p")')
+  let l:filtered = filter(l:files, 's:filter_file(v:val)')
+  return map(l:filtered, 'fnamemodify(v:val, ":~")')
+endfunction
 
-  function! OpenFile(sel) dict
-    let l:sel = fnamemodify(a:sel, ':p')
-    execute 'silent' (bufexists(l:sel) ? 'buffer' : 'edit') fnameescape(l:sel)
-  endfunction
+function! OpenFile(sel) dict
+  let l:sel = fnamemodify(a:sel, ':p')
+  execute 'silent' (bufexists(l:sel) ? 'buffer' : 'edit') fnameescape(l:sel)
+endfunction
 
-  command! -nargs=0 NifflerMRUCustom :call niffler#custom({'source': MRUFiles(), 'sink': function('OpenFile'), 'prompt': 'MRU'})
+command! -nargs=0 NifflerMRUCustom :call niffler#custom({'source': MRUFiles(), 'sink': function('OpenFile'), 'prompt': 'MRU'})
 
-  nnoremap <C-p>         :Niffler -vcs<CR>
-  nnoremap <silent><C-o> :NifflerBuffer<CR>
-  nnoremap <silent><C-y> :NifflerMRUCustom<CR>
-endif
+nnoremap <C-p>         :Niffler -vcs<CR>
+nnoremap <silent><C-o> :NifflerBuffer<CR>
+nnoremap <silent><C-y> :NifflerMRUCustom<CR>
 " }}}
 
 " Easy-Align {{{
-if has_key(g:plugs, 'vim-easy-align')
-  " Start interactive EasyAlign in visual mode (e.g. vipga)
-  xmap ga <Plug>(LiveEasyAlign)
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(LiveEasyAlign)
 
-  " Start interactive EasyAlign for a motion/text object (e.g. gaip)
-  nmap ga <Plug>(LiveEasyAlign)
-endif
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(LiveEasyAlign)
 " }}}
 
 " clang-format {{{
-if has_key(g:plugs, 'vim-clang-format')
-  let g:clang_format#detect_style_file = 1
+let g:clang_format#detect_style_file = 1
 
-  augroup ClangFormatSettings
-    autocmd FileType c,cpp,objc,objcpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
-    autocmd FileType c,cpp,objc,objcpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
-  augroup END
-endif
+augroup ClangFormatSettings
+  autocmd FileType c,cpp,objc,objcpp nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+  autocmd FileType c,cpp,objc,objcpp vnoremap <buffer><Leader>cf :ClangFormat<CR>
+augroup END
 " }}}
 
 " vim enhanced cpp highlight {{{
-if has_key(g:plugs, 'vim-cpp-enhanced-highlight')
-  let c_no_curly_error                      = 1 " Do not show curly braces error in cpp files
-  let g:cpp_class_scope_highlight           = 1 " Highlight class scope
-  let g:cpp_experimental_template_highlight = 1 " Highlight template functions
-endif
+let c_no_curly_error                      = 1 " Do not show curly braces error in cpp files
+let g:cpp_class_scope_highlight           = 1 " Highlight class scope
+let g:cpp_experimental_template_highlight = 1 " Highlight template functions
 " }}}
 " }}}
 
@@ -760,3 +678,4 @@ if filereadable(s:local_vimrc)
   execute 'source' s:local_vimrc
 endif
 " }}}
+
