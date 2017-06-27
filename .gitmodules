@@ -1,29 +1,31 @@
-[submodule "hammerspoon"]
+[submodule "config/hammerspoon"]
 	path = config/hammerspoon
 	url = https://github.com/mgee/hammerspoon-config.git
 	branch = master
-[submodule "zsh/slimline"]
+[submodule "config/zsh/plugins/slimline"]
 	path = config/zsh/plugins/slimline
 	url = https://github.com/mgee/slimline.git
 	branch = master
-[submodule "zsh/zsh-completions"]
+[submodule "config/zsh/plugins/zsh-completions"]
 	path = config/zsh/plugins/zsh-completions
 	url = https://github.com/zsh-users/zsh-completions.git
 	branch = master
-[submodule "zsh/zsh-history-substring-search"]
+[submodule "config/zsh/plugins/zsh-history-substring-search"]
 	path = config/zsh/plugins/zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
 	branch = master
-[submodule "zsh/zsh-syntax-highlighting"]
+[submodule "config/zsh/plugins/zsh-syntax-highlighting"]
 	path = config/zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 	branch = master
 [submodule "tmux/plugins/tpm"]
 	path = config/tmux/tpm
 	url = https://github.com/tmux-plugins/tpm
-[submodule "zsh/zsh-autosuggestions"]
+[submodule "config/zsh/plugins/zsh-autosuggestions"]
 	path = config/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule "zsh/enhancd"]
+	branch = master
+[submodule "config/zsh/plugins/enhancd"]
 	path = config/zsh/plugins/enhancd
 	url = https://github.com/b4b4r07/enhancd.git
+	branch = master
