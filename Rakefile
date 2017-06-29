@@ -62,7 +62,7 @@ task :homebrew do
     brew_bin = "#{HOMEBREW_PATH}/bin/brew"
   end
   sh "#{brew_bin} tap Homebrew/bundle"
-  sh "#{brew_bin} bundle --global"
+  sh "#{brew_bin} bundle --file=#{ROOT}/config/homebrew/Brewfile"
 end
 
 task :terminfo do
