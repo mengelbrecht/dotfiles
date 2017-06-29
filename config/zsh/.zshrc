@@ -622,6 +622,7 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 # enhancd {{{
 
 export ENHANCD_DOT_SHOW_FULLPATH=1
+export ENHANCD_DIR="${XDG_CACHE_HOME}/enhancd"
 
 source "${ZPLUGINDIR}/enhancd/init.sh"
 
