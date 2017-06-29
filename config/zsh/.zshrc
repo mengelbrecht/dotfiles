@@ -93,6 +93,13 @@ if [[ "${OSTYPE}" =~ "darwin" ]]; then
 fi
 # }}}
 
+# tmux Settings {{{
+
+alias tmux="tmux -f '${XDG_CONFIG_HOME}/tmux/tmux.conf'"
+export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
+
+# }}}
+
 # Directory {{{
 setopt AUTO_CD           # Auto changes to a directory without typing cd.
 setopt AUTO_PUSHD        # Push the old directory onto the stack on cd.
