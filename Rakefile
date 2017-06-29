@@ -4,7 +4,7 @@ require 'English'
 
 #------------------------------------------------------------------------------
 task default: %w(update)
-task setup: %w(osx dotfiles homebrew shellhelpers)
+task setup: %w(osx dotfiles homebrew terminfo)
 
 verbose(false)
 
@@ -29,13 +29,6 @@ LOCAL_FILES = [
   'config/git/config.local',
   'config/vim/vimrc.local',
   'config/zsh/config.local'
-].freeze
-
-SHELL_HELPERS = [
-  '/Applications/Atom.app/Contents/Resources/app/apm/node_modules/.bin/apm',
-  '/Applications/Atom.app/Contents/Resources/app/atom.sh',
-  '/Applications/SourceTree.app/Contents/Resources/stree',
-  '/Applications/Tower.app/Contents/MacOS/gittower'
 ].freeze
 
 #------------------------------------------------------------------------------
@@ -72,11 +65,12 @@ task :homebrew do
   sh "#{brew_bin} bundle --global"
 end
 
-task :shellhelpers do
+task :terminfo do
   next unless MACOS
 
-  SHELL_HELPERS.select { |h| File.exist?(h) }.each do |h|
-    symlink_path(h, File.join(File.join(HOMEBREW_PATH, 'bin'), File.basename(h, '.*')))
+  homebrew_terminfo = '/usr/local/opt/ncurses/share/terminfo'
+  if File.exist?(homebrew_terminfo)
+    symlink_path(homebrew_terminfo, File.join(HOME, '.terminfo'))
   end
 end
 
