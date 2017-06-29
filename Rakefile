@@ -4,7 +4,7 @@ require 'English'
 
 #------------------------------------------------------------------------------
 task default: %w(update)
-task setup: %w(osx dotfiles homebrew terminfo)
+task setup: %w(macos dotfiles homebrew terminfo)
 
 verbose(false)
 
@@ -32,7 +32,7 @@ LOCAL_FILES = [
 ].freeze
 
 #------------------------------------------------------------------------------
-task :osx do
+task :macos do
   next unless MACOS
   sh File.join(ROOT, 'macOS-setup.sh')
 end
