@@ -657,3 +657,11 @@ if [[ -s "${ZDOTDIR}/local" ]]; then
   source "${ZDOTDIR}/local"
 fi
 # }}}
+
+# Start tmux {{{
+
+if [[ -z "$TMUX" ]]; then
+  tm
+fi
+
+# }}}
