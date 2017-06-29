@@ -544,7 +544,7 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<-
 # }}}
 
 # History {{{
-HISTFILE="${HOME}/.zhistory"
+HISTFILE="${XDG_DATA_HOME}/zsh/history"
 
 HISTSIZE=10000 # max entries
 SAVEHIST=10000
