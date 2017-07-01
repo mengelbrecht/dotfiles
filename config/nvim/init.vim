@@ -262,6 +262,17 @@ nnoremap <silent> <C-u> :bprev<CR>
 nnoremap <silent> <C-i> :bnext<CR>
 " }}}
 
+" Cursor Mappings {{{
+nnoremap <A-Left>  b
+nnoremap <A-Right> w
+vnoremap <A-Left>  b
+vnoremap <A-Right> w
+inoremap <A-Left>  <C-O>b
+inoremap <A-Right> <C-O>w
+snoremap <A-Left>  <C-O>b
+snoremap <A-Right> <C-O>w
+" }}}
+
 " Tab Mappings {{{
 nnoremap <silent> <Leader>t :tabnew<CR>
 nnoremap <silent> <Leader>x :tabclose<CR>
