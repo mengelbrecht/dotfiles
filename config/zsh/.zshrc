@@ -130,9 +130,9 @@ bindkey "^[[3~" delete-char # bind delete key to delete character
 # Use shift+tab to navigate backwards
 bindkey '^[[Z' reverse-menu-complete
 
-# Bindings for iTerm
-bindkey "^[^[[D" backward-word
-bindkey "^[^[[C" forward-word
+# Bindings for other terminals
+bindkey "^[[1;3D" backward-word
+bindkey "^[[1;3C" forward-word
 
 # Bindings for Terminal
 bindkey "^[f" forward-word
