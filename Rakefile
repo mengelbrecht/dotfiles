@@ -16,13 +16,11 @@ LINUX = RUBY_PLATFORM.include? 'linux'
 HOMEBREW_PATH = MACOS ? '/usr/local' : "#{HOME}/.homebrew"
 
 #------------------------------------------------------------------------------
-EXCLUDES = [
-  'LICENSE',
-  'README.md',
-  'Rakefile',
-  'Terminal',
-  'Xcode',
-  'macOS-setup.sh'
+DOTFILES = [
+  'atom',
+  'config',
+  'vim',
+  'zshenv'
 ].freeze
 
 LOCAL_FILES = [
@@ -38,9 +36,9 @@ task :macos do
 end
 
 task :dotfiles do
-  Dir.foreach(ROOT).select { |f| !f.start_with?('.') && !EXCLUDES.include?(f) }.each do |f|
+  DOTFILES.map { |f|
     symlink_path(File.join(ROOT, f), File.join(HOME, ".#{File.basename(f)}"))
-  end
+  }
 
   LOCAL_FILES.map { |f| File.join(ROOT, f) }.select { |f| !File.exist?(f) }.each do |f|
     FileUtils.touch(f)
