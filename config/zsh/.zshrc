@@ -101,11 +101,19 @@ if [[ "${OSTYPE}" =~ "darwin" ]]; then
 fi
 # }}}
 
-# tmux Settings {{{
-
+# tmux {{{
 alias tmux="tmux -f '${XDG_CONFIG_HOME}/tmux/tmux.conf'"
 export TMUX_TMPDIR="${XDG_RUNTIME_DIR}"
+# }}}
 
+# npm {{{
+export NPM_CONFIG_USERCONFIG="${XDG_CONFIG_HOME}/npm/config"
+export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
+export NPM_CONFIG_TMP="${XDG_RUNTIME_DIR}/npm"
+# }}}
+
+# httpie {{{
+export HTTPIE_CONFIG_DIR="${XDG_CONFIG_HOME}/httpie"
 # }}}
 
 # Directory {{{
