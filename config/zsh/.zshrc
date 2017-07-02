@@ -33,6 +33,10 @@ export XDG_RUNTIME_DIR="${TMPDIR}"
 export ZPLUGINDIR="${ZDOTDIR}/plugins"
 export ZCACHEDIR="${XDG_CACHE_HOME}/zsh"
 
+if [[ ! -d "${XDG_DATA_HOME}" ]]; then
+  mkdir -p "${XDG_DATA_HOME}"
+fi
+
 if [[ ! -d "${ZCACHEDIR}" ]]; then
   mkdir -p "${ZCACHEDIR}"
 fi
