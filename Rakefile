@@ -4,7 +4,7 @@ require 'English'
 
 #------------------------------------------------------------------------------
 task default: %w(update)
-task setup: %w(macos dotfiles homebrew terminfo)
+task setup: %w(macos dotfiles homebrew)
 
 verbose(false)
 
@@ -61,15 +61,6 @@ task :homebrew do
   end
   sh "#{brew_bin} tap Homebrew/bundle"
   sh "#{brew_bin} bundle --file=#{ROOT}/config/homebrew/Brewfile"
-end
-
-task :terminfo do
-  next unless MACOS
-
-  homebrew_terminfo = '/usr/local/opt/ncurses/share/terminfo'
-  if File.exist?(homebrew_terminfo)
-    symlink_path(homebrew_terminfo, File.join(HOME, '.terminfo'))
-  end
 end
 
 task :update do

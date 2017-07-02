@@ -83,6 +83,10 @@ if [[ "${OSTYPE}" =~ "darwin" ]]; then
     export MANPATH="${homebrew}/opt/coreutils/libexec/gnuman:${MANPATH}"
   fi
 
+  if [[ -d "${homebrew}/opt/ncurses/share/terminfo" ]]; then
+    export TERMINFO="${homebrew}/opt/ncurses/share/terminfo"
+  fi
+
   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
 
   if [[ -d "${homebrew}/opt/groovy" ]]; then
