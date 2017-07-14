@@ -122,10 +122,6 @@
 	path = config/nvim/pack/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 	branch = master
-[submodule "config/nvim/pack/plugins/start/vim-grepper"]
-	path = config/nvim/pack/plugins/start/vim-grepper
-	url = https://github.com/mhinz/vim-grepper.git
-	branch = master
 [submodule "config/nvim/pack/plugins/start/vim-gtfo"]
 	path = config/nvim/pack/plugins/start/vim-gtfo
 	url = https://github.com/justinmk/vim-gtfo.git
