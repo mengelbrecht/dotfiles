@@ -669,8 +669,8 @@ source "${ZPLUGINDIR}/slimline/slimline.plugin.zsh"
 # }}}
 
 # Local zshrc file {{{
-if [[ -s "${ZDOTDIR}/local" ]]; then
-  source "${ZDOTDIR}/local"
+if [[ -s "${ZDOTDIR}/config.local" ]]; then
+  source "${ZDOTDIR}/config.local"
 fi
 # }}}
 
