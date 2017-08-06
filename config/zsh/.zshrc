@@ -462,7 +462,7 @@ fshow() {
 }
 
 shrinkPDF() {
-  ps2pdf "${1}"
+  ps2pdf "${1}" "${1}.pdf"
   mv "${1}.pdf" "${1}"
 }
 
