@@ -101,6 +101,7 @@ set showcmd                    " Show last command
 set showmatch                  " Show matching parenthesis
 set showtabline=2              " Always show the tabline
 set sidescrolloff=5            " Always show 5 columns before and after cursor
+set signcolumn=yes             " Display sign column
 set splitbelow                 " Open new splits below
 set splitright                 " Open new splits on the right
 set switchbuf=usetab           " Switch to the window of the buffer
@@ -512,7 +513,6 @@ let g:sleuth_trigger_ratio = 16 " Allow some fuzz on heuristics
 " }}}
 
 " Gitgutter {{{
-let g:gitgutter_sign_column_always = 1
 let g:gitgutter_sign_removed = '-'
 " }}}
 
