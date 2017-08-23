@@ -90,12 +90,6 @@ defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 # Set ZSH as default shell
 sudo dscl . -create "/Users/${USER}" UserShell "/bin/zsh"
 
-# Account Picture
-user_picture="/Users/${USER}/Pictures/Avatar.jpg"
-curl -s -o "${user_picture}" https://avatars3.githubusercontent.com/u/8101
-dscl . delete "/Users/${USER}" JPEGPhoto
-sudo dscl . create "/Users/${USER}" Picture "${user_picture}"
-
 # }}}
 
 # SSD-specific tweaks {{{
