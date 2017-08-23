@@ -8,6 +8,7 @@ atom/compile-cache
 atom/packages
 atom/storage
 
+config/borg
 config/nvim/autoload
 config/nvim/plugged
 config/nvim/session
