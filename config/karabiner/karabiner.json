@@ -454,7 +454,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -b com.apple.SafariTechnologyPreview"
+                                        "shell_command": "open -b com.apple.Safari"
                                     }
                                 ],
                                 "type": "basic"
