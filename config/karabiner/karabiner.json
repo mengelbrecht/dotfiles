@@ -689,7 +689,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "1",
+                                    "key_code": "period",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_shift",
@@ -708,7 +708,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "2",
+                                    "key_code": "semicolon",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_shift",
@@ -727,7 +727,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "tab",
+                                    "key_code": "o",
                                     "modifiers": {
                                         "mandatory": [
                                             "left_shift",
