@@ -1172,7 +1172,7 @@
 			<key>Rows</key>
 			<integer>24</integer>
 			<key>Screen</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 			<key>Scrollback Lines</key>
 			<integer>10000</integer>
 			<key>Scrollback in Alternate Screen</key>
