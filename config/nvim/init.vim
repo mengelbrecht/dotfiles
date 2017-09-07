@@ -327,7 +327,7 @@ endif
 " Bookmarks {{{
 nnoremap <silent><Leader>ec :e $MYVIMRC<CR>
 nnoremap <silent><Leader>el :e ~/.dotfiles<CR>
-nnoremap <silent><Leader>ez :e ~/.dotfiles/zshrc<CR>
+nnoremap <silent><Leader>ez :e ~/.dotfiles/config/zsh/.zshrc<CR>
 " }}}
 " }}}
 
