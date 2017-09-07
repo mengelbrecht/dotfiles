@@ -682,6 +682,11 @@ if [[ -s "${ZDOTDIR}/config.local" ]]; then
 fi
 # }}}
 
+# Deduplicate entries in environment variables {{{
+export -U PATH
+export -U MANPATH
+# }}}
+
 # Start tmux {{{
 
 if [[ -z "$TMUX" ]]; then
