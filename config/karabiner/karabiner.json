@@ -1376,7 +1376,7 @@
             "devices": [
                 {
                     "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": {},
+                    "fn_function_keys": [],
                     "identifiers": {
                         "is_keyboard": true,
                         "is_pointing_device": false,
@@ -1384,11 +1384,11 @@
                         "vendor_id": 1452
                     },
                     "ignore": false,
-                    "simple_modifications": {}
+                    "simple_modifications": []
                 },
                 {
                     "disable_built_in_keyboard_if_exists": false,
-                    "fn_function_keys": {},
+                    "fn_function_keys": [],
                     "identifiers": {
                         "is_keyboard": true,
                         "is_pointing_device": false,
@@ -1396,67 +1396,424 @@
                         "vendor_id": 1452
                     },
                     "ignore": false,
-                    "simple_modifications": {
-                        "close_bracket": "quote",
-                        "grave_accent_and_tilde": "non_us_backslash",
-                        "non_us_backslash": "z"
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "close_bracket"
+                            },
+                            "to": {
+                                "key_code": "quote"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "grave_accent_and_tilde"
+                            },
+                            "to": {
+                                "key_code": "non_us_backslash"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "non_us_backslash"
+                            },
+                            "to": {
+                                "key_code": "z"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "fn_function_keys": [
+                {
+                    "from": {
+                        "key_code": "f1"
+                    },
+                    "to": {
+                        "consumer_key_code": "display_brightness_decrement"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f2"
+                    },
+                    "to": {
+                        "consumer_key_code": "display_brightness_increment"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f3"
+                    },
+                    "to": {
+                        "key_code": "mission_control"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f4"
+                    },
+                    "to": {
+                        "key_code": "launchpad"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f5"
+                    },
+                    "to": {
+                        "key_code": "illumination_decrement"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f6"
+                    },
+                    "to": {
+                        "key_code": "illumination_increment"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f7"
+                    },
+                    "to": {
+                        "consumer_key_code": "rewind"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f8"
+                    },
+                    "to": {
+                        "consumer_key_code": "play_or_pause"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f9"
+                    },
+                    "to": {
+                        "consumer_key_code": "fastforward"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f10"
+                    },
+                    "to": {
+                        "consumer_key_code": "mute"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f11"
+                    },
+                    "to": {
+                        "consumer_key_code": "volume_decrement"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f12"
+                    },
+                    "to": {
+                        "consumer_key_code": "volume_increment"
                     }
                 }
             ],
-            "fn_function_keys": {
-                "f1": "display_brightness_decrement",
-                "f10": "mute",
-                "f11": "volume_decrement",
-                "f12": "volume_increment",
-                "f2": "display_brightness_increment",
-                "f3": "mission_control",
-                "f4": "launchpad",
-                "f5": "illumination_decrement",
-                "f6": "illumination_increment",
-                "f7": "rewind",
-                "f8": "play_or_pause",
-                "f9": "fastforward"
-            },
             "name": "Colehack",
             "selected": true,
-            "simple_modifications": {
-                "0": "9",
-                "6": "equal_sign",
-                "7": "6",
-                "8": "7",
-                "9": "8",
-                "b": "backslash",
-                "backslash": "quote",
-                "c": "d",
-                "close_bracket": "slash",
-                "comma": "h",
-                "d": "s",
-                "e": "f",
-                "equal_sign": "hyphen",
-                "f": "t",
-                "grave_accent_and_tilde": "z",
-                "h": "close_bracket",
-                "hyphen": "0",
-                "i": "l",
-                "j": "k",
-                "k": "n",
-                "l": "e",
-                "n": "slash",
-                "o": "u",
-                "open_bracket": "semicolon",
-                "p": "y",
-                "period": "comma",
-                "quote": "o",
-                "r": "p",
-                "s": "r",
-                "semicolon": "i",
-                "slash": "period",
-                "t": "b",
-                "u": "j",
-                "x": "c",
-                "y": "open_bracket",
-                "z": "x"
-            },
+            "simple_modifications": [
+                {
+                    "from": {
+                        "key_code": "0"
+                    },
+                    "to": {
+                        "key_code": "9"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "b"
+                    },
+                    "to": {
+                        "key_code": "backslash"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "backslash"
+                    },
+                    "to": {
+                        "key_code": "quote"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "c"
+                    },
+                    "to": {
+                        "key_code": "d"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "close_bracket"
+                    },
+                    "to": {
+                        "key_code": "slash"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "comma"
+                    },
+                    "to": {
+                        "key_code": "h"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "d"
+                    },
+                    "to": {
+                        "key_code": "s"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "e"
+                    },
+                    "to": {
+                        "key_code": "f"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "equal_sign"
+                    },
+                    "to": {
+                        "key_code": "hyphen"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f"
+                    },
+                    "to": {
+                        "key_code": "t"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "grave_accent_and_tilde"
+                    },
+                    "to": {
+                        "key_code": "z"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "h"
+                    },
+                    "to": {
+                        "key_code": "close_bracket"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "hyphen"
+                    },
+                    "to": {
+                        "key_code": "0"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "i"
+                    },
+                    "to": {
+                        "key_code": "l"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "j"
+                    },
+                    "to": {
+                        "key_code": "k"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "k"
+                    },
+                    "to": {
+                        "key_code": "n"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "l"
+                    },
+                    "to": {
+                        "key_code": "e"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "n"
+                    },
+                    "to": {
+                        "key_code": "slash"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "o"
+                    },
+                    "to": {
+                        "key_code": "u"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "open_bracket"
+                    },
+                    "to": {
+                        "key_code": "semicolon"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "p"
+                    },
+                    "to": {
+                        "key_code": "y"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "period"
+                    },
+                    "to": {
+                        "key_code": "comma"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "quote"
+                    },
+                    "to": {
+                        "key_code": "o"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "r"
+                    },
+                    "to": {
+                        "key_code": "p"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "s"
+                    },
+                    "to": {
+                        "key_code": "r"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "semicolon"
+                    },
+                    "to": {
+                        "key_code": "i"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "slash"
+                    },
+                    "to": {
+                        "key_code": "period"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "t"
+                    },
+                    "to": {
+                        "key_code": "b"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "u"
+                    },
+                    "to": {
+                        "key_code": "j"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "x"
+                    },
+                    "to": {
+                        "key_code": "c"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "y"
+                    },
+                    "to": {
+                        "key_code": "open_bracket"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "z"
+                    },
+                    "to": {
+                        "key_code": "x"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "6"
+                    },
+                    "to": {
+                        "key_code": "equal_sign"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "7"
+                    },
+                    "to": {
+                        "key_code": "6"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "8"
+                    },
+                    "to": {
+                        "key_code": "7"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "9"
+                    },
+                    "to": {
+                        "key_code": "8"
+                    }
+                }
+            ],
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "keyboard_type": "iso"
@@ -1470,26 +1827,107 @@
                 "rules": []
             },
             "devices": [],
-            "fn_function_keys": {
-                "f1": "display_brightness_decrement",
-                "f10": "mute",
-                "f11": "volume_decrement",
-                "f12": "volume_increment",
-                "f2": "display_brightness_increment",
-                "f3": "mission_control",
-                "f4": "launchpad",
-                "f5": "illumination_decrement",
-                "f6": "illumination_increment",
-                "f7": "rewind",
-                "f8": "play_or_pause",
-                "f9": "fastforward"
-            },
+            "fn_function_keys": [
+                {
+                    "from": {
+                        "key_code": "f1"
+                    },
+                    "to": {
+                        "consumer_key_code": "display_brightness_decrement"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f2"
+                    },
+                    "to": {
+                        "consumer_key_code": "display_brightness_increment"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f3"
+                    },
+                    "to": {
+                        "key_code": "mission_control"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f4"
+                    },
+                    "to": {
+                        "key_code": "launchpad"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f5"
+                    },
+                    "to": {
+                        "key_code": "illumination_decrement"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f6"
+                    },
+                    "to": {
+                        "key_code": "illumination_increment"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f7"
+                    },
+                    "to": {
+                        "consumer_key_code": "rewind"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f8"
+                    },
+                    "to": {
+                        "consumer_key_code": "play_or_pause"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f9"
+                    },
+                    "to": {
+                        "consumer_key_code": "fastforward"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f10"
+                    },
+                    "to": {
+                        "consumer_key_code": "mute"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f11"
+                    },
+                    "to": {
+                        "consumer_key_code": "volume_decrement"
+                    }
+                },
+                {
+                    "from": {
+                        "key_code": "f12"
+                    },
+                    "to": {
+                        "consumer_key_code": "volume_increment"
+                    }
+                }
+            ],
             "name": "German",
             "selected": false,
-            "simple_modifications": {
-                "grave_accent_and_tilde": "non_us_backslash",
-                "non_us_backslash": "grave_accent_and_tilde"
-            },
+            "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
                 "keyboard_type": "iso"
