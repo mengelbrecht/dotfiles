@@ -1399,7 +1399,7 @@
                     "simple_modifications": [
                         {
                             "from": {
-                                "key_code": "close_bracket"
+                                "key_code": "non_us_pound"
                             },
                             "to": {
                                 "key_code": "quote"
