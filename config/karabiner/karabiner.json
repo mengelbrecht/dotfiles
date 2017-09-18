@@ -1399,14 +1399,6 @@
                     "simple_modifications": [
                         {
                             "from": {
-                                "key_code": "non_us_pound"
-                            },
-                            "to": {
-                                "key_code": "quote"
-                            }
-                        },
-                        {
-                            "from": {
                                 "key_code": "grave_accent_and_tilde"
                             },
                             "to": {
@@ -1419,6 +1411,14 @@
                             },
                             "to": {
                                 "key_code": "z"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "non_us_pound"
+                            },
+                            "to": {
+                                "key_code": "quote"
                             }
                         }
                     ]
