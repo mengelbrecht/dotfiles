@@ -1422,6 +1422,43 @@
                             }
                         }
                     ]
+                },
+                {
+                    "disable_built_in_keyboard_if_exists": false,
+                    "fn_function_keys": [],
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 592,
+                        "vendor_id": 1452
+                    },
+                    "ignore": false,
+                    "simple_modifications": [
+                        {
+                            "from": {
+                                "key_code": "grave_accent_and_tilde"
+                            },
+                            "to": {
+                                "key_code": "non_us_backslash"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "non_us_backslash"
+                            },
+                            "to": {
+                                "key_code": "z"
+                            }
+                        },
+                        {
+                            "from": {
+                                "key_code": "non_us_pound"
+                            },
+                            "to": {
+                                "key_code": "quote"
+                            }
+                        }
+                    ]
                 }
             ],
             "fn_function_keys": [
