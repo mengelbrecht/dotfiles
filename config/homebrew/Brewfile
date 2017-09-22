@@ -1,6 +1,5 @@
 tap 'caskroom/cask'
 tap 'caskroom/versions'
-tap 'neovim/neovim'
 
 # Required for maven and gradle, therefore install it first
 cask 'java'
