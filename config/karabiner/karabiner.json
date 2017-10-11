@@ -841,7 +841,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/Applications/Hammerspoon.app/Contents/Resources/extensions/hs/ipc/bin/hs -c 'lockScreen()'"
+                                        "shell_command": "open -a ScreenSaverEngine"
                                     }
                                 ],
                                 "type": "basic"
