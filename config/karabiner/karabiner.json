@@ -383,7 +383,7 @@
                                     }
                                 ],
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "h",
                                     "modifiers": {
                                         "optional": [
                                             "any"
@@ -393,110 +393,6 @@
                                 "to": [
                                     {
                                         "key_code": "page_down"
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "hyper_mode",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "z",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "z",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "hyper_mode",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "x",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "x",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "hyper_mode",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "c",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "c",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
-                                    }
-                                ],
-                                "type": "basic"
-                            },
-                            {
-                                "conditions": [
-                                    {
-                                        "name": "hyper_mode",
-                                        "type": "variable_if",
-                                        "value": 1
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "d",
-                                    "modifiers": {
-                                        "optional": [
-                                            "any"
-                                        ]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "v",
-                                        "modifiers": [
-                                            "left_command"
-                                        ]
                                     }
                                 ],
                                 "type": "basic"
@@ -1018,7 +914,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "b",
+                                    "key_code": "g",
                                     "modifiers": {
                                         "mandatory": [
                                             "option"
@@ -1269,7 +1165,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "h",
                                     "modifiers": {
                                         "mandatory": [
                                             "option"
@@ -1428,7 +1324,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "d",
+                                    "key_code": "v",
                                     "modifiers": {
                                         "mandatory": [
                                             "option"
@@ -1444,7 +1340,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "v",
+                                    "key_code": "b",
                                     "modifiers": {
                                         "mandatory": [
                                             "option"
@@ -1498,7 +1394,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "m",
+                                    "key_code": "k",
                                     "modifiers": {
                                         "mandatory": [
                                             "option"
@@ -1514,7 +1410,7 @@
                             },
                             {
                                 "from": {
-                                    "key_code": "h",
+                                    "key_code": "m",
                                     "modifiers": {
                                         "mandatory": [
                                             "option"
@@ -1755,54 +1651,6 @@
             "simple_modifications": [
                 {
                     "from": {
-                        "key_code": "0"
-                    },
-                    "to": {
-                        "key_code": "9"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "b"
-                    },
-                    "to": {
-                        "key_code": "backslash"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "backslash"
-                    },
-                    "to": {
-                        "key_code": "quote"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "c"
-                    },
-                    "to": {
-                        "key_code": "d"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "close_bracket"
-                    },
-                    "to": {
-                        "key_code": "slash"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "comma"
-                    },
-                    "to": {
-                        "key_code": "h"
-                    }
-                },
-                {
-                    "from": {
                         "key_code": "d"
                     },
                     "to": {
@@ -1819,14 +1667,6 @@
                 },
                 {
                     "from": {
-                        "key_code": "equal_sign"
-                    },
-                    "to": {
-                        "key_code": "hyphen"
-                    }
-                },
-                {
-                    "from": {
                         "key_code": "f"
                     },
                     "to": {
@@ -1835,26 +1675,10 @@
                 },
                 {
                     "from": {
-                        "key_code": "grave_accent_and_tilde"
+                        "key_code": "g"
                     },
                     "to": {
-                        "key_code": "z"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "h"
-                    },
-                    "to": {
-                        "key_code": "close_bracket"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "hyphen"
-                    },
-                    "to": {
-                        "key_code": "0"
+                        "key_code": "d"
                     }
                 },
                 {
@@ -1862,7 +1686,7 @@
                         "key_code": "i"
                     },
                     "to": {
-                        "key_code": "l"
+                        "key_code": "u"
                     }
                 },
                 {
@@ -1870,20 +1694,12 @@
                         "key_code": "j"
                     },
                     "to": {
-                        "key_code": "k"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "k"
-                    },
-                    "to": {
                         "key_code": "n"
                     }
                 },
                 {
                     "from": {
-                        "key_code": "l"
+                        "key_code": "k"
                     },
                     "to": {
                         "key_code": "e"
@@ -1891,31 +1707,23 @@
                 },
                 {
                     "from": {
+                        "key_code": "l"
+                    },
+                    "to": {
+                        "key_code": "i"
+                    }
+                },
+                {
+                    "from": {
                         "key_code": "n"
                     },
                     "to": {
-                        "key_code": "slash"
+                        "key_code": "k"
                     }
                 },
                 {
                     "from": {
                         "key_code": "o"
-                    },
-                    "to": {
-                        "key_code": "u"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "open_bracket"
-                    },
-                    "to": {
-                        "key_code": "semicolon"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "p"
                     },
                     "to": {
                         "key_code": "y"
@@ -1923,18 +1731,10 @@
                 },
                 {
                     "from": {
-                        "key_code": "period"
+                        "key_code": "p"
                     },
                     "to": {
-                        "key_code": "comma"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "quote"
-                    },
-                    "to": {
-                        "key_code": "o"
+                        "key_code": "semicolon"
                     }
                 },
                 {
@@ -1958,15 +1758,7 @@
                         "key_code": "semicolon"
                     },
                     "to": {
-                        "key_code": "i"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "slash"
-                    },
-                    "to": {
-                        "key_code": "period"
+                        "key_code": "o"
                     }
                 },
                 {
@@ -1974,7 +1766,7 @@
                         "key_code": "t"
                     },
                     "to": {
-                        "key_code": "b"
+                        "key_code": "g"
                     }
                 },
                 {
@@ -1982,15 +1774,7 @@
                         "key_code": "u"
                     },
                     "to": {
-                        "key_code": "j"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "x"
-                    },
-                    "to": {
-                        "key_code": "c"
+                        "key_code": "l"
                     }
                 },
                 {
@@ -1998,47 +1782,7 @@
                         "key_code": "y"
                     },
                     "to": {
-                        "key_code": "open_bracket"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "z"
-                    },
-                    "to": {
-                        "key_code": "x"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "6"
-                    },
-                    "to": {
-                        "key_code": "equal_sign"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "7"
-                    },
-                    "to": {
-                        "key_code": "6"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "8"
-                    },
-                    "to": {
-                        "key_code": "7"
-                    }
-                },
-                {
-                    "from": {
-                        "key_code": "9"
-                    },
-                    "to": {
-                        "key_code": "8"
+                        "key_code": "j"
                     }
                 }
             ],
