@@ -454,10 +454,23 @@ httpless() {
     http --pretty=all --print=hb "$@" | less -R;
 }
 
-fd() {
-  local dir
-  local default_dirs=(.* *)
-  dir=$(find ${1:-${default_dirs[@]}} -type d ! -path ".git*" ! -path "*/.git*" ! -path ".svn*" ! -path "*/.svn*" 2> /dev/null | fzf --no-multi) && builtin cd "$dir"
+# fd - "find directory"
+# From: https://github.com/junegunn/fzf/wiki/examples#changing-directory
+function fd() {
+  local DIR
+  DIR=$(bfs ${1:-.} -type d -nohidden 2> /dev/null | fzf +m) && cd "$DIR"
+}
+
+# fda -"find directory [all, including hidden directories"
+function fda() {
+  local DIR
+  DIR=$(bfs ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$DIR"
+}
+
+# fh - "find [in] history"
+# From: https://github.com/junegunn/fzf/wiki/examples#command-history
+function fh() {
+  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
 }
 
 fshow() {
@@ -644,16 +657,13 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 # }}}
 
 # enhancd {{{
-
 export ENHANCD_DOT_SHOW_FULLPATH=1
 export ENHANCD_DIR="${XDG_CACHE_HOME}/enhancd"
 
 source "${ZPLUGINDIR}/enhancd/init.sh"
-
 # }}}
 
 # fzf {{{
-
 if (( $+commands[fzf] )); then
   export FZF_DEFAULT_OPTS="--reverse --cycle --inline-info --select-1 --exit-0 --multi --color=16"
   export FZF_COMPLETION_TRIGGER='\\'
@@ -665,7 +675,6 @@ if (( $+commands[fzf] )); then
     source "/usr/local/opt/fzf/shell/key-bindings.zsh"
   fi
 fi
-
 # }}}
 
 # Slimline {{{
