@@ -4,10 +4,8 @@
 // Variables to define style
 @editor-font: "PragmataPro", "SFMono-Regular", "SF Mono Regular";
 @editor-font-size: 14px;
-@line-height: 1.2;
-
-@ui-font-size: @editor-font-size - 2;
-@tab-bar-height: @ui-font-size + 16;
+@line-height: @editor-font-size * 1.2;
+@line-number-font-size: @editor-font-size * 0.8;
 
 // Setup editor font and size
 atom-text-editor {
@@ -17,22 +15,43 @@ atom-text-editor {
     padding-top: 2px;
 }
 
-// Customize UI
-.theme-one-dark-ui, .theme-one-light-ui {
-    font-size: @ui-font-size;
-}
-
 atom-text-editor.editor {
     // Make wrap guide and invisible characters slightly transparent
     .invisible-character, .indent-guide, .wrap-guide { opacity: 0.5; }
 
     // Smaller line numbers
     .line-numbers .line-number {
-        font-size: @editor-font-size * 0.8;
-        line-height: @editor-font-size * @line-height;
+        font-size: @line-number-font-size;
     }
 
     .highlights .highlight-selected.light-theme .region {
         border-color: fadeout(@syntax-text-color, 60%);
     }
+
+    .cursor {
+        opacity: 1 !important
+    }
 }
+
+.github-HunkView-title {
+    font-family: @editor-font;
+}
+
+.github-HunkView-line {
+    font-family: @editor-font;
+    font-size: @editor-font-size;
+    line-height: @line-height;
+}
+
+.github-HunkView-lineNumber {
+    font-family: @editor-font;
+    font-size: @line-number-font-size;
+}
+
+// Enable only for dark syntax
+// @media (-webkit-max-device-pixel-ratio: 1) {
+//   html {
+//     -webkit-font-smoothing: antialiased;
+//     -webkit-text-stroke-width: .03em;
+//   }
+// }

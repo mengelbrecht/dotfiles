@@ -1,4 +1,7 @@
 "*":
+  "atom-ide-ui":
+    "atom-ide-outline-view":
+      nameOnly: true
   core:
     disabledPackages: [
       "archive-view"
@@ -20,19 +23,14 @@
       "styleguide"
       "update-package-dependencies"
       "welcome"
-      "indent-guide-improved"
-      "auto-detect-indentation"
     ]
     telemetryConsent: "no"
     themes: [
-      "one-dark-ui"
-      "gruvbox-plus-syntax"
+      "one-light-ui"
+      "one-light-syntax"
     ]
-    useCustomTitleBar: true
-  "cursor-blink-interval":
-    cursorBlinkInterval: 1200
+    titleBar: "hidden"
   editor:
-    fontSize: 15
     invisibles:
       cr: "↩"
       eol: ""
@@ -45,25 +43,16 @@
     tabLength: 4
   "highlight-selected":
     lightTheme: true
-  linter: {}
   minimap:
     plugins:
       "git-diff": true
       "git-diffDecorationsZIndex": 0
       selection: true
       selectionDecorationsZIndex: 0
-  "one-dark-ui": {}
-  "one-light-ui":
-    layoutMode: "Compact"
-  tabs:
-    enableVcsColoring: true
-    usePreviewTabs: true
   welcome:
     showOnStartup: false
   whitespace:
-    ensureSingleTrailingNewline: false
     ignoreWhitespaceOnCurrentLine: false
-    removeTrailingWhitespace: false
 ".c.source":
   editor:
     preferredLineLength: 100
