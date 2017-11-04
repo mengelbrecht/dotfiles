@@ -15,8 +15,9 @@ dotfiles
 
 ## Thanks to
 
-- [sorin-ionescu/prezto](https://github.com/sorin-ionescu/prezto.git)
-- [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles.git)
+- [sorin-ionescu/prezto](https://github.com/sorin-ionescu/prezto)
+- [wincent/wincent](https://github.com/wincent/wincent)
+- [mathiasbynens/dotfiles](https://github.com/mathiasbynens/dotfiles)
 
 ## License
 
