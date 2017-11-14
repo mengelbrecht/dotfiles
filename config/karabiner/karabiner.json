@@ -900,7 +900,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -b com.agilebits.onepassword-osx"
+                                        "shell_command": "open -b com.agilebits.onepassword4"
                                     }
                                 ],
                                 "type": "basic"
