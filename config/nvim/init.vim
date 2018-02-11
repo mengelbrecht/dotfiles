@@ -130,10 +130,6 @@ set t_md=    " Disable bold fonts in terminal
 if has('termguicolors')
   set termguicolors " Enable 24bit colors in terminal
 endif
-
-if has('nvim')
-  set guicursor=n-v-c:block-Cursor/lCursor-blinkon0,i-ci:ver25-Cursor/lCursor,r-cr:hor20-Cursor/lCursor
-endif
 " }}}
 
 " Colorscheme {{{
@@ -689,4 +685,3 @@ if filereadable(s:local_vimrc)
   execute 'source' s:local_vimrc
 endif
 " }}}
-
