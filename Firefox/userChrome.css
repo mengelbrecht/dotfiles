@@ -1,0 +1,242 @@
+@namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+
+/**********************************************************************************************************************/
+
+/* Variables to modify the style */
+
+/*
+ * Colors from https://flatuicolors.com/palette/de
+ */
+
+:root {
+  --mod-color-blue: #4b7bec;
+  --mod-color-paleblue: #d1d8e0;
+  --mod-color-green: #20bf6b;
+  --mod-accent-color: var(--mod-color-blue);
+  --mod-url-font: "PragmataPro";
+}
+
+/**********************************************************************************************************************/
+
+/* Remove line above tabs */
+
+.tab-line {
+  display: none !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Hide titlebar placeholders and buttons */
+
+.titlebar-placeholder, #titlebar-buttonbox {
+  display: none !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Move the "title changed" notification dot on pinned tabs to the upper right and restyle it */
+
+.tabbrowser-tab:-moz-any([image], [pinned])>.tab-stack>.tab-content[attention],
+.tabbrowser-tab>.tab-stack>.tab-content[pinned][titlechanged] {
+  /* Context variables do not seem to work in embedded svg files */
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 10 10" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5" fill="%234b7bec"/></svg>') !important;
+  background-position: top 3px right 3px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Make tabs use the whole tabbar */
+
+#tabbrowser-tabs:not([drag=detach])>.tabbrowser-tab:not([pinned])[fadein] {
+  /* 52px fits favicon + close icon */
+  min-width: 52px !important;
+  max-width: 100% !important;
+}
+
+/* Increase animation time due to wider tabs */
+
+.tabbrowser-tab:not([pinned]) {
+  transition: min-width 150ms ease-out, max-width 150ms ease-out !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Let new tab button fill the right side of the tabbar. */
+
+.tabs-newtab-button .toolbarbutton-icon {
+  margin-left: -1px !important;
+  border-radius: 0px !important;
+  /* Make the icon a little smaller */
+  padding: 9px !important;
+}
+
+/**********************************************************************************************************************/
+
+/*
+ * Only show tab close button on hover
+ * https://www.reddit.com/r/FirefoxCSS/comments/7faicl/any_way_to_hide_close_tab_button_until_you_hover
+ */
+
+.tabbrowser-tab:not([selected]):not([pinned]) .tab-close-button {
+  display: none !important;
+}
+
+.tabbrowser-tab:not([selected]):not([pinned]):hover .tab-close-button {
+  display: -moz-box !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Make tab close icon smaller */
+
+.tabbrowser-tab:not([pinned]) .tab-close-button {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Change color of tab loading indicator to accent color */
+
+:root {
+  --tab-loading-fill: var(--mod-accent-color) !important;
+}
+
+.tab-throbber::before {
+  fill: var(--mod-accent-color) !important;
+  opacity: 1 !important;
+}
+
+/**********************************************************************************************************************/
+
+/*
+ * Remove shadow on tabs scroll icons
+ * https://github.com/Maxmel/dotfiles/blob/81ea2120e2da313431d3417327cf57a8a7fe5b68/userChrome.css#L226
+ */
+
+.tabbrowser-arrowscrollbox>.arrowscrollbox-overflow-start-indicator:not([collapsed]),
+.tabbrowser-arrowscrollbox>.arrowscrollbox-overflow-end-indicator:not([collapsed]) {
+  background: none !important;
+  border: none !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Move menu button to the left */
+
+#PanelUI-button {
+  -moz-box-ordinal-group: 0 !important;
+  /* Remove separator before menu button */
+  border-inline-start: 0px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Hide page action button */
+
+#pageActionButton {
+  display: none;
+}
+
+/**********************************************************************************************************************/
+
+/*
+ * Change urlbar selection colors
+ * https://www.reddit.com/r/FirefoxCSS/comments/7lqhkg/url_bar_highlight
+ */
+
+:root {
+  --chrome-selection-color: black !important;
+  --chrome-selection-background-color: var(--mod-color-paleblue) !important;
+}
+
+:root:-moz-lwtheme-brighttext {
+  --chrome-selection-color: #fff !important;
+  --chrome-selection-background-color: #5675B9 !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Remove shadows from urlbar */
+
+#urlbar, #urlbar:hover {
+  box-shadow: none !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Increase padding and margin of urlbar */
+
+#urlbar {
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+.urlbar-input-box {
+  padding: 1px !important;
+}
+
+/* Decrease height of bookmark items if they are in the urlbar */
+
+#main-window #nav-bar #PlacesToolbar toolbarbutton.bookmark-item {
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Make focused urlbar border thinner */
+
+#urlbar:hover[focused="true"], #urlbar[focused="true"] {
+  border: 1px solid var(--mod-accent-color) !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Use custom font for urls */
+
+.urlbar-input-box, .autocomplete-richlistitem .ac-url {
+  font-family: var(--mod-url-font) !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Change color of secure connection icon */
+
+#urlbar[pageproxystate="valid"]>#identity-box.verifiedDomain>#connection-icon,
+#urlbar[pageproxystate="valid"]>#identity-box.mixedActiveBlocked>#connection-icon,
+#identity-popup[connection^=secure] .identity-popup-security-content {
+  fill: var(--mod-color-green) !important;
+}
+
+.identity-popup-connection-secure {
+  color: var(--mod-color-green) !important;
+}
+
+/**********************************************************************************************************************/
+
+/*
+ * Hide the identity label and the separator if the identity is verified.
+ * Instead, use blue for the connection icon instead of green to signal that the identity is verified.
+ */
+
+/* Hide separator in urlbar */
+
+#urlbar[pageproxystate=valid]>#identity-box.verifiedIdentity,
+#urlbar[pageproxystate=valid]>#identity-box.chromeUI,
+#urlbar[pageproxystate=valid]>#identity-box.extensionPage {
+  margin-inline-end: 0px !important;
+  border-inline-end: none !important;
+}
+
+/* Hide identity label */
+
+#identity-icon-labels {
+  display: none !important;
+}
+
+/* Highlight connection icon in blue if identity is verified */
+
+#urlbar[pageproxystate="valid"]>#identity-box.verifiedIdentity>#connection-icon {
+  fill: var(--mod-color-blue) !important;
+}
