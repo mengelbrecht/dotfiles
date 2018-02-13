@@ -53,12 +53,6 @@
   max-width: 100% !important;
 }
 
-/* Increase animation time due to wider tabs */
-
-.tabbrowser-tab:not([pinned]) {
-  transition: min-width 150ms ease-out, max-width 150ms ease-out !important;
-}
-
 /**********************************************************************************************************************/
 
 /* Let new tab button fill the right side of the tabbar. */
