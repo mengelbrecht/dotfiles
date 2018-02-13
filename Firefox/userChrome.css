@@ -189,7 +189,9 @@
 
 /* Use custom font for urls */
 
-.urlbar-input-box, .autocomplete-richlistitem .ac-url {
+.urlbar-input-box,
+.autocomplete-richlistitem .ac-url,
+statuspanel[type=overLink] > .statuspanel-inner {
   font-family: var(--mod-url-font) !important;
 }
 
