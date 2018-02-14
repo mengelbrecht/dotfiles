@@ -191,8 +191,14 @@
 
 .urlbar-input-box,
 .autocomplete-richlistitem .ac-url,
-statuspanel[type=overLink] > .statuspanel-inner {
+statuspanel[type=overLink] {
   font-family: var(--mod-url-font) !important;
+}
+
+/* Slightly increase statuspanel url font size */
+
+statuspanel[type=overLink] {
+  font-size: 13px !important;
 }
 
 /**********************************************************************************************************************/
