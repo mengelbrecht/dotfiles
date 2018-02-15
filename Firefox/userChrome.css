@@ -1,4 +1,5 @@
 @namespace url("http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul");
+@namespace html url("http://www.w3.org/1999/xhtml");
 
 /**********************************************************************************************************************/
 
@@ -62,6 +63,24 @@
   border-radius: 0px !important;
   /* Make the icon a little smaller */
   padding: 9px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Dim not selected tabs and new tab button */
+
+.tabbrowser-tab:not([hover]),
+.tabs-newtab-button:not([hover]) {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Decrease height of side borders to prevent overlap */
+
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  margin-bottom: 1px !important;
 }
 
 /**********************************************************************************************************************/
