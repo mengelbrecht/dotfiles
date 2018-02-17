@@ -46,16 +46,6 @@
 
 /**********************************************************************************************************************/
 
-/* Make tabs use the whole tabbar */
-
-#tabbrowser-tabs:not([drag=detach])>.tabbrowser-tab:not([pinned])[fadein] {
-  /* 52px fits favicon + close icon */
-  min-width: 52px !important;
-  max-width: 100% !important;
-}
-
-/**********************************************************************************************************************/
-
 /* Let new tab button fill the right side of the tabbar. */
 
 .tabs-newtab-button .toolbarbutton-icon {
