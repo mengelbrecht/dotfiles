@@ -267,25 +267,3 @@ statuspanel[type="overLink"] {
 #urlbar[pageproxystate="valid"] > #identity-box.verifiedIdentity > #connection-icon {
   fill: var(--mod-color-blue) !important;
 }
-
-/**********************************************************************************************************************/
-
-/*
- * Compact findbar at the top of the window
- *
- * Contributor(s): Madis0
- */
-
-.browserContainer > findbar {
-  -moz-box-ordinal-group: 0;
-  position: fixed !important;
-  right: 1em;
-  padding-left: 4px !important;
-  border: 1px solid threedshadow !important;
-  border-top: none !important;
-}
-
-/* Center the close button */
-.findbar-closebutton {
-  height: 32px !important;
-}
