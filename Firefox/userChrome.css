@@ -29,7 +29,8 @@
 
 /* Hide titlebar placeholders and buttons */
 
-.titlebar-placeholder, #titlebar-buttonbox {
+.titlebar-placeholder,
+#titlebar-buttonbox {
   display: none !important;
 }
 
@@ -129,8 +130,8 @@
  * https://github.com/Maxmel/dotfiles/blob/81ea2120e2da313431d3417327cf57a8a7fe5b68/userChrome.css#L226
  */
 
-.tabbrowser-arrowscrollbox>.arrowscrollbox-overflow-start-indicator:not([collapsed]),
-.tabbrowser-arrowscrollbox>.arrowscrollbox-overflow-end-indicator:not([collapsed]) {
+.tabbrowser-arrowscrollbox > .arrowscrollbox-overflow-start-indicator:not([collapsed]),
+.tabbrowser-arrowscrollbox > .arrowscrollbox-overflow-end-indicator:not([collapsed]) {
   background: none !important;
   border: none !important;
 }
@@ -167,14 +168,15 @@
 
 :root:-moz-lwtheme-brighttext {
   --chrome-selection-color: #fff !important;
-  --chrome-selection-background-color: #5675B9 !important;
+  --chrome-selection-background-color: #5675b9 !important;
 }
 
 /**********************************************************************************************************************/
 
 /* Remove shadows from urlbar */
 
-#urlbar, #urlbar:hover {
+#urlbar,
+#urlbar:hover {
   box-shadow: none !important;
 }
 
@@ -202,7 +204,8 @@
 
 /* Make focused urlbar border thinner */
 
-#urlbar:hover[focused="true"], #urlbar[focused="true"] {
+#urlbar:hover[focused="true"],
+#urlbar[focused="true"] {
   border: 1px solid var(--mod-accent-color) !important;
 }
 
@@ -212,13 +215,13 @@
 
 .urlbar-input-box,
 .autocomplete-richlistitem .ac-url,
-statuspanel[type=overLink] {
+statuspanel[type="overLink"] {
   font-family: var(--mod-url-font) !important;
 }
 
 /* Slightly increase statuspanel url font size */
 
-statuspanel[type=overLink] {
+statuspanel[type="overLink"] {
   font-size: 13px !important;
 }
 
@@ -226,9 +229,9 @@ statuspanel[type=overLink] {
 
 /* Change color of secure connection icon */
 
-#urlbar[pageproxystate="valid"]>#identity-box.verifiedDomain>#connection-icon,
-#urlbar[pageproxystate="valid"]>#identity-box.mixedActiveBlocked>#connection-icon,
-#identity-popup[connection^=secure] .identity-popup-security-content {
+#urlbar[pageproxystate="valid"] > #identity-box.verifiedDomain > #connection-icon,
+#urlbar[pageproxystate="valid"] > #identity-box.mixedActiveBlocked > #connection-icon,
+#identity-popup[connection^="secure"] .identity-popup-security-content {
   fill: var(--mod-color-green) !important;
 }
 
@@ -245,9 +248,9 @@ statuspanel[type=overLink] {
 
 /* Hide separator in urlbar */
 
-#urlbar[pageproxystate=valid]>#identity-box.verifiedIdentity,
-#urlbar[pageproxystate=valid]>#identity-box.chromeUI,
-#urlbar[pageproxystate=valid]>#identity-box.extensionPage {
+#urlbar[pageproxystate="valid"] > #identity-box.verifiedIdentity,
+#urlbar[pageproxystate="valid"] > #identity-box.chromeUI,
+#urlbar[pageproxystate="valid"] > #identity-box.extensionPage {
   margin-inline-end: 0px !important;
   border-inline-end: none !important;
 }
@@ -260,7 +263,7 @@ statuspanel[type=overLink] {
 
 /* Highlight connection icon in blue if identity is verified */
 
-#urlbar[pageproxystate="valid"]>#identity-box.verifiedIdentity>#connection-icon {
+#urlbar[pageproxystate="valid"] > #identity-box.verifiedIdentity > #connection-icon {
   fill: var(--mod-color-blue) !important;
 }
 
