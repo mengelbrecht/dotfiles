@@ -58,6 +58,18 @@
 
 /**********************************************************************************************************************/
 
+/* Let all tabs tab button fill the right side of the tabbar. */
+
+#alltabs-button {
+  padding: 0 !important;
+}
+
+#alltabs-button .toolbarbutton-icon {
+  border-radius: 0px !important;
+}
+
+/**********************************************************************************************************************/
+
 /* Dim not selected tabs and new tab button */
 
 #TabsToolbar #tabbrowser-tabs {
