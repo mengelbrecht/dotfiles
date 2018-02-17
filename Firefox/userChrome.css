@@ -267,3 +267,17 @@ statuspanel[type="overLink"] {
 #urlbar[pageproxystate="valid"] > #identity-box.verifiedIdentity > #connection-icon {
   fill: var(--mod-color-blue) !important;
 }
+
+/**********************************************************************************************************************/
+
+/* Only show page actions on hover */
+
+#urlbar-container:not(:hover) #urlbar:not([focused]) #page-action-buttons {
+  opacity: 0 !important;
+  transition: opacity 150ms ease !important;
+}
+
+#urlbar-container:hover #page-action-buttons {
+  opacity: 1 !important;
+  transition: opacity 150ms ease !important;
+}
