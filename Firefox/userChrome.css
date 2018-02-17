@@ -251,7 +251,8 @@ statuspanel[type="overLink"] {
 #urlbar[pageproxystate="valid"] > #identity-box.verifiedIdentity,
 #urlbar[pageproxystate="valid"] > #identity-box.chromeUI,
 #urlbar[pageproxystate="valid"] > #identity-box.extensionPage {
-  margin-inline-end: 0px !important;
+  padding-inline-end: 4px !important;
+  margin-inline-end: 4px !important;
   border-inline-end: none !important;
 }
 
