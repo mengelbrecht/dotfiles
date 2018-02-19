@@ -186,20 +186,10 @@
 
 /**********************************************************************************************************************/
 
-/* Increase padding and margin of urlbar */
+/* Increase margin of urlbar */
 
-#urlbar {
-  margin-top: 4px !important;
-  margin-bottom: 4px !important;
-}
-
-.urlbar-input-box {
-  padding: 1px !important;
-}
-
-/* Decrease height of bookmark items if they are in the urlbar */
-
-#main-window #nav-bar #PlacesToolbar toolbarbutton.bookmark-item {
+#urlbar,
+#main-window #nav-bar #PlacesToolbar {
   margin-top: 4px !important;
   margin-bottom: 4px !important;
 }
