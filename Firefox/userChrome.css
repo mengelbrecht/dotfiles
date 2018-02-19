@@ -93,12 +93,16 @@
  * https://www.reddit.com/r/FirefoxCSS/comments/7faicl/any_way_to_hide_close_tab_button_until_you_hover
  */
 
-.tabbrowser-tab:not([selected]):not([pinned]) .tab-close-button {
-  display: none !important;
+.tabbrowser-tab:not([pinned]) .tab-close-button {
+  transition: opacity 200ms !important;
 }
 
-.tabbrowser-tab:not([selected]):not([pinned]):hover .tab-close-button {
-  display: -moz-box !important;
+.tabbrowser-tab:not([pinned]):not([hover]) .tab-close-button {
+  opacity: 0 !important;
+}
+
+.tabbrowser-tab:not([pinned]):hover .tab-close-button {
+  opacity: 1 !important;
 }
 
 /**********************************************************************************************************************/
