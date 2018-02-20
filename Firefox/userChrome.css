@@ -275,3 +275,217 @@ statuspanel[type="overLink"] {
   opacity: 1 !important;
   transition: opacity 150ms ease !important;
 }
+
+/**********************************************************************************************************************/
+/*
+ * The following styles replicate a Safari like GUI and are based on:
+ * https://github.com/Isaac-Newt/userChrome-styles/blob/2aa9f7a15b4780914db9a957fcaade72cfd74d5e/Styles/userChromeSafari.css
+ */
+/* This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
+/**********************************************************************************************************************/
+
+/* Increase navbar height  */
+
+#nav-bar {
+  height: 38px !important;
+  padding: 0px 5px 0px 75px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Shrink tab bar height  */
+
+:root[uidensity="compact"] #tabbrowser-tabs {
+  --tab-min-height: 23px !important;
+}
+
+.tabbrowser-tab {
+  max-height: 22px !important;
+}
+
+#TabsToolbar {
+  max-height: 22px !important;
+}
+
+/* Adjust new tab button for smaller tabbar height */
+
+.tabs-newtab-button .toolbarbutton-icon,
+#new-tab-button .toolbarbutton-icon {
+  padding: 6px 9px 6px 9px !important;
+  margin-bottom: -1px !important;
+}
+
+/* Align favicons vertically */
+
+.tabbrowser-tab[pinned] .tab-icon-image {
+  margin-top: 0px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Hide favicons for all tabs except pinned ones */
+
+.tabbrowser-tab:not([pinned]) .tab-icon-image {
+  display: none !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Use grayscale favicons for not hovered/selected tabs */
+
+.tabbrowser-tab[pinned] .tab-icon-image {
+  filter: grayscale(100%) !important;
+  transition: filter 200ms !important;
+}
+
+.tabbrowser-tab:hover .tab-icon-image,
+.tabbrowser-tab[pinned][selected] .tab-icon-image {
+  filter: none !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Move tab close button to the left */
+
+.tabbrowser-tab .tab-throbber,
+.tabbrowser-tab .tab-icon-image,
+.tabbrowser-tab .tab-sharing-icon-overlay,
+.tabbrowser-tab .tab-icon-overlay,
+.tabbrowser-tab .tab-label-container,
+.tabbrowser-tab .tab-icon-sound {
+  -moz-box-ordinal-group: 2 !important;
+}
+
+.tabbrowser-tab .tab-close-button {
+  margin-left: -2px !important;
+  margin-right: 2px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Move tabs below navbar */
+
+#TabsToolbar {
+  -moz-box-ordinal-group: 3;
+}
+
+/* Move bookmarks bar between navbar and tabbar */
+
+#PersonalToolbar {
+  -moz-box-ordinal-group: 2;
+  background: rgb(220, 220, 220) !important;
+  border-bottom: 1px solid #b1b1b1 !important;
+}
+
+/* Remove border above navbar */
+
+#nav-bar {
+  margin-top: -1px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Use full width for tabs */
+
+#TabsToolbar .tabbrowser-tab[fadein]:not([pinned]) {
+  flex-grow: 1 !important;
+  min-width: 52px !important;
+  max-width: 100% !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Center the tab titles */
+
+.tab-label {
+  -moz-box-flex: 1 !important;
+  text-align: center !important;
+  margin-top: 0px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Re-add titlebar buttons and center them vertically */
+
+#titlebar-buttonbox {
+  display: block !important;
+  margin-top: 10px !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Coloring */
+
+#urlbar {
+  border: 1px solid rgb(186, 185, 187) !important;
+}
+
+#nav-bar {
+  background: linear-gradient(rgb(236, 235, 237), rgb(222, 221, 223)) !important;
+  border-bottom: 1px solid rgb(166, 165, 167) !important;
+}
+
+.tab-background[selected] {
+  background: linear-gradient(rgb(221, 220, 222), rgb(214, 213, 214)) !important;
+}
+
+#TabsToolbar #tabbrowser-tabs {
+  background-color: none !important;
+  background: linear-gradient(rgb(193, 192, 194), rgb(186, 185, 186)) !important;
+  border-bottom: 1px solid rgb(162, 161, 163) !important;
+}
+
+/**********************************************************************************************************************/
+
+/* Style the tab separators */
+
+/* Decrease height of side borders to prevent overlap */
+
+.tabbrowser-tab::before,
+.tabbrowser-tab::after {
+  margin-bottom: 0px !important;
+  border-color: rgb(162, 161, 163) !important;
+  opacity: 1 !important;
+}
+
+/* Borders left and right from selected tab */
+
+#tabbrowser-tabs:not([movingtab]) > .tabbrowser-tab[beforeselected-visible]::after,
+#tabbrowser-tabs[movingtab] > .tabbrowser-tab[visuallyselected]::before,
+.tabbrowser-tab[visuallyselected]::after {
+  border-color: rgb(162, 161, 163) !important;
+}
+
+/**********************************************************************************************************************/
+
+/*
+ * Only show full url on focus
+ * https://gist.github.com/hensm/f1e28acd25e072acb63867ba6bc7b365
+ */
+
+ #urlbar {
+  -moz-binding: url("bindings.xml#urlbar") !important;
+}
+
+#urlbar:not([focused]) .urlbar-input-box {
+  text-align: center;
+}
+
+/**********************************************************************************************************************/
+
+/*
+ * Remove 'dragging tab' margin/padding nonsense
+ * https://github.com/Aris-t2/CustomCSSforFx/blob/8a63f3cea254abdfcfaf90de4684a33181775747/classic/css/tabs/tabs_below_navigation_toolbar.css#L214
+ */
+
+#TabsToolbar[movingtab] {
+  padding-bottom: unset !important;
+  max-height: 22px !important;
+}
+
+#TabsToolbar[movingtab] > #tabbrowser-tabs {
+  padding-bottom: unset !important;
+  margin-bottom: unset !important;
+}
