@@ -198,8 +198,8 @@
 
 /* Make focused urlbar border thinner */
 
-#urlbar:hover[focused="true"],
-#urlbar[focused="true"] {
+#urlbar:hover[focused],
+#urlbar[focused] {
   border: 1px solid var(--mod-accent-color) !important;
 }
 
