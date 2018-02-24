@@ -471,7 +471,7 @@ statuspanel[type="overLink"] {
  * https://gist.github.com/hensm/f1e28acd25e072acb63867ba6bc7b365
  */
 
- #urlbar {
+#urlbar {
   -moz-binding: url("bindings.xml#urlbar") !important;
 }
 
