@@ -323,6 +323,19 @@ statuspanel[type="overLink"] {
   margin-top: 0px !important;
 }
 
+/* Shrink and align tab overlay icons for smaller tabs */
+
+.tab-icon-overlay {
+  width: 14px !important;
+  height: 14px !important;
+}
+
+.tab-icon-overlay[pinned] {
+  margin-top: -6px !important;
+  margin-inline-start: -8px !important;
+  margin-inline-end: -8px !important;
+}
+
 /* Move autocompletion popup closer to navbar */
 
 #PopupAutoCompleteRichResult {
