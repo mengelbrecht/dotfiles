@@ -323,6 +323,12 @@ statuspanel[type="overLink"] {
   margin-top: 0px !important;
 }
 
+/* Move autocompletion popup closer to navbar */
+
+#PopupAutoCompleteRichResult {
+  margin-top: -2px !important;
+}
+
 /**********************************************************************************************************************/
 
 /* Hide favicons for all tabs except pinned ones */
