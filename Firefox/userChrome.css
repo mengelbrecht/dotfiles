@@ -11,7 +11,6 @@
 
 :root {
   --mod-color-blue: #4b7bec;
-  --mod-color-paleblue: #d1d8e0;
   --mod-color-green: #20bf6b;
   --mod-accent-color: var(--mod-color-blue);
   --mod-url-font: "PragmataPro";
@@ -167,7 +166,7 @@
 
 :root {
   --chrome-selection-color: black !important;
-  --chrome-selection-background-color: var(--mod-color-paleblue) !important;
+  --chrome-selection-background-color: rgb(179, 216, 253) !important;
 }
 
 :root:-moz-lwtheme-brighttext {
