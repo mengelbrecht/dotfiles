@@ -453,7 +453,7 @@ statuspanel[type="overLink"] {
 #TabsToolbar #tabbrowser-tabs {
   background-color: none !important;
   background: linear-gradient(rgb(193, 192, 194), rgb(186, 185, 186)) !important;
-  border-bottom: 1px solid rgb(162, 161, 163) !important;
+  border-bottom: 1px solid rgb(157, 156, 159) !important;
 }
 
 /**********************************************************************************************************************/
@@ -499,23 +499,22 @@ statuspanel[type="overLink"] {
 
 /**********************************************************************************************************************/
 
-/* Style the tab separators */
+/*
+ * Style the tab separators
+ * https://userstyles.org/styles/153747/firefox-quantum-57-safari-11-look
+ */
 
-/* Decrease height of side borders to prevent overlap */
-
-.tabbrowser-tab::before,
-.tabbrowser-tab::after {
-  margin-bottom: 0px !important;
-  border-image: linear-gradient(to bottom, rgb(161, 159, 161), rgb(154, 151, 154)) 0% 100% !important;
-  opacity: 1 !important;
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+  visibility: collapse !important;
 }
 
-/* Borders left and right from selected tab */
-
-#tabbrowser-tabs:not([movingtab]) > .tabbrowser-tab[beforeselected-visible]::after,
-#tabbrowser-tabs[movingtab] > .tabbrowser-tab[visuallyselected]::before,
-.tabbrowser-tab[visuallyselected]::after {
+#TabsToolbar .tab-background {
+  margin-left: -1px !important;
+  margin-right: 0px !important;
   border-image: linear-gradient(to bottom, rgb(161, 159, 161), rgb(154, 151, 154)) 0% 100% !important;
+  border-left: 1px solid !important;
+  border-right: 1px solid !important;
 }
 
 /**********************************************************************************************************************/
