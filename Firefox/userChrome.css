@@ -452,7 +452,7 @@ statuspanel[type="overLink"] {
 .tabbrowser-tab::before,
 .tabbrowser-tab::after {
   margin-bottom: 0px !important;
-  border-color: rgb(162, 161, 163) !important;
+  border-image: linear-gradient(to bottom, rgb(161, 159, 161), rgb(154, 151, 154)) 0% 100% !important;
   opacity: 1 !important;
 }
 
@@ -461,7 +461,7 @@ statuspanel[type="overLink"] {
 #tabbrowser-tabs:not([movingtab]) > .tabbrowser-tab[beforeselected-visible]::after,
 #tabbrowser-tabs[movingtab] > .tabbrowser-tab[visuallyselected]::before,
 .tabbrowser-tab[visuallyselected]::after {
-  border-color: rgb(162, 161, 163) !important;
+  border-image: linear-gradient(to bottom, rgb(161, 159, 161), rgb(154, 151, 154)) 0% 100% !important;
 }
 
 /**********************************************************************************************************************/
