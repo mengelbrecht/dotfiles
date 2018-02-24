@@ -387,8 +387,8 @@ statuspanel[type="overLink"] {
 
 /* Remove border above navbar */
 
-#nav-bar {
-  margin-top: -1px !important;
+#navigator-toolbox::after {
+  display: none !important;
 }
 
 /**********************************************************************************************************************/
@@ -494,4 +494,8 @@ statuspanel[type="overLink"] {
 #TabsToolbar[movingtab] > #tabbrowser-tabs {
   padding-bottom: unset !important;
   margin-bottom: unset !important;
+}
+
+#TabsToolbar[movingtab] + #nav-bar {
+  margin-top: unset !important;
 }
