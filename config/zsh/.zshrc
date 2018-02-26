@@ -25,7 +25,8 @@ TMPPREFIX="${TMPDIR%/}/zsh"
 # }}}
 
 # Directories {{{
-export PATH="${HOME}/.dotfiles/bin:${PATH}"
+export DOTFILES="${HOME}/.dotfiles"
+export PATH="${DOTFILES}/bin:${PATH}"
 
 export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_DATA_HOME="${HOME}/.local/share"
@@ -87,10 +88,6 @@ if [[ "${OSTYPE}" =~ "darwin" ]]; then
   if [[ -d "${homebrew}/opt/coreutils" ]]; then
     export PATH="${homebrew}/opt/coreutils/libexec/gnubin:${PATH}"
     export MANPATH="${homebrew}/opt/coreutils/libexec/gnuman:${MANPATH}"
-  fi
-
-  if [[ -d "${homebrew}/opt/ncurses/share/terminfo" ]]; then
-    export TERMINFO="${homebrew}/opt/ncurses/share/terminfo"
   fi
 
   export JAVA_HOME=$(/usr/libexec/java_home -v 1.8)
