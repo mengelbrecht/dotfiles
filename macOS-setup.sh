@@ -670,6 +670,9 @@ defaults write com.torusknot.SourceTreeNotMAS agreedToUpdateConfig -bool false
 
 # iTerm {{{
 
+# Install terminfo files
+find "terminfo" -name "*.terminfo" -exec tic {} +
+
 # Load prefs from dotfiles
 defaults write com.googlecode.iterm2 PrefsCustomFolder -string "${HOME}/.config/iTerm"
 defaults write com.googlecode.iterm2 LoadPrefsFromCustomFolder -bool true
@@ -698,4 +701,3 @@ done
 echo "Restart your computer to let all changes take effect"
 
 # }}}
-
