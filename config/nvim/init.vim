@@ -127,6 +127,10 @@ set foldtext=CustomFoldText()
 set t_Co=256 " Terminal supports 256 colors
 set t_md=    " Disable bold fonts in terminal
 
+" Enable italics
+let &t_ZH = "\e[3m"
+let &t_ZR = "\e[23m"
+
 if has('termguicolors')
   set termguicolors " Enable 24bit colors in terminal
 endif
