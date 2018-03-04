@@ -127,6 +127,14 @@ setopt EXTENDED_GLOB     # Use extended globbing syntax.
 unsetopt CLOBBER         # Do not overwrite existing files with > and >>. Use >! and >>! to bypass.
 # }}}
 
+# Window Title {{{
+set_window_title_to_cwd() {
+  print -Pn "\e]0;%~\a"
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook precmd set_window_title_to_cwd
+# }}}
+
 # Key Bindings {{{
 
 # Expands .... to ../..
