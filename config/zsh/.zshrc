@@ -97,12 +97,6 @@ if [[ "${OSTYPE}" =~ "darwin" ]]; then
   fi
 
   alias o='open'
-
-  if [[ "${TERM_PROGRAM}" = "iTerm.app" ]]; then
-    echo -en "\033]6;1;bg;red;brightness;29\a"
-    echo -en "\033]6;1;bg;green;brightness;32\a"
-    echo -en "\033]6;1;bg;blue;brightness;33\a"
-  fi
 fi
 # }}}
 
