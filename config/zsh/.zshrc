@@ -679,9 +679,6 @@ fi
 # Slimline {{{
 export GITLINE_REPO_INDICATOR=''
 
-# Remove right prompt indent
-export ZLE_RPROMPT_INDENT=0
-
 source "${ZPLUGINDIR}/slimline/slimline.plugin.zsh"
 # }}}
 
