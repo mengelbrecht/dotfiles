@@ -140,6 +140,8 @@ endif
 let s:theme = 'gruvbox'
 
 if s:theme == 'gruvbox'
+  packadd! gruvbox
+
   let g:gruvbox_italic        = 1
   let g:gruvbox_bold          = 0
   let g:gruvbox_contrast_dark = 'hard'
@@ -155,6 +157,8 @@ if s:theme == 'gruvbox'
   let s:whitespace_fg = [synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "fg", "cterm")]
   let s:whitespace_bg = [synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "gui"), synIDattr(synIDtrans(hlID("ErrorMsg")), "bg", "cterm")]
 elseif s:theme == 'onedark'
+  packadd! onedark.vim
+
   let g:onedark_terminal_italics = 1
   let g:lightline#onedark#disable_bold_style = 1
 
@@ -164,6 +168,8 @@ elseif s:theme == 'onedark'
   let s:whitespace_fg = [synIDattr(synIDtrans(hlID("Normal")), "bg", "gui"), synIDattr(synIDtrans(hlID("Normal")), "bg", "cterm")]
   let s:whitespace_bg = [synIDattr(synIDtrans(hlID("Error")), "fg", "gui"), synIDattr(synIDtrans(hlID("Error")), "fg", "cterm")]
 elseif s:theme == 'papercolor'
+  packadd! papercolor-theme
+
   set background=light
   colorscheme PaperColor
 

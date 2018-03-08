@@ -47,7 +47,7 @@
 	url = https://github.com/wincent/ferret.git
 	branch = master
 [submodule "config/nvim/pack/plugins/start/gruvbox"]
-	path = config/nvim/pack/plugins/start/gruvbox
+	path = config/nvim/pack/plugins/opt/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
 	branch = master
 [submodule "config/nvim/pack/plugins/start/gv.vim"]
@@ -63,11 +63,11 @@
 	url = https://github.com/itchyny/lightline.vim.git
 	branch = master
 [submodule "config/nvim/pack/plugins/start/onedark.vim"]
-	path = config/nvim/pack/plugins/start/onedark.vim
+	path = config/nvim/pack/plugins/opt/onedark.vim
 	url = https://github.com/joshdick/onedark.vim.git
 	branch = master
 [submodule "config/nvim/pack/plugins/start/papercolor-theme"]
-	path = config/nvim/pack/plugins/start/papercolor-theme
+	path = config/nvim/pack/plugins/opt/papercolor-theme
 	url = https://github.com/NLKNguyen/papercolor-theme.git
 	branch = master
 [submodule "config/nvim/pack/plugins/start/swift.vim"]
