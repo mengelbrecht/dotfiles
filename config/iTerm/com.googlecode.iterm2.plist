@@ -18,6 +18,8 @@
 	<true/>
 	<key>DisableFullscreenTransparency</key>
 	<true/>
+	<key>DisableMetalWhenUnplugged</key>
+	<false/>
 	<key>DisableWindowSizeSnap</key>
 	<false/>
 	<key>EnableDivisionView</key>
@@ -1638,6 +1640,8 @@
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>UseLionStyleFullscreen</key>
+	<true/>
+	<key>UseMetal</key>
 	<true/>
 	<key>WindowNumber</key>
 	<false/>
