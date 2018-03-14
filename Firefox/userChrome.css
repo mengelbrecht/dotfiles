@@ -450,6 +450,11 @@ statuspanel[type="overLink"] {
   background: linear-gradient(rgb(221, 220, 222), rgb(214, 213, 214)) !important;
 }
 
+.tabbrowser-tab:hover .tab-background:not([selected]) {
+  background-color: none !important;
+  background: linear-gradient(rgb(179, 178, 180), rgb(171, 170, 172)) !important;
+}
+
 #TabsToolbar #tabbrowser-tabs {
   background-color: none !important;
   background: linear-gradient(rgb(193, 192, 194), rgb(186, 185, 186)) !important;
