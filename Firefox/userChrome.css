@@ -216,6 +216,12 @@ statuspanel[type="overLink"] {
   font-family: var(--mod-url-font) !important;
 }
 
+/* Shrink navbar url font size a little */
+
+.urlbar-input-box {
+  font-size: 13px !important;
+}
+
 /* Slightly increase statuspanel url font size */
 
 statuspanel[type="overLink"] {
