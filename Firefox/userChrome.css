@@ -71,14 +71,6 @@
 
 /**********************************************************************************************************************/
 
-/* Dim not selected tabs and new tab button */
-
-#TabsToolbar #tabbrowser-tabs {
-  background-color: rgba(0, 0, 0, 0.07) !important;
-}
-
-/**********************************************************************************************************************/
-
 /* Decrease height of side borders to prevent overlap */
 
 .tabbrowser-tab::before,
