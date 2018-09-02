@@ -92,33 +92,13 @@ sudo dscl . -create "/Users/${USER}" UserShell "/bin/zsh"
 
 # }}}
 
-# SSD-specific tweaks {{{
-
-# Check if SSD is present
-system_profiler SPSerialATADataType | grep -q "Medium Type: SSD"
-if [[ $? -eq 0 ]]; then
-    # Disable hibernation (speeds up entering sleep mode)
-    sudo pmset -a hibernatemode 0
-
-    # Remove the sleep image file to save disk space
-    sudo rm /private/var/vm/sleepimage
-
-    # Create a zero-byte file instead…
-    sudo touch /private/var/vm/sleepimage
-
-    # ...and make sure it can’t be rewritten
-    sudo chflags uchg /private/var/vm/sleepimage
-fi
-
-# }}}
-
 # Spotlight {{{
 
 sudo defaults write /.Spotlight-V100/VolumeConfiguration Exclusions -array "/Volumes"
 # Load new settings before rebuilding the index
 killall mds > /dev/null 2>&1
 # Make sure indexing is enabled for the main volume
-sudo mdutil -i off / > /dev/null 2>&1
+sudo mdutil -i on / > /dev/null 2>&1
 # Rebuild the index from scratch
 sudo mdutil -E / > /dev/null 2>&1
 
