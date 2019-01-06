@@ -137,7 +137,7 @@ endif
 " }}}
 
 " Colorscheme {{{
-let s:theme = 'gruvbox'
+let s:theme = 'onedark'
 
 if s:theme == 'gruvbox'
   packadd! gruvbox
