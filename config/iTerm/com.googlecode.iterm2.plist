@@ -14,6 +14,8 @@
 	<string>manual</string>
 	<key>CheckTestRelease</key>
 	<true/>
+	<key>CompactMinimalTabBarHeight</key>
+	<real>26</real>
 	<key>Default Bookmark Guid</key>
 	<string>23AF8FBA-5EDF-4FAE-952F-2520207E87E6</string>
 	<key>EliminateCloseButtons</key>
