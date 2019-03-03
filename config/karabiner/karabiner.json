@@ -994,7 +994,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -b com.apple.Safari"
+                                        "shell_command": "open -b org.mozilla.nightly"
                                     }
                                 ],
                                 "type": "basic"
