@@ -5,15 +5,11 @@
 
 /* Variables to modify the style */
 
-/*
- * Colors from https://flatuicolors.com/palette/de
- */
-
 :root {
-  --mod-color-blue: #4b7bec;
-  --mod-color-green: #20bf6b;
-  --mod-accent-color: var(--mod-color-blue);
   --mod-url-font: "PragmataPro";
+  --toolbarbutton-border-radius: 0px !important;
+  --toolbarbutton-inner-padding: 5px !important;
+  --bar-height: 25px;
 }
 
 /**********************************************************************************************************************/
@@ -28,11 +24,11 @@
 
 /* Hide titlebar placeholders and buttons */
 
-.titlebar-placeholder[type="pre-tabs"] {
-  width: 14px !important;
+.titlebar-spacer[type="pre-tabs"] {
+  width: 13px !important;
 }
 
-.titlebar-placeholder[type="post-tabs"] {
+.titlebar-spacer[type="post-tabs"] {
   display: none !important;
 }
 
@@ -55,21 +51,19 @@
 .tabs-newtab-button .toolbarbutton-icon,
 #new-tab-button .toolbarbutton-icon {
   margin-left: -1px !important;
-  border-radius: 0px !important;
   /* Make the icon a little smaller */
-  padding: 9px !important;
+  padding: 8px 8px 8px 9px !important;
 }
 
 /**********************************************************************************************************************/
 
-/* Let all tabs tab button fill the right side of the tabbar. */
+/* Move menu button to the left */
 
-#alltabs-button {
-  padding: 0 !important;
-}
-
-#alltabs-button .toolbarbutton-icon {
-  border-radius: 0px !important;
+#PanelUI-button {
+  -moz-box-ordinal-group: 0 !important;
+  /* Remove separator before menu button */
+  border-inline-start: 0px !important;
+  margin-left: -1px !important;
 }
 
 /**********************************************************************************************************************/
@@ -114,19 +108,6 @@
 
 /**********************************************************************************************************************/
 
-/* Change color of tab loading indicator to accent color */
-
-:root {
-  --tab-loading-fill: var(--mod-accent-color) !important;
-}
-
-.tab-throbber::before {
-  fill: var(--mod-accent-color) !important;
-  opacity: 1 !important;
-}
-
-/**********************************************************************************************************************/
-
 /*
  * Remove shadow on tabs scroll icons
  * https://github.com/Maxmel/dotfiles/blob/81ea2120e2da313431d3417327cf57a8a7fe5b68/userChrome.css#L226
@@ -140,16 +121,6 @@
 
 /**********************************************************************************************************************/
 
-/* Move menu button to the left */
-
-#PanelUI-button {
-  -moz-box-ordinal-group: 0 !important;
-  /* Remove separator before menu button */
-  border-inline-start: 0px !important;
-}
-
-/**********************************************************************************************************************/
-
 /* Hide page action button */
 
 #pageActionButton {
@@ -158,47 +129,37 @@
 
 /**********************************************************************************************************************/
 
-/*
- * Change urlbar selection colors
- * https://www.reddit.com/r/FirefoxCSS/comments/7lqhkg/url_bar_highlight
- */
+/* Shrink tabbar */
 
-:root {
-  --chrome-selection-color: black !important;
-  --chrome-selection-background-color: rgb(179, 216, 253) !important;
+#tabbrowser-tabs {
+  --tab-min-height: calc(1px + var(--bar-height)) !important;
+  height: var(--bar-height) !important;
 }
 
-:root:-moz-lwtheme-brighttext {
-  --chrome-selection-color: #fff !important;
-  --chrome-selection-background-color: #5675b9 !important;
+#TabsToolbar {
+  height: var(--bar-height) !important;
 }
 
-/**********************************************************************************************************************/
-
-/* Remove shadows from urlbar */
+/* Shrink urlbar */
 
 #urlbar,
 #urlbar:hover {
   box-shadow: none !important;
+  margin: 0px !important;
+  border: none !important;
 }
 
 /**********************************************************************************************************************/
 
-/* Increase margin of urlbar */
+/* Highlight the selected tab */
 
-#urlbar,
-#main-window #nav-bar #PlacesToolbar {
-  margin-top: 4px !important;
-  margin-bottom: 4px !important;
+.tabbrowser-tab > .tab-stack > .tab-background[selected] {
+  background-color: rgba(0, 0, 0, 0.1) !important;
+  background-image: none !important;
 }
 
-/**********************************************************************************************************************/
-
-/* Make focused urlbar border thinner */
-
-#urlbar:hover[focused],
-#urlbar[focused] {
-  border: 1px solid var(--mod-accent-color) !important;
+#TabsToolbar[brighttext] .tabbrowser-tab > .tab-stack > .tab-background[selected] {
+  background-color: rgba(255, 255, 255, 0.1) !important;
 }
 
 /**********************************************************************************************************************/
@@ -207,7 +168,7 @@
 
 .urlbar-input-box,
 .autocomplete-richlistitem .ac-url,
-statuspanel[type="overLink"] {
+#statuspanel[type="overLink"] {
   font-family: var(--mod-url-font) !important;
 }
 
@@ -219,22 +180,8 @@ statuspanel[type="overLink"] {
 
 /* Slightly increase statuspanel url font size */
 
-statuspanel[type="overLink"] {
-  font-size: 13px !important;
-}
-
-/**********************************************************************************************************************/
-
-/* Change color of secure connection icon */
-
-#urlbar[pageproxystate="valid"] > #identity-box.verifiedDomain > #connection-icon,
-#urlbar[pageproxystate="valid"] > #identity-box.mixedActiveBlocked > #connection-icon,
-#identity-popup[connection^="secure"] .identity-popup-security-content {
-  fill: var(--mod-color-green) !important;
-}
-
-.identity-popup-connection-secure {
-  color: var(--mod-color-green) !important;
+#statuspanel[type="overLink"] {
+  font-size: 12px !important;
 }
 
 /**********************************************************************************************************************/
@@ -254,16 +201,17 @@ statuspanel[type="overLink"] {
   border-inline-end: none !important;
 }
 
+/* Hide separator on not secure sites */
+
+#identity-box.notSecureText {
+  border-image-slice: 0 !important;
+  margin-right: 0px !important;
+}
+
 /* Hide identity label */
 
 #identity-icon-labels {
   display: none !important;
-}
-
-/* Highlight connection icon in blue if identity is verified */
-
-#urlbar[pageproxystate="valid"] > #identity-box.verifiedIdentity > #connection-icon {
-  fill: var(--mod-color-blue) !important;
 }
 
 /**********************************************************************************************************************/
@@ -273,57 +221,14 @@ statuspanel[type="overLink"] {
 #urlbar-container:not(:hover) #urlbar:not([focused]) #page-action-buttons {
   opacity: 0 !important;
   transition: opacity 150ms ease !important;
+  width: 0 !important;
+  overflow: hidden;
 }
 
 #urlbar-container:hover #page-action-buttons {
   opacity: 1 !important;
   transition: opacity 150ms ease !important;
-}
-
-/**********************************************************************************************************************/
-
-/* Shrink tab bar height  */
-
-:root[uidensity="compact"] #tabbrowser-tabs {
-  --tab-min-height: 26px !important;
-}
-
-.tabbrowser-tab {
-  max-height: 25px !important;
-}
-
-#TabsToolbar {
-  max-height: 25px !important;
-}
-
-/* Adjust new tab button for smaller tabbar height */
-
-.tabs-newtab-button .toolbarbutton-icon,
-#new-tab-button .toolbarbutton-icon {
-  padding: 8px 10px 8px 9px !important;
-  margin-bottom: -1px !important;
-}
-
-/* Align titlebar buttons in the center due to reduced height */
-
-#titlebar-buttonbox {
-  margin-top: -4px;
-}
-
-/**********************************************************************************************************************/
-
-/*
- * Remove 'dragging tab' margin/padding nonsense
- * https://github.com/Aris-t2/CustomCSSforFx/blob/8a63f3cea254abdfcfaf90de4684a33181775747/classic/css/tabs/tabs_below_navigation_toolbar.css#L214
- */
-
-#TabsToolbar[movingtab] > #tabbrowser-tabs {
-  padding-bottom: unset !important;
-  margin-bottom: unset !important;
-}
-
-#TabsToolbar[movingtab] + #nav-bar {
-  margin-top: unset !important;
+  width: auto !important;
 }
 
 /**********************************************************************************************************************/
@@ -333,9 +238,67 @@ statuspanel[type="overLink"] {
 .tabbrowser-tab .tab-icon-image {
   filter: grayscale(100%) !important;
   transition: filter 200ms !important;
+  margin-top: 0px !important;
 }
 
 .tabbrowser-tab:hover .tab-icon-image,
 .tabbrowser-tab[selected] .tab-icon-image {
   filter: none !important;
+}
+
+.tab-bottom-line {
+  margin-left: -28px !important;
+  margin-right: -28px !important;
+}
+
+/**********************************************************************************************************************/
+
+/*
+ * Only show urlbar when urlbar is focused (using CMD+L)
+ * https://github.com/rstacruz/firefox-stealthfox/blob/204d9e23c2250aa92213a7fced494ec63ec6993b/userChrome.minimal.css 
+ */
+
+:root {
+  --stealth-fade-in-speed: 100ms;
+  --stealth-fade-out-speed: 250ms;
+}
+
+#main-window:not([customizing]) #navigator-toolbox {
+  overflow: hidden !important;
+}
+
+#main-window:not([customizing]) #TabsToolbar,
+#main-window:not([customizing]) #nav-bar {
+  transition: opacity var(--stealth-fade-out-speed) ease-out,
+    transform var(--stealth-fade-out-speed) ease-in !important;
+}
+
+#main-window:not([customizing]) #nav-bar {
+  height: calc(var(--bar-height)) !important;
+  transform: translate3d(0, calc(-1 * var(--bar-height)), 0) !important;
+}
+
+#main-window:not([customizing]) #nav-bar {
+  opacity: 0 !important;
+  margin-top: calc(-1 * var(--bar-height)) !important;
+  pointer-events: none !important;
+}
+
+#main-window:not([customizing]) #navigator-toolbox:focus-within #nav-bar,
+#main-window:not([customizing]) #navigator-toolbox:focus-within #TabsToolbar {
+  transition: opacity var(--stealth-fade-in-speed) ease-out,
+    transform var(--stealth-fade-in-speed) ease-in !important;
+}
+
+#main-window:not([customizing]) #navigator-toolbox:focus-within #nav-bar {
+  opacity: 1 !important;
+  z-index: 100 !important;
+  pointer-events: auto !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+#main-window:not([customizing]) #navigator-toolbox:focus-within #TabsToolbar {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translate3d(0, calc(0.5 * var(--bar-height)), 0) !important;
 }
