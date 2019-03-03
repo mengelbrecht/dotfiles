@@ -71,7 +71,8 @@
 /* Decrease height of side borders to prevent overlap */
 
 .tabbrowser-tab::before,
-.tabbrowser-tab::after {
+.tabbrowser-tab::after,
+.titlebar-spacer[type="pre-tabs"] {
   margin-bottom: 1px !important;
 }
 
@@ -160,6 +161,13 @@
 
 #TabsToolbar[brighttext] .tabbrowser-tab > .tab-stack > .tab-background[selected] {
   background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Show border at the bottom of selected and hovered tabs */
+
+.tab-background[selected],
+.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected]) {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 
 /**********************************************************************************************************************/
