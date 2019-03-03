@@ -8,7 +8,6 @@
 :root {
   --mod-url-font: "PragmataPro";
   --toolbarbutton-border-radius: 0px !important;
-  --toolbarbutton-inner-padding: 5px !important;
   --bar-height: 25px;
 }
 
@@ -52,7 +51,7 @@
 #new-tab-button .toolbarbutton-icon {
   margin-left: -1px !important;
   /* Make the icon a little smaller */
-  padding: 8px 8px 8px 9px !important;
+  padding: 8px 10px 8px 9px !important;
 }
 
 /**********************************************************************************************************************/
