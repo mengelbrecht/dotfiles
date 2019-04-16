@@ -137,6 +137,31 @@
 
 /**********************************************************************************************************************/
 
+/* Move bookmark menu button to the left */
+
+#bookmarks-menu-button {
+  -moz-box-ordinal-group: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Hide border before bookmarks menu item */
+
+.titlebar-spacer[type="pre-tabs"] {
+  border-inline-end: none !important;
+}
+
+/* Add border before first tab */
+
+.tabbrowser-tab[first-visible-tab]::before {
+  content: "";
+  display: -moz-box;
+  border-left: 1px solid var(--lwt-background-tab-separator-color, currentColor);
+  margin: 0 !important;
+  opacity: 0.2;
+}
+
+/**********************************************************************************************************************/
+
 /* Shrink tabbar */
 
 #tabbrowser-tabs {
