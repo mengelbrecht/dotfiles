@@ -156,7 +156,7 @@
   content: "";
   display: -moz-box;
   border-left: 1px solid var(--lwt-background-tab-separator-color, currentColor);
-  margin: 0 !important;
+  margin: 0 0 1px 0 !important;
   opacity: 0.2;
 }
 
