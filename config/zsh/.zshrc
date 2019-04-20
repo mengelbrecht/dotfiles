@@ -205,21 +205,6 @@ alias grep="grep --color=auto"
 
 # }}}
 
-# Vagrant {{{
-
-alias vus="vagrant up --provider vmware_fusion && vagrant ssh"
-alias vups="vagrant up --provider vmware_fusion --provision && vagrant ssh"
-alias vup="vagrant up --provider vmware_fusion --provision"
-alias vu="vagrant up --provider vmware_fusion"
-alias vs="vagrant ssh"
-alias vh="vagrant halt"
-alias vp="vagrant provision"
-alias vr="vagrant reload"
-alias vrp="vagrant reload --provision"
-alias vrps="vagrant reload --provision && vagrant ssh"
-
-# }}}
-
 # Git {{{
 
 _git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
