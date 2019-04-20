@@ -436,23 +436,6 @@ cdls() {
   builtin cd "$argv[-1]" && ls -l "${(@)argv[1,-2]}"
 }
 
-httpless() {
-    http --pretty=all --print=hb "$@" | less -R;
-}
-
-# fd - "find directory"
-# From: https://github.com/junegunn/fzf/wiki/examples#changing-directory
-function fd() {
-  local DIR
-  DIR=$(bfs ${1:-.} -type d -nohidden 2> /dev/null | fzf +m) && cd "$DIR"
-}
-
-# fda -"find directory [all, including hidden directories"
-function fda() {
-  local DIR
-  DIR=$(bfs ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$DIR"
-}
-
 # fh - "find [in] history"
 # From: https://github.com/junegunn/fzf/wiki/examples#command-history
 function fh() {
