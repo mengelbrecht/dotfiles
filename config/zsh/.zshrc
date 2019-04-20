@@ -657,13 +657,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=244'
 ZSH_AUTOSUGGEST_USE_ASYNC=1
 # }}}
 
-# enhancd {{{
-export ENHANCD_DOT_SHOW_FULLPATH=1
-export ENHANCD_DIR="${XDG_CACHE_HOME}/enhancd"
-
-source "${ZPLUGINDIR}/enhancd/init.sh"
-# }}}
-
 # fzf {{{
 if (( $+commands[fzf] )); then
   export FZF_DEFAULT_OPTS="--reverse --cycle --inline-info --select-1 --exit-0 --multi --color=16"

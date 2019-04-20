@@ -22,10 +22,6 @@
 	path = config/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
 	branch = master
-[submodule "config/zsh/plugins/enhancd"]
-	path = config/zsh/plugins/enhancd
-	url = https://github.com/b4b4r07/enhancd.git
-	branch = master
 [submodule "config/tmux/plugins/tmux-better-mouse-mode"]
 	path = config/tmux/plugins/tmux-better-mouse-mode
 	url = https://github.com/NHDaly/tmux-better-mouse-mode.git
