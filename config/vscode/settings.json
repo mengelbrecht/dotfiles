@@ -1,0 +1,21 @@
+{
+    "breadcrumbs.enabled": true,
+    "editor.cursorBlinking": "phase",
+    "editor.fontFamily": "PragmataPro Liga",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.lineHeight": 16,
+    "editor.minimap.enabled": true,
+    "editor.renderWhitespace": "boundary",
+    "editor.rulers": [100, 120],
+    "editor.suggestSelection": "first",
+    "files.trimFinalNewlines": true,
+    "prettier.printWidth": 100,
+    "telemetry.enableCrashReporter": false,
+    "telemetry.enableTelemetry": false,
+    "workbench.colorTheme": "Atom One Light",
+    "workbench.enableExperiments": false,
+    "workbench.settings.enableNaturalLanguageSearch": false,
+    "workbench.startupEditor": "newUntitledFile",
+    "workbench.statusBar.feedback.visible": false
+}
