@@ -66,6 +66,10 @@ if [[ -d "${homebrew}" ]]; then
   fpath=(${homebrew}/share/zsh/site-functions ${fpath})
 fi
 
+if [[ -d "/home/linuxbrew" ]]; then
+  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+fi
+
 alias cask='brew cask'
 # }}}
 
