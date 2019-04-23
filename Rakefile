@@ -17,7 +17,6 @@ HOMEBREW_PATH = MACOS ? '/usr/local' : "#{HOME}/.homebrew"
 
 #------------------------------------------------------------------------------
 DOTFILES = [
-  'atom',
   'config',
   'zshenv'
 ].freeze
