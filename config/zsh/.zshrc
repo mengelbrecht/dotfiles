@@ -56,29 +56,6 @@ if [[ -f "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]]; then
 fi
 # }}}
 
-# Homebrew {{{
-export HOMEBREW_NO_ANALYTICS=1
-
-if [[ -d "${HOME}/.homebrew" ]]; then
-  homebrew="${HOME}/.homebrew"
-elif [[ -f "/usr/local/bin/brew" ]]; then
-  homebrew="/usr/local"
-fi
-
-if [[ -d "${homebrew}" ]]; then
-  export PATH="${homebrew}/bin:${PATH}"
-  export MANPATH="${homebrew}/share/man:${MANPATH}"
-  export INFOPATH="${homebrew}/share/info:${INFOPATH}"
-  fpath=(${homebrew}/share/zsh/site-functions ${fpath})
-fi
-
-if [[ -d "/home/linuxbrew" ]]; then
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-fi
-
-alias cask='brew cask'
-# }}}
-
 # Editors {{{
 if (( $+commands[nvim] )); then
   export EDITOR='nvim'
