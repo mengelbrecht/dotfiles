@@ -1017,7 +1017,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -b com.reederapp.rkit2.mac"
+                                        "shell_command": "open -b com.reederapp.macOS"
                                     }
                                 ],
                                 "type": "basic"
