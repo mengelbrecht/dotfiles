@@ -948,7 +948,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "open -b org.mozilla.nightly"
+                                        "shell_command": "open -b org.mozilla.firefox"
                                     }
                                 ],
                                 "type": "basic"
