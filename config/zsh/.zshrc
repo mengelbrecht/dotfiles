@@ -399,11 +399,6 @@ diff() {
   fi
 }
 
-# Update and upgrade all packages, afterwards perform a cleanup
-brewup() {
-  brew update && brew upgrade && brew cleanup
-}
-
 # Set executable permissions to folders only
 defMod() {
   find . -type d -exec chmod 755 {} +
