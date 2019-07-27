@@ -158,8 +158,8 @@ bindkey "^[b" backward-word
 
 # ls {{{
 
-if which exa &> /dev/null; then
-  alias ls='exa --group-directories-first'
+if which lsd &> /dev/null; then
+  alias ls='lsd --group-dirs first'
   alias l='ls'
   alias ll='ls -l'
   alias la='ll -a'
