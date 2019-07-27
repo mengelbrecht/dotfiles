@@ -53,6 +53,8 @@ fi
 # nix {{{
 if [[ -f "${HOME}/.nix-profile/etc/profile.d/nix.sh" ]]; then
   source "${HOME}/.nix-profile/etc/profile.d/nix.sh"
+
+  alias nixUp='nix-channel --update && nix-env -u && nix-collect-garbage -d'
 fi
 # }}}
 
