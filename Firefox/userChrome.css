@@ -7,7 +7,6 @@
 
 :root {
   --mod-url-font: "PragmataPro";
-  --toolbarbutton-border-radius: 0px !important;
   --bar-height: 25px;
 }
 
@@ -137,31 +136,6 @@
 
 /**********************************************************************************************************************/
 
-/* Move bookmark menu button to the left */
-
-#bookmarks-menu-button {
-  -moz-box-ordinal-group: 0 !important;
-  padding-right: 0 !important;
-}
-
-/* Hide border before bookmarks menu item */
-
-.titlebar-spacer[type="pre-tabs"] {
-  border-inline-end: none !important;
-}
-
-/* Add border before first tab */
-
-.tabbrowser-tab[first-visible-tab]::before {
-  content: "";
-  display: -moz-box;
-  border-left: 1px solid var(--lwt-background-tab-separator-color, currentColor);
-  margin: 0 0 1px 0 !important;
-  opacity: 0.2;
-}
-
-/**********************************************************************************************************************/
-
 /* Shrink tabbar */
 
 #tabbrowser-tabs {
@@ -175,31 +149,25 @@
 
 /* Shrink urlbar */
 
-#urlbar,
-#urlbar:hover {
-  box-shadow: none !important;
-  margin: 0px !important;
-  border: none !important;
+#urlbar {
+  height: 27px !important;
+}
+
+#urlbar[focused] {
+    box-shadow: 0 0 0 2px rgba(0, 100, 190, 0.08) !important;
+    border: 1px solid rgba(0, 100, 190, 0.35) !important;
+}
+
+#nav-bar {
+    padding: 3px 2px 1px 2px !important;
 }
 
 /**********************************************************************************************************************/
 
-/* Highlight the selected tab */
+/* Remove padding to urlbar */
 
-.tabbrowser-tab > .tab-stack > .tab-background[selected] {
-  background-color: rgba(0, 0, 0, 0.1) !important;
-  background-image: none !important;
-}
-
-#TabsToolbar[brighttext] .tabbrowser-tab > .tab-stack > .tab-background[selected] {
-  background-color: rgba(255, 255, 255, 0.1) !important;
-}
-
-/* Show border at the bottom of selected and hovered tabs */
-
-.tab-background[selected],
-.tabbrowser-tab:hover > .tab-stack > .tab-background:not([selected]) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
+#bookmarks-menu-button {
+  padding-right: 0 !important;
 }
 
 /**********************************************************************************************************************/
@@ -294,51 +262,19 @@
 /**********************************************************************************************************************/
 
 /*
- * Only show urlbar when urlbar is focused (using CMD+L)
- * https://github.com/rstacruz/firefox-stealthfox/blob/204d9e23c2250aa92213a7fced494ec63ec6993b/userChrome.minimal.css 
+ * Disable Mozillas tab jumping nonsense when moving tabs
+ * https://github.com/Aris-t2/CustomCSSforFx/blob/d23e223e1464ec2f103746856f419186efc87bf5/classic/css/tabs/tabs_below_navigation_toolbar_fx65_v2.css#L215
  */
 
-:root {
-  --stealth-fade-in-speed: 100ms;
-  --stealth-fade-out-speed: 250ms;
+#navigator-toolbox[movingtab] > #titlebar > #TabsToolbar {
+  padding-bottom: unset !important;
 }
 
-#main-window:not([customizing]) #navigator-toolbox {
-  overflow: hidden !important;
+#navigator-toolbox[movingtab] #tabbrowser-tabs {
+  padding-bottom: unset !important;
+  margin-bottom: unset !important;
 }
 
-#main-window:not([customizing]) #TabsToolbar,
-#main-window:not([customizing]) #nav-bar {
-  transition: opacity var(--stealth-fade-out-speed) ease-out,
-    transform var(--stealth-fade-out-speed) ease-in !important;
-}
-
-#main-window:not([customizing]) #nav-bar {
-  height: calc(var(--bar-height)) !important;
-  transform: translate3d(0, calc(-1 * var(--bar-height)), 0) !important;
-}
-
-#main-window:not([customizing]) #nav-bar {
-  opacity: 0 !important;
-  margin-top: calc(-1 * var(--bar-height)) !important;
-  pointer-events: none !important;
-}
-
-#main-window:not([customizing]) #navigator-toolbox:focus-within #nav-bar,
-#main-window:not([customizing]) #navigator-toolbox:focus-within #TabsToolbar {
-  transition: opacity var(--stealth-fade-in-speed) ease-out,
-    transform var(--stealth-fade-in-speed) ease-in !important;
-}
-
-#main-window:not([customizing]) #navigator-toolbox:focus-within #nav-bar {
-  opacity: 1 !important;
-  z-index: 100 !important;
-  pointer-events: auto !important;
-  transform: translate3d(0, 0, 0) !important;
-}
-
-#main-window:not([customizing]) #navigator-toolbox:focus-within #TabsToolbar {
-  opacity: 0 !important;
-  pointer-events: none !important;
-  transform: translate3d(0, calc(0.5 * var(--bar-height)), 0) !important;
+#navigator-toolbox[movingtab] > #nav-bar {
+  margin-top: unset !important;
 }
