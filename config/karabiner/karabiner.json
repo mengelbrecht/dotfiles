@@ -2449,6 +2449,9 @@
                 }
             ],
             "name": "Colehack",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": true,
             "simple_modifications": [
                 {
@@ -2630,7 +2633,8 @@
             ],
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
-                "country_code": 0
+                "country_code": 0,
+                "mouse_key_xy_scale": 100
             }
         },
         {
@@ -2758,11 +2762,15 @@
                 }
             ],
             "name": "German",
+            "parameters": {
+                "delay_milliseconds_before_open_device": 1000
+            },
             "selected": false,
             "simple_modifications": [],
             "virtual_hid_keyboard": {
                 "caps_lock_delay_milliseconds": 0,
-                "country_code": 99
+                "country_code": 99,
+                "mouse_key_xy_scale": 100
             }
         }
     ]
