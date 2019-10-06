@@ -45,12 +45,11 @@
 /**********************************************************************************************************************/
 
 /* Let new tab button fill the right side of the tabbar. */
-
-.tabs-newtab-button .toolbarbutton-icon,
+#tabs-newtab-button .toolbarbutton-icon,
 #new-tab-button .toolbarbutton-icon {
   margin-left: -1px !important;
   /* Make the icon a little smaller */
-  padding: 8px 10px 8px 9px !important;
+  padding: 8px 9px 8px 9px !important;
 }
 
 /**********************************************************************************************************************/
