@@ -256,6 +256,7 @@
 .tab-bottom-line {
   margin-left: -28px !important;
   margin-right: -28px !important;
+  height: 1px !important;
 }
 
 /**********************************************************************************************************************/
