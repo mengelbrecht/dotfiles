@@ -193,36 +193,6 @@
 
 /**********************************************************************************************************************/
 
-/*
- * Hide the identity label and the separator if the identity is verified.
- * Instead, use blue for the connection icon instead of green to signal that the identity is verified.
- */
-
-/* Hide separator in urlbar */
-
-#urlbar[pageproxystate="valid"] > #identity-box.verifiedIdentity,
-#urlbar[pageproxystate="valid"] > #identity-box.chromeUI,
-#urlbar[pageproxystate="valid"] > #identity-box.extensionPage {
-  padding-inline-end: 4px !important;
-  margin-inline-end: 4px !important;
-  border-inline-end: none !important;
-}
-
-/* Hide separator on not secure sites */
-
-#identity-box.notSecureText {
-  border-image-slice: 0 !important;
-  margin-right: 0px !important;
-}
-
-/* Hide identity label */
-
-#identity-icon-labels {
-  display: none !important;
-}
-
-/**********************************************************************************************************************/
-
 /* Only show page actions on hover */
 
 #urlbar-container:not(:hover) #urlbar:not([focused]) #page-action-buttons {
