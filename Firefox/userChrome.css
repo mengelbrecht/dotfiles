@@ -44,19 +44,9 @@
 #tabs-newtab-button .toolbarbutton-icon,
 #new-tab-button .toolbarbutton-icon {
   margin-left: -1px !important;
-  /* Make the icon a little smaller */
-  padding: 8px 9px 8px 9px !important;
-}
-
-/**********************************************************************************************************************/
-
-/* Move menu button to the left */
-
-#PanelUI-button {
-  -moz-box-ordinal-group: 0 !important;
-  /* Remove separator before menu button */
-  border-inline-start: 0px !important;
-  margin-left: -1px !important;
+  list-style-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 10 10" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="2" fill="context-fill" fill-opacity="context-fill-opacity"/></svg>') !important;
+  border-radius: 0 !important;
+  opacity: 0.4 !important;
 }
 
 /**********************************************************************************************************************/
