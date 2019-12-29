@@ -118,23 +118,17 @@
 
 #urlbar {
   border: none !important;
-  height: 27px !important;
+  box-shadow: 0 0 0 1px var(--lwt-toolbar-field-border-color, hsla(240, 5%, 5%, 0.25)) !important;
 }
 
-#urlbar[focused] {
-    box-shadow: 0 0 0 2px rgb(59, 157, 238) !important;
+#urlbar[focused],
+#urlbar-background[focused] {
+  border: none !important;
+  box-shadow: 0 0 0 2px rgb(59, 157, 238) !important;
 }
 
 #nav-bar {
-    padding: 3px 2px 1px 2px !important;
-}
-
-/**********************************************************************************************************************/
-
-/* Remove padding to urlbar */
-
-#bookmarks-menu-button {
-  padding-right: 0 !important;
+  padding: 2px !important;
 }
 
 /**********************************************************************************************************************/
