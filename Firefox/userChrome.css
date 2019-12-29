@@ -34,8 +34,7 @@
 .tab-content[pinned][attention]:not([selected]),
 .tab-content[pinned][titlechanged]:not([selected]),
 .tab-content[attention]:not([selected]) {
-  /* Context variables do not seem to work in embedded svg files */
-  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 10 10" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5" fill="%234b7bec"/></svg>') !important;
+  background-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 10 10" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="5" fill="context-fill" fill-opacity="context-fill-opacity"/></svg>') !important;
   background-position: top 3px right 3px !important;
 }
 
