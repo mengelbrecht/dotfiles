@@ -223,3 +223,37 @@
 #nav-bar {
   padding-left: 80px !important;
 }
+
+/**********************************************************************************************************************/
+
+/* 
+ * Use Safari like style
+ * https://github.com/ideaweb/firefox-safari-style/blob/master/css/userChrome.css
+ */
+
+#navigator-toolbox {
+  border-bottom: 1px solid #aaaaaa !important;
+}
+
+#tabbrowser-tabpanels,
+#TabsToolbar .tabbrowser-tab .tab-background {
+  background: transparent !important;
+}
+
+#tabbrowser-tabs {
+  border-bottom: 1px solid #afb0b0 !important;
+}
+
+#nav-bar {
+  background: linear-gradient(to bottom, #e3e4e4 0%, #d4d5d5 100%) !important;
+}
+
+#TabsToolbar .toolbar-items {
+  background: linear-gradient(to bottom, #bdbebe 0%, #b5b6b6 100%) !important;
+  border-top: 1px solid #afb0b0;
+  overflow: hidden;
+}
+
+#TabsToolbar .tabbrowser-tab[selected] {
+  background: linear-gradient(to bottom, #d4d5d5 0%, #cacbcb 100%) !important;
+}
