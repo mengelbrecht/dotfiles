@@ -199,3 +199,27 @@
 #navigator-toolbox[movingtab] > #nav-bar {
   margin-top: unset !important;
 }
+
+/**********************************************************************************************************************/
+
+/* Move tabs below navbar */
+
+.titlebar-buttonbox-container {
+  position: fixed;
+  display: block;
+  top: 0;
+  left: 0;
+}
+
+#titlebar {
+  -moz-box-ordinal-group: 2;
+  -moz-appearance: none !important;
+}
+
+#TabsToolbar .titlebar-spacer {
+  display: none;
+}
+
+#nav-bar {
+  padding-left: 80px !important;
+}
