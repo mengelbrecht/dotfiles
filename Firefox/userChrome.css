@@ -1,14 +1,5 @@
 /**********************************************************************************************************************/
 
-/* Variables to modify the style */
-
-:root {
-  --mod-url-font: "PragmataPro";
-  --bar-height: 25px;
-}
-
-/**********************************************************************************************************************/
-
 /* Remove line above tabs */
 
 .tab-line {
@@ -119,12 +110,8 @@
 /* Shrink tabbar */
 
 #tabbrowser-tabs {
-  --tab-min-height: calc(1px + var(--bar-height)) !important;
-  height: var(--bar-height) !important;
-}
-
-#TabsToolbar {
-  height: var(--bar-height) !important;
+  --tab-min-height: 25px !important;
+  height: 25px !important;
 }
 
 /* Style urlbar */
