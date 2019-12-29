@@ -155,21 +155,10 @@
 /* Use custom font for urls */
 
 .urlbar-input-box,
-.autocomplete-richlistitem .ac-url,
 #statuspanel[type="overLink"] {
-  font-family: var(--mod-url-font) !important;
-}
-
-/* Shrink navbar url font size a little */
-
-.urlbar-input-box {
+  font: inherit !important;
   font-size: 13px !important;
-}
-
-/* Slightly increase statuspanel url font size */
-
-#statuspanel[type="overLink"] {
-  font-size: 12px !important;
+  font-family: PragmataPro !important;
 }
 
 /**********************************************************************************************************************/
