@@ -92,15 +92,10 @@
 
 /**********************************************************************************************************************/
 
-/*
- * Remove shadow on tabs scroll icons
- * https://github.com/Maxmel/dotfiles/blob/81ea2120e2da313431d3417327cf57a8a7fe5b68/userChrome.css#L226
- */
+/* Remove shadow on tabs scroll icons */
 
-.tabbrowser-arrowscrollbox > .arrowscrollbox-overflow-start-indicator:not([collapsed]),
-.tabbrowser-arrowscrollbox > .arrowscrollbox-overflow-end-indicator:not([collapsed]) {
+.scrollbutton-up[orient="horizontal"] ~ spacer {
   background: none !important;
-  border: none !important;
 }
 
 /**********************************************************************************************************************/
