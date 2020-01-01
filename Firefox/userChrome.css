@@ -182,22 +182,11 @@
 
 /**********************************************************************************************************************/
 
-/*
- * Disable Mozillas tab jumping nonsense when moving tabs
- * https://github.com/Aris-t2/CustomCSSforFx/blob/d23e223e1464ec2f103746856f419186efc87bf5/classic/css/tabs/tabs_below_navigation_toolbar_fx65_v2.css#L215
- */
+/* Disable expanding tab drag area */
 
-#navigator-toolbox[movingtab] > #titlebar > #TabsToolbar {
-  padding-bottom: unset !important;
-}
-
-#navigator-toolbox[movingtab] #tabbrowser-tabs {
+#tabbrowser-tabs[movingtab] {
   padding-bottom: unset !important;
   margin-bottom: unset !important;
-}
-
-#navigator-toolbox[movingtab] > #nav-bar {
-  margin-top: unset !important;
 }
 
 /**********************************************************************************************************************/
