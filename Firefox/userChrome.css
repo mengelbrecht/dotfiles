@@ -147,17 +147,18 @@
 
 /* Only show page actions on hover */
 
-#urlbar-container:not(:hover) #urlbar:not([focused]) #page-action-buttons {
+:root:not([customizing]) #nav-bar #urlbar-container #page-action-buttons {
   opacity: 0 !important;
-  transition: opacity 150ms ease !important;
+  transition: all 250ms ease !important;
   width: 0 !important;
   overflow: hidden;
+  pointer-events: none !important;
 }
 
-#urlbar-container:hover #page-action-buttons {
+:root:not([customizing]) :hover > #nav-bar #urlbar-container #page-action-buttons {
   opacity: 1 !important;
-  transition: opacity 150ms ease !important;
   width: auto !important;
+  pointer-events: auto !important;
 }
 
 /**********************************************************************************************************************/
