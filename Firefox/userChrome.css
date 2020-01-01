@@ -163,6 +163,29 @@
 
 /**********************************************************************************************************************/
 
+/* Only show navbar buttons on hover */
+
+:root:not([customizing]) #nav-bar toolbarbutton,
+:root:not([customizing]) #TabsToolbar toolbarbutton {
+  margin-left: -30px !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: all 250ms ease !important;
+}
+
+:root:not([customizing]) :hover > #nav-bar toolbarbutton,
+:root:not([customizing]) :hover > #TabsToolbar toolbarbutton {
+  margin-left: 0 !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+:root:not([customizing]) :hover > #nav-bar #PanelUI-button {
+  margin-right: 4px !important;
+}
+
+/**********************************************************************************************************************/
+
 /* Use grayscale favicons for not hovered/selected tabs */
 
 .tabbrowser-tab .tab-icon-image {
