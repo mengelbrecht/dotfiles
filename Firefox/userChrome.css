@@ -244,10 +244,6 @@
   background: transparent !important;
 }
 
-#tabbrowser-tabs {
-  border-bottom: 1px solid #afb0b0 !important;
-}
-
 #nav-bar {
   background: linear-gradient(to bottom, #e3e4e4 0%, #d4d5d5 100%) !important;
 }
