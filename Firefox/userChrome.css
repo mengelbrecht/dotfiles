@@ -42,16 +42,6 @@
 
 /**********************************************************************************************************************/
 
-/* Decrease height of side borders to prevent overlap */
-
-.tabbrowser-tab::before,
-.tabbrowser-tab::after,
-.titlebar-spacer[type="pre-tabs"] {
-  margin-bottom: 1px !important;
-}
-
-/**********************************************************************************************************************/
-
 /*
  * Only show tab close button on hover
  * https://www.reddit.com/r/FirefoxCSS/comments/7faicl/any_way_to_hide_close_tab_button_until_you_hover
