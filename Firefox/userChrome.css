@@ -209,6 +209,21 @@
 
 /**********************************************************************************************************************/
 
+/* 
+ * Revert tab throbber
+ * https://www.reddit.com/r/FirefoxCSS/comments/71vbds/revert_the_tab_throbber_in_firefox_57/
+ */
+.tab-throbber[busy]::before {
+  background-image: url("chrome://global/skin/icons/loading.png") !important;
+  animation: unset !important;
+}
+
+.tab-throbber[busy]:not([progress])::before {
+  filter: grayscale(100%);
+}
+
+/**********************************************************************************************************************/
+
 /* Move tabs below navbar */
 
 .titlebar-buttonbox-container {
