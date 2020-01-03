@@ -35,9 +35,8 @@
 #tabs-newtab-button .toolbarbutton-icon,
 #new-tab-button .toolbarbutton-icon {
   margin-left: -1px !important;
-  list-style-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 10 10" width="5" height="5" xmlns="http://www.w3.org/2000/svg"><circle cx="5" cy="5" r="2" fill="context-fill" fill-opacity="context-fill-opacity"/></svg>') !important;
+  list-style-image: url('data:image/svg+xml;utf8,<svg viewBox="0 0 24 24" width="24" height="24" xmlns="http://www.w3.org/2000/svg"><path stroke="%23606060" d="M0,11L22,11 M11,0L11,22"/></svg>') !important;
   border-radius: 0 !important;
-  opacity: 0.4 !important;
 }
 
 /**********************************************************************************************************************/
