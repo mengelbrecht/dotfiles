@@ -98,6 +98,10 @@
 
 /* Shrink tabbar */
 
+.toolbar-items {
+  height: 25px !important;
+}
+
 #tabbrowser-tabs {
   --tab-min-height: 25px !important;
   height: 25px !important;
