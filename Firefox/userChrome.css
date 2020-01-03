@@ -239,7 +239,13 @@
  */
 
 #navigator-toolbox {
-  border-bottom: 1px solid #aaaaaa !important;
+  border-bottom: 1px solid #A6A6A6 !important;
+}
+
+.tabbrowser-tab::after,
+.tabbrowser-tab::before {
+  border-left: 1px solid #A6A6A6 !important;
+  opacity: 1 !important;
 }
 
 #tabbrowser-tabpanels,
@@ -248,15 +254,15 @@
 }
 
 #nav-bar {
-  background: linear-gradient(to bottom, #e3e4e4 0%, #d4d5d5 100%) !important;
+  background: linear-gradient(to bottom, #E4E4E4 0%, #D6D6D6 100%) !important;
 }
 
 #TabsToolbar .toolbar-items {
-  background: linear-gradient(to bottom, #bdbebe 0%, #b5b6b6 100%) !important;
-  border-top: 1px solid #afb0b0;
+  background: linear-gradient(to bottom, #C0C0C0 0%, #B7B7B7 100%) !important;
+  border-top: 1px solid #B0B0B0;
   overflow: hidden;
 }
 
 #TabsToolbar .tabbrowser-tab[selected] {
-  background: linear-gradient(to bottom, #d4d5d5 0%, #cacbcb 100%) !important;
+  background: linear-gradient(to bottom, #D5D5D5 0%, #CCCCCC 100%) !important;
 }
