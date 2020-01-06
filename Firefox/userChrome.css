@@ -230,12 +230,12 @@ toolbarbutton#alltabs-button {
  */
 
 #navigator-toolbox {
-  border-bottom: 1px solid #A6A6A6 !important;
+  border-bottom: 1px solid #a6a6a6 !important;
 }
 
 .tabbrowser-tab::after,
 .tabbrowser-tab::before {
-  border-left: 1px solid #A6A6A6 !important;
+  border-left: 1px solid #a6a6a6 !important;
   opacity: 1 !important;
 }
 
@@ -245,17 +245,18 @@ toolbarbutton#alltabs-button {
 }
 
 #nav-bar {
-  background: linear-gradient(to bottom, #E4E4E4 0%, #D6D6D6 100%) !important;
+  background: linear-gradient(to bottom, #e4e4e4 0%, #d6d6d6 100%) !important;
 }
 
 #TabsToolbar .toolbar-items {
-  background: linear-gradient(to bottom, #C0C0C0 0%, #B7B7B7 100%) !important;
-  border-top: 1px solid #B0B0B0;
+  background: linear-gradient(to bottom, #c0c0c0 0%, #b7b7b7 100%) !important;
+  border-top: 1px solid #b0b0b0;
   overflow: hidden;
 }
 
 #TabsToolbar .tabbrowser-tab[selected] {
-  background: linear-gradient(to bottom, #D5D5D5 0%, #CCCCCC 100%) !important;
+  background: linear-gradient(to bottom, #d5d5d5 0%, #cccccc 100%) !important;
+}
 
 /**********************************************************************************************************************/
 
