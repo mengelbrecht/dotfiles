@@ -56,6 +56,13 @@
   background: none !important;
 }
 
+/* Hide tab scroller buttons */
+toolbarbutton.scrollbutton-up,
+toolbarbutton.scrollbutton-down,
+toolbarbutton#alltabs-button {
+  display: none !important;
+}
+
 /**********************************************************************************************************************/
 
 /* Hide page action button */
