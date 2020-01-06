@@ -98,6 +98,12 @@ toolbarbutton#alltabs-button {
   min-width: 1em !important;
 }
 
+/* Disable tab loading burst */
+
+.tabbrowser-tab .tab-loading-burst {
+  display: none;
+}
+
 /* Style urlbar */
 
 #urlbar {
