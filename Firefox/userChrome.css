@@ -107,6 +107,8 @@ toolbarbutton#alltabs-button {
 /* Style urlbar */
 
 #urlbar {
+  min-height: 24px !important;
+  height: 24px !important;
   border: none !important;
   box-shadow: 0 0 0 1px var(--lwt-toolbar-field-border-color, hsla(240, 5%, 5%, 0.25)) !important;
 }
@@ -119,7 +121,7 @@ toolbarbutton#alltabs-button {
 
 #nav-bar {
   padding-top: 2px !important;
-  padding-bottom: 2px !important;
+  padding-bottom: 1px !important;
 }
 
 /**********************************************************************************************************************/
@@ -226,7 +228,7 @@ toolbarbutton#alltabs-button {
 .titlebar-buttonbox-container {
   position: fixed;
   display: block;
-  top: 0;
+  top: -2px !important;
   left: 0;
 }
 
