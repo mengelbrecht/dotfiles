@@ -41,28 +41,6 @@
 
 /**********************************************************************************************************************/
 
-/*
- * Only show tab close button on hover
- * https://www.reddit.com/r/FirefoxCSS/comments/7faicl/any_way_to_hide_close_tab_button_until_you_hover
- */
-
-.tabbrowser-tab:not([pinned]) .tab-close-button {
-  transition: opacity 200ms !important;
-}
-
-.tabbrowser-tab:not([pinned]):not([hover]) .tab-close-button {
-  opacity: 0 !important;
-  width: 0 !important;
-  overflow: hidden;
-}
-
-.tabbrowser-tab:not([pinned]):hover .tab-close-button {
-  opacity: 1 !important;
-  width: auto !important;
-}
-
-/**********************************************************************************************************************/
-
 /* Make tab close icon smaller */
 
 .tabbrowser-tab:not([pinned]) .tab-close-button {
