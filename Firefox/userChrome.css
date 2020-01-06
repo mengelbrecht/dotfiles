@@ -279,4 +279,18 @@ toolbarbutton#alltabs-button {
 
 #TabsToolbar .tabbrowser-tab[selected] {
   background: linear-gradient(to bottom, #D5D5D5 0%, #CCCCCC 100%) !important;
+
+/**********************************************************************************************************************/
+
+/*
+ * Make tabs always fill the tabbar
+ * https://www.reddit.com/r/FirefoxCSS/comments/ekrufv/how_can_i_make_my_tabs_fill_the_tab_bar/
+ */
+.tabbrowser-tab[fadein] {
+  max-width: 100vw !important;
+}
+
+.tab-label {
+  -moz-box-flex: 1 !important;
+  text-align: center !important;
 }
