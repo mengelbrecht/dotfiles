@@ -92,6 +92,12 @@ toolbarbutton#alltabs-button {
   height: 25px !important;
 }
 
+/* Reduce minimal tab width */
+
+.tabbrowser-tab {
+  min-width: 1em !important;
+}
+
 /* Style urlbar */
 
 #urlbar {
