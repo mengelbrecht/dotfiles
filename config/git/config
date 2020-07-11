@@ -6,7 +6,8 @@
 	safecrlf = warn
 	trustctime = false
 	excludesfile = ~/.config/git/ignore
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta --theme="OneHalfDark"
+	hooksPath = .githooks
 [grep]
 	lineNumber = true
 [include]
@@ -27,9 +28,6 @@
 	required = true
 [http]
 	postBuffer = 524288000
-[merge]
-	tool = vimdiff
-	conflictstyle = diff3
 [mergetool]
 	prompt = false
 [stash]
@@ -40,9 +38,5 @@
 	ff = only
 [status]
 	showUntrackedFiles = all
-[diff]
-	tool = icdiff
-[difftool]
-	prompt = false
-[difftool "icdiff"]
-	cmd = /usr/local/bin/icdiff --line-numbers $LOCAL $REMOTE
+[interactive]
+    diffFilter = delta --color-only
