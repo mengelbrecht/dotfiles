@@ -73,6 +73,24 @@ fi
 alias cask='brew cask'
 # }}}
 
+# MacPorts {{{
+macports="/opt/local"
+if [[ -d "${macports}" ]]; then
+  export PATH="${macports}/bin:${macports}/sbin:${PATH}"
+  export MANPATH="${macports}/share/man:${MANPATH}"
+  export INFOPATH="${macports}/share/info:${INFOPATH}"
+  fpath=(${macports}/share/zsh/site-functions ${fpath})
+
+  if [[ -d "${macports}/libexec/gnubin" ]]; then
+    export PATH="${macports}/libexec/gnubin:${PATH}"
+  fi
+
+  portup() {
+    sudo port selfupdate && sudo port upgrade outdated && sudo port reclaim
+  }
+fi
+# }}}
+
 # Editors {{{
 if (( $+commands[nvim] )); then
   export EDITOR='nvim'
