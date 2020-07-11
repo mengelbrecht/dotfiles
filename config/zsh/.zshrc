@@ -390,7 +390,7 @@ alias gXw='gXr && gXc'
 # }}}
 
 # Misc {{{
-alias ssh='TERM=xterm-256color ssh'
+export GPG_TTY=$(tty)
 
 alias rm='nocorrect rm -i'
 alias tm='((tmux has -t default &> /dev/null) && tmux -u attach -t default) || tmux -u new -s default'
