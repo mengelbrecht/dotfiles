@@ -202,15 +202,12 @@ fi
 # }}}
 
 # Grep {{{
-
 export GREP_COLOR='37;45'             # BSD
 export GREP_COLORS="mt=${GREP_COLOR}" # GNU
 alias grep="grep --color=auto"
-
 # }}}
 
 # Git {{{
-
 _git_log_medium_format='%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
 _git_log_oneline_format='%C(auto,yellow)%h %C(auto,green)%ad%C(auto,red)%d %C(auto,reset)%s%C(auto,blue) [%cn]%C(auto,reset)'
 _git_log_brief_format='%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
@@ -398,11 +395,9 @@ alias ssh='TERM=xterm-256color ssh'
 alias rm='nocorrect rm -i'
 alias tm='((tmux has -t default &> /dev/null) && tmux -u attach -t default) || tmux -u new -s default'
 # }}}
-
 # }}}
 
 # Helper Functions {{{
-
 diff() {
   if (( $+commands[git] )); then
     git --no-pager diff --color=auto --no-ext-diff --no-index "$@"
@@ -454,7 +449,6 @@ shrinkPDF() {
   ps2pdf "${1}" "${1}.pdf"
   mv "${1}.pdf" "${1}"
 }
-
 # }}}
 
 # Completion System {{{
