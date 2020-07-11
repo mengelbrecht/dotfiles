@@ -654,11 +654,3 @@ fi
 export -U PATH
 export -U MANPATH
 # }}}
-
-# Start tmux {{{
-
-if [[ -z "$TMUX" ]]; then
-  tm
-fi
-
-# }}}
