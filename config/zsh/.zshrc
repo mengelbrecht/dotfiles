@@ -430,6 +430,10 @@ cdls() {
   builtin cd "$argv[-1]" && ls -l "${(@)argv[1,-2]}"
 }
 
+uuid4() {
+  python -c 'import uuid; import sys; sys.stdout.write(str(uuid.uuid4()))' | pbcopy
+}
+
 # fh - "find [in] history"
 # From: https://github.com/junegunn/fzf/wiki/examples#command-history
 function fh() {
