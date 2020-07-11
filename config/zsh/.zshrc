@@ -53,21 +53,21 @@ fi
 # Homebrew {{{
 export HOMEBREW_NO_ANALYTICS=1
 
-if [[ -d "${HOME}/.homebrew" ]]; then
-  homebrew="${HOME}/.homebrew"
-elif [[ -f "/usr/local/bin/brew" ]]; then
-  homebrew="/usr/local"
-fi
-
+homebrew="/usr/local"
 if [[ -d "${homebrew}" ]]; then
-  export PATH="${homebrew}/bin:${PATH}"
+  export PATH="${homebrew}/bin:${homebrew}/sbin:${PATH}"
   export MANPATH="${homebrew}/share/man:${MANPATH}"
   export INFOPATH="${homebrew}/share/info:${INFOPATH}"
   fpath=(${homebrew}/share/zsh/site-functions ${fpath})
-fi
 
-if [[ -d "/home/linuxbrew" ]]; then
-  eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+  if [[ -d "${homebrew}/opt/coreutils" ]]; then
+    export PATH="${homebrew}/opt/coreutils/libexec/gnubin:${PATH}"
+    export MANPATH="${homebrew}/opt/coreutils/libexec/gnuman:${MANPATH}"
+  fi
+
+  brewup() {
+    brew update && brew upgrade && brew cleanup
+  }
 fi
 
 alias cask='brew cask'
@@ -93,17 +93,7 @@ if [[ "${OSTYPE}" =~ "darwin" ]]; then
   # Load ssh identities
   ssh-add -A -K 2> /dev/null
 
-  # Add coreutils without 'g' prefix to path
-  if [[ -d "${homebrew}/opt/coreutils" ]]; then
-    export PATH="${homebrew}/opt/coreutils/libexec/gnubin:${PATH}"
-    export MANPATH="${homebrew}/opt/coreutils/libexec/gnuman:${MANPATH}"
-  fi
-
-  export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-
-  if [[ -d "${homebrew}/opt/groovy" ]]; then
-    export GROOVY_HOME="/usr/local/opt/groovy/libexec"
-  fi
+  export JAVA_HOME=$(/usr/libexec/java_home -v 14)
 
   alias o='open'
 fi
@@ -414,11 +404,6 @@ diff() {
   else
     command diff --unified "$@"
   fi
-}
-
-# Update and upgrade all packages, afterwards perform a cleanup
-brewup() {
-  brew update && brew upgrade && brew cleanup
 }
 
 # Set executable permissions to folders only
