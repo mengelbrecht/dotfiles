@@ -128,10 +128,6 @@ export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
 export NPM_CONFIG_TMP="${XDG_RUNTIME_DIR}/npm"
 # }}}
 
-# httpie {{{
-export HTTPIE_CONFIG_DIR="${XDG_CONFIG_HOME}/httpie"
-# }}}
-
 # Directory {{{
 setopt AUTO_CD           # Auto changes to a directory without typing cd.
 setopt AUTO_PUSHD        # Push the old directory onto the stack on cd.
