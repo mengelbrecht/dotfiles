@@ -4,7 +4,7 @@ require 'English'
 
 #------------------------------------------------------------------------------
 task default: %w(update)
-task setup: %w(macos dotfiles homebrew)
+task setup: %w(dotfiles)
 
 verbose(false)
 
@@ -13,7 +13,6 @@ ROOT = File.expand_path(File.dirname(__FILE__))
 HOME = File.expand_path('~')
 MACOS = RUBY_PLATFORM.include? 'darwin'
 LINUX = RUBY_PLATFORM.include? 'linux'
-HOMEBREW_PATH = MACOS ? '/usr/local' : "#{HOME}/.homebrew"
 
 #------------------------------------------------------------------------------
 DOTFILES = [
@@ -28,11 +27,6 @@ LOCAL_FILES = [
 ].freeze
 
 #------------------------------------------------------------------------------
-task :macos do
-  next unless MACOS
-  sh File.join(ROOT, 'macOS-setup.sh')
-end
-
 task :dotfiles do
   DOTFILES.map { |f|
     symlink_path(File.join(ROOT, f), File.join(HOME, ".#{File.basename(f)}"))
@@ -42,23 +36,6 @@ task :dotfiles do
     FileUtils.touch(f)
     info("created empty local file '#{f}'")
   end
-end
-
-task :homebrew do
-  next unless MACOS
-
-  brew_bin = `which brew 2> /dev/null`.strip
-  unless $CHILD_STATUS.success?
-    if File.exist?(HOMEBREW_PATH)
-      error('brew is not part of PATH but homebrew folder exists')
-      next
-    end
-    info('installing homebrew')
-    sh 'ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"'
-    brew_bin = "#{HOMEBREW_PATH}/bin/brew"
-  end
-  sh "#{brew_bin} tap Homebrew/bundle"
-  sh "#{brew_bin} bundle --file=#{ROOT}/config/homebrew/Brewfile"
 end
 
 task :update do
