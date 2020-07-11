@@ -637,8 +637,7 @@ fi
 # }}}
 
 # Slimline {{{
-export GITLINE_REPO_INDICATOR=''
-
+export GITLINE_REPO_INDICATOR='|'
 source "${ZPLUGINDIR}/slimline/slimline.plugin.zsh"
 # }}}
 
