@@ -1,14 +1,8 @@
 *.local
 *.pyc
 
-atom/.apm
-atom/.node-gyp
-atom/blob-store
-atom/compile-cache
-atom/packages
-atom/storage
+bin/
 
-config/borg
 config/nvim/autoload
 config/nvim/plugged
 config/nvim/session
