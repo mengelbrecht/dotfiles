@@ -178,28 +178,19 @@ bindkey "^[b" backward-word
 # Aliases {{{
 
 # ls {{{
-
-if which lsd &> /dev/null; then
-  alias ls='lsd --group-dirs first'
-  alias l='ls'
-  alias ll='ls -l'
-  alias la='ll -a'
+if (( $+commands[dircolors] )); then
+  eval "$(dircolors --sh)" # exports LS_COLORS
+  alias ls='ls --group-directories-first --color=auto'
 else
-  if (( $+commands[dircolors] )); then
-    eval "$(dircolors --sh)" # exports LS_COLORS
-    alias ls='ls --group-directories-first --color=auto'
-  else
-    export LSCOLORS='exfxcxdxbxGxDxabagacad'
-    # Define colors for the completion system.
-    export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
-    alias ls='ls -G'
-  fi
-
-  alias l='ls'
-  alias ll='ls -lh'
-  alias la='ll -A'
+  export LSCOLORS='exfxcxdxbxGxDxabagacad'
+  # Define colors for the completion system.
+  export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=36;01:cd=33;01:su=31;40;07:sg=36;40;07:tw=32;40;07:ow=33;40;07:'
+  alias ls='ls -G'
 fi
 
+alias l='ls'
+alias ll='ls -lh'
+alias la='ll -A'
 # }}}
 
 # htop {{{
