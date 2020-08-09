@@ -53,7 +53,12 @@ fi
 # Homebrew {{{
 export HOMEBREW_NO_ANALYTICS=1
 
-homebrew="/usr/local"
+if [[ -d "${HOME}/.homebrew" ]]; then
+  homebrew="${HOME}/.homebrew"
+elif [[ -f "/usr/local/bin/brew" ]]; then
+  homebrew="/usr/local"
+fi
+
 if [[ -d "${homebrew}" ]]; then
   export PATH="${homebrew}/bin:${homebrew}/sbin:${PATH}"
   export MANPATH="${homebrew}/share/man:${MANPATH}"
