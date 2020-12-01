@@ -2,10 +2,6 @@
 	path = config/hammerspoon
 	url = https://github.com/mgee/hammerspoon-config.git
 	branch = master
-[submodule "config/nvim/plug"]
-	path = config/nvim/plug
-	url = https://github.com/junegunn/vim-plug.git
-	branch = master
 [submodule "config/zsh/zinit"]
 	path = config/zsh/zinit
 	url = https://github.com/zdharma/zinit.git
@@ -13,4 +9,8 @@
 [submodule "config/tmux/tpm"]
 	path = config/tmux/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+	branch = master
+[submodule "config/nvim/autoload"]
+	path = config/nvim/autoload
+	url = https://github.com/junegunn/vim-plug.git
 	branch = master
