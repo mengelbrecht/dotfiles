@@ -113,8 +113,19 @@ export NPM_CONFIG_CACHE="${XDG_CACHE_HOME}/npm"
 export NPM_CONFIG_TMP="${XDG_RUNTIME_DIR}/npm"
 # }}}
 
-# Key Bindings {{{
+# Directory {{{
+setopt AUTO_CD           # Auto changes to a directory without typing cd.
+setopt AUTO_PUSHD        # Push the old directory onto the stack on cd.
+setopt PUSHD_IGNORE_DUPS # Do not store duplicates in the stack.
+setopt PUSHD_SILENT      # Do not print the directory stack after pushd or popd.
+setopt PUSHD_TO_HOME     # Push to home directory when no argument is given.
+setopt AUTO_NAME_DIRS    # Auto add variable-stored paths to ~ list.
+setopt MULTIOS           # Write to multiple descriptors.
+setopt EXTENDED_GLOB     # Use extended globbing syntax.
+unsetopt CLOBBER         # Do not overwrite existing files with > and >>. Use >! and >>! to bypass.
+# }}}
 
+# Key Bindings {{{
 # Expands .... to ../..
 function expand-dot-to-parent-directory-path {
   if [[ ${LBUFFER} = *.. ]]; then
@@ -280,7 +291,6 @@ zinit light-mode compile"{*.zsh,lib/*.zsh,sections/*.zsh,zsh-async/*.zsh}" for m
 zinit wait lucid for \
   PZTM::history \
   PZTM::utility \
-  PZTM::directory \
   PZTM::git/alias.zsh
 
 zinit wait"0" lucid light-mode for zsh-users/zsh-history-substring-search
