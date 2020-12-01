@@ -3,6 +3,4 @@
 
 bin/
 
-config/nvim/autoload
-config/nvim/plugged
-config/nvim/session
+config/tmux/plugins/

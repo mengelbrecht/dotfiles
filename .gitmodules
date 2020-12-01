@@ -2,22 +2,6 @@
 	path = config/hammerspoon
 	url = https://github.com/mgee/hammerspoon-config.git
 	branch = master
-[submodule "config/tmux/plugins/tmux-better-mouse-mode"]
-	path = config/tmux/plugins/tmux-better-mouse-mode
-	url = https://github.com/NHDaly/tmux-better-mouse-mode.git
-	branch = master
-[submodule "config/tmux/plugins/tmux-pain-control"]
-	path = config/tmux/plugins/tmux-pain-control
-	url = https://github.com/tmux-plugins/tmux-pain-control.git
-	branch = master
-[submodule "config/tmux/plugins/tmux-yank"]
-	path = config/tmux/plugins/tmux-yank
-	url = https://github.com/tmux-plugins/tmux-yank.git
-	branch = master
-[submodule "config/tmux/plugins/tmux-prefix-highlight"]
-	path = config/tmux/plugins/tmux-prefix-highlight
-	url = https://github.com/tmux-plugins/tmux-prefix-highlight.git
-	branch = master
 [submodule "config/nvim/plug"]
 	path = config/nvim/plug
 	url = https://github.com/junegunn/vim-plug.git
@@ -25,4 +9,8 @@
 [submodule "config/zsh/zinit"]
 	path = config/zsh/zinit
 	url = https://github.com/zdharma/zinit.git
+	branch = master
+[submodule "config/tmux/tpm"]
+	path = config/tmux/tpm
+	url = https://github.com/tmux-plugins/tpm.git
 	branch = master
