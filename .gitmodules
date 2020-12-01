@@ -2,26 +2,6 @@
 	path = config/hammerspoon
 	url = https://github.com/mgee/hammerspoon-config.git
 	branch = master
-[submodule "config/zsh/plugins/slimline"]
-	path = config/zsh/plugins/slimline
-	url = https://github.com/mgee/slimline.git
-	branch = master
-[submodule "config/zsh/plugins/zsh-completions"]
-	path = config/zsh/plugins/zsh-completions
-	url = https://github.com/zsh-users/zsh-completions.git
-	branch = master
-[submodule "config/zsh/plugins/zsh-history-substring-search"]
-	path = config/zsh/plugins/zsh-history-substring-search
-	url = https://github.com/zsh-users/zsh-history-substring-search.git
-	branch = master
-[submodule "config/zsh/plugins/zsh-syntax-highlighting"]
-	path = config/zsh/plugins/zsh-syntax-highlighting
-	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-	branch = master
-[submodule "config/zsh/plugins/zsh-autosuggestions"]
-	path = config/zsh/plugins/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions.git
-	branch = master
 [submodule "config/tmux/plugins/tmux-better-mouse-mode"]
 	path = config/tmux/plugins/tmux-better-mouse-mode
 	url = https://github.com/NHDaly/tmux-better-mouse-mode.git
@@ -41,4 +21,8 @@
 [submodule "config/nvim/plug"]
 	path = config/nvim/plug
 	url = https://github.com/junegunn/vim-plug.git
+	branch = master
+[submodule "config/zsh/zinit"]
+	path = config/zsh/zinit
+	url = https://github.com/zdharma/zinit.git
 	branch = master
