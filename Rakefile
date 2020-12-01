@@ -22,7 +22,6 @@ DOTFILES = [
 
 LOCAL_FILES = [
   'config/git/config.local',
-  'config/nvim/vimrc.local',
   'config/zsh/config.local'
 ].freeze
 
