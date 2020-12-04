@@ -3,7 +3,7 @@ dotfiles
 
 ## Cloning
 
-`git clone --recursive https://github.com/mgee/dotfiles.git ~/.dotfiles`
+`git clone --recursive https://github.com/mengelbrecht/dotfiles.git ~/.dotfiles`
 
 ## Setup
 
