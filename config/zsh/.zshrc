@@ -285,6 +285,7 @@ zstyle ':prezto:*:*' color 'yes'
 declare -A ZINIT
 ZINIT[HOME_DIR]="${ZDATADIR}/zinit"
 ZINIT[ZCOMPDUMP_PATH]="${ZCACHEDIR}/zcompdump"
+ZINIT[COMPINIT_OPTS]="-u"
 source "${ZDOTDIR}/zinit/zinit.zsh"
 
 zinit light-mode compile"{*.zsh,lib/*.zsh,sections/*.zsh,zsh-async/*.zsh}" for mengelbrecht/slimline
