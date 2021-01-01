@@ -283,6 +283,12 @@ zstyle ':prezto:module:git:log:medium' format '%C(bold)Commit:%C(reset) %C(green
 zstyle ':prezto:module:utility:ls' dirs-first 'yes'
 zstyle ':prezto:*:*' color 'yes'
 
+# Additional git aliases for Cleanup and Restore (X) {{{
+alias gXc='git clean -dxf'
+alias gXr='git reset --hard HEAD'
+alias gXw='gXr && gXc'
+# }}}
+
 declare -A ZINIT
 ZINIT[HOME_DIR]="${ZDATADIR}/zinit"
 ZINIT[ZCOMPDUMP_PATH]="${ZCACHEDIR}/zcompdump"
