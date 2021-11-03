@@ -49,6 +49,12 @@ if [[ ! -d "${ZCACHEDIR}" ]]; then
 fi
 # }}}
 
+# MacPorts {{{
+if [[ -d "/opt/local/bin" ]]; then
+  export PATH="/opt/local/bin:/opt/local/sbin:${PATH}"
+fi
+# }}}
+
 # Homebrew {{{
 export HOMEBREW_NO_ANALYTICS=1
 
