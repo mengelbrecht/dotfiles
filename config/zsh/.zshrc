@@ -99,6 +99,10 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 export LESSHISTFILE=-
 # }}}
 
+if (( $+commands[lsd] )); then
+  alias ls="lsd --group-dirs first --icon never"
+fi
+
 # macOS Specifics {{{
 if [[ "${OSTYPE}" =~ "darwin" ]]; then
   # Load ssh identities
@@ -287,7 +291,11 @@ bindkey '^[[B' history-substring-search-down
 zstyle ':prezto:module:git:log:brief' format '%C(green)%h%C(reset) %s%n%C(blue)(%ar by %an)%C(red)%d%C(reset)%n'
 zstyle ':prezto:module:git:log:oneline' format '%C(auto,yellow)%h %C(auto,green)%ad%C(auto,red)%d %C(auto,reset)%s%C(auto,blue) [%cn]%C(auto,reset)'
 zstyle ':prezto:module:git:log:medium' format '%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
-zstyle ':prezto:module:utility:ls' dirs-first 'yes'
+if (( $+commands[lsd] )); then
+  zstyle ':prezto:module:utility:ls' color 'no'
+else
+  zstyle ':prezto:module:utility:ls' dirs-first 'yes'
+fi
 zstyle ':prezto:*:*' color 'yes'
 
 # Additional git aliases for Cleanup and Restore (X) {{{
