@@ -1,7 +1,7 @@
 [submodule "config/zsh/zinit"]
 	path = config/zsh/zinit
-	url = https://github.com/zdharma/zinit.git
-	branch = master
+	url = https://github.com/zdharma-continuum/zinit.git
+	branch = main
 [submodule "config/tmux/tpm"]
 	path = config/tmux/tpm
 	url = https://github.com/tmux-plugins/tpm.git

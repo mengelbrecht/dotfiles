@@ -309,7 +309,7 @@ zinit wait lucid for \
 
 zinit wait"0" lucid light-mode for zsh-users/zsh-history-substring-search
 zinit wait"1" lucid light-mode for \
-  atinit"zicompinit; zicdreplay" zdharma/fast-syntax-highlighting \
+  atinit"zicompinit; zicdreplay" zdharma-continuum/fast-syntax-highlighting \
   atload"!_zsh_autosuggest_start" zsh-users/zsh-autosuggestions \
   blockf atpull"zinit creinstall -q ." zsh-users/zsh-completions
 # }}}
