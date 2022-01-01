@@ -15,4 +15,7 @@ set -g fish_color_cancel brblack
 set -g fish_color_search_match --background=brblack
 
 set -g fish_pager_color_progress white --background=brblack
+set -g fish_pager_color_background brblack
 set -g fish_pager_color_prefix green
+set -g fish_pager_color_completion white
+set -g fish_pager_color_description yellow
