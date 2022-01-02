@@ -12,3 +12,7 @@ set -gx LESSHISTFILE "-"
 
 alias code "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 alias v "$EDITOR"
+
+if type -q bat
+    set -gx BAT_THEME "TwoDark"
+end
