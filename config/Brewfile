@@ -10,6 +10,7 @@ brew "node"
 brew "openjdk"
 brew "maven"
 brew "ripgrep"
+brew "starship"
 
 cask "affinity-photo"
 cask "appcleaner"
