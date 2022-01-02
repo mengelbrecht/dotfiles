@@ -1,5 +1,7 @@
 brew "bat"
 brew "cloc"
+brew "dog"
+brew "dust"
 brew "fd"
 brew "fish"
 brew "git-delta"
