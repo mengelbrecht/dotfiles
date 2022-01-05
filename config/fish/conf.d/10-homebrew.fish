@@ -1,9 +1,9 @@
-if test -d "/opt/homebrew-intel"
-  set homebrew "/opt/homebrew-intel"
+if test -d /opt/homebrew-intel
+    set homebrew /opt/homebrew-intel
 else if test -d "$HOME/.homebrew"
-  set homebrew "$HOME/.homebrew"
-else if test -f "/usr/local/bin/brew"
-  set homebrew "/usr/local"
+    set homebrew "$HOME/.homebrew"
+else if test -f /usr/local/bin/brew
+    set homebrew /usr/local
 end
 
 if test -d $homebrew
@@ -17,8 +17,8 @@ if test -d $homebrew
         fish_add_path "$homebrew/opt/openjdk/bin"
     end
 
-    set -gx HOMEBREW_NO_ANALYTICS "1"
-    set -gx HOMEBREW_NO_ENV_HINTS "1"
+    set -gx HOMEBREW_NO_ANALYTICS 1
+    set -gx HOMEBREW_NO_ENV_HINTS 1
     set -gx HOMEBREW_INSTALL_BADGE " "
     set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile"
 

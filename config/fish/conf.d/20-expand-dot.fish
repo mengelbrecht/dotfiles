@@ -12,4 +12,4 @@ function expand-dot-to-parent-directory-path -d 'expand ... to ../.. etc'
     end
 end
 
-bind . 'expand-dot-to-parent-directory-path'
+bind . expand-dot-to-parent-directory-path

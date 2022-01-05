@@ -48,7 +48,7 @@ set git_log_oneline_format '%C(auto,yellow)%h %C(auto,green)%ad%C(auto,red)%d %C
 set git_log_medium_format '%C(bold)Commit:%C(reset) %C(green)%H%C(red)%d%n%C(bold)Author:%C(reset) %C(cyan)%an <%ae>%n%C(bold)Date:%C(reset)   %C(blue)%ai (%ar)%C(reset)%n%+B'
 
 # Git
-alias g "git"
+alias g git
 
 # Branch (b)
 alias gb "git branch"
@@ -89,7 +89,7 @@ alias gcr "git revert"
 alias gcR "git reset "HEAD^""
 alias gcs "git show"
 alias gcsS "git show --pretty=short --show-signature"
-alias gcl "git-commit-lost"
+alias gcl git-commit-lost
 alias gcy "git cherry --verbose --abbrev"
 alias gcY "git cherry --verbose"
 
@@ -156,18 +156,18 @@ alias gRm "git remote rename"
 alias gRu "git remote update"
 alias gRp "git remote prune"
 alias gRs "git remote show"
-alias gRb "git-hub-browse"
+alias gRb git-hub-browse
 
 # Stash (s)
 alias gs "git stash"
 alias gsa "git stash apply"
 alias gsx "git stash drop"
-alias gsX "git-stash-clear-interactive"
+alias gsX git-stash-clear-interactive
 alias gsl "git stash list"
-alias gsL "git-stash-dropped"
+alias gsL git-stash-dropped
 alias gsd "git stash show --patch --stat"
 alias gsp "git stash pop"
-alias gsr "git-stash-recover"
+alias gsr git-stash-recover
 alias gss "git stash save --include-untracked"
 alias gsS "git stash save --patch --no-keep-index"
 alias gsw "git stash save --include-untracked --keep-index"
@@ -179,10 +179,10 @@ alias gSf "git submodule foreach"
 alias gSi "git submodule init"
 alias gSI "git submodule update --init --recursive"
 alias gSl "git submodule status"
-alias gSm "git-submodule-move"
+alias gSm git-submodule-move
 alias gSs "git submodule sync"
 alias gSu "git submodule update --remote --recursive"
-alias gSx "git-submodule-remove"
+alias gSx git-submodule-remove
 
 # Tag (t)
 alias gt "git tag"

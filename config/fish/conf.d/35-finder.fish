@@ -30,5 +30,5 @@ end
 
 # https://raw.githubusercontent.com/oh-my-fish/plugin-osx/d6a78545b70bdbb42c13266b23b44b530138ba67/functions/cdf.fish
 function cdf -d "cd to the current Finder directory"
-  cd (pfd)
+    cd (pfd)
 end

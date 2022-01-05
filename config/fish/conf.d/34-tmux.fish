@@ -1,7 +1,7 @@
 alias tmux "tmux -f '$XDG_CONFIG_HOME/tmux/tmux.conf'"
 
 function tm -d "attach tmux to default session"
-    if tmux has -t default &> /dev/null
+    if tmux has -t default &>/dev/null
         tmux -u attach -t default
     else
         tmux -u new -s default
