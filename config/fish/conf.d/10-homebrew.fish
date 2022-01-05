@@ -15,6 +15,8 @@ if test -d $homebrew
 
     if test -d "$homebrew/opt/openjdk/bin"
         fish_add_path "$homebrew/opt/openjdk/bin"
+
+        set -gx JAVA_HOME "$homebrew/opt/openjdk@17/libexec/openjdk.jdk/Contents/Home"
     end
 
     set -gx HOMEBREW_NO_ANALYTICS 1
