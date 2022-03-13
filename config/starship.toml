@@ -42,6 +42,9 @@ symbol = "🅺 "
 disabled = false
 symbol = " "
 
+[nodejs]
+symbol = " "
+
 [package]
 symbol = " "
 
