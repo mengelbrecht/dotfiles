@@ -1,5 +1,4 @@
 brew "bat"
-brew "cloc"
 brew "dog"
 brew "dust"
 brew "fd"
@@ -13,6 +12,7 @@ brew "openjdk"
 brew "maven"
 brew "ripgrep"
 brew "starship"
+brew "tokei"
 
 cask "affinity-photo"
 cask "appcleaner"
