@@ -6,7 +6,7 @@ function cdg -d "cd to git repository root"
     cd (gpr)
 end
 
-set tower_binary "/Applications/Tower.app/Contents/MacOS/gittower"
+set tower_binary "~/Applications/Tower.app/Contents/MacOS/gittower"
 
 if test -x "$tower_binary"
     function tower -d "open tower at git repository root"
