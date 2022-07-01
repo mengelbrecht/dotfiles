@@ -13,16 +13,15 @@ if test -d $homebrew
         fish_add_path "$homebrew/opt/coreutils/libexec/gnubin"
     end
 
-    if test -d "$homebrew/opt/openjdk/bin"
-        fish_add_path "$homebrew/opt/openjdk/bin"
-
-        set -gx JAVA_HOME "$homebrew/opt/openjdk@18/libexec/openjdk.jdk/Contents/Home"
-    end
-
     set -gx HOMEBREW_NO_ANALYTICS 1
     set -gx HOMEBREW_NO_ENV_HINTS 1
     set -gx HOMEBREW_INSTALL_BADGE " "
-    set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile"
+    set -gx HOMEBREW_CASK_OPTS "--appdir=~/Applications --fontdir=/Library/Fonts"
 
+    if test (whoami) = "mengelbrecht"
+        set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile"
+    else
+        set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile.2"
+    end
     alias brewup "brew update && brew upgrade && brew cleanup"
 end
