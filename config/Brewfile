@@ -1,6 +1,5 @@
 brew "bat"
 brew "dog"
-brew "dust"
 brew "fd"
 brew "fish"
 brew "git-delta"
@@ -8,53 +7,32 @@ brew "lsd"
 brew "ncdu"
 brew "neovim"
 brew "node"
-brew "openjdk"
-brew "maven"
 brew "ripgrep"
 brew "starship"
 brew "tokei"
 
-cask "affinity-photo"
 cask "appcleaner"
-cask "arq"
 cask "cyberduck"
 cask "datagrip"
 cask "docker"
-cask "doxie"
-cask "exifrenamer"
 cask "firefox"
-cask "fork"
+cask "google-chrome"
 cask "hammerspoon"
 cask "hex-fiend"
 cask "iina"
 cask "imageoptim"
 cask "intellij-idea"
 cask "iterm2"
-cask "microsoft-edge"
+cask "keepassxc"
+cask "microsoft-excel"
+cask "microsoft-outlook"
+cask "microsoft-powerpoint"
+cask "microsoft-word"
 cask "microsoft-teams"
 cask "monitorcontrol"
 cask "postman"
-cask "sky-ticket"
-cask "spotify"
+cask "the-unarchiver"
 cask "tower"
 cask "visual-studio-code"
-cask "vmware-fusion"
-cask "homebrew/cask-drivers/zsa-wally"
 
-mas "AdGuard for Safari", id: 1440147259
-mas "Cookie", id: 1473091386
-mas "DaisyDisk", id: 411643860
-mas "Dark Reader for Safari", id: 1438243180
-mas "Keynote", id: 409183694
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft Outlook", id: 985367838
-mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Word", id: 462054704
-mas "MoneyMoney", id: 872698314
 mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "Reeder", id: 1529448980
-mas "Strongbox", id: 1270075435
-mas "The Unarchiver", id: 425424353
-mas "Vimari", id: 1480933944
-mas "Xcode", id: 497799835
