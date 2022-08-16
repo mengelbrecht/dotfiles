@@ -10,7 +10,7 @@ set -gx PAGER less
 set -gx LESS "-F -g -i -M -R -S -w -X -z-4"
 set -gx LESSHISTFILE -
 
-alias code "~/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
+alias code "/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin/code"
 alias v "$EDITOR"
 
 if type -q bat

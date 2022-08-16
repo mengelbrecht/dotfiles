@@ -1,5 +1,7 @@
 if test -d /opt/homebrew-intel
     set homebrew /opt/homebrew-intel
+else if test -d /opt/homebrew
+    set homebrew /opt/homebrew
 else if test -d "$HOME/.homebrew"
     set homebrew "$HOME/.homebrew"
 else if test -f /usr/local/bin/brew
@@ -16,7 +18,6 @@ if test -d $homebrew
     set -gx HOMEBREW_NO_ANALYTICS 1
     set -gx HOMEBREW_NO_ENV_HINTS 1
     set -gx HOMEBREW_INSTALL_BADGE " "
-    set -gx HOMEBREW_CASK_OPTS "--appdir=~/Applications --fontdir=/Library/Fonts"
 
     if test (whoami) = "mengelbrecht"
         set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile"
