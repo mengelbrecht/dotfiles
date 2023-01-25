@@ -1,5 +1,6 @@
 set -U fish_greeting
 
+set -gx LANGUAGE "en"
 set -gx LANG "en_US.UTF-8"
 set -gx LC_ALL "$LANG"
 
