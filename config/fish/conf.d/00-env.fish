@@ -12,3 +12,7 @@ set -gx XDG_RUNTIME_DIR "$TMPDIR"
 if test -d "/usr/local/bin"
     fish_add_path "/usr/local/bin"
 end
+
+if test -d "$HOME/bin"
+    fish_add_path "$HOME/bin"
+end
