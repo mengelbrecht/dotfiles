@@ -6,6 +6,10 @@ function cdg -d "cd to git repository root"
     cd (gpr)
 end
 
+if type -q lazygit
+    alias lg "lazygit"
+end
+
 set tower_binary "/Applications/Tower.app/Contents/MacOS/gittower"
 
 if test -x "$tower_binary"
