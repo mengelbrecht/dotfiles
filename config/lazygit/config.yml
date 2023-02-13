@@ -1,16 +1,22 @@
 gui:
-  windowSize: half
-  showCommandLog: false
+  scrollHeight: 4
+  skipUnstageLineWarning: true
   expandFocusedSidePanel: true
   theme:
     selectedLineBgColor:
       - reverse
     selectedRangeBgColor:
       - reverse
+os:
+  editCommand: 'code'
+  editCommandTemplate: '{{editor}} --goto -- {{filename}}:{{line}}'
+  openCommand: 'code -r {{filename}}'
 git:
   paging:
     colorArg: always
     pager: delta --syntax-theme=TwoDark --paging=never
+  log:
+    showGraph: 'always'
 keybinding:
   universal:
     prevItem-alt: 'j'
