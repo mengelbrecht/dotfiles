@@ -2,4 +2,5 @@ if type -q lsd
     alias ls "lsd"
 end
 
-alias l ll
+alias l "ls -l"
+alias la "ls -la"
