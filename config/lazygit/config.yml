@@ -2,6 +2,7 @@ gui:
   scrollHeight: 4
   skipUnstageLineWarning: true
   expandFocusedSidePanel: true
+  showIcons: true
   theme:
     selectedLineBgColor:
       - reverse
