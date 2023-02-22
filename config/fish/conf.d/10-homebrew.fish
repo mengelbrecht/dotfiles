@@ -6,6 +6,8 @@ else if test -d "$HOME/.homebrew"
     set homebrew "$HOME/.homebrew"
 else if test -f /usr/local/bin/brew
     set homebrew /usr/local
+else if test -f /home/linuxbrew/.linuxbrew
+    set homebrew /home/linuxbrew/.linuxbrew
 end
 
 if test -d $homebrew
