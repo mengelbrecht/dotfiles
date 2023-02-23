@@ -29,3 +29,4 @@ keybinding:
   commits:
     moveUpCommit: '<c-j>'
     moveDownCommit: '<c-k>'
+notARepository: 'skip'
