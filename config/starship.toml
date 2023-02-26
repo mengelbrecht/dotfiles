@@ -39,6 +39,7 @@ repo_root_style = 'bold red'
 [git_branch]
 symbol = " "
 format = '[$symbol$branch(:$remote_branch)]($style) '
+style = 'purple'
 
 [git_status]
 format = '([$all_status$ahead_behind]($style) )'
