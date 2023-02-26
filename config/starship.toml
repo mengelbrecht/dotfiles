@@ -2,6 +2,7 @@ add_newline = false
 command_timeout = 2000
 format = "$directory$character"
 right_format = """
+[ ](fg:#33658A)\
 $username\
 [ ](fg:#06969A)
 $hostname\
