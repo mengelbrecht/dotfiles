@@ -1,74 +1,62 @@
-format = "$directory$character"
-right_format = "$all"
 add_newline = false
+command_timeout = 2000
+format = "$directory$character"
+right_format = """
+$username\
+[ ](fg:#06969A)
+$hostname\
+[ ](fg:#86BBD8)
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+[ ](fg:#FCA17D)
+$java\
+$nodejs\
+[ ](fg:#DA627D)
+$cmd_duration\
+$jobs\
+[ ](fg:#9A348E)
+$status\
+"""
 
 [character]
-success_symbol = "[⟩](white)"
-error_symbol = "[⟩](red)"
+success_symbol = '[❯](bold white)'
+
+[cmd_duration]
+format = '󱦟 [$duration]($style) '
 
 [directory]
-repo_root_style = "purple"
+format = '[󰉖 $path]($style)[$read_only]($read_only_style) '
+repo_root_format = '[󰉖 $before_root_path]($before_repo_root_style)[󰊢 $repo_root]($repo_root_style)[$path]($style)[$read_only]($read_only_style) '
 read_only = " "
+truncation_length = 5
+truncation_symbol = "…/"
+style = 'cyan'
+repo_root_style = 'bold red'
 
 [git_branch]
 symbol = " "
+format = '[$symbol$branch(:$remote_branch)]($style) '
 
 [git_status]
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
+format = '([$all_status$ahead_behind]($style) )'
 
-[sudo]
-disabled = false
-symbol = "🔥 "
-
-[aws]
-symbol = "  "
-
-[battery]
-full_symbol = "  "
-charging_symbol = "  "
-discharging_symbol = "  "
-
-[docker_context]
-symbol = " "
-
-[golang]
-symbol = " "
+[hostname]
+ssh_symbol = ''
+format = '[$ssh_symbol  $hostname]($style) '
 
 [java]
 symbol = " "
-
-[kotlin]
-symbol = "🅺 "
-
-[memory_usage]
-disabled = false
-symbol = " "
+format = '[${symbol}($version )]($style)'
 
 [nodejs]
-symbol = " "
+symbol = " "
+format = '[$symbol($version )]($style)'
 
-[package]
-symbol = " "
+[status]
+disabled = false
+symbol = ' '
 
-[perl]
-symbol = " "
-
-[php]
-symbol = " "
-
-[python]
-symbol = " "
-
-[ruby]
-symbol = " "
-
-[rust]
-symbol = " "
-
-[shlvl]
-symbol = " "
-
-[swift]
-symbol = "ﯣ "
+[username]
+format= '[  $user]($style) '
