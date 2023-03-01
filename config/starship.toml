@@ -49,10 +49,12 @@ format = '[$ssh_symbol  $hostname]($style) '
 [java]
 symbol = " "
 format = '[${symbol}($version )]($style)'
+style = 'red'
 
 [nodejs]
 symbol = " "
 format = '[$symbol($version )]($style)'
+style = 'green'
 
 [status]
 disabled = false
