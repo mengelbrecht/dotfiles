@@ -1,0 +1,22 @@
+theme = "onedark"
+
+[editor]
+true-color = true
+color-modes = true
+bufferline = "multiple"
+
+[editor.whitespace.render]
+tab = "all"
+
+[editor.indent-guides]
+render = true
+skip-levels = 1
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[keys.normal]
+tab = ":buffer-next"
+S-tab = ":buffer-previous"
