@@ -10,7 +10,6 @@ $hostname\
 $git_branch\
 $git_commit\
 $git_state\
-$git_status\
 [ ](fg:#FCA17D)
 $java\
 $nodejs\
@@ -38,9 +37,6 @@ repo_root_style = 'bold red'
 symbol = " "
 format = '[$symbol$branch(:$remote_branch)]($style) '
 style = 'purple'
-
-[git_status]
-format = '([$all_status$ahead_behind]($style) )'
 
 [hostname]
 ssh_symbol = ''
