@@ -1,13 +1,13 @@
 if test -d /opt/homebrew-intel
-    set homebrew /opt/homebrew-intel
+    set -g homebrew /opt/homebrew-intel
 else if test -d /opt/homebrew
-    set homebrew /opt/homebrew
+    set -g homebrew /opt/homebrew
 else if test -d "$HOME/.homebrew"
-    set homebrew "$HOME/.homebrew"
+    set -g homebrew "$HOME/.homebrew"
 else if test -f /usr/local/bin/brew
-    set homebrew /usr/local
+    set -g homebrew /usr/local
 else if test -d /home/linuxbrew/.linuxbrew
-    set homebrew /home/linuxbrew/.linuxbrew
+    set -g homebrew /home/linuxbrew/.linuxbrew
 end
 
 if test -d $homebrew
