@@ -13,9 +13,9 @@
 [rebase]
 	autoStash = true
 [merge]
-    conflictstyle = diff3
+	conflictstyle = diff3
 [diff]
-    colorMoved = default
+	colorMoved = default
 [log]
 	decorate = full
 [pull]
@@ -26,5 +26,5 @@
     diffFilter = delta --color-only
 [delta]
 	navigate = true
-    line-numbers = true
+	line-numbers = true
 	syntax-theme = TwoDark
