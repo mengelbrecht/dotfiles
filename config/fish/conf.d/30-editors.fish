@@ -1,4 +1,7 @@
-if type -q nvim
+if type -q hx
+    set -gx EDITOR hx
+    set -gx VISUAL hx
+else if type -q nvim
     set -gx EDITOR nvim
     set -gx VISUAL nvim
 else
