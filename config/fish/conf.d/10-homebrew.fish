@@ -21,10 +21,10 @@ if test -d $homebrew
     set -gx HOMEBREW_NO_ENV_HINTS 1
     set -gx HOMEBREW_INSTALL_BADGE " "
 
-    if test (whoami) = "mengelbrecht"
-        set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile"
-    else
+    if test (whoami) = "mgee"
         set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile.2"
+    else
+        set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile"
     end
     alias brewup "brew update && brew upgrade && brew cleanup"
 end
