@@ -17,6 +17,9 @@ insert = "bar"
 normal = "block"
 select = "underline"
 
+[editor.statusline]
+right = ["diagnostics", "selections", "position", "position-percentage", "file-encoding", "file-line-ending", "file-type"]
+
 [keys.normal]
 tab = ":buffer-next"
 S-tab = ":buffer-previous"
