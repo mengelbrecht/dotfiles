@@ -1,3 +1,5 @@
+tap "int128/kubelogin"
+
 brew "bat"
 brew "bottom"
 brew "dog"
@@ -14,7 +16,6 @@ brew "kubernetes-cli"
 brew "lazygit"
 brew "lsd"
 brew "ncdu"
-brew "neovim"
 brew "node"
 brew "ripgrep"
 brew "starship"
