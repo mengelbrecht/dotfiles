@@ -10,20 +10,6 @@ if type -q lazygit
     alias lg lazygit
 end
 
-set tower_binary "/Applications/Tower.app/Contents/MacOS/gittower"
-
-if test -x "$tower_binary"
-    function tower -d "open tower at git repository root"
-        if test (count $argv) -lt 1
-            command "$tower_binary" (gpr)
-        else
-            pushd "$argv[1]"
-            command "$tower_binary" (gpr)
-            popd
-        end
-    end
-end
-
 # Copyright (c) 2009-2011 Robby Russell and contributors
 # Copyright (c) 2011-2017 Sorin Ionescu and contributors
 #
