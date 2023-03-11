@@ -10,21 +10,23 @@ else if test -d /home/linuxbrew/.linuxbrew
     set -g homebrew /home/linuxbrew/.linuxbrew
 end
 
-if test -d $homebrew
-    fish_add_path "$homebrew/bin"
-
-    if test -d "$homebrew/opt/coreutils/libexec/gnubin"
-        fish_add_path "$homebrew/opt/coreutils/libexec/gnubin"
-    end
-
-    set -gx HOMEBREW_NO_ANALYTICS 1
-    set -gx HOMEBREW_NO_ENV_HINTS 1
-    set -gx HOMEBREW_INSTALL_BADGE " "
-
-    if test (whoami) = "mgee"
-        set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile.2"
-    else
-        set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile"
-    end
-    alias brewup "brew update && brew upgrade && brew cleanup"
+if not test -d $homebrew
+    return
 end
+
+fish_add_path "$homebrew/bin"
+
+if test -d "$homebrew/opt/coreutils/libexec/gnubin"
+    fish_add_path "$homebrew/opt/coreutils/libexec/gnubin"
+end
+
+set -gx HOMEBREW_NO_ANALYTICS 1
+set -gx HOMEBREW_NO_ENV_HINTS 1
+set -gx HOMEBREW_INSTALL_BADGE " "
+
+if test (whoami) = "mgee"
+    set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile.2"
+else
+    set -gx HOMEBREW_BUNDLE_FILE "$XDG_CONFIG_HOME/Brewfile"
+end
+alias brewup "brew update && brew upgrade && brew cleanup"
