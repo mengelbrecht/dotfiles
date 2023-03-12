@@ -3,6 +3,7 @@ theme = "onedark"
 [editor]
 true-color = true
 color-modes = true
+cursorline = true
 bufferline = "multiple"
 
 [editor.whitespace.render]
