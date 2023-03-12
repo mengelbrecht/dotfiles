@@ -9,9 +9,9 @@ gui:
     selectedRangeBgColor:
       - reverse
 os:
-  editCommand: 'code'
-  editCommandTemplate: '{{editor}} --goto -- {{filename}}:{{line}}'
-  openCommand: 'code -r {{filename}}'
+  editCommand: 'hx'
+  editCommandTemplate: '{{editor}} {{filename}}:{{line}}'
+  openCommand: 'open {{filename}}'
 git:
   paging:
     colorArg: always
