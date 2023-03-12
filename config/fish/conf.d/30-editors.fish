@@ -14,7 +14,3 @@ set -gx LESS "-F -g -i -M -R -S -w -X -z-4"
 set -gx LESSHISTFILE -
 
 alias v "$EDITOR"
-
-if type -q bat
-    set -gx BAT_THEME TwoDark
-end
