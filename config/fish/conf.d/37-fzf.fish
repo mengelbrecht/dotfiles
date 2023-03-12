@@ -17,7 +17,7 @@ function vfi
     set -l out $(rg --line-number --column --no-heading $argv "." | fzf --multi --exact --delimiter : --preview 'bat --style=full --color=always --highlight-line {2} {1}' --preview-window 'down,~4,+{2}+4/2')
     if test $status -eq 0
         for i in (seq (count $out))
-            set out[$i] "$(string join ":" $(string split : -m 4 -f 1-3 "$out[$i]"))" 
+            set out[$i] "$(string join ":" $(string split : -m 4 -f 1-3 "$out[$i]"))"
         end
         v $out
     end
