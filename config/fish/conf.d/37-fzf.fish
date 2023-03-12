@@ -1,4 +1,4 @@
-if not type -q fzf
+if not type -q fzf; or not type -q fd; or not type -q rg; or not type -q bat
     return
 end
 
@@ -34,8 +34,7 @@ function find-files
     set -l out $(fzf --multi)
     if test $status -eq 0
         for f in $out
-            commandline -it -- ' '
-            commandline -it -- $f
+            commandline -it -- " $f"
         end
         commandline -f repaint
     end
