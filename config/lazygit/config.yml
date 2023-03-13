@@ -8,6 +8,15 @@ gui:
       - reverse
     selectedRangeBgColor:
       - reverse
+    activeBorderColor:
+      - white
+      - bold
+    inactiveBorderColor:
+      - '#7F848E'
+    cherryPickedCommitBgColor:
+      - blue
+    cherryPickedCommitFgColor:
+      - black
 os:
   editCommand: 'hx'
   editCommandTemplate: '{{editor}} {{filename}}:{{line}}'
