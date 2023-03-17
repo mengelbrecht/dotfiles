@@ -21,6 +21,7 @@ DOTFILES = [
 ].freeze
 
 LOCAL_FILES = [
+  'config/fish/local.fish',
   'config/git/config.local',
   'config/zsh/config.local'
 ].freeze
