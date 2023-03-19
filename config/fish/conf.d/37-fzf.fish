@@ -2,50 +2,77 @@ if not type -q fzf; or not type -q fd; or not type -q rg; or not type -q bat
     return
 end
 
-set -gx FZF_DEFAULT_COMMAND 'fd --hidden --exclude ".git" --exclude ".svn" --exclude ".DS_Store" --type f --strip-cwd-prefix'
-set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
+set -g _fd_options fd --hidden --exclude ".git" --exclude ".svn" --exclude ".DS_Store" --strip-cwd-prefix
+set -gx FZF_DEFAULT_COMMAND "$_fd_options"
 set -gx FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --color=dark,fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe,info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef'
 
-function vf
-    set -l out $(fzf +i --multi --exact --preview 'bat --style=full --color=always --line-range=:200 {}' --preview-window 'down,~4,+{2}+4/2')
-    if test $status -eq 0
-        v $out
-    end
+function _make_path_absolute
+    echo (string replace $HOME "~" $PWD)/(string escape --no-quoted $argv[1])
 end
 
-function vfi
-    set -l out $(rg --line-number --column --no-heading $argv "." | fzf --multi --exact --delimiter : --preview 'bat --style=full --color=always --highlight-line {2} {1}' --preview-window 'down,~4,+{2}+4/2')
+function vi
+    set -l out (rg --line-number --column --no-heading $argv "." | fzf --nth=4 --multi --exact --delimiter : --preview 'bat --style=full --color=always --highlight-line {2} {1}' --preview-window 'down,~4,+{2}+4/2')
     if test $status -eq 0
         for i in (seq (count $out))
-            set out[$i] "$(string join ":" $(string split : -m 4 -f 1-3 "$out[$i]"))"
+            set -l parts (string split : --max 4 --fields 1-3 "$out[$i]")
+            set parts[1] (_make_path_absolute $parts[1])
+            set out[$i] "$(string join ":" $parts)"
         end
         v $out
     end
 end
 
-function cdf
-    set -l out $(fd --hidden --exclude ".git" --exclude ".svn" --type d | fzf)
-    if test $status -eq 0
-        cd -- "$out"
+function _find-files
+    set -l file_type $argv[1]
+    set -l execute $argv[2]
+    set -l additional_fd_options
+    set -l additional_fzf_options
+    if test $file_type -eq 1
+        set additional_fd_options --type d
+        set additional_fzf_options --preview 'lsd --icon always --color always --long --almost-all {}' --preview-window 'down,~4,+{2}+4/2'
+    else if test $file_type -eq 2
+        set additional_fd_options --type f
+        set additional_fzf_options --multi --exact --preview 'bat --style=full --color=always --line-range=:200 {}' --preview-window 'down,~4,+{2}+4/2'
+    else
+        set additional_fzf_options --multi
     end
-end
-
-function find-files
-    set -l out $(fzf --multi)
+    set -l out ($_fd_options $additional_fd_options | fzf $additional_fzf_options)
     if test $status -eq 0
+        commandline --replace (string trim --right (commandline))
         for f in $out
-            commandline -it -- " $f"
+            commandline --insert " $(_make_path_absolute $f)"
         end
-        commandline -f repaint
+        if test $execute -eq 1
+            commandline --function execute
+        end
     end
 end
 
-function find-history
-    set -l out $(history -z | fzf --read0 --print0 -q "$(commandline)")
+function expand-star-to-fzf -d 'expand ** to trigger fzf'
+    set -l cmd (commandline --cut-at-cursor)
+    switch $cmd
+        case '*\*'
+            commandline --replace (string trim --right --chars ' \t*' $cmd)
+            switch (commandline)
+                case 'cd'
+                    _find-files 1 1 
+                case $EDITOR v
+                    _find-files 2 1
+                case '*'
+                    _find-files 0 0
+            end
+        case '*'
+            commandline --insert '*'
+    end
+end
+
+function _find-history
+    set -l out (history --null | fzf --read0 --print0 --query="$(commandline)")
     if test $status -eq 0
-        commandline -- $out
+        commandline --replace $out
+        commandline --function repaint
     end
 end
 
-bind \ct find-files
-bind \cr find-history
+bind \* expand-star-to-fzf
+bind \cr _find-history
