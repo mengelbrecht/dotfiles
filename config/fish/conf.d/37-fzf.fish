@@ -4,7 +4,7 @@ end
 
 set -g _fd_options fd --hidden --exclude ".git" --exclude ".svn" --exclude ".DS_Store" --strip-cwd-prefix
 set -gx FZF_DEFAULT_COMMAND "$_fd_options"
-set -gx FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --color=dark,fg:-1,bg:-1,hl:#c678dd,fg+:#ffffff,bg+:#4b5263,hl+:#d858fe,info:#98c379,prompt:#61afef,pointer:#be5046,marker:#e5c07b,spinner:#61afef,header:#61afef'
+set -gx FZF_DEFAULT_OPTS '--cycle --layout=reverse --border --color=bg+:#414559,bg:#303446,spinner:#f2d5cf,hl:#e78284,fg:#c6d0f5,header:#e78284,info:#ca9ee6,pointer:#f2d5cf,marker:#f2d5cf,fg+:#c6d0f5,prompt:#ca9ee6,hl+:#e78284'
 
 function _make_path_absolute
     echo (string replace $HOME "~" $PWD)/(string escape --no-quoted $argv[1])

@@ -2,3 +2,5 @@ icons:
   separator: "  "
 sorting:
   dir-grouping: first
+color:
+  theme: catppuccin-frappe

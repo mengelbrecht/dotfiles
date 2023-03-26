@@ -4,17 +4,19 @@ gui:
   expandFocusedSidePanel: true
   showIcons: true
   theme:
-    selectedLineBgColor:
-      - reverse
-    selectedRangeBgColor:
-      - reverse
     activeBorderColor:
       - white
       - bold
     inactiveBorderColor:
-      - '#7F848E'
+      - '#737994'
+    optionsTextColor:
+      - '#8caaee'
+    selectedLineBgColor:
+      - '#414559'
+    selectedRangeBgColor:
+      - '#414559'
     cherryPickedCommitBgColor:
-      - blue
+      - cyan
     cherryPickedCommitFgColor:
       - black
 os:
