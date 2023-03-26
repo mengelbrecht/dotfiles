@@ -4,22 +4,20 @@ gui:
   expandFocusedSidePanel: true
   showIcons: true
   theme:
+    lightTheme: false 
     activeBorderColor:
       - white
       - bold
     inactiveBorderColor:
-      - '#737994'
-    optionsTextColor:
-      - '#8caaee'
+      - "#6e738d"
     selectedLineBgColor:
-      - '#414559'
+      - "#363a4f"
     selectedRangeBgColor:
-      - '#414559'
+      - "#5b6078"
     cherryPickedCommitBgColor:
-      - cyan
+      - "#363a4f"
     cherryPickedCommitFgColor:
-      - black
-os:
+      - "#cad3f5"
   editCommand: 'hx'
   editCommandTemplate: '{{editor}} {{filename}}:{{line}}'
   openCommand: 'open {{filename}}'
