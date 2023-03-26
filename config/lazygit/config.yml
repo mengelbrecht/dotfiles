@@ -24,7 +24,7 @@ os:
 git:
   paging:
     colorArg: always
-    pager: delta --syntax-theme=TwoDark --paging=never
+    pager: delta --paging=never
   log:
     showGraph: 'always'
 keybinding:
