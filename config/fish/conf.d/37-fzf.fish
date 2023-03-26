@@ -54,8 +54,8 @@ function expand-star-to-fzf -d 'expand ** to trigger fzf'
         case '*\*'
             commandline --replace (string trim --right --chars ' \t*' $cmd)
             switch (commandline)
-                case 'cd'
-                    _find-files 1 1 
+                case cd
+                    _find-files 1 1
                 case $EDITOR v
                     _find-files 2 1
                 case '*'
