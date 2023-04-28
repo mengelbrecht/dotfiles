@@ -19,6 +19,7 @@ brew "node"
 brew "ripgrep"
 brew "starship"
 brew "tokei"
+brew "trivy"
 
 cask "appcleaner"
 cask "citrix-workspace"
