@@ -1,7 +1,9 @@
 gui:
+  border: rounded
   scrollHeight: 4
   skipUnstageLineWarning: true
   expandFocusedSidePanel: true
+  experimentalShowBranchHeads: true
   showIcons: true
   theme:
     lightTheme: false 
@@ -18,9 +20,11 @@ gui:
       - "#363a4f"
     cherryPickedCommitFgColor:
       - "#cad3f5"
-  editCommand: 'hx'
-  editCommandTemplate: '{{editor}} {{filename}}:{{line}}'
-  openCommand: 'open {{filename}}'
+os:
+  edit: 'hx {{filename}}'
+  editAtLine: 'hx {{filename}}:{{line}}'
+  editAtLineAndWait: 'hx {{filename}}:{{line}}'
+  editInTerminal: true
 git:
   paging:
     colorArg: always
