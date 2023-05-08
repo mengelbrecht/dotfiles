@@ -28,7 +28,7 @@ success_symbol = '[❯](bold white)'
 format = '󱦟 [$duration]($style) '
 
 [directory]
-read_only = " "
+read_only = " 󰌾"
 truncation_length = 5
 truncation_symbol = "…/"
 style = 'green'
