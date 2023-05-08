@@ -24,3 +24,5 @@ right = ["diagnostics", "selections", "position", "position-percentage", "file-e
 [keys.normal]
 tab = ":buffer-next"
 S-tab = ":buffer-previous"
+"´" = "switch_to_lowercase"
+"A-´" = "switch_to_uppercase"
