@@ -1,12 +1,12 @@
 gui:
   border: rounded
   scrollHeight: 4
-  skipUnstageLineWarning: true
+  skipDiscardChangeWarning: true
   expandFocusedSidePanel: true
   experimentalShowBranchHeads: true
-  showIcons: true
+  nerdFontsVersion: '3'
   theme:
-    lightTheme: false 
+    lightTheme: false
     activeBorderColor:
       - white
       - bold
@@ -21,10 +21,7 @@ gui:
     cherryPickedCommitFgColor:
       - "#cad3f5"
 os:
-  edit: 'hx {{filename}}'
-  editAtLine: 'hx {{filename}}:{{line}}'
-  editAtLineAndWait: 'hx {{filename}}:{{line}}'
-  editInTerminal: true
+  editPreset: 'helix'
 git:
   paging:
     colorArg: always
