@@ -1,5 +1,5 @@
 [branch]
-	autosetuprebase = always
+	autoSetupRebase = always
 [core]
 	quotepath = false
 	autocrlf = input
@@ -20,6 +20,8 @@
 	decorate = full
 [pull]
 	ff = only
+[push]
+	autoSetupRemote = true
 [status]
 	showUntrackedFiles = all
 [interactive]
