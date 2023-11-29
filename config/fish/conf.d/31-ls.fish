@@ -8,3 +8,7 @@ alias l "ls -l"
 alias la "ls -la"
 alias lt "ls -l --tree"
 alias lat "ls -la --tree"
+
+if type -q yazi
+    alias yy yazi
+end
