@@ -20,7 +20,6 @@ brew "node"
 brew "ripgrep"
 brew "starship"
 brew "tokei"
-brew "trivy"
 brew "yazi"
 
 cask "appcleaner"
