@@ -20,6 +20,17 @@ if test -d "$homebrew/opt/coreutils/libexec/gnubin"
     fish_add_path "$homebrew/opt/coreutils/libexec/gnubin"
 end
 
+for i in 11 17 21;
+    if test -d "$homebrew/opt/openjdk@$i/libexec/openjdk.jdk" && not test -e "$HOME/Library/Java/JavaVirtualMachines/openjdk-$i.jdk"
+        ln -s "$homebrew/opt/openjdk@$i/libexec/openjdk.jdk" "$HOME/Library/Java/JavaVirtualMachines/openjdk-$i.jdk"
+    end
+end
+
+set -l jdk_home (/usr/libexec/java_home -v11 2> /dev/null)
+if test $status -eq 0
+    set -gx JAVA_HOME $jdk_home
+end
+
 set -gx HOMEBREW_NO_ANALYTICS 1
 set -gx HOMEBREW_NO_ENV_HINTS 1
 set -gx HOMEBREW_INSTALL_BADGE " "
