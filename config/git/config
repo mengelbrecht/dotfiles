@@ -5,11 +5,6 @@
 	autocrlf = input
 	safecrlf = warn
 	trustctime = false
-	excludesfile = ~/.config/git/ignore
-	pager = delta
-	hooksPath = .githooks
-[include]
-	path = ~/.config/git/config.local
 [rebase]
 	autoStash = true
 [merge]
@@ -24,9 +19,7 @@
 	autoSetupRemote = true
 [status]
 	showUntrackedFiles = all
-[interactive]
-    diffFilter = delta --color-only
-[delta]
-	navigate = true
-	line-numbers = true
-	syntax-theme = Catppuccin-macchiato
+[include]
+	path = ./config.local
+[include]
+	path = ./../delta/delta.gitconfig
