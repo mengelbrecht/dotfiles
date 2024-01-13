@@ -14,6 +14,7 @@ set -g fish_color_error ed8796
 set -g fish_color_gray 6e738d
 set -g fish_color_selection --background=363a4f
 set -g fish_color_search_match --background=363a4f
+set -g fish_color_option a6da95
 set -g fish_color_operator f5bde6
 set -g fish_color_escape ee99a0
 set -g fish_color_autosuggestion 6e738d
