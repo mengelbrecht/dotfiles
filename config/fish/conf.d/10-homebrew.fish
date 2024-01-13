@@ -18,7 +18,7 @@ end
 
 switch (uname)
     case Darwin
-        for i in 11 17 21;
+        for i in 11 17 21
             if test -d "$homebrew/opt/openjdk@$i/libexec/openjdk.jdk" && not test -e "$HOME/Library/Java/JavaVirtualMachines/openjdk-$i.jdk"
                 ln -s "$homebrew/opt/openjdk@$i/libexec/openjdk.jdk" "$HOME/Library/Java/JavaVirtualMachines/openjdk-$i.jdk"
             end
