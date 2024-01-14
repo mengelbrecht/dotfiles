@@ -20,6 +20,6 @@
 [status]
 	showUntrackedFiles = all
 [include]
-	path = ./config.local
+	path = ./local.gitconfig
 [include]
 	path = ./../delta/delta.gitconfig
