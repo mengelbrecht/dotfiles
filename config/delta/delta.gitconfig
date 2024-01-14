@@ -10,5 +10,7 @@
 [delta]
 	navigate = true
 	line-numbers = true
+	hyperlinks = true
+    hyperlinks-file-link-format = "vscode://file/{path}:{line}"
 	features = catppuccin-macchiato
 
