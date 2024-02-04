@@ -678,7 +678,7 @@
 				<real>0.56862745098039214</real>
 			</dict>
 			<key>Load Shell Integration Automatically</key>
-			<true/>
+			<false/>
 			<key>Mouse Reporting</key>
 			<true/>
 			<key>Name</key>
@@ -800,6 +800,6 @@
 	<key>metalMaximizeThroughput</key>
 	<false/>
 	<key>preferIntegratedGPU</key>
-	<false/>
+	<true/>
 </dict>
 </plist>
