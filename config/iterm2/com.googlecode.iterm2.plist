@@ -2,16 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>AppleAntiAliasingThreshold</key>
-	<integer>1</integer>
-	<key>ApplePressAndHoldEnabled</key>
-	<false/>
-	<key>AppleScrollAnimationEnabled</key>
-	<integer>0</integer>
-	<key>AppleSmoothFixedFontsSizeThreshold</key>
-	<integer>1</integer>
-	<key>AppleWindowTabbingMode</key>
-	<string>manual</string>
 	<key>BadgeFont</key>
 	<string>Iosevka Code</string>
 	<key>CheckTestRelease</key>
@@ -309,7 +299,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>80</integer>
+			<integer>180</integer>
 			<key>Command</key>
 			<string>/usr/local/bin/fish</string>
 			<key>Cursor Color</key>
@@ -706,7 +696,7 @@
 			<key>Right Option Key Sends</key>
 			<integer>0</integer>
 			<key>Rows</key>
-			<integer>25</integer>
+			<integer>40</integer>
 			<key>Screen</key>
 			<integer>-1</integer>
 			<key>Scrollback Lines</key>
@@ -748,7 +738,7 @@
 			<key>Silence Bell</key>
 			<false/>
 			<key>Special Font Config</key>
-			<string>{"entries":[{"count":4,"start":9211,"fontName":"UnicodeIECsymbol"},{"fontName":"Octicons","count":1,"start":9829},{"fontName":"Octicons","count":1,"start":9889},{"start":11096,"fontName":"UnicodeIECsymbol","count":1},{"start":57344,"count":11,"fontName":"Pomicons"},{"count":3,"start":57504,"fontName":"PowerlineSymbols"},{"count":1,"start":57507,"fontName":"PowerlineExtraSymbols"},{"fontName":"PowerlineSymbols","start":57520,"count":4},{"fontName":"PowerlineExtraSymbols","start":57524,"count":21},{"start":57546,"count":1,"fontName":"PowerlineExtraSymbols"},{"fontName":"PowerlineExtraSymbols","start":57548,"count":8},{"destination":57856,"fontName":"font-awesome-extension","count":170,"start":57344},{"start":61440,"destination":58112,"fontName":"Weather Icons Regular","count":236},{"destination":58874,"count":177,"start":58618,"fontName":"Nerd Font File Types Regular"},{"count":198,"destination":59136,"start":58880,"fontName":"icomoon"},{"count":396,"fontName":"codicon","start":60000},{"fontName":"FontAwesome","start":61440,"count":736},{"start":62208,"count":48,"fontName":"font-logos"},{"start":61440,"fontName":"Octicons","count":168,"destination":62464},{"destination":62633,"start":62076,"count":1,"fontName":"Octicons"},{"destination":62634,"count":86,"fontName":"Octicons","start":61609},{"fontName":"Material Design Icons","count":2118,"start":61441,"destination":62720},{"start":983041,"fontName":"Material Design Icons Desktop","count":6896}],"version":1}</string>
+			<string>{"version":1,"entries":[{"start":9211,"count":4,"fontName":"Symbols Nerd Font"},{"start":9829,"fontName":"Symbols Nerd Font","count":1},{"fontName":"Symbols Nerd Font","start":9889,"count":1},{"count":1,"start":11096,"fontName":"Symbols Nerd Font"},{"fontName":"Symbols Nerd Font","start":57344,"count":11},{"count":3,"start":57504,"fontName":"Symbols Nerd Font"},{"start":57507,"fontName":"Symbols Nerd Font","count":1},{"count":4,"fontName":"Symbols Nerd Font","start":57520},{"start":57524,"fontName":"Symbols Nerd Font","count":21},{"fontName":"Symbols Nerd Font","start":57546,"count":1},{"start":57548,"count":9,"fontName":"Symbols Nerd Font"},{"count":170,"start":57856,"fontName":"Symbols Nerd Font"},{"fontName":"Symbols Nerd Font","start":58112,"count":228},{"fontName":"Symbols Nerd Font","count":179,"start":58874},{"start":59136,"count":198,"fontName":"Symbols Nerd Font"},{"fontName":"Symbols Nerd Font","count":396,"start":60000},{"count":737,"fontName":"Symbols Nerd Font","start":61440},{"fontName":"Symbols Nerd Font","count":48,"start":62208},{"count":307,"start":62464,"fontName":"Symbols Nerd Font"},{"start":983041,"count":6896,"fontName":"Symbols Nerd Font"}]}</string>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
@@ -772,7 +762,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>15</integer>
+			<integer>0</integer>
 			<key>Working Directory</key>
 			<string>/Users/mgee</string>
 		</dict>
