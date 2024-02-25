@@ -1,24 +1,43 @@
 [branch]
 	autoSetupRebase = always
+	sort = -committerdate
 [core]
-	quotepath = false
 	autocrlf = input
-	safecrlf = warn
+	quotePath = false
+	safecrlf = true
 	trustctime = false
-[rebase]
-	autoStash = true
-[merge]
-	conflictstyle = diff3
 [diff]
+	algorithm = histogram
 	colorMoved = default
+	submodule = log
+[fetch]
+	all = true
+	prune = true
+	pruneTags = true
+[init]
+	defaultBranch = main
 [log]
+	date = iso-local
 	decorate = full
+[merge]
+	conflictStyle = zdiff3
 [pull]
-	ff = only
+	rebase = true
 [push]
 	autoSetupRemote = true
+	default = upstream
+	followTags = true
+[rebase]
+	autoSquash = true
+	autoStash = true
+	updateRefs = true
 [status]
 	showUntrackedFiles = all
+	submoduleSummary = true
+[submodule]
+	recurse = true
+[tag]
+	sort = -taggerdate
 [include]
 	path = ./local.gitconfig
 [include]
