@@ -11,8 +11,6 @@ verbose(false)
 #------------------------------------------------------------------------------
 ROOT = File.expand_path(File.dirname(__FILE__))
 HOME = File.expand_path('~')
-MACOS = RUBY_PLATFORM.include? 'darwin'
-LINUX = RUBY_PLATFORM.include? 'linux'
 
 #------------------------------------------------------------------------------
 DOTFILES = [
