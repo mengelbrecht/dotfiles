@@ -1,7 +1,3 @@
-[submodule "config/tmux/tpm"]
-	path = config/tmux/tpm
-	url = https://github.com/tmux-plugins/tpm.git
-	branch = master
 [submodule "config/nvim/autoload"]
 	path = config/nvim/autoload
 	url = https://github.com/junegunn/vim-plug.git
