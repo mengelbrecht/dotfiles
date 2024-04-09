@@ -16,14 +16,12 @@ LINUX = RUBY_PLATFORM.include? 'linux'
 
 #------------------------------------------------------------------------------
 DOTFILES = [
-  'config',
-  'zshenv'
+  'config'
 ].freeze
 
 LOCAL_FILES = [
   'config/fish/local.fish',
-  'config/git/config.local',
-  'config/zsh/config.local'
+  'config/git/local.gitconfig',
 ].freeze
 
 #------------------------------------------------------------------------------
