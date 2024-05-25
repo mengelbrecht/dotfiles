@@ -10,6 +10,8 @@
 	<dict/>
 	<key>Default Bookmark Guid</key>
 	<string>7B3F2306-A965-490F-8CB7-F6EC296EC0F7</string>
+	<key>DefaultTabBarHeight</key>
+	<real>32</real>
 	<key>DimBackgroundWindows</key>
 	<false/>
 	<key>DimInactiveSplitPanes</key>
@@ -762,7 +764,7 @@
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
-			<integer>0</integer>
+			<integer>12</integer>
 			<key>Working Directory</key>
 			<string>/Users/mgee</string>
 		</dict>
@@ -780,7 +782,9 @@
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
 	<key>TerminalMargin</key>
-	<integer>5</integer>
+	<integer>12</integer>
+	<key>TerminalVMargin</key>
+	<integer>10</integer>
 	<key>ToolbeltFont</key>
 	<string>Iosevka Code</string>
 	<key>VisualIndicatorForEsc</key>
