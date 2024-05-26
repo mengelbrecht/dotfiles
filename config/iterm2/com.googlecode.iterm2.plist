@@ -24,12 +24,14 @@
 	<false/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
+	<key>HideActivityIndicator</key>
+	<true/>
 	<key>HideScrollbar</key>
 	<false/>
 	<key>HideTab</key>
-	<true/>
-	<key>HideTabNumber</key>
 	<false/>
+	<key>HideTabNumber</key>
+	<true/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
 	<true/>
 	<key>IRMemory</key>
@@ -372,6 +374,8 @@
 			<string>7B3F2306-A965-490F-8CB7-F6EC296EC0F7</string>
 			<key>Horizontal Spacing</key>
 			<real>1</real>
+			<key>Icon</key>
+			<integer>1</integer>
 			<key>Idle Code</key>
 			<integer>0</integer>
 			<key>Initial Use Transparency</key>
@@ -779,8 +783,12 @@
 	<false/>
 	<key>SplitPaneDimmingAmount</key>
 	<real>0.076288600292020614</real>
+	<key>StretchTabsToFillBar</key>
+	<false/>
 	<key>TabStyleWithAutomaticOption</key>
 	<integer>5</integer>
+	<key>TabViewType</key>
+	<integer>1</integer>
 	<key>TerminalMargin</key>
 	<integer>12</integer>
 	<key>TerminalVMargin</key>
