@@ -30,7 +30,6 @@ format = '󱦟 [$duration]($style) '
 [directory]
 read_only = " 󰌾"
 truncation_length = 5
-truncation_symbol = "…/"
 style = 'green'
 repo_root_style = 'bold yellow'
 
