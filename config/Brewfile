@@ -1,3 +1,5 @@
+tap "int128/kubelogin"
+
 brew "bat"
 brew "fd"
 brew "fish"
@@ -16,7 +18,6 @@ brew "maven"
 brew "ncdu"
 brew "node"
 brew "openjdk"
-brew "openjdk@8"
 brew "openjdk@11"
 brew "openjdk@17"
 brew "ripgrep"
