@@ -3,26 +3,27 @@ add_newline = false
 command_timeout = 2000
 format = "$directory$character"
 right_format = """
-[ ](fg:mauve)\
+[⟨ ](fg:mauve)\
 $username\
-[ ](fg:sapphire)
+[⟨ ](fg:sapphire)
 $hostname\
-[ ](fg:green)
+[⟨ ](fg:green)
 $git_branch\
 $git_commit\
 $git_state\
-[ ](fg:yellow)
+[⟨ ](fg:yellow)
 $java\
 $nodejs\
-[ ](fg:peach)
+[⟨ ](fg:peach)
 $cmd_duration\
 $jobs\
-[ ](fg:red)
+[⟨ ](fg:red)
 $status\
 """
 
 [character]
-success_symbol = '[❯](bold white)'
+success_symbol = '[⟩](bold white)'
+error_symbol = '[⟩](bold red)'
 
 [cmd_duration]
 format = '󱦟 [$duration]($style) '
