@@ -1,4 +1,0 @@
-[submodule "config/nvim/autoload"]
-	path = config/nvim/autoload
-	url = https://github.com/junegunn/vim-plug.git
-	branch = master
