@@ -746,7 +746,7 @@
 			<key>Silence Bell</key>
 			<false/>
 			<key>Special Font Config</key>
-			<string>{"entries":[{"start":9211,"fontName":"Symbols Nerd Font","count":4},{"fontName":"Symbols Nerd Font","start":9829,"count":1},{"fontName":"Symbols Nerd Font","count":1,"start":9889},{"count":1,"fontName":"Symbols Nerd Font","start":11096},{"start":57344,"count":11,"fontName":"Symbols Nerd Font"},{"start":57504,"fontName":"Symbols Nerd Font","count":3},{"count":1,"start":57507,"fontName":"Symbols Nerd Font"},{"fontName":"Symbols Nerd Font","start":57520,"count":4},{"fontName":"Symbols Nerd Font","count":21,"start":57524},{"fontName":"Symbols Nerd Font","start":57546,"count":1},{"fontName":"Symbols Nerd Font","start":57548,"count":12},{"start":57856,"count":170,"fontName":"Symbols Nerd Font"},{"fontName":"Symbols Nerd Font","count":228,"start":58112},{"fontName":"Symbols Nerd Font","count":179,"start":58874},{"start":59136,"count":198,"fontName":"Symbols Nerd Font"},{"start":60000,"fontName":"Symbols Nerd Font","count":447},{"fontName":"Symbols Nerd Font","count":1536,"start":60672},{"count":118,"start":62208,"fontName":"Symbols Nerd Font"},{"start":62464,"count":307,"fontName":"Symbols Nerd Font"},{"start":983041,"fontName":"Symbols Nerd Font","count":6896}],"version":1}</string>
+			<string>{"version":1,"entries":[]}</string>
 			<key>Sync Title</key>
 			<false/>
 			<key>Tags</key>
