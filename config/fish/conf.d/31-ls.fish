@@ -16,3 +16,19 @@ set -gx LS_COLORS "*~=0;38;2;91;96;120:bd=0;38;2;125;196;228;48;2;54;58;79:ca=0:
 if type -q yazi
     alias yy yazi
 end
+
+function list_dir_details
+    set -l val (commandline -t | string replace -r '^~' "$HOME")
+    if ! test -d $val
+        set -l dir (path dirname $val)
+        if test -n "$dir" -a -d "$dir"
+            set val $dir
+        else
+            set val
+        end
+    end
+    ls -lahT $val
+    commandline -f repaint
+end
+
+bind $argv \e, list_dir_details
