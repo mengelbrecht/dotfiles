@@ -10,7 +10,7 @@ function fish_right_prompt
 
     if test $CMD_DURATION -gt 2000
         echo -n (set_color $fish_color_option)' ⟨ '
-        echo -n (set_color yellow)$CMD_DURATION'ms'
+        echo -n (set_color normal)'⏳ '(set_color yellow)$CMD_DURATION'ms'
     end
 
     set_color normal
