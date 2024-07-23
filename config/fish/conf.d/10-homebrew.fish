@@ -18,13 +18,7 @@ end
 
 switch (uname)
     case Darwin
-        for i in 11 17 21
-            if test -d "$homebrew/opt/openjdk@$i/libexec/openjdk.jdk" && not test -e "$HOME/Library/Java/JavaVirtualMachines/openjdk-$i.jdk"
-                ln -s "$homebrew/opt/openjdk@$i/libexec/openjdk.jdk" "$HOME/Library/Java/JavaVirtualMachines/openjdk-$i.jdk"
-            end
-        end
-
-        set -l jdk_home (/usr/libexec/java_home -v11 2> /dev/null)
+        set -l jdk_home (/usr/libexec/java_home -v21 2> /dev/null)
         if test $status -eq 0
             set -gx JAVA_HOME $jdk_home
         end
