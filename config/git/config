@@ -30,7 +30,6 @@
 [rebase]
 	autoSquash = true
 	autoStash = true
-	updateRefs = true
 [status]
 	showUntrackedFiles = all
 	submoduleSummary = true
