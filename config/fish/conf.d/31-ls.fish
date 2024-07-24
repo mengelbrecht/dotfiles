@@ -19,6 +19,7 @@ end
 
 function list_dir_details
     set -l val (commandline -t | string replace -r '^~' "$HOME")
+    printf '\n'
     if ! test -d $val
         set -l dir (path dirname $val)
         if test -n "$dir" -a -d "$dir"
