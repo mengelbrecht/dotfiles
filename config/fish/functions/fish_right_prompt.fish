@@ -11,8 +11,7 @@ function fish_right_prompt
     if command -sq git; and test -f '.git/HEAD'
         set -l ref (string replace -r '.*/' '' (cat '.git/HEAD'))
         echo -n (set_color $fish_color_cwd)' ⟨ '(set_color normal)''(set_color $fish_color_param)' '$ref
-        git diff --quiet --ignore-submodules HEAD 2> /dev/null
-        if test $status -eq 1
+        if not git diff --quiet --ignore-submodules HEAD 2> /dev/null
             echo -n (set_color $fish_color_error)'*'
         end
     end
