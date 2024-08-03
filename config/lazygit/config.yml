@@ -4,7 +4,6 @@ gui:
   skipDiscardChangeWarning: true
   expandFocusedSidePanel: true
   experimentalShowBranchHeads: true
-  nerdFontsVersion: '3'
   theme:
     lightTheme: false
     activeBorderColor:
