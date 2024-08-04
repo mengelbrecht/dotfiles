@@ -3,39 +3,33 @@ gui:
   scrollHeight: 4
   skipDiscardChangeWarning: true
   expandFocusedSidePanel: true
-  experimentalShowBranchHeads: true
   theme:
-    lightTheme: false
     activeBorderColor:
-      - white
+      - '#eed49f'
       - bold
     inactiveBorderColor:
-      - "#6e738d"
+      - '#a5adcb'
+    optionsTextColor:
+      - '#8aadf4'
     selectedLineBgColor:
-      - "#363a4f"
-    selectedRangeBgColor:
-      - "#5b6078"
+      - '#363a4f'
     cherryPickedCommitBgColor:
-      - "#363a4f"
+      - '#494d64'
     cherryPickedCommitFgColor:
-      - "#cad3f5"
-os:
-  editPreset: 'helix'
+      - '#eed49f'
+    unstagedChangesColor:
+      - '#ed8796'
+    defaultFgColor:
+      - '#cad3f5'
+    searchingActiveBorderColor:
+      - '#eed49f'
+  authorColors:
+    '*': '#b7bdf8'
 git:
   paging:
-    colorArg: always
     pager: delta --paging=never
-  log:
-    showGraph: 'always'
-keybinding:
-  universal:
-    prevItem-alt: 'j'
-    nextItem-alt: 'k'
-    scrollUpMain-alt1: 'J'
-    scrollDownMain-alt1: 'K'
-    scrollUpMain-alt2: '<c-j>'
-    scrollDownMain-alt2: '<c-k>'
-  commits:
-    moveUpCommit: '<c-j>'
-    moveDownCommit: '<c-k>'
+mainBranches:
+  - master
+  - main
+  - develop
 notARepository: 'skip'
