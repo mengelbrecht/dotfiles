@@ -3,7 +3,7 @@ function fish_prompt
 
     echo -n (set_color $fish_color_cwd)(prompt_pwd --full-length-dirs=3)' '
 
-    set -l prompt_symbol '⟩'
+    set -l prompt_symbol '❭'
     if fish_is_root_user
         set prompt_symbol '#'
     end
