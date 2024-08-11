@@ -1,5 +1,5 @@
 icons:
-  separator: "  "
+  when: never
 sorting:
   dir-grouping: first
 color:
