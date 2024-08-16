@@ -779,6 +779,8 @@
 	</array>
 	<key>PerPaneBackgroundImage</key>
 	<false/>
+	<key>RestoreWindowContents</key>
+	<false/>
 	<key>SeparateStatusBarsPerPane</key>
 	<false/>
 	<key>ShowPaneTitles</key>
