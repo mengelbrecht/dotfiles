@@ -6,6 +6,8 @@
 	<string>Iosevka Code</string>
 	<key>CheckTestRelease</key>
 	<true/>
+	<key>ClickToSelectCommand</key>
+	<false/>
 	<key>Custom Color Presets</key>
 	<dict/>
 	<key>Default Bookmark Guid</key>
