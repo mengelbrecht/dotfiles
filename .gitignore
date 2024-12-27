@@ -1,5 +1,2 @@
 *.local
 *.pyc
-bin/
-config/git/local.gitconfig
-config/tmux/plugins/
