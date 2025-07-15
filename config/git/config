@@ -39,5 +39,3 @@
 	sort = -taggerdate
 [include]
 	path = ./local.gitconfig
-[include]
-	path = ./../delta/delta.gitconfig
